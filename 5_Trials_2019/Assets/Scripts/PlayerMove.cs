@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     public bool isMoving;
 
     public byte direction;
-    //Direction uses an int value to determine which direction the player is facing
+    // Direction uses an int value to determine which direction the player is facing
     // 0:   Up
     // 1:   Left
     // 2:   Down
