@@ -19,6 +19,13 @@ public class Boss1_Spider : _BossBase
     public float maxEyeTime;
     private float eyeTime;
 
+    //Attack Variables
+    public GameObject projectile;
+    public GameObject player;
+
+    public float attackFrequency;
+    private float attackFrequencyTime;
+
     // Start is called before the first frame update
     override protected void BossStart()
     {
@@ -29,8 +36,31 @@ public class Boss1_Spider : _BossBase
     // Update is called once per frame
     void Update()
     {
+        attack();
         eyeUpdate();
         moveUpdate();
+    }
+
+    void attack()
+    {
+        if (isOpen)
+        {
+            attackFrequencyTime++;
+                if (attackFrequencyTime >= attackFrequency) {
+                    //Creates the projectile
+                    GameObject tempProjectile;
+                    tempProjectile = Instantiate(projectile, transform.position, transform.rotation);
+
+                    //Calculates the direction of the player
+                    Vector2 direction = player.transform.position - gameObject.transform.position;
+                    direction.Normalize();
+
+                    //'Fires' the projectile
+                    tempProjectile.GetComponent<Projectile_Simple>().direction = direction;
+
+                attackFrequencyTime = 0;
+            }
+        }
     }
 
     void eyeUpdate()
