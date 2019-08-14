@@ -7,9 +7,9 @@ public class PlayerMove : MonoBehaviour
 {
     Rigidbody2D rig;
     SpriteRenderer render;
+    Animator animator;
 
     public float moveSpeed;
-    public Animator animator;
 
     public bool canMove;
     public bool isMoving;
@@ -25,6 +25,7 @@ public class PlayerMove : MonoBehaviour
     void Start() {
         rig = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     void FixedUpdate() {
