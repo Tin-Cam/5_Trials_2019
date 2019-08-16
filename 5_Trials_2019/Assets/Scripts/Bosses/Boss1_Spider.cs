@@ -9,8 +9,8 @@ public class Boss1_Spider : _BossBase
     Vector2 movement;
     public float speed;
 
-    public float minX;
-    public float maxX;
+    public float moveRange;
+    private float moveTime = 0;
 
     //Eye Variables
     public bool isOpen;
@@ -29,7 +29,7 @@ public class Boss1_Spider : _BossBase
     // Start is called before the first frame update
     override protected void BossStart()
     {
-        movement = new Vector2(1, 0);
+        movement = new Vector2(rig.position.x, rig.position.y);
         animator = GetComponent<Animator>();
     }
 
@@ -91,17 +91,8 @@ public class Boss1_Spider : _BossBase
     //Updates the triggers for movement
     void moveUpdate()
     {
-
-        //Changes boss' direcection after reaching a set point
-        if (rig.position.x <= minX)
-        {
-            movement = new Vector2(Mathf.Abs(movement.x), 0);
-        }
-
-        if (rig.position.x >= maxX)
-        {
-            movement = new Vector2(Mathf.Abs(movement.x) * -1, 0);
-        }
+        moveTime++;
+        movement = new Vector2(Mathf.Sin(moveTime * Mathf.Deg2Rad) * moveRange, movement.y);
     }
 
     void FixedUpdate()
@@ -111,6 +102,7 @@ public class Boss1_Spider : _BossBase
 
     void _move()
     {
-        rig.MovePosition(rig.position + movement * speed * Time.fixedDeltaTime);
+        rig.MovePosition(movement * new Vector2(speed * Time.fixedDeltaTime, 1));
+      
     }
 }
