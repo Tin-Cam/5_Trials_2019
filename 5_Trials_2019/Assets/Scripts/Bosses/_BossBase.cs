@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class _BossBase : MonoBehaviour
 {
-    public float maxHealth;
-    private float health;
+    public float health;
+    public HealthBar healthBar;
 
     protected Rigidbody2D rig;
 
@@ -14,8 +14,8 @@ public abstract class _BossBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
         rig = GetComponent<Rigidbody2D>();
+        healthBar.initHealth(health);
         BossStart();
     }
 
@@ -30,6 +30,7 @@ public abstract class _BossBase : MonoBehaviour
     void takeDamage(float value)
     {
         health -= value;
+        healthBar.addOrSubtractHealth(-1);
         if (health <= 0)
             Destroy(this.gameObject);
     }

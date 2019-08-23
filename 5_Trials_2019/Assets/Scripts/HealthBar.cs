@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour {
 
-    public float healthUnitRatio; //Determines the scale of a single unit of health on the game screen
+    public float unit; //Determines the scale of a single unit of health on the game screen
     private float length;
+    private float maxLength;
+    private float maxHealth;
 
 	void Start () {
-        //TODO: Add function that stops healthbar reseting on harder difficulties
+        maxLength = transform.localScale.x;
     }
 
-    public void addHealth(float value)
+    public void addOrSubtractHealth(float value)
     {
-        length += value * healthUnitRatio;
+        length += value * unit;
         updateBar();
     }
 
-    public void setHealth(float value)
+    public void initHealth(float value)
     {
-        length = value * healthUnitRatio;
-        updateBar();
+        maxHealth = value;
+        length = maxLength;
+        unit = maxLength / maxHealth;
+        updateBar(); 
     }
 
     private void updateBar()

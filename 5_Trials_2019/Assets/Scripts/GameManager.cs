@@ -9,16 +9,27 @@ public class GameManager : MonoBehaviour
 
     public HealthBar healthBar;
 
+    public _BossBase boss;
+    public HealthBar bossHealthBar;
+
     void Start()
     {
-        healthBar.setHealth(playerMaxHealth);
+        //healthBar.setHealth(playerMaxHealth);
+        
     }
 
     void Update()
     {
         if (Input.GetButtonDown("Attack"))
-        {
-            healthBar.addHealth(-1);
+        {  
+            //healthBar.addOrSubtractHealth(-1);
         }
+
+    }
+
+    void updateBoss()
+    {
+        //boss = newBoss
+        boss.healthBar = bossHealthBar;
     }
 }
