@@ -9,10 +9,6 @@ public class PlayerMove : MonoBehaviour
     SpriteRenderer render;
     Animator animator;
 
-    public GameManager gameManager;
-    public bool godMode;
-
-    [Space(15)]
     public float moveSpeed;
 
     public bool canMove;
@@ -112,15 +108,5 @@ public class PlayerMove : MonoBehaviour
     public float getDirectionAngle()
     {
         return 90 * direction;
-    }
-
-    //Methods for player getting hit
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (godMode)
-            return;
-
-        if (other.tag == "Projectile")
-            gameManager.playerTakeDamage(1);
     }
 }

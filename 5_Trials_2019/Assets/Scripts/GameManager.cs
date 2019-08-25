@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject player;
     public float playerMaxHealth;
     private float playerHealth;
 
-    public HealthBar playerHealthBar;
+    public HealthBar healthBar;
 
     public _BossBase boss;
     public HealthBar bossHealthBar;
 
     void Start()
     {
-        playerHealth = playerMaxHealth;
-        playerHealthBar.initHealth(playerMaxHealth);
+        //healthBar.setHealth(playerMaxHealth);
         
     }
 
@@ -33,13 +31,5 @@ public class GameManager : MonoBehaviour
     {
         //boss = newBoss
         boss.healthBar = bossHealthBar;
-    }
-
-    public void playerTakeDamage(float damage)
-    {
-        playerHealth -= damage;
-        playerHealthBar.addOrSubtractHealth(-1);
-        if (playerHealth <= 0)
-            player.SetActive(false);
     }
 }

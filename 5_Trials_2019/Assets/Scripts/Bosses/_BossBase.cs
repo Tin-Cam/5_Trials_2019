@@ -4,14 +4,12 @@ using UnityEngine;
 
 public abstract class _BossBase : MonoBehaviour
 {
-    [Space(15)]
     public float health;
     public HealthBar healthBar;
 
     protected Rigidbody2D rig;
 
     public int phase; //Value determines how the boss behaves
-
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +27,7 @@ public abstract class _BossBase : MonoBehaviour
 
     }
 
-    protected void takeDamage(float value)
+    void takeDamage(float value)
     {
         health -= value;
         healthBar.addOrSubtractHealth(-1);
@@ -39,9 +37,7 @@ public abstract class _BossBase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Sword")
-            playerAttacked();
+        takeDamage(1);
     }
 
-    abstract protected void playerAttacked();
 }
