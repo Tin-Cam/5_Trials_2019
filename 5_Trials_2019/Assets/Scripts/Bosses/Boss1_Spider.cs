@@ -6,20 +6,25 @@ public class Boss1_Spider : _BossBase
 {
 
     //Movement Variables
-    Vector2 movement;
+    [Space(15)]
     public float speed;
+    Vector2 movement;
 
     public float moveRange;
     private float moveTime = 0;
 
+
     //Eye Variables
-    public bool isOpen;
+    [Space(15)]
+    public bool isEyeOpen;
     public Animator animator;
 
     public float maxEyeTime;
     private float eyeTime;
 
+
     //Attack Variables
+    [Space(15)]
     public GameObject projectile;
     public GameObject player;
 
@@ -43,7 +48,7 @@ public class Boss1_Spider : _BossBase
 
     void attack()
     {
-        if (isOpen)
+        if (isEyeOpen)
         {
             attackFrequencyTime++;
                 if (attackFrequencyTime >= attackFrequency) {
@@ -77,15 +82,21 @@ public class Boss1_Spider : _BossBase
     //Toggle the eye
     void openEye()
     {
-        isOpen = !isOpen;
-        animator.SetBool("isOpen", isOpen);
+        isEyeOpen = !isEyeOpen;
+        animator.SetBool("isOpen", isEyeOpen);
     }
 
     //Sets the state of the eye
-    void openEye(bool isOpen)
+    void openEye(bool isEyeOpen)
     {
-        this.isOpen = isOpen;
-        animator.SetBool("isOpen", isOpen);
+        this.isEyeOpen = isEyeOpen;
+        animator.SetBool("isOpen", isEyeOpen);
+    }
+
+    override protected void playerAttacked()
+    {
+        if (isEyeOpen)
+            takeDamage(1);
     }
 
     //Updates the triggers for movement
