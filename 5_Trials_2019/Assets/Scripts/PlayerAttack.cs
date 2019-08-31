@@ -48,7 +48,7 @@ public class PlayerAttack : MonoBehaviour
         animator.SetBool("Attack", true);
         yield return new WaitForSeconds(holdTime);
 
-
+        
         animator.SetBool("Attack", false);
         canAttack = true;
         playerMove.canMove = true;

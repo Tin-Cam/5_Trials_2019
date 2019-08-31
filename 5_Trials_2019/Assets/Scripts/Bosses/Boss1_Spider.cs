@@ -19,65 +19,88 @@ public class Boss1_Spider : _BossBase
     public bool isEyeOpen;
     public Animator animator;
 
-    public float maxEyeTime;
-    private float eyeTime;
-
-
     //Attack Variables
     [Space(15)]
     public GameObject projectile;
     public GameObject player;
 
+
+    //Action Variables
+    [Space(15)]
+    public float eyeTime;
     public float attackFrequency;
-    private float attackFrequencyTime;
+    
 
     // Start is called before the first frame update
     override protected void BossStart()
     {
         movement = new Vector2(rig.position.x, rig.position.y);
         animator = GetComponent<Animator>();
+
+        //Set actions
+        actionList.Add("exposeEye");
+        actionList.Add("attackShort");
+        actionList.Add("attackLong");
     }
 
     // Update is called once per frame
     void Update()
     {
-        attack();
-        eyeUpdate();
+        //pickAction();
+        //eyeUpdate();
         moveUpdate();
     }
 
-    void attack()
+    //ACTIONS-------------------------------
+
+    //Action 0
+    private IEnumerator exposeEye()
     {
-        if (isEyeOpen)
-        {
-            attackFrequencyTime++;
-                if (attackFrequencyTime >= attackFrequency) {
-                    //Creates the projectile
-                    GameObject tempProjectile;
-                    tempProjectile = Instantiate(projectile, transform.position, transform.rotation);
-
-                    //Calculates the direction of the player
-                    Vector2 direction = player.transform.position - gameObject.transform.position;
-                    direction.Normalize();
-
-                    //'Fires' the projectile
-                    tempProjectile.GetComponent<Projectile_Simple>().direction = direction;
-
-                attackFrequencyTime = 0;
-            }
-        }
+        openEye(true);
+        yield return new WaitForSeconds(eyeTime);
+        openEye(false);
     }
 
-    void eyeUpdate()
+    //Action 1
+    private IEnumerator attackShort()
     {
-        eyeTime++;
-
-        if(eyeTime >= maxEyeTime)
+        openEye(true);
+        for(int i = 0; i < 3; i++)
         {
-            openEye();
-            eyeTime = 0;
-        }
+            for (int j = 0; j < attackFrequency; j++)
+                yield return new WaitForEndOfFrame();
+            shoot();
+        } 
+        openEye(false);
     }
+
+    //Action 2
+    private IEnumerator attackLong()
+    {
+        openEye(true);
+        for (int i = 0; i < 10; i++)
+        {                      
+            shoot();
+            for(int j = 0; j < 10; j++)
+                yield return new WaitForEndOfFrame();
+        }
+        openEye(false);
+    }
+
+    void shoot()
+    {
+        //Creates the projectile
+        GameObject tempProjectile;
+        tempProjectile = Instantiate(projectile, transform.position, transform.rotation);
+
+        //Calculates the direction of the player
+        Vector2 direction = player.transform.position - gameObject.transform.position;
+        direction.Normalize();
+
+        //'Fires' the projectile
+        tempProjectile.GetComponent<Projectile_Simple>().direction = direction;
+    }
+
 
     //Toggle the eye
     void openEye()

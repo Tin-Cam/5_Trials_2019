@@ -11,6 +11,7 @@ public abstract class _BossBase : MonoBehaviour
     protected Rigidbody2D rig;
 
     public int phase; //Value determines how the boss behaves
+    public List<string> actionList = new List<string>();
 
 
     // Start is called before the first frame update
@@ -28,6 +29,23 @@ public abstract class _BossBase : MonoBehaviour
     {
 
     }
+
+    public void pickAction()
+    {
+        StartCoroutine(actionList[0]);
+    }
+
+    public void pickAction(int action)
+    {
+        Debug.Log(action + " Cap: " + actionList.Capacity);
+        
+        if (action > actionList.Count)
+            return;
+
+        StartCoroutine(actionList[action]);
+    }
+
+    
 
     protected void takeDamage(float value)
     {

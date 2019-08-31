@@ -554,7 +554,7 @@ MonoBehaviour:
   player: {fileID: 1476381286}
   playerMaxHealth: 10
   playerHealthBar: {fileID: 573346273}
-  boss: {fileID: 0}
+  boss: {fileID: 1503304937}
   bossHealthBar: {fileID: 0}
 --- !u!4 &1227621089
 Transform:
@@ -757,14 +757,15 @@ MonoBehaviour:
   health: 10
   healthBar: {fileID: 1246777513}
   phase: 0
+  actionList: []
   speed: 5
-  moveRange: 0
+  moveRange: 5
   isEyeOpen: 0
   animator: {fileID: 0}
-  maxEyeTime: 300
   projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
     type: 3}
   player: {fileID: 1476381286}
+  eyeTime: 3
   attackFrequency: 100
 --- !u!212 &1503304938
 SpriteRenderer:

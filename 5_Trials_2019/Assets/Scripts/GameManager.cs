@@ -22,11 +22,26 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Attack"))
-        {  
-            //healthBar.addOrSubtractHealth(-1);
+        if (Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            testBossAction(0);
         }
 
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            testBossAction(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            testBossAction(2);
+        }
+
+    }
+
+    void testBossAction(int action)
+    {
+        boss.pickAction(action);
     }
 
     void updateBoss()
