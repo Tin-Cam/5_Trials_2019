@@ -132,7 +132,7 @@ public class Boss1_Spider : _BossBase
         if (!isMoving)
             return;
 
-        moveTime++;
+        moveTime += 1 * (speed / 10);
         movement = new Vector2(Mathf.Sin(moveTime * Mathf.Deg2Rad) * moveRange, movement.y);
     }
 
@@ -143,7 +143,7 @@ public class Boss1_Spider : _BossBase
 
     void _move()
     {
-        rig.MovePosition(movement * new Vector2(speed * Time.fixedDeltaTime, 1));
+        rig.MovePosition(movement * new Vector2(Time.fixedDeltaTime, 1));
       
     }
 }
