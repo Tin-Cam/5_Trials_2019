@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 493442937}
   - component: {fileID: 493442936}
   m_Layer: 0
-  m_Name: '"BOSS"'
+  m_Name: TEXT "BOSS"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -556,6 +556,7 @@ MonoBehaviour:
   playerHealthBar: {fileID: 573346273}
   boss: {fileID: 1503304937}
   bossHealthBar: {fileID: 0}
+  debugMode: 1
 --- !u!4 &1227621089
 Transform:
   m_ObjectHideFlags: 0
@@ -759,6 +760,7 @@ MonoBehaviour:
   phase: 0
   actionList: []
   speed: 5
+  isMoving: 0
   moveRange: 5
   isEyeOpen: 0
   animator: {fileID: 0}
@@ -950,7 +952,7 @@ GameObject:
   - component: {fileID: 1821611552}
   - component: {fileID: 1821611551}
   m_Layer: 0
-  m_Name: '"Player"'
+  m_Name: TEXT "Player"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1218,10 +1220,55 @@ PrefabInstance:
       propertyPath: godMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9182096197023116854, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: defaultKknockBack
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182096197023116854, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: invincibleTime
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182096197023116854, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: defaultKnockBack
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182096197023116854, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: flashSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182096197023116854, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: flashAmount
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9182096197862901493, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
       propertyPath: m_TagString
       value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182096197023116856, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182096197023116856, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182096197023116856, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182096197023116856, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb5d813d44eb64f4791a90e539078c1f, type: 3}

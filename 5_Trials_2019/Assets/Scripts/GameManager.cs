@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public _BossBase boss;
     public HealthBar bossHealthBar;
 
+    [Space(15)]
+    public bool debugMode;
+
     void Start()
     {
         playerHealth = playerMaxHealth;
@@ -21,6 +24,13 @@ public class GameManager : MonoBehaviour
     }
 
     void Update()
+    {
+        if (debugMode)
+            debug();
+
+    }
+
+    void debug()
     {
         if (Input.GetKeyDown(KeyCode.Keypad0))
         {
@@ -36,7 +46,6 @@ public class GameManager : MonoBehaviour
         {
             testBossAction(2);
         }
-
     }
 
     void testBossAction(int action)
@@ -57,4 +66,5 @@ public class GameManager : MonoBehaviour
         if (playerHealth <= 0)
             player.SetActive(false);
     }
+
 }

@@ -10,6 +10,7 @@ public class Boss1_Spider : _BossBase
     public float speed;
     Vector2 movement;
 
+    public bool isMoving;
     public float moveRange;
     private float moveTime = 0;
 
@@ -36,6 +37,7 @@ public class Boss1_Spider : _BossBase
     {
         movement = new Vector2(rig.position.x, rig.position.y);
         animator = GetComponent<Animator>();
+        isMoving = true;
 
         //Set actions
         actionList.Add("exposeEye");
@@ -53,15 +55,17 @@ public class Boss1_Spider : _BossBase
 
     //ACTIONS-------------------------------
 
-    //Action 0
+    //Action 0 - Expose Eye (No attacking)
     private IEnumerator exposeEye()
     {
         openEye(true);
+        isMoving = false;
         yield return new WaitForSeconds(eyeTime);
         openEye(false);
+        isMoving = true;
     }
 
-    //Action 1
+    //Action 1 - Short Attack
     private IEnumerator attackShort()
     {
         openEye(true);
@@ -74,7 +78,7 @@ public class Boss1_Spider : _BossBase
         openEye(false);
     }
 
-    //Action 2
+    //Action 2 - Long Attack
     private IEnumerator attackLong()
     {
         openEye(true);
@@ -122,9 +126,12 @@ public class Boss1_Spider : _BossBase
             takeDamage(1);
     }
 
-    //Updates the triggers for movement
+    //Updates the values for movement
     void moveUpdate()
     {
+        if (!isMoving)
+            return;
+
         moveTime++;
         movement = new Vector2(Mathf.Sin(moveTime * Mathf.Deg2Rad) * moveRange, movement.y);
     }

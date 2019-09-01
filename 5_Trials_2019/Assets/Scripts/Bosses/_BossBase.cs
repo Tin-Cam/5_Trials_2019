@@ -36,9 +36,7 @@ public abstract class _BossBase : MonoBehaviour
     }
 
     public void pickAction(int action)
-    {
-        Debug.Log(action + " Cap: " + actionList.Capacity);
-        
+    { 
         if (action > actionList.Count)
             return;
 

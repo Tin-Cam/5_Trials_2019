@@ -13,6 +13,12 @@ public class PlayerMove : MonoBehaviour
     public bool godMode;
 
     [Space(15)]
+    public float defaultKnockBack;
+    public bool isInvincible;
+    public float flashAmount;
+    public float flashSpeed = 1;
+
+    [Space(15)]
     public float moveSpeed;
 
     public bool canMove;
@@ -114,13 +120,60 @@ public class PlayerMove : MonoBehaviour
         return 90 * direction;
     }
 
+    //Pushes the player in a given direction
+    public IEnumerator knockBack(Vector2 direction, float intensity)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            rig.AddForce(direction * intensity);
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    //Makes the player invincible; used when they're hit
+    public IEnumerator invincible()
+    {
+        
+
+        isInvincible = true;
+        for (int i = 0; i < flashAmount; i++)
+        {
+            flashRed();
+            yield return new WaitForSeconds(flashSpeed);
+        }
+        render.color = Color.white;
+        isInvincible = false;
+    }
+
+    //Alternates player's color from white to red when hit
+    private void flashRed()
+    {
+        if (render.color.Equals(Color.red))
+        {
+            render.color = Color.white;
+            return;
+        }
+
+        if (render.color.Equals(Color.white))
+        {
+            render.color = Color.red;
+            return;
+        }
+    }
+
     //Methods for player getting hit
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (godMode)
+        if (godMode | isInvincible)
             return;
 
         if (other.tag == "Projectile")
+        {
             gameManager.playerTakeDamage(1);
+            Vector2 direction = transform.position - other.transform.position;
+           
+            StartCoroutine(knockBack(direction, defaultKnockBack));
+            StartCoroutine(invincible());
+        }
     }
 }
