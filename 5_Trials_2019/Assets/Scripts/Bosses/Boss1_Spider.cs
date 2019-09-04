@@ -120,7 +120,7 @@ public class Boss1_Spider : _BossBase
         animator.SetBool("isOpen", isEyeOpen);
     }
 
-    override protected void playerAttacked()
+    override protected void bossHurt()
     {
         if (isEyeOpen)
             takeDamage(1);
@@ -138,6 +138,8 @@ public class Boss1_Spider : _BossBase
 
     void FixedUpdate()
     {
+        if (!isMoving)
+            return;
         _move();
     }
 

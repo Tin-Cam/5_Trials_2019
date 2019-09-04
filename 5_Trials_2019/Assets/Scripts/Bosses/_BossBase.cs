@@ -56,8 +56,8 @@ public abstract class _BossBase : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Sword")
-            playerAttacked();
+            bossHurt();
     }
 
-    abstract protected void playerAttacked();
+    abstract protected void bossHurt();
 }
