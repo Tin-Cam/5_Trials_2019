@@ -38,6 +38,7 @@ public class Boss1_Spider : _BossBase
         movement = new Vector2(rig.position.x, rig.position.y);
         animator = GetComponent<Animator>();
         isMoving = true;
+        isActing = false;
 
         //Set actions
         actionList.Add("exposeEye");
@@ -50,6 +51,7 @@ public class Boss1_Spider : _BossBase
     {
         //pickAction();
         //eyeUpdate();
+        ai();
         moveUpdate();
     }
 
@@ -63,6 +65,7 @@ public class Boss1_Spider : _BossBase
         yield return new WaitForSeconds(eyeTime);
         openEye(false);
         isMoving = true;
+        isActing = false;
     }
 
     //Action 1 - Short Attack
@@ -76,20 +79,95 @@ public class Boss1_Spider : _BossBase
             shoot();
         } 
         openEye(false);
+        isActing = false;
     }
 
     //Action 2 - Long Attack
     private IEnumerator attackLong()
     {
+        for(int i = 0; i < 20; i++)
+        {
+            openEye();            
+
+            for (int j = 0; j < 10; j++)
+                yield return new WaitForEndOfFrame();
+        }
+
         openEye(true);
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 30; i++)
         {                      
             shoot();
             for(int j = 0; j < 10; j++)
                 yield return new WaitForEndOfFrame();
         }
         openEye(false);
+        isActing = false;
     }
+
+    //AI------------------------------------
+
+    private int aiTimer;
+    private bool isActing;
+
+    void ai()
+    {
+        if (isActing)
+            return;
+
+        aiTimer++;
+
+        if (aiTimer >= 1000)
+        {
+            phase1();
+            aiTimer = 0;
+        }
+    }
+
+    private int vulCounter;
+    private Vector2Int last2Actions;
+
+    void phase1()
+    {
+        int rng = Random.Range(0, 3);
+
+        while(checkLastAction(rng))
+            rng = Random.Range(0, 3);
+
+        isActing = true;
+
+        //Forces the boss to become vulnerable if it hasn't been so after a few cycles
+        if (rng == 0 | vulCounter >= 4)
+        {
+            vulCounter = 0;
+            pickAction(0);
+            return;
+        }
+
+        vulCounter++;
+        pickAction(rng);
+    }
+
+    void increasePhase()
+    {
+
+    }
+
+    //Ensures no action is used 3 times in a row
+    bool checkLastAction(int action)
+    {
+        int actionSum = action * 2;
+        int vecSum = last2Actions.x + last2Actions.y;
+
+        if (actionSum == vecSum)
+            return true;
+
+        last2Actions.y = last2Actions.x;
+        last2Actions.x = action;
+
+        return false;
+    }
+
+    //MISC----------------------------------
 
     void shoot()
     {
@@ -118,6 +196,12 @@ public class Boss1_Spider : _BossBase
     {
         this.isEyeOpen = isEyeOpen;
         animator.SetBool("isOpen", isEyeOpen);
+    }
+
+    void chargeEye(bool isCharging)
+    {
+        openEye(isCharging);
+        animator.SetBool("isCharging", isCharging);
     }
 
     override protected void bossHurt()
