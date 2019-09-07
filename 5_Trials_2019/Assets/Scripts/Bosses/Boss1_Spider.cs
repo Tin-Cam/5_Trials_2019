@@ -20,6 +20,11 @@ public class Boss1_Spider : _BossBase
     public bool isEyeOpen;
     public Animator animator;
 
+    [Space(15)]
+    public bool miniEyesOpen;
+    public Boss1_MiniEye miniEyeR;
+    public Boss1_MiniEye miniEyeL;
+
     //Attack Variables
     [Space(15)]
     public GameObject projectile;
@@ -44,6 +49,8 @@ public class Boss1_Spider : _BossBase
         actionList.Add("exposeEye");
         actionList.Add("attackShort");
         actionList.Add("attackLong");
+
+        setMiniEyeTimer(500);
     }
 
     // Update is called once per frame
@@ -181,6 +188,26 @@ public class Boss1_Spider : _BossBase
 
         //'Fires' the projectile
         tempProjectile.GetComponent<Projectile_Simple>().direction = direction;
+    }
+
+    void shootMiniEyes()
+    {
+        miniEyeL.shoot();
+        miniEyeR.shoot();
+    }
+
+    //Starts the timers for the mini eyes. Eyes will alternate shots
+    void setMiniEyeTimer(int timer)
+    {
+        miniEyeL.setShootTimer(0, timer);
+        miniEyeR.setShootTimer(timer / 2, timer);
+        openMiniEyes(true);
+    }
+
+    void openMiniEyes(bool isOpen)
+    {
+        miniEyeL.openEye(isOpen);
+        miniEyeR.openEye(isOpen);
     }
 
 
