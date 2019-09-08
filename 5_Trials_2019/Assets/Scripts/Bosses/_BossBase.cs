@@ -6,10 +6,12 @@ public abstract class _BossBase : MonoBehaviour
 {
     [Space(15)]
     public float health;
+    protected float maxHealth;
     public HealthBar healthBar;
 
     protected Rigidbody2D rig;
 
+    public bool hasAI = true;
     public int phase; //Value determines how the boss behaves
     public List<string> actionList = new List<string>();
 
@@ -18,6 +20,7 @@ public abstract class _BossBase : MonoBehaviour
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
+        maxHealth = health;
         healthBar.initHealth(health);
         BossStart();
     }
@@ -49,9 +52,11 @@ public abstract class _BossBase : MonoBehaviour
     {
         health -= value;
         healthBar.addOrSubtractHealth(-1);
+        checkHealth();
         if (health <= 0)
-            Destroy(this.gameObject);
+            death();
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -59,5 +64,9 @@ public abstract class _BossBase : MonoBehaviour
             bossHurt();
     }
 
+
     abstract protected void bossHurt();
+    abstract protected void increasePhase();
+    abstract protected void checkHealth();
+    abstract protected void death();
 }

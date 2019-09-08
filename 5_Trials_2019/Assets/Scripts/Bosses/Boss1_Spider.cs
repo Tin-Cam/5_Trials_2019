@@ -35,6 +35,7 @@ public class Boss1_Spider : _BossBase
     [Space(15)]
     public float eyeTime;
     public float attackFrequency;
+    public float chargeTime;
     
 
     // Start is called before the first frame update
@@ -44,13 +45,14 @@ public class Boss1_Spider : _BossBase
         animator = GetComponent<Animator>();
         isMoving = true;
         isActing = false;
+        //openMiniEyes(false);
 
         //Set actions
         actionList.Add("exposeEye");
         actionList.Add("attackShort");
         actionList.Add("attackLong");
 
-        setMiniEyeTimer(500);
+        
     }
 
     // Update is called once per frame
@@ -92,13 +94,11 @@ public class Boss1_Spider : _BossBase
     //Action 2 - Long Attack
     private IEnumerator attackLong()
     {
-        for(int i = 0; i < 20; i++)
-        {
-            openEye();            
-
-            for (int j = 0; j < 10; j++)
-                yield return new WaitForEndOfFrame();
-        }
+        
+        openEye(true);
+        chargeEye(true);
+        yield return new WaitForSeconds(chargeTime);
+        
 
         openEye(true);
         for (int i = 0; i < 30; i++)
@@ -108,6 +108,8 @@ public class Boss1_Spider : _BossBase
                 yield return new WaitForEndOfFrame();
         }
         openEye(false);
+        //animator.ResetTrigger("Charging");
+        chargeEye(false);
         isActing = false;
     }
 
@@ -118,6 +120,9 @@ public class Boss1_Spider : _BossBase
 
     void ai()
     {
+        if (!hasAI)
+            return;
+
         if (isActing)
             return;
 
@@ -154,9 +159,19 @@ public class Boss1_Spider : _BossBase
         pickAction(rng);
     }
 
-    void increasePhase()
+    override protected void increasePhase()
     {
 
+    }
+
+    override protected void checkHealth()
+    {
+        if(health <= maxHealth * 0.5 & phase < 1)
+        {
+            speed *= 2;
+            setMiniEyeTimer(500);
+            phase++;
+        }
     }
 
     //Ensures no action is used 3 times in a row
@@ -226,8 +241,8 @@ public class Boss1_Spider : _BossBase
     }
 
     void chargeEye(bool isCharging)
-    {
-        openEye(isCharging);
+    {        
+        //openEye(isCharging);
         animator.SetBool("isCharging", isCharging);
     }
 
@@ -235,6 +250,13 @@ public class Boss1_Spider : _BossBase
     {
         if (isEyeOpen)
             takeDamage(1);
+    }
+
+    protected override void death()
+    {
+        Destroy(miniEyeL.gameObject);
+        Destroy(miniEyeR.gameObject);
+        Destroy(this.gameObject);
     }
 
     //Updates the values for movement

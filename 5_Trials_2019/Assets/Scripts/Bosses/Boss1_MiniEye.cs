@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss1_MiniEye : MonoBehaviour
 {
     public bool isEyeOpen;
+    public Animator animator;
 
     public GameObject projectile;
     public GameObject player;
@@ -15,7 +16,7 @@ public class Boss1_MiniEye : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -57,19 +58,19 @@ public class Boss1_MiniEye : MonoBehaviour
     public void openEye()
     {
         isEyeOpen = !isEyeOpen;
-        //animator.SetBool("isOpen", isEyeOpen);
+        animator.SetBool("isOpen", isEyeOpen);
     }
 
     //Sets the state of the eye
     public void openEye(bool isEyeOpen)
     {
         this.isEyeOpen = isEyeOpen;
-        //animator.SetBool("isOpen", isEyeOpen);
+        animator.SetBool("isOpen", isEyeOpen);
     }
 
     void chargeEye(bool isCharging)
     {
         openEye(isCharging);
-        //animator.SetBool("isCharging", isCharging);
+        animator.SetBool("isCharging", isCharging);
     }
 }
