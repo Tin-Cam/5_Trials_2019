@@ -46,6 +46,11 @@ public class GameManager : MonoBehaviour
         {
             testBossAction(2);
         }
+
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            testBossAction(3);
+        }
     }
 
     void testBossAction(int action)

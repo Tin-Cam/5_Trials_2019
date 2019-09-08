@@ -68,7 +68,7 @@ public class Boss1_MiniEye : MonoBehaviour
         animator.SetBool("isOpen", isEyeOpen);
     }
 
-    void chargeEye(bool isCharging)
+    public void chargeEye(bool isCharging)
     {
         openEye(isCharging);
         animator.SetBool("isCharging", isCharging);

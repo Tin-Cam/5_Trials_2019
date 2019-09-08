@@ -33,6 +33,7 @@ public class Boss1_Spider : _BossBase
 
     //Action Variables
     [Space(15)]
+    public int maxAction;
     public float eyeTime;
     public float attackFrequency;
     public float chargeTime;
@@ -48,11 +49,13 @@ public class Boss1_Spider : _BossBase
         //openMiniEyes(false);
 
         //Set actions
+        maxAction = 3;
         actionList.Add("exposeEye");
         actionList.Add("attackShort");
         actionList.Add("attackLong");
+        actionList.Add("attackDesperation");
 
-        
+
     }
 
     // Update is called once per frame
@@ -113,6 +116,35 @@ public class Boss1_Spider : _BossBase
         isActing = false;
     }
 
+    //Action 3
+    private IEnumerator attackDesperation()
+    {
+        isMoving = false;
+        openEye(false);
+        chargeEye(true);
+        chargeMiniEyes(true);
+        
+        
+        yield return new WaitForSeconds(chargeTime);
+
+        openEye(true);
+
+        for (int i = 0; i < 30; i++)
+        {
+            shoot();
+            shootMiniEyes();
+            for (int j = 0; j < 10; j++)
+                yield return new WaitForEndOfFrame();
+        }
+
+
+        openEye(false);
+        chargeEye(false);
+        chargeMiniEyes(false);
+        isMoving = true;
+        isActing = false;
+    }
+
     //AI------------------------------------
 
     private int aiTimer;
@@ -140,7 +172,7 @@ public class Boss1_Spider : _BossBase
 
     void phase1()
     {
-        int rng = Random.Range(0, 3);
+        int rng = Random.Range(0, maxAction);
 
         while(checkLastAction(rng))
             rng = Random.Range(0, 3);
@@ -166,11 +198,19 @@ public class Boss1_Spider : _BossBase
 
     override protected void checkHealth()
     {
-        if(health <= maxHealth * 0.5 & phase < 1)
+        if(health <= maxHealth * 0.6 & phase < 1)
+        {
+            speed *= 2;
+            setMiniEyeTimer(1000);
+            phase++;
+        }
+        if (health <= maxHealth * 0.25 & phase < 2)
         {
             speed *= 2;
             setMiniEyeTimer(500);
+            maxAction = 4;
             phase++;
+            //StartCoroutine(attackDesperation());
         }
     }
 
@@ -223,6 +263,12 @@ public class Boss1_Spider : _BossBase
     {
         miniEyeL.openEye(isOpen);
         miniEyeR.openEye(isOpen);
+    }
+
+    void chargeMiniEyes(bool isCharging)
+    {
+        miniEyeL.chargeEye(isCharging);
+        miniEyeR.chargeEye(isCharging);
     }
 
 

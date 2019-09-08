@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 317104743}
   - component: {fileID: 317104742}
   - component: {fileID: 317104744}
+  - component: {fileID: 317104745}
   m_Layer: 0
   m_Name: Mini Eye R
   m_TagString: Untagged
@@ -214,10 +215,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEyeOpen: 0
+  animator: {fileID: 0}
   projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
     type: 3}
   player: {fileID: 1476381286}
   shootTimer: 0
+--- !u!95 &317104745
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317104741}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 13c046cb73cc9934182f30cbbcf5b331, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &493442935
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,6 +909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   healthBar: {fileID: 1246777513}
+  hasAI: 1
   phase: 0
   actionList: []
   speed: 5
@@ -901,8 +923,10 @@ MonoBehaviour:
   projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
     type: 3}
   player: {fileID: 1476381286}
+  maxAction: 0
   eyeTime: 3
   attackFrequency: 100
+  chargeTime: 2
 --- !u!212 &1503304938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1288,6 +1312,7 @@ GameObject:
   - component: {fileID: 1854363853}
   - component: {fileID: 1854363852}
   - component: {fileID: 1854363854}
+  - component: {fileID: 1854363855}
   m_Layer: 0
   m_Name: Mini Eye L
   m_TagString: Untagged
@@ -1371,10 +1396,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEyeOpen: 0
+  animator: {fileID: 0}
   projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
     type: 3}
   player: {fileID: 1476381286}
   shootTimer: 0
+--- !u!95 &1854363855
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854363851}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 13c046cb73cc9934182f30cbbcf5b331, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &9182096198330803295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1450,7 +1495,7 @@ PrefabInstance:
     - target: {fileID: 9182096197023116854, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
       propertyPath: godMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9182096197023116854, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
