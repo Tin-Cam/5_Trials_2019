@@ -116,7 +116,7 @@ public class Boss1_Spider : _BossBase
         isActing = false;
     }
 
-    //Action 3
+    //Action 3 - Desperation Attack
     private IEnumerator attackDesperation()
     {
         isMoving = false;
