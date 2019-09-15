@@ -9,7 +9,7 @@ public class HealthBar : MonoBehaviour {
     private float maxLength;
     private float maxHealth;
 
-	void Start () {
+	void Awake () {
         maxLength = transform.localScale.x;
     }
 
@@ -24,7 +24,7 @@ public class HealthBar : MonoBehaviour {
         maxHealth = value;
         length = maxLength;
         unit = maxLength / maxHealth;
-        updateBar(); 
+        updateBar();
     }
 
     private void updateBar()

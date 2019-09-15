@@ -29,8 +29,8 @@ public abstract class _BossBase : MonoBehaviour
 
         maxHealth = health;
 
-        healthBar.initHealth(health); 
-        Init();
+        healthBar.initHealth(health);
+        Init();       
     }
 
     abstract protected void Init();
@@ -56,6 +56,11 @@ public abstract class _BossBase : MonoBehaviour
     {
         if (other.tag == "Sword")
             bossHurt();
+    }
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(2);
     }
 
 
