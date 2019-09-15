@@ -4,9 +4,6 @@ using UnityEngine;
 
 public abstract class _BossBase : MonoBehaviour
 {
-    protected _ActionBase actionBase;
-    protected _MoveBase moveBase;
-
     [Space(15)]
     public GameObject player;
     public float health;
@@ -15,6 +12,7 @@ public abstract class _BossBase : MonoBehaviour
 
     protected Rigidbody2D rig;
     protected Animator animator;
+
 
     public bool hasAI = true;
     public int phase; //Value determines how the boss behaves
@@ -28,19 +26,27 @@ public abstract class _BossBase : MonoBehaviour
         animator = GetComponent<Animator>();
 
         maxHealth = health;
-
-        healthBar.initHealth(health); 
-        Init();
+        healthBar.initHealth(health);
+        BossStart();
     }
 
-    abstract protected void Init();
+    abstract protected void BossStart();
 
-
-    public void pickAction(int value)
+    // Update is called once per frame
+    void Update()
     {
-        actionBase.StartAction(value);
+
     }
- 
+
+    public void pickAction(int action)
+    { 
+        if (action > actionList.Count)
+            return;
+
+        StartCoroutine(actionList[action]);
+    }
+
+    
 
     protected void takeDamage(float value)
     {

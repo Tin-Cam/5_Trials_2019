@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour {
 
-    public float unit; //Determines the scale of a single unit of health on the game screen
+    private float unit; //Determines the scale of a single unit of health on the game screen
     private float length;
     private float maxLength;
     private float maxHealth;

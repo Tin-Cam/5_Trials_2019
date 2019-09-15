@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6311106722660651430}
   - component: {fileID: 101106125}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Projectile_Simple
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,5 +132,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   moveSpeed: 6
-  lifeTime: 10
+  lifeTime: 5
   direction: {x: 0, y: 0, z: 0}

@@ -38,7 +38,7 @@ public class Boss1_Spider : _BossBase
     
 
     // Start is called before the first frame update
-    override protected void Init()
+    override protected void BossStart()
     {
         movement = new Vector2(rig.position.x, rig.position.y);
         
