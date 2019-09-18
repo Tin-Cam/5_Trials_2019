@@ -16,7 +16,9 @@ public abstract class _BossBase : MonoBehaviour
     protected Rigidbody2D rig;
     protected Animator animator;
 
+    protected int aiTimer;
     public bool hasAI = true;
+
     public int phase; //Value determines how the boss behaves
     public List<string> actionList = new List<string>();
 
@@ -35,9 +37,16 @@ public abstract class _BossBase : MonoBehaviour
 
     abstract protected void Init();
 
-
-    public void pickAction(int value)
+    public void StopAction()
     {
+        aiTimer = 0;
+        actionBase.StopActing();
+    }
+
+    public void PickAction(int value)
+    {
+        aiTimer = 0;
+        actionBase.isActing = true;
         actionBase.StartAction(value);
     }
  
@@ -68,4 +77,5 @@ public abstract class _BossBase : MonoBehaviour
     abstract protected void increasePhase();
     abstract protected void checkHealth();
     abstract protected void death();
+    abstract public void DefaultState();
 }

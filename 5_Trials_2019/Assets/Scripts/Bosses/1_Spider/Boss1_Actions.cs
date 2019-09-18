@@ -13,15 +13,13 @@ public class Boss1_Actions : _ActionBase
     //Attack Variables
     [Space(15)]
     public GameObject projectile;
-    public bool isActing;
+    
 
     //Action Variables
     [Space(15)]
     public float eyeTime;
     public float attackFrequency;
     public float chargeTime;
-
-    private int maxAction;
 
 
     public void Init()
@@ -34,7 +32,6 @@ public class Boss1_Actions : _ActionBase
         isActing = false;
 
         //Set actions
-        maxAction = 3;
         actionList.Add("exposeEye");
         actionList.Add("attackShort");
         actionList.Add("attackLong");
@@ -63,9 +60,7 @@ public class Boss1_Actions : _ActionBase
         eyes.openEye(true);
         move.isMoving = false;
         yield return new WaitForSeconds(eyeTime);
-        eyes.openEye(false);
-        move.isMoving = true;
-        isActing = false;
+        controller.DefaultState();
     }
 
     //Action 1 - Short Attack
@@ -78,8 +73,7 @@ public class Boss1_Actions : _ActionBase
                 yield return new WaitForEndOfFrame();
             Shoot();
         }
-        eyes.openEye(false);
-        isActing = false;
+        controller.DefaultState();
     }
 
     //Action 2 - Long Attack
@@ -98,10 +92,7 @@ public class Boss1_Actions : _ActionBase
             for (int j = 0; j < 10; j++)
                 yield return new WaitForEndOfFrame();
         }
-        eyes.openEye(false);
-        //animator.ResetTrigger("Charging");
-        eyes.chargeEye(false);
-        isActing = false;
+        controller.DefaultState();
     }
 
     //Action 3 - Desperation Attack
@@ -125,11 +116,11 @@ public class Boss1_Actions : _ActionBase
                 yield return new WaitForEndOfFrame();
         }
 
+        controller.DefaultState();
+    }
 
-        eyes.openEye(false);
-        eyes.chargeEye(false);
-        eyes.chargeMiniEyes(false);
-        move.isMoving = true;
-        isActing = false;
+    public override void DefaultState()
+    {
+        StopActing();
     }
 }

@@ -44,4 +44,9 @@ public class Boss1_Move : _MoveBase
     {
         isMoving = value;
     }
+
+    public override void DefaultState()
+    {
+        isMoving = true;
+    }
 }

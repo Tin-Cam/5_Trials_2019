@@ -51,11 +51,17 @@ public class GameManager : MonoBehaviour
         {
             testBossAction(3);
         }
+
+        //Stops the boss from acting
+        if (Input.GetKeyDown(KeyCode.KeypadPeriod))
+        {
+            boss.StopAction();
+        }
     }
 
     void testBossAction(int action)
     {
-        boss.pickAction(action);
+        boss.PickAction(action);
     }
 
     void updateBoss()

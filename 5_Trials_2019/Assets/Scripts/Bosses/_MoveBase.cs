@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class _MoveBase : MonoBehaviour
 {
-
+    abstract public void DefaultState();
 }

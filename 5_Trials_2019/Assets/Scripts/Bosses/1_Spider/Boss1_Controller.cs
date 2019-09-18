@@ -16,7 +16,7 @@ public class Boss1_Controller : _BossBase
     //AI Variables
     public int maxAction;
 
-    private int aiTimer;
+    
     private int vulCounter;
     private Vector2Int last2Actions;
 
@@ -58,7 +58,6 @@ public class Boss1_Controller : _BossBase
         if (aiTimer >= 1000)
         {
             phase1();
-            aiTimer = 0;
         }
     }
 
@@ -71,18 +70,16 @@ public class Boss1_Controller : _BossBase
         while (checkLastAction(rng))
             rng = Random.Range(0, 3);
 
-        action.isActing = true;
-
         //Forces the boss to become vulnerable if it hasn't been so after a few cycles
         if (rng == 0 | vulCounter >= 4)
         {
             vulCounter = 0;
-            pickAction(0);
+            PickAction(0);
             return;
         }
 
         vulCounter++;
-        pickAction(rng);
+        PickAction(rng);
     }
 
     override protected void increasePhase()
@@ -104,7 +101,8 @@ public class Boss1_Controller : _BossBase
             eyes.setMiniEyeTimer(500);
             maxAction = 4;
             phase++;
-            //StartCoroutine(attackDesperation());
+            StopAction();
+            PickAction(3);
         }
     }
 
@@ -138,4 +136,12 @@ public class Boss1_Controller : _BossBase
             takeDamage(1);
     }
 
+    public override void DefaultState()
+    {
+        aiTimer = 0;
+
+        action.DefaultState();
+        move.DefaultState();
+        eyes.DefaultState();
+    }
 }

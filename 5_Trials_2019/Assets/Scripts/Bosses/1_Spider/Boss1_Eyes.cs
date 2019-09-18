@@ -23,7 +23,8 @@ public class Boss1_Eyes : MonoBehaviour
         action = GetComponent<Boss1_Actions>();
         animator = GetComponent<Animator>();
 
-        isEyeOpen = false;
+        openEye(false);
+        openMiniEyes(false);
     }
 
     //MAIN EYE -----------------------------------
@@ -38,14 +39,17 @@ public class Boss1_Eyes : MonoBehaviour
     //Sets the state of the eye
     public void openEye(bool isEyeOpen)
     {
-        this.isEyeOpen = isEyeOpen;
-        animator.SetBool("isOpen", isEyeOpen);
+        this.isEyeOpen = isEyeOpen;      
+        if (isEyeOpen)
+            animator.SetTrigger("Open");
+        else if (!isEyeOpen)
+            animator.SetTrigger("Closed");
     }
 
     public void chargeEye(bool isCharging)
     {
         //openEye(isCharging);
-        animator.SetBool("isCharging", isCharging);
+        animator.SetTrigger("Charging_Open");
     }
 
     //MINI EYES ----------------------------------
@@ -74,5 +78,17 @@ public class Boss1_Eyes : MonoBehaviour
     {
         miniEyeL.chargeEye(isCharging);
         miniEyeR.chargeEye(isCharging);
+    }
+
+    public void DefaultState()
+    {
+        openEye(false);
+
+        if (miniEyeL.isEyeOpen & miniEyeL.isActing)
+        {
+            miniEyeL.isActing = false;
+            miniEyeR.isActing = false;
+            openMiniEyes(true);
+        }
     }
 }
