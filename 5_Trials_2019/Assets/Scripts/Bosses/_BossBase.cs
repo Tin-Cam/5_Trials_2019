@@ -39,8 +39,7 @@ public abstract class _BossBase : MonoBehaviour
 
     public void StopAction()
     {
-        aiTimer = 0;
-        actionBase.StopActing();
+        DefaultState();
     }
 
     public void PickAction(int value)
