@@ -41,6 +41,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Floor
+    uniqueID: 3625115907
+    locked: 0
+  - name: Boss
+    uniqueID: 2133515337
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1643342539
+    locked: 0
+  - name: Wall
+    uniqueID: 1804716071
+    locked: 0
+  - name: Projectile
+    uniqueID: 2243019537
+    locked: 0
+  - name: UI
+    uniqueID: 3069043805
     locked: 0
