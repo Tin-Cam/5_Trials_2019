@@ -332,6 +332,8 @@ MonoBehaviour:
   player: {fileID: 1476381286}
   health: 10
   healthBar: {fileID: 1246777513}
+  aiTimer: 1000
+  maxAiTimerRngValue: 500
   hasAI: 1
   phase: 0
   actionList: []
@@ -458,9 +460,14 @@ MonoBehaviour:
   isActing: 0
   projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
     type: 3}
-  eyeTime: 3
-  attackFrequency: 100
+  exposeEyeTime: 3
+  shortAttackAmount: 3
+  shortAttackFrequency: 0.5
+  longAttackAmount: 30
+  longAttackFrequency: 0.16
   chargeTime: 2
+  desperationAmount: 60
+  desperationFrequency: 0.05
 --- !u!1 &243845586
 GameObject:
   m_ObjectHideFlags: 0

@@ -133,4 +133,5 @@ MonoBehaviour:
   damage: 0
   moveSpeed: 8
   lifeTime: 5
+  killDistance: {x: 10, y: 8}
   direction: {x: 0, y: 0, z: 0}

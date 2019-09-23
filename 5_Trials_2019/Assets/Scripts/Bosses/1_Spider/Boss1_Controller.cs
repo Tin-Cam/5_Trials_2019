@@ -18,7 +18,7 @@ public class Boss1_Controller : _BossBase
 
     
     private int vulCounter;
-    private Vector2Int last2Actions;
+    
 
     // Start is called before the first frame update
     protected override void Init()
@@ -53,21 +53,21 @@ public class Boss1_Controller : _BossBase
         if (action.isActing)
             return;
 
-        aiTimer++;
+        aiTimerCount++;
 
-        if (aiTimer >= 1000)
+        if (aiTimerCount >= aiTimer)
         {
-            phase1();
+            Act();
         }
     }
 
     
 
-    void phase1()
+    void Act()
     {
         int rng = Random.Range(0, maxAction);
 
-        while (checkLastAction(rng))
+        while (action.CheckLastAction(rng))
             rng = Random.Range(0, 3);
 
         //Forces the boss to become vulnerable if it hasn't been so after a few cycles
@@ -82,43 +82,47 @@ public class Boss1_Controller : _BossBase
         PickAction(rng);
     }
 
-    override protected void increasePhase()
-    {
-
-    }
-
     override protected void checkHealth()
     {
         if (health <= maxHealth * 0.6 & phase < 1)
         {
-            move.speed *= 2;
-            eyes.setMiniEyeTimer(1000);
-            phase++;
+            IncreasePhase();
         }
         if (health <= maxHealth * 0.25 & phase < 2)
         {
-            move.speed *= 2;
-            eyes.setMiniEyeTimer(500);
-            maxAction = 4;
-            phase++;
-            StopAction();
-            PickAction(3);
+            IncreasePhase();
         }
     }
 
-    //Ensures no action is used 3 times in a row
-    bool checkLastAction(int action)
+    override protected void IncreasePhase()
     {
-        int actionSum = action * 2;
-        int vecSum = last2Actions.x + last2Actions.y;
+        phase++;
+        if (phase == 1)
+            SetPhase_1();
+        if (phase >= 2)
+            SetPhase_2();
+    }
 
-        if (actionSum == vecSum)
-            return true;
+    private void SetPhase_1()
+    {
+        move.speed *= 2;
+        eyes.setMiniEyeTimer(1000);
 
-        last2Actions.y = last2Actions.x;
-        last2Actions.x = action;
+        action.shortAttackAmount += 2;
+        action.longAttackAmount += 5;
+    }
 
-        return false;
+    private void SetPhase_2()
+    {
+        move.speed *= 2;
+        eyes.setMiniEyeTimer(500);
+        maxAction = 4;
+
+        action.shortAttackFrequency *= (float) 0.5;
+        action.exposeEyeTime -= 1;
+
+        StopAction();
+        PickAction(3);
     }
 
 
@@ -138,7 +142,7 @@ public class Boss1_Controller : _BossBase
 
     public override void DefaultState()
     {
-        aiTimer = 0;
+        SetAITimer();
 
         action.DefaultState();
         move.DefaultState();

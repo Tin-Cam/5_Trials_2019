@@ -16,7 +16,9 @@ public abstract class _BossBase : MonoBehaviour
     protected Rigidbody2D rig;
     protected Animator animator;
 
-    protected int aiTimer;
+    public int aiTimer;
+    protected int aiTimerCount;
+    public int maxAiTimerRngValue;
     public bool hasAI = true;
 
     public int phase; //Value determines how the boss behaves
@@ -44,7 +46,7 @@ public abstract class _BossBase : MonoBehaviour
 
     public void PickAction(int value)
     {
-        aiTimer = 0;
+        SetAITimer();
         actionBase.isActing = true;
         actionBase.StartAction(value);
     }
@@ -66,14 +68,14 @@ public abstract class _BossBase : MonoBehaviour
             bossHurt();
     }
 
-    private IEnumerator Wait()
+    protected void SetAITimer()
     {
-        yield return new WaitForSeconds(2);
+        aiTimerCount = Random.Range(0, maxAiTimerRngValue);
     }
 
 
     abstract protected void bossHurt();
-    abstract protected void increasePhase();
+    abstract protected void IncreasePhase();
     abstract protected void checkHealth();
     abstract protected void death();
     abstract public void DefaultState();

@@ -17,9 +17,20 @@ public class Boss1_Actions : _ActionBase
 
     //Action Variables
     [Space(15)]
-    public float eyeTime;
-    public float attackFrequency;
+    public float exposeEyeTime;
+
+    public float shortAttackAmount;
+    public float shortAttackFrequency;
+
+    public float longAttackAmount;
+    public float longAttackFrequency;
+
     public float chargeTime;
+
+    public float desperationAmount;
+    public float desperationFrequency;
+
+    
 
 
     public void Init()
@@ -59,7 +70,7 @@ public class Boss1_Actions : _ActionBase
     {
         eyes.openEye(true);
         move.isMoving = false;
-        yield return new WaitForSeconds(eyeTime);
+        yield return new WaitForSeconds(exposeEyeTime);
         controller.DefaultState();
     }
 
@@ -67,10 +78,9 @@ public class Boss1_Actions : _ActionBase
     private IEnumerator attackShort()
     {
         eyes.openEye(true);
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < shortAttackAmount; i++)
         {
-            for (int j = 0; j < attackFrequency; j++)
-                yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(shortAttackFrequency);
             Shoot();
         }
         controller.DefaultState();
@@ -86,11 +96,10 @@ public class Boss1_Actions : _ActionBase
 
 
         eyes.openEye(true);
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < longAttackAmount; i++)
         {
             Shoot();
-            for (int j = 0; j < 10; j++)
-                yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(longAttackFrequency);
         }
         controller.DefaultState();
     }
@@ -108,12 +117,11 @@ public class Boss1_Actions : _ActionBase
 
         eyes.openEye(true);
 
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < desperationAmount; i++)
         {
             Shoot();
             eyes.shootMiniEyes();
-            for (int j = 0; j < 10; j++)
-                yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(desperationFrequency);
         }
 
         controller.DefaultState();
