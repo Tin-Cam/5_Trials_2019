@@ -110,12 +110,13 @@ public class Boss1_Actions : _ActionBase
         move.isMoving = false;
         eyes.openEye(false);
         eyes.chargeEye(true);
-        eyes.chargeMiniEyes(true);
+        eyes.chargeMiniEyes();
 
 
         yield return new WaitForSeconds(chargeTime);
 
         eyes.openEye(true);
+        eyes.openMiniEyes(true);
 
         for (int i = 0; i < desperationAmount; i++)
         {

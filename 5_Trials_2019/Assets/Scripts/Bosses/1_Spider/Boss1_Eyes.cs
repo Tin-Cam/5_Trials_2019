@@ -14,8 +14,14 @@ public class Boss1_Eyes : MonoBehaviour
 
     [Space(15)]
     public bool miniEyesOpen;
+    public int miniTimer;
+    private int miniTimercount;
+
+    public int miniEyeStunTime;
     public Boss1_MiniEye miniEyeR;
     public Boss1_MiniEye miniEyeL;
+
+    private bool nextMiniEye; //Dertermines which mini eye to shoot next (false = left, true = right)
 
     public void Init()
     {
@@ -25,6 +31,29 @@ public class Boss1_Eyes : MonoBehaviour
 
         openEye(false);
         openMiniEyes(false);
+
+        miniEyeL.stunTime = miniEyeStunTime;
+        miniEyeR.stunTime = miniEyeStunTime;
+    }
+
+    void Update()
+    {
+        miniTimercount++;
+
+        if (miniTimercount < miniTimer)
+            return;
+
+        Boss1_MiniEye miniEye;
+
+        if (!nextMiniEye)
+            miniEye = miniEyeL;
+        else
+            miniEye = miniEyeR;
+
+        nextMiniEye = !nextMiniEye;
+
+        miniEye.shoot();
+        miniTimercount = 0;
     }
 
     //MAIN EYE -----------------------------------
@@ -56,15 +85,14 @@ public class Boss1_Eyes : MonoBehaviour
 
     public void shootMiniEyes()
     {
-        miniEyeL.shoot();
-        miniEyeR.shoot();
+        miniEyeL.ForceShoot();
+        miniEyeR.ForceShoot();
     }
 
     //Starts the timers for the mini eyes. Eyes will alternate shots
     public void setMiniEyeTimer(int timer)
     {
-        miniEyeL.setShootTimer(0, timer);
-        miniEyeR.setShootTimer(timer / 2, timer);
+        miniTimer = timer;
         openMiniEyes(true);
     }
 
@@ -74,10 +102,10 @@ public class Boss1_Eyes : MonoBehaviour
         miniEyeR.openEye(isOpen);
     }
 
-    public void chargeMiniEyes(bool isCharging)
+    public void chargeMiniEyes()
     {
-        miniEyeL.chargeEye(isCharging);
-        miniEyeR.chargeEye(isCharging);
+        miniEyeL.chargeEye();
+        miniEyeR.chargeEye();
     }
 
     public void DefaultState()

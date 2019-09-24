@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 59510064}
   - component: {fileID: 59510063}
   - component: {fileID: 59510062}
+  - component: {fileID: 59510065}
   m_Layer: 0
   m_Name: Mini Eye R
   m_TagString: Untagged
@@ -186,10 +187,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEyeOpen: 0
   isActing: 0
+  stunTime: 0
   projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
     type: 3}
   player: {fileID: 1476381286}
-  shootTimer: 0
 --- !u!212 &59510064
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -239,6 +240,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &59510065
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59510060}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &128572512
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,6 +469,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEyeOpen: 0
   miniEyesOpen: 0
+  miniTimer: 500
+  miniEyeStunTime: 5
   miniEyeR: {fileID: 243845589}
   miniEyeL: {fileID: 59510063}
 --- !u!114 &128572521
@@ -480,6 +509,7 @@ GameObject:
   - component: {fileID: 243845590}
   - component: {fileID: 243845589}
   - component: {fileID: 243845588}
+  - component: {fileID: 243845591}
   m_Layer: 0
   m_Name: Mini Eye L
   m_TagString: Untagged
@@ -534,10 +564,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEyeOpen: 0
   isActing: 0
+  stunTime: 0
   projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
     type: 3}
   player: {fileID: 1476381286}
-  shootTimer: 0
 --- !u!212 &243845590
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -587,6 +617,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &243845591
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243845586}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &493442935
 GameObject:
   m_ObjectHideFlags: 0

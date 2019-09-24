@@ -6,42 +6,26 @@ public class Boss1_MiniEye : MonoBehaviour
 {
     public bool isEyeOpen;
     public bool isActing;
+    public float stunTime;
     private Animator animator;
 
     public GameObject projectile;
     public GameObject player;
 
-    public int shootTimer;
-    private int shootTimerCount;
-
-    // Start is called before the first frame update
     void Awake()
     {
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void shoot()
     {
         if (!isEyeOpen | isActing)
             return;
 
-        shootTimerCount++;
-
-        if(shootTimerCount >= shootTimer)
-        {
-            shoot();
-            shootTimerCount = 0;
-        }
+        ForceShoot();
     }
 
-    public void setShootTimer(int startTime, int timer)
-    {
-        shootTimerCount = startTime;
-        shootTimer = timer;
-    }
-
-    public void shoot()
+    public void ForceShoot()
     {
         //Creates the projectile
         GameObject tempProjectile;
@@ -72,9 +56,34 @@ public class Boss1_MiniEye : MonoBehaviour
             animator.SetTrigger("Closed");
     }
 
-    public void chargeEye(bool isCharging)
+    public void chargeEye()
     {
+        StopCoroutine(Stun());
+        openEye(false);
         isActing = true;
         animator.SetTrigger("Charging_Open");
+    }
+
+    //Eye will deactivate for a few second after being hit
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Sword")
+            Hit();
+    }
+
+    private void Hit()
+    {
+        if (!isEyeOpen | isActing)
+            return;
+        StartCoroutine(Stun());
+    }
+
+    private IEnumerator Stun()
+    {
+        openEye(false);
+        isActing = true;
+        yield return new WaitForSeconds(stunTime);
+        openEye(true);
+        isActing = false;
     }
 }

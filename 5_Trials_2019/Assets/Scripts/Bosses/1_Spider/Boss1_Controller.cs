@@ -106,7 +106,7 @@ public class Boss1_Controller : _BossBase
     private void SetPhase_1()
     {
         move.speed *= 2;
-        eyes.setMiniEyeTimer(1000);
+        eyes.setMiniEyeTimer(500);
 
         action.shortAttackAmount += 2;
         action.longAttackAmount += 5;
@@ -115,7 +115,7 @@ public class Boss1_Controller : _BossBase
     private void SetPhase_2()
     {
         move.speed *= 2;
-        eyes.setMiniEyeTimer(500);
+        eyes.setMiniEyeTimer(250);
         maxAction = 4;
 
         action.shortAttackFrequency *= (float) 0.5;
