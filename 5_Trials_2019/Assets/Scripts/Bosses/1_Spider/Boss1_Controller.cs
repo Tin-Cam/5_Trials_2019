@@ -140,6 +140,7 @@ public class Boss1_Controller : _BossBase
             takeDamage(1);
     }
 
+
     public override void DefaultState()
     {
         SetAITimer();

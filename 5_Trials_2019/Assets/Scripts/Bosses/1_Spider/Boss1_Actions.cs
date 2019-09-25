@@ -90,7 +90,6 @@ public class Boss1_Actions : _ActionBase
     private IEnumerator attackLong()
     {
 
-        eyes.openEye(true);
         eyes.chargeEye(true);
         yield return new WaitForSeconds(chargeTime);
 
@@ -108,8 +107,7 @@ public class Boss1_Actions : _ActionBase
     private IEnumerator attackDesperation()
     {
         move.isMoving = false;
-        eyes.openEye(false);
-        eyes.chargeEye(true);
+        eyes.chargeEye(false);
         eyes.chargeMiniEyes();
 
 

@@ -75,10 +75,16 @@ public class Boss1_Eyes : MonoBehaviour
             animator.SetTrigger("Closed");
     }
 
-    public void chargeEye(bool isCharging)
+    public void chargeEye(bool isEyeOpen)
     {
-        //openEye(isCharging);
-        animator.SetTrigger("Charging_Open");
+        animator.ResetTrigger("Open");
+        animator.ResetTrigger("Closed");
+
+        this.isEyeOpen = isEyeOpen;
+        if (isEyeOpen)
+            animator.SetTrigger("Charging_Open");
+        else if (!isEyeOpen)
+            animator.SetTrigger("Charging_Closed");
     }
 
     //MINI EYES ----------------------------------

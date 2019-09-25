@@ -59,9 +59,11 @@ public class Boss1_MiniEye : MonoBehaviour
     public void chargeEye()
     {
         StopCoroutine(Stun());
-        openEye(false);
+        isEyeOpen = false;
         isActing = true;
-        animator.SetTrigger("Charging_Open");
+        animator.ResetTrigger("Open");
+        animator.ResetTrigger("Closed");
+        animator.SetTrigger("Charging_Closed");
     }
 
     //Eye will deactivate for a few second after being hit
@@ -80,6 +82,9 @@ public class Boss1_MiniEye : MonoBehaviour
 
     private IEnumerator Stun()
     {
+        animator.ResetTrigger("Open");
+        animator.ResetTrigger("Closed");
+
         openEye(false);
         isActing = true;
         yield return new WaitForSeconds(stunTime);
