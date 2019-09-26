@@ -69,7 +69,7 @@ public class Boss1_Actions : _ActionBase
     private IEnumerator exposeEye()
     {
         eyes.openEye(true);
-        move.isMoving = false;
+        move.SetIsMoving(false);
         yield return new WaitForSeconds(exposeEyeTime);
         controller.DefaultState();
     }
@@ -106,7 +106,7 @@ public class Boss1_Actions : _ActionBase
     //Action 3 - Desperation Attack
     private IEnumerator attackDesperation()
     {
-        move.isMoving = false;
+        move.SetIsMoving(false);
         eyes.chargeEye(false);
         eyes.chargeMiniEyes();
 

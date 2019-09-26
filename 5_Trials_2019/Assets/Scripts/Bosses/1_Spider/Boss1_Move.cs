@@ -13,6 +13,7 @@ public class Boss1_Move : _MoveBase
     public bool isMoving;
     public float moveRange;
     private float moveTime = 0;
+    public Animator legs;
 
     public void Init()
     {
@@ -20,7 +21,7 @@ public class Boss1_Move : _MoveBase
         controller = GetComponent<Boss1_Controller>();   
 
         movement = new Vector2(rig.position.x, rig.position.y);
-        isMoving = true;
+        SetIsMoving(true);
     }
 
     // Update is called once per frame
@@ -43,10 +44,12 @@ public class Boss1_Move : _MoveBase
     public void SetIsMoving(bool value)
     {
         isMoving = value;
+        legs.SetBool("isMoving", value);
     }
 
     public override void DefaultState()
     {
-        isMoving = true;
+        SetIsMoving(true);
+
     }
 }
