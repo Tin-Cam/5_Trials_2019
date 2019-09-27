@@ -130,9 +130,13 @@ public class Boss1_Controller : _BossBase
     {
         Destroy(eyes.miniEyeL.gameObject);
         Destroy(eyes.miniEyeR.gameObject);
-        Destroy(this.gameObject);
+        animator.Play("Death");       
     }
 
+    public void die()
+    {       
+        Destroy(this.gameObject);
+    }
 
     protected override void bossHurt()
     {

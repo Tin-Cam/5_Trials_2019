@@ -7,7 +7,6 @@ public class Boss1_Eyes : MonoBehaviour
     private Boss1_Actions action;
     private Boss1_Controller controller;
     private Animator animator;
-    public Animator legs;
 
     //Eye Variables
     [Space(15)]
@@ -118,6 +117,7 @@ public class Boss1_Eyes : MonoBehaviour
     public void DefaultState()
     {
         openEye(false);
+        
 
         if (miniEyeL.isEyeOpen & miniEyeL.isActing)
         {
