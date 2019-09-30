@@ -37,8 +37,7 @@ public abstract class _BossBase : MonoBehaviour
         Init();       
     }
 
-    abstract protected void Init();
-
+    
     public void StopAction()
     {
         DefaultState();
@@ -52,20 +51,20 @@ public abstract class _BossBase : MonoBehaviour
     }
  
 
-    protected void takeDamage(float value)
+    protected void TakeDamage(float value)
     {
         health -= value;
         healthBar.addOrSubtractHealth(-1);
-        checkHealth();
+        CheckHealth();
         if (health <= 0)
-            death();
+            StartDeath();
     }
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Sword")
-            bossHurt();
+            BossHurt();
     }
 
     protected void SetAITimer()
@@ -73,10 +72,10 @@ public abstract class _BossBase : MonoBehaviour
         aiTimerCount = Random.Range(0, maxAiTimerRngValue);
     }
 
-
-    abstract protected void bossHurt();
+    abstract protected void Init();
+    abstract protected void BossHurt();
     abstract protected void IncreasePhase();
-    abstract protected void checkHealth();
-    abstract protected void death();
+    abstract protected void CheckHealth();
+    abstract protected void StartDeath();
     abstract public void DefaultState();
 }

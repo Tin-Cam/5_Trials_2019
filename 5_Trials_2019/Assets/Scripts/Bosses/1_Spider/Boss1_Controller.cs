@@ -82,7 +82,7 @@ public class Boss1_Controller : _BossBase
         PickAction(rng);
     }
 
-    override protected void checkHealth()
+    override protected void CheckHealth()
     {
         if (health <= maxHealth * 0.6 & phase < 1)
         {
@@ -126,7 +126,7 @@ public class Boss1_Controller : _BossBase
     }
 
 
-    protected override void death()
+    protected override void StartDeath()
     {
         Destroy(eyes.miniEyeL.gameObject);
         Destroy(eyes.miniEyeR.gameObject);
@@ -138,10 +138,10 @@ public class Boss1_Controller : _BossBase
         Destroy(this.gameObject);
     }
 
-    protected override void bossHurt()
+    protected override void BossHurt()
     {
         if (eyes.isEyeOpen)
-            takeDamage(1);
+            TakeDamage(1);
     }
 
 

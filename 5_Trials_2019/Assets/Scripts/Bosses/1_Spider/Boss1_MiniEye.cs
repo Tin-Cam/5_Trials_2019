@@ -17,6 +17,7 @@ public class Boss1_MiniEye : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    //Shoots the eye if it can
     public void shoot()
     {
         if (!isEyeOpen | isActing)
@@ -25,6 +26,7 @@ public class Boss1_MiniEye : MonoBehaviour
         ForceShoot();
     }
 
+    //Shoots eye regardless of its state
     public void ForceShoot()
     {
         //Creates the projectile

@@ -36,6 +36,7 @@ public class Boss1_Eyes : MonoBehaviour
         miniEyeR.stunTime = miniEyeStunTime;
     }
 
+    //Periodically makes a mini eye shoot. (Mini eye won't shoot if it's closed)
     void Update()
     {
         miniTimercount++;
@@ -58,13 +59,6 @@ public class Boss1_Eyes : MonoBehaviour
 
     //MAIN EYE -----------------------------------
 
-    //Toggle the eye
-    public void openEye()
-    {
-        isEyeOpen = !isEyeOpen;
-        animator.SetBool("isOpen", isEyeOpen);
-    }
-
     //Sets the state of the eye
     public void openEye(bool isEyeOpen)
     {
@@ -75,6 +69,7 @@ public class Boss1_Eyes : MonoBehaviour
             animator.SetTrigger("Closed");
     }
 
+    //Sets the eye to the charging animation
     public void chargeEye(bool isEyeOpen)
     {
         animator.ResetTrigger("Open");
@@ -89,6 +84,7 @@ public class Boss1_Eyes : MonoBehaviour
 
     //MINI EYES ----------------------------------
 
+    //Shoots both mini eyes regardless of their state
     public void shootMiniEyes()
     {
         miniEyeL.ForceShoot();
