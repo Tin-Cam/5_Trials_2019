@@ -4,15 +4,40 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject player;
+    public MainDoor door;
+    public List<_BossBase> bossList = new List<_BossBase>();
+    public List<Grid> roomList = new List<Grid>();
+
+    
+    private _BossBase currentBoss;
+    private Grid currentRoom;
+
+    private void Start()
+    {
+        LoadRoom(bossList[0], roomList[0]);
+    }
+
+    void LoadRoom(_BossBase boss, Grid room)
+    {
+        door.Open(false);
+        LoadBoss(boss);
+    }
+
+    private void LoadBoss(_BossBase boss)
+    {
+        currentBoss = boss;
+        currentBoss.roomManager = this;
+        Instantiate(currentBoss, transform);
+    }
+
+    private void UnloadRoom()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void BossDied()
     {
-        
+        door.Open(true);
     }
 }

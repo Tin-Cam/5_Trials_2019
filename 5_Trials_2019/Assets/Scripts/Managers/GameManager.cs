@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public RoomManager roomManager;
+
     public GameObject player;
     public float playerMaxHealth;
     private float playerHealth;
@@ -52,6 +54,11 @@ public class GameManager : MonoBehaviour
             testBossAction(3);
         }
 
+        if (Input.GetKeyDown(KeyCode.Keypad9))
+        {
+            //Open door
+        }
+
         //Stops the boss from acting
         if (Input.GetKeyDown(KeyCode.KeypadPeriod))
         {
@@ -63,6 +70,7 @@ public class GameManager : MonoBehaviour
     {
         boss.PickAction(action);
     }
+
 
     void updateBoss()
     {

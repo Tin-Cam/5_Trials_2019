@@ -13,7 +13,7 @@ public class Dummy_Boss : _BossBase
 
     protected override void BossHurt()
     {
-        StartDeath();
+        TakeDamage(1);
     }
 
     protected override void StartDeath()
@@ -28,7 +28,7 @@ public class Dummy_Boss : _BossBase
 
     protected override void CheckHealth()
     {
-        throw new System.NotImplementedException();
+
     }
 
     protected override void IncreasePhase()

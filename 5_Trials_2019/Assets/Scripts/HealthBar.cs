@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour {
 
+    public GameObject healthBar;
+
     private float unit; //Determines the scale of a single unit of health on the game screen
     private float length;
     private float maxLength;
     private float maxHealth;
 
 	void Awake () {
-        maxLength = transform.localScale.x;
+        maxLength = healthBar.transform.localScale.x;
     }
 
     public void addOrSubtractHealth(float value)
@@ -31,6 +33,6 @@ public class HealthBar : MonoBehaviour {
     {
         if (length < 0)
             length = 0;
-        transform.localScale = new Vector3(length, transform.localScale.y, transform.localScale.z);
+        healthBar.transform.localScale = new Vector3(length, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
     }
 }
