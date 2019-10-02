@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class _BossBase : MonoBehaviour
 {
-    public RoomManager roomManager;
+    protected GameManager gameManager;
+
     protected _ActionBase actionBase;
     protected _MoveBase moveBase;
 
@@ -78,6 +79,11 @@ public abstract class _BossBase : MonoBehaviour
         //roomManager.BossDied();
 
         Destroy(this.gameObject);
+    }
+
+    public void SetGameManager(GameManager gameManager)
+    {
+        this.gameManager = gameManager;
     }
 
     abstract protected void Init();

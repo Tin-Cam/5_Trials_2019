@@ -15,8 +15,6 @@ public class GameManager : MonoBehaviour
     public _BossBase boss;
     public HealthBar bossHealthBar;
 
-    [Space(15)]
-    public bool debugMode;
 
     void Start()
     {
@@ -27,55 +25,18 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (debugMode)
-            debug();
 
     }
-
-    void debug()
-    {
-        if (Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            testBossAction(0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            testBossAction(1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            testBossAction(2);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            testBossAction(3);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Keypad9))
-        {
-            //Open door
-        }
-
-        //Stops the boss from acting
-        if (Input.GetKeyDown(KeyCode.KeypadPeriod))
-        {
-            boss.StopAction();
-        }
-    }
-
-    void testBossAction(int action)
-    {
-        boss.PickAction(action);
-    }
-
 
     void updateBoss()
     {
         //boss = newBoss
         boss.healthBar = bossHealthBar;
+    }
+
+    public _BossBase GetBoss()
+    {
+        return boss;
     }
 
     public void playerTakeDamage(float damage)
@@ -85,5 +46,4 @@ public class GameManager : MonoBehaviour
         if (playerHealth <= 0)
             player.SetActive(false);
     }
-
 }

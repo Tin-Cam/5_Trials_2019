@@ -6,16 +6,14 @@ public class RoomManager : MonoBehaviour
 {
     public GameObject player;
     public MainDoor door;
-    public List<_BossBase> bossList = new List<_BossBase>();
     public List<Grid> roomList = new List<Grid>();
 
     
-    private _BossBase currentBoss;
     private Grid currentRoom;
 
     private void Start()
     {
-        LoadRoom(bossList[0], roomList[0]);
+        //LoadRoom(bossList[0], roomList[0]);
     }
 
     void LoadRoom(_BossBase boss, Grid room)
@@ -26,9 +24,7 @@ public class RoomManager : MonoBehaviour
 
     private void LoadBoss(_BossBase boss)
     {
-        currentBoss = boss;
-        currentBoss.roomManager = this;
-        Instantiate(currentBoss, transform);
+
     }
 
     private void UnloadRoom()
