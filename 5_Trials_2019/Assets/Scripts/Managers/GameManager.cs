@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public RoomManager roomManager;
+    private RoomManager roomManager;
 
     public GameObject player;
     public float playerMaxHealth;
@@ -15,9 +15,12 @@ public class GameManager : MonoBehaviour
     public _BossBase boss;
     public HealthBar bossHealthBar;
 
+    public ScreenFader fader;
 
     void Start()
     {
+        roomManager = GetComponent<RoomManager>();
+
         playerHealth = playerMaxHealth;
         playerHealthBar.initHealth(playerMaxHealth);
         
@@ -28,10 +31,11 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void updateBoss()
+    public void LoadNewRoom(int roomCode)
     {
-        //boss = newBoss
-        boss.healthBar = bossHealthBar;
+        fader.FadeIn();
+        roomManager.LoadRoom(roomCode);
+        
     }
 
     public _BossBase GetBoss()
@@ -39,10 +43,10 @@ public class GameManager : MonoBehaviour
         return boss;
     }
 
-    public void playerTakeDamage(float damage)
+    public void PlayerTakeDamage(float damage)
     {
         playerHealth -= damage;
-        playerHealthBar.addOrSubtractHealth(-1);
+        playerHealthBar.addOrSubtractHealth(-damage);
         if (playerHealth <= 0)
             player.SetActive(false);
     }

@@ -22,6 +22,7 @@ public class DebugManager : MonoBehaviour
         if (!debugMode)
             return;
         BossCommands();
+        RoomCommands();
     }
 
     private void BossCommands()
@@ -50,6 +51,34 @@ public class DebugManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.KeypadPeriod))
         {
             boss.StopAction();
+        }
+    }
+
+    private void RoomCommands()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            gameManager.LoadNewRoom(0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            gameManager.LoadNewRoom(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            gameManager.LoadNewRoom(2);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            gameManager.LoadNewRoom(3);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            gameManager.LoadNewRoom(4);
         }
     }
 }

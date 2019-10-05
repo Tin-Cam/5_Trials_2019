@@ -6,30 +6,56 @@ public class RoomManager : MonoBehaviour
 {
     public GameObject player;
     public MainDoor door;
-    public List<Grid> roomList = new List<Grid>();
+    public List<Room> roomList = new List<Room>();
 
     
-    private Grid currentRoom;
+    private Room currentRoom;
 
     private void Start()
     {
         //LoadRoom(bossList[0], roomList[0]);
     }
 
-    void LoadRoom(_BossBase boss, Grid room)
+    //Make a corutine?
+    public Room LoadRoom(int roomCode)
     {
-        door.Open(false);
-        LoadBoss(boss);
-    }
+        UnloadRoom();
+        
 
-    private void LoadBoss(_BossBase boss)
-    {
+        try
+        {
+            currentRoom = Instantiate(roomList[roomCode]);
+        }
+        catch (MissingReferenceException)
+        {
+            currentRoom = Instantiate(roomList[0]);
+            Debug.Log("No room to load");
+        }
+        catch (System.ArgumentException)
+        {
+            currentRoom = Instantiate(roomList[0]);
+            Debug.Log("No room to load");
+        }
 
+        return currentRoom;
     }
 
     private void UnloadRoom()
     {
-        
+        try
+        {
+            Destroy(currentRoom.gameObject);
+            currentRoom = null;
+        }
+        catch(System.NullReferenceException)
+        {
+            Debug.Log("No room to unload");
+        }
+        catch (MissingReferenceException)
+        {
+            Debug.Log("No room to unload");
+        }
+
     }
 
     public void BossDied()
