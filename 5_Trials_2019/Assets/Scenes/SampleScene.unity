@@ -471,6 +471,7 @@ MonoBehaviour:
   playerHealthBar: {fileID: 410962687}
   boss: {fileID: 128572516}
   bossHealthBar: {fileID: 2065960939}
+  fader: {fileID: 0}
 --- !u!4 &1227621089
 Transform:
   m_ObjectHideFlags: 0
@@ -1207,6 +1208,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760825503656248182, guid: ea89b891bec98de4ca894a5741c2bd3b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea89b891bec98de4ca894a5741c2bd3b, type: 3}

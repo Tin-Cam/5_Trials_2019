@@ -38,6 +38,11 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void OpenRoomDoor()
+    {
+        roomManager.OpenRoomDoor();
+    }
+
     public _BossBase GetBoss()
     {
         return boss;

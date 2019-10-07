@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
+    private GameManager gameManager;
+
     public GameObject player;
     public MainDoor door;
     public List<Room> roomList = new List<Room>();
@@ -13,7 +15,7 @@ public class RoomManager : MonoBehaviour
 
     private void Start()
     {
-        //LoadRoom(bossList[0], roomList[0]);
+        gameManager = GetComponent<GameManager>();
     }
 
     //Make a corutine?
@@ -24,7 +26,7 @@ public class RoomManager : MonoBehaviour
 
         try
         {
-            currentRoom = Instantiate(roomList[roomCode]);
+            currentRoom = CreateRoom(roomCode);
         }
         catch (MissingReferenceException)
         {
@@ -38,6 +40,16 @@ public class RoomManager : MonoBehaviour
         }
 
         return currentRoom;
+    }
+
+    private Room CreateRoom(int roomCode)
+    {
+        Room room;
+
+        room = Instantiate(roomList[roomCode]);
+        room.SetGameManager(gameManager);
+
+        return room;
     }
 
     private void UnloadRoom()
@@ -58,8 +70,8 @@ public class RoomManager : MonoBehaviour
 
     }
 
-    public void BossDied()
+    public void OpenRoomDoor()
     {
-        door.Open(true);
+        currentRoom.OpenDoor();
     }
 }

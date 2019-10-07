@@ -80,5 +80,10 @@ public class DebugManager : MonoBehaviour
         {
             gameManager.LoadNewRoom(4);
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            gameManager.OpenRoomDoor();
+        }
     }
 }
