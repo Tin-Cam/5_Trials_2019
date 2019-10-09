@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class BossManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<_BossBase> bosses = new List<_BossBase>();
+
+    private GameObject player;
+    private HealthBar healthBar;
+
+    public _BossBase CreateBoss(int bossID)
     {
-        
+        _BossBase boss = bosses[bossID];
+
+        boss.player = player;
+        boss.healthBar = healthBar;
+
+        return boss;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetVariables(GameObject player, HealthBar healthBar)
     {
-        
+        this.player = player;
+        this.healthBar = healthBar;
     }
 }

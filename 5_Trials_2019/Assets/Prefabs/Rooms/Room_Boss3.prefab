@@ -58,10 +58,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2dc7a4edd9e67d409db6f33c1f2c4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpawn: {x: 0, y: 0}
+  hasMovingCamera: 0
+  hasIntro: 0
+  playerSpawn: {x: -2, y: -5}
   bossCode: 0
   music: {fileID: 0}
   door: {fileID: 0}
+  exits: []
 --- !u!1 &8248278474826385779
 GameObject:
   m_ObjectHideFlags: 0

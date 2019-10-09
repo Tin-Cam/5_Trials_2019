@@ -62,8 +62,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMovingCamera: 0
   hasIntro: 0
-  playerSpawn: {x: 0, y: 0}
-  bossCode: 0
+  playerSpawn: {x: 0, y: -4}
+  bossCode: 1
   music: {fileID: 0}
   door: {fileID: 1023404960969713738}
   exits:

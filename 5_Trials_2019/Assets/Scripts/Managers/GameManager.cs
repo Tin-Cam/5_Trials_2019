@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private RoomManager roomManager;
+    private BossManager bossManager;
 
     public GameObject player;
     public float playerMaxHealth;
@@ -20,10 +21,15 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         roomManager = GetComponent<RoomManager>();
+        bossManager = GetComponent<BossManager>();
+
+        bossManager.SetVariables(player, bossHealthBar);
 
         playerHealth = playerMaxHealth;
         playerHealthBar.initHealth(playerMaxHealth);
-        
+
+        LoadNewRoom(0);
+        Instantiate(bossManager.CreateBoss(0));
     }
 
     void Update()

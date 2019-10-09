@@ -27,6 +27,7 @@ public class RoomManager : MonoBehaviour
         try
         {
             currentRoom = CreateRoom(roomCode);
+            player.transform.position = currentRoom.playerSpawn;
         }
         catch (MissingReferenceException)
         {

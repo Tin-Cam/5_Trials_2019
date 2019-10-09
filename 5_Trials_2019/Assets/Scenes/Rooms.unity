@@ -242,12 +242,12 @@ PrefabInstance:
     - target: {fileID: 9182096197023116855, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.2706926
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9182096197023116855, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4958198
+      value: -1.28
       objectReference: {fileID: 0}
     - target: {fileID: 9182096197023116855, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
@@ -985,6 +985,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275010771}
   m_CullTransparentMesh: 0
+--- !u!1 &1319306258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9182096197023116857, guid: eb5d813d44eb64f4791a90e539078c1f,
+    type: 3}
+  m_PrefabInstance: {fileID: 370196630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1398358822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,6 +1050,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad5bea6203809042ade477b815d9add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bosses:
+  - {fileID: 2890213895082129920, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1398358826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1074,7 +1086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994d502952eafd04ca7177c321a24083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1319306258}
   door: {fileID: 0}
   roomList:
   - {fileID: 688142469522494634, guid: ea89b891bec98de4ca894a5741c2bd3b, type: 3}
