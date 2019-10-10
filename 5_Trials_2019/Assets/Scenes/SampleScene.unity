@@ -469,6 +469,7 @@ MonoBehaviour:
   player: {fileID: 1476381286}
   playerMaxHealth: 10
   playerHealthBar: {fileID: 410962687}
+  hardcore: 0
   boss: {fileID: 128572516}
   bossHealthBar: {fileID: 2065960939}
   fader: {fileID: 0}

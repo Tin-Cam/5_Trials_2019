@@ -61,7 +61,7 @@ MonoBehaviour:
   hasMovingCamera: 0
   hasIntro: 0
   playerSpawn: {x: -2, y: -5}
-  bossCode: 0
+  bossCode: 1
   music: {fileID: 0}
   door: {fileID: 0}
   exits: []

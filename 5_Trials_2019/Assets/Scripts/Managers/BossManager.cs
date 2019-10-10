@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class BossManager : MonoBehaviour
 {
+    public GameObject player;
+    public HealthBar healthBar;
+
+    [Space(15)]
     public List<_BossBase> bosses = new List<_BossBase>();
 
-    private GameObject player;
-    private HealthBar healthBar;
-
+    
     public _BossBase CreateBoss(int bossID)
     {
         _BossBase boss = bosses[bossID];
@@ -19,6 +21,7 @@ public class BossManager : MonoBehaviour
         return boss;
     }
 
+    //REDUNDANT
     public void SetVariables(GameObject player, HealthBar healthBar)
     {
         this.player = player;

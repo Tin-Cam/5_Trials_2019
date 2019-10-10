@@ -1050,12 +1050,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad5bea6203809042ade477b815d9add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1319306258}
+  healthBar: {fileID: 549875884}
   bosses:
   - {fileID: 2890213895082129920, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2890213895082129920, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
+  - {fileID: 2890213895082129920, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
+  - {fileID: 2890213895082129920, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
+  - {fileID: 2890213895082129920, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
+  - {fileID: 2890213895082129920, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
 --- !u!114 &1398358826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1068,9 +1071,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa22e8f676b480845b3ac57ec7b77620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1319306258}
   playerMaxHealth: 10
   playerHealthBar: {fileID: 602503005}
+  hardcore: 0
   boss: {fileID: 0}
   bossHealthBar: {fileID: 549875884}
   fader: {fileID: 117616661}

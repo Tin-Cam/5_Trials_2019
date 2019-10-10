@@ -5,36 +5,34 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private RoomManager roomManager;
-    private BossManager bossManager;
+    //private BossManager bossManager;
 
     public GameObject player;
     public float playerMaxHealth;
     private float playerHealth;
 
     public HealthBar playerHealthBar;
+    public bool hardcore;
 
+    [Space(15)]
     public _BossBase boss;
     public HealthBar bossHealthBar;
 
+    [Space(15)]
     public ScreenFader fader;
 
     void Start()
     {
         roomManager = GetComponent<RoomManager>();
-        bossManager = GetComponent<BossManager>();
+        //bossManager = GetComponent<BossManager>();
 
-        bossManager.SetVariables(player, bossHealthBar);
+        //bossManager.SetVariables(player, bossHealthBar);
 
         playerHealth = playerMaxHealth;
         playerHealthBar.initHealth(playerMaxHealth);
 
-        LoadNewRoom(0);
-        Instantiate(bossManager.CreateBoss(0));
-    }
-
-    void Update()
-    {
-
+        LoadNewRoom(1);
+        
     }
 
     public void LoadNewRoom(int roomCode)
@@ -42,6 +40,7 @@ public class GameManager : MonoBehaviour
         fader.FadeIn();
         roomManager.LoadRoom(roomCode);
         
+
     }
 
     public void OpenRoomDoor()
