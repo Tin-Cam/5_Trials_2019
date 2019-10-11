@@ -44,6 +44,12 @@ TagManager:
   - name: Floor
     uniqueID: 3625115907
     locked: 0
+  - name: Back Wall
+    uniqueID: 1157719515
+    locked: 0
+  - name: Door
+    uniqueID: 4229492351
+    locked: 0
   - name: Boss
     uniqueID: 2133515337
     locked: 0

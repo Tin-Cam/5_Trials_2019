@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class _BossBase : MonoBehaviour
 {
-    protected GameManager gameManager;
+    public GameManager gameManager;
 
     protected _ActionBase actionBase;
     protected _MoveBase moveBase;
@@ -74,9 +74,9 @@ public abstract class _BossBase : MonoBehaviour
         aiTimerCount = Random.Range(0, maxAiTimerRngValue);
     }
 
-    public void die()
+    public void Die()
     {
-        //roomManager.BossDied();
+        gameManager.BossDefeated();
 
         Destroy(this.gameObject);
     }

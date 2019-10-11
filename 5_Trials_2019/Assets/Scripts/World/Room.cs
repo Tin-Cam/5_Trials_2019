@@ -13,12 +13,10 @@ public class Room : MonoBehaviour
     public AudioClip music;
     public MainDoor door;
 
-    public List<RoomExit> exits = new List<RoomExit>();
-
-    private void Start()
+    void Start()
     {
-        for (int i = 0; i < exits.Count; i++)
-            exits[i].SetGameManager(gameManager);
+        if(door != null)
+            door.exit.SetGameManager(gameManager);
     }
 
     public void SetGameManager(GameManager gameManager)
@@ -29,18 +27,5 @@ public class Room : MonoBehaviour
     public void OpenDoor()
     {
         door.Open(true);
-    }
-
-    //Sets active of all exits
-    public void EnableExit(bool isActive)
-    {
-        for (int i = 0; i < exits.Count; i++)
-            exits[i].gameObject.SetActive(isActive);
-    }
-
-    //Sets active of given exit
-    public void EnableExit(bool isActive, int exit)
-    {
-        exits[exit].gameObject.SetActive(isActive);
     }
 }

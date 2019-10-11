@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private RoomManager roomManager;
     //private BossManager bossManager;
 
+    public int startingRoom;
     public GameObject player;
     public float playerMaxHealth;
     private float playerHealth;
@@ -15,7 +16,6 @@ public class GameManager : MonoBehaviour
     public bool hardcore;
 
     [Space(15)]
-    public _BossBase boss;
     public HealthBar bossHealthBar;
 
     [Space(15)]
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         playerHealth = playerMaxHealth;
         playerHealthBar.initHealth(playerMaxHealth);
 
-        LoadNewRoom(1);
+        LoadNewRoom(startingRoom);
         
     }
 
@@ -39,8 +39,25 @@ public class GameManager : MonoBehaviour
     {
         fader.FadeIn();
         roomManager.LoadRoom(roomCode);
-        
+        ShowGUI_Animate(roomManager.RoomHasBoss());
+    }
 
+    public void BossDefeated()
+    {
+        ShowGUI_Animate(false);
+        OpenRoomDoor();
+        //Stop Music
+    }
+
+    public void ShowGUI(bool isVisible)
+    {
+        playerHealthBar.gameObject.SetActive(isVisible);
+        bossHealthBar.gameObject.SetActive(isVisible);
+    }
+
+    public void ShowGUI_Animate(bool isVisible)
+    {
+        ShowGUI(isVisible);
     }
 
     public void OpenRoomDoor()
@@ -50,7 +67,7 @@ public class GameManager : MonoBehaviour
 
     public _BossBase GetBoss()
     {
-        return boss;
+        return roomManager.GetBoss();
     }
 
     public void PlayerTakeDamage(float damage)

@@ -14,7 +14,7 @@ public class RoomManager : MonoBehaviour
     private Room currentRoom;
     private _BossBase currentBoss;
 
-    private void Start()
+    void Awake()
     {
         gameManager = GetComponent<GameManager>();
         bossManager = GetComponent<BossManager>();
@@ -28,6 +28,7 @@ public class RoomManager : MonoBehaviour
         try
         {
             currentRoom = CreateRoom(roomCode);
+            currentBoss = CreateBoss();
             player.transform.position = currentRoom.playerSpawn;
         }
         catch (MissingReferenceException)
@@ -44,25 +45,28 @@ public class RoomManager : MonoBehaviour
         return currentRoom;
     }
 
+    //Create a room from a prefab
     private Room CreateRoom(int roomCode)
     {
         Room room;
         
-
         room = Instantiate(roomList[roomCode]);
         room.SetGameManager(gameManager);
-
-        //Creates a boss in the room if it has one
-        if (room.bossCode != 0)
-        {
-            _BossBase boss;
-            boss = bossManager.CreateBoss(room.bossCode);
-            currentBoss = Instantiate(boss);
-            //currentBoss.gameObject.transform.SetParent(currentRoom.gameObject.transform);
-        }
-
         
         return room;
+    }
+
+    //Creates a boss for the room if it has one
+    private _BossBase CreateBoss()
+    {
+        if (currentRoom.bossCode == 0)
+            return null;
+        
+        _BossBase boss;
+        boss = bossManager.CreateBoss(currentRoom.bossCode);
+        boss = Instantiate(boss);
+
+        return boss;
     }
 
     private void UnloadRoom()
@@ -103,5 +107,18 @@ public class RoomManager : MonoBehaviour
     public void OpenRoomDoor()
     {
         currentRoom.OpenDoor();
+    }
+
+    public bool RoomHasBoss()
+    {
+        if (currentRoom.bossCode == 0)
+            return false;
+
+        return true;
+    }
+
+    public _BossBase GetBoss()
+    {
+        return currentBoss;
     }
 }

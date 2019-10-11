@@ -18,12 +18,12 @@ public class Dummy_Boss : _BossBase
 
     protected override void StartDeath()
     {
-        Destroy(this.gameObject);
+        Die();
     }
 
     public override void DefaultState()
     {
-        throw new System.NotImplementedException();
+
     }
 
     protected override void CheckHealth()
@@ -33,7 +33,7 @@ public class Dummy_Boss : _BossBase
 
     protected override void IncreasePhase()
     {
-        throw new System.NotImplementedException();
+
     }
 
 }
