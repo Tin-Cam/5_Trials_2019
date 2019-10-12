@@ -12,7 +12,7 @@ public class RoomManager : MonoBehaviour
     public List<Room> roomList = new List<Room>();
       
     private Room currentRoom;
-    private _BossBase currentBoss;
+    private _BossHolder currentBoss;
 
     void Awake()
     {
@@ -57,12 +57,12 @@ public class RoomManager : MonoBehaviour
     }
 
     //Creates a boss for the room if it has one
-    private _BossBase CreateBoss()
+    private _BossHolder CreateBoss()
     {
         if (currentRoom.bossCode == 0)
             return null;
-        
-        _BossBase boss;
+
+        _BossHolder boss;
         boss = bossManager.CreateBoss(currentRoom.bossCode);
         boss = Instantiate(boss);
 
@@ -117,8 +117,8 @@ public class RoomManager : MonoBehaviour
         return true;
     }
 
-    public _BossBase GetBoss()
+    public _BossBase GetBossBase()
     {
-        return currentBoss;
+        return currentBoss.boss;
     }
 }

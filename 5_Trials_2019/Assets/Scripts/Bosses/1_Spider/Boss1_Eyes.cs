@@ -34,6 +34,11 @@ public class Boss1_Eyes : MonoBehaviour
 
         miniEyeL.stunTime = miniEyeStunTime;
         miniEyeR.stunTime = miniEyeStunTime;
+
+        GameObject player = controller.player;
+
+        miniEyeL.player = player;
+        miniEyeR.player = player;
     }
 
     //Periodically makes a mini eye shoot. (Mini eye won't shoot if it's closed)

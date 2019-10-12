@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private RoomManager roomManager;
     //private BossManager bossManager;
 
+    public bool isPaused;
     public int startingRoom;
     public GameObject player;
     public float playerMaxHealth;
@@ -33,6 +34,14 @@ public class GameManager : MonoBehaviour
 
         LoadNewRoom(startingRoom);
         
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            PauseGame(!isPaused);
+        }
     }
 
     public void LoadNewRoom(int roomCode)
@@ -65,9 +74,21 @@ public class GameManager : MonoBehaviour
         roomManager.OpenRoomDoor();
     }
 
+    public void PauseGame(bool state)
+    {
+        isPaused = state;
+
+        if (state)
+            Time.timeScale = 1;
+        else
+            Time.timeScale = 0;
+    }
+
+    
+
     public _BossBase GetBoss()
     {
-        return roomManager.GetBoss();
+        return roomManager.GetBossBase();
     }
 
     public void PlayerTakeDamage(float damage)

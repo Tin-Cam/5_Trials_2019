@@ -10,20 +10,18 @@ public class BossManager : MonoBehaviour
     public HealthBar healthBar;
 
     [Space(15)]
-    public List<_BossBase> bosses = new List<_BossBase>();
+    public List<_BossHolder> bosses = new List<_BossHolder>();
 
     void Awake()
     {
         gameManager = GetComponent<GameManager>();
     }
 
-    public _BossBase CreateBoss(int bossID)
+    public _BossHolder CreateBoss(int bossID)
     {
-        _BossBase boss = bosses[bossID];
+        _BossHolder boss = bosses[bossID];
 
-        boss.player = player;
-        boss.healthBar = healthBar;
-        boss.SetGameManager(gameManager);
+        boss.SetVariables(player, healthBar, gameManager);
 
         return boss;
     }

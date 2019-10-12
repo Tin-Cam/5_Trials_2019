@@ -1,5 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!61 &6215451748343559121
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3655647330473670267}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2}
+  m_EdgeRadius: 0
 --- !u!1 &8248278473811908252
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,6 +57,7 @@ Transform:
   m_Children:
   - {fileID: 8248278475469847366}
   - {fileID: 8248278474826385778}
+  - {fileID: 2234033078658233253}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61,10 +88,9 @@ MonoBehaviour:
   hasMovingCamera: 0
   hasIntro: 0
   playerSpawn: {x: -2, y: -5}
-  bossCode: 1
+  bossCode: 2
   music: {fileID: 0}
-  door: {fileID: 0}
-  exits: []
+  door: {fileID: 7005582389128254992}
 --- !u!1 &8248278474826385779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2757,7 +2783,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -669851389
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -2767,3 +2793,118 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!1001 &4065060199494693976
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8248278473811908250}
+    m_Modifications:
+    - target: {fileID: 779836689316659747, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: m_Name
+      value: Main Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435972236717154888, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: exit
+      value: 
+      objectReference: {fileID: 7455956696603041711}
+    - target: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: destination
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73ee77e064dd62d41a082ac7cc657a9a, type: 3}
+--- !u!1 &3655647330473670267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 779836689316659747, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4065060199494693976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2234033078658233253 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4065060199494693976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7005582389128254992 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6435972236717154888, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4065060199494693976}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3655647330473670267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c517a2e6ba2143c4997e3ca5506b61d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7455956696603041711 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4065060199494693976}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ceea7633ae6fee44902eb860f97c136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,13 +7,11 @@ public class DebugManager : MonoBehaviour
     public bool debugMode;
 
     private GameManager gameManager;
-    private _BossBase boss;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GetComponent<GameManager>();
-        boss = gameManager.GetBoss();
     }
 
     // Update is called once per frame
@@ -29,28 +27,28 @@ public class DebugManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Keypad0))
         {
-            boss.PickAction(0);
+            GetBoss().PickAction(0);
         }
 
         if (Input.GetKeyDown(KeyCode.Keypad1))
         {
-            boss.PickAction(1);
+            GetBoss().PickAction(1);
         }
 
         if (Input.GetKeyDown(KeyCode.Keypad2))
         {
-            boss.PickAction(2);
+            GetBoss().PickAction(2);
         }
 
         if (Input.GetKeyDown(KeyCode.Keypad3))
         {
-            boss.PickAction(3);
+            GetBoss().PickAction(3);
         }
 
         //Stops the boss from acting
         if (Input.GetKeyDown(KeyCode.KeypadPeriod))
         {
-            boss.StopAction();
+            GetBoss().StopAction();
         }
     }
 
@@ -85,5 +83,10 @@ public class DebugManager : MonoBehaviour
         {
             gameManager.OpenRoomDoor();
         }
+    }
+
+    private _BossBase GetBoss()
+    {
+        return gameManager.GetBoss();
     }
 }

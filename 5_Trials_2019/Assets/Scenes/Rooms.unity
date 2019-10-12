@@ -277,7 +277,7 @@ PrefabInstance:
     - target: {fileID: 9182096197023116855, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9182096197023116855, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
@@ -294,6 +294,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9182096197023116854, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1398358826}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb5d813d44eb64f4791a90e539078c1f, type: 3}
 --- !u!1 &401062989
@@ -800,7 +805,7 @@ RectTransform:
   - {fileID: 602503004}
   - {fileID: 117616657}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -904,12 +909,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204123194}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1275010771
 GameObject:
@@ -1023,7 +1028,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1398358824
 MonoBehaviour:
@@ -1053,12 +1058,12 @@ MonoBehaviour:
   player: {fileID: 1319306258}
   healthBar: {fileID: 549875884}
   bosses:
-  - {fileID: 2890213895082129920, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
-  - {fileID: 2890213895082129920, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
-  - {fileID: 2890213895082129920, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
-  - {fileID: 2890213895082129920, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
-  - {fileID: 2890213895082129920, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
-  - {fileID: 2890213895082129920, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
+  - {fileID: 961010412474161172, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
+  - {fileID: 3725356967537007999, guid: 080179585f2ff024491c5ee7138566bd, type: 3}
+  - {fileID: 961010412474161172, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1398358826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1071,11 +1076,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa22e8f676b480845b3ac57ec7b77620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
+  startingRoom: 0
   player: {fileID: 1319306258}
   playerMaxHealth: 10
   playerHealthBar: {fileID: 602503005}
   hardcore: 0
-  boss: {fileID: 0}
   bossHealthBar: {fileID: 549875884}
   fader: {fileID: 117616661}
 --- !u!114 &1398358827

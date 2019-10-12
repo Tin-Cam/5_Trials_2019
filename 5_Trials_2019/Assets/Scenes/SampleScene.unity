@@ -120,18 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &128572516 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4688997081891801398, guid: 080179585f2ff024491c5ee7138566bd,
-    type: 3}
-  m_PrefabInstance: {fileID: 4688997081919575378}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96c12518334a94c488d57eafc72eb14f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &410962685
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,11 +454,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa22e8f676b480845b3ac57ec7b77620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
+  startingRoom: 0
   player: {fileID: 1476381286}
   playerMaxHealth: 10
   playerHealthBar: {fileID: 410962687}
   hardcore: 0
-  boss: {fileID: 128572516}
   bossHealthBar: {fileID: 2065960939}
   fader: {fileID: 0}
 --- !u!4 &1227621089
@@ -856,6 +845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c517a2e6ba2143c4997e3ca5506b61d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exit: {fileID: 0}
 --- !u!95 &1672337725
 Animator:
   serializedVersion: 3
@@ -1239,11 +1229,6 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 2065960939}
-    - target: {fileID: 4688997081891801398, guid: 080179585f2ff024491c5ee7138566bd,
-        type: 3}
-      propertyPath: health
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4688997082714058125, guid: 080179585f2ff024491c5ee7138566bd,
         type: 3}
       propertyPath: m_LocalPosition.x

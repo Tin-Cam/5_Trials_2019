@@ -1394,7 +1394,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -669851389
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -2530,8 +2530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMovingCamera: 0
   hasIntro: 0
-  playerSpawn: {x: 0, y: 2}
+  playerSpawn: {x: 0, y: -1}
   bossCode: 0
   music: {fileID: 0}
   door: {fileID: 0}
-  exits: []

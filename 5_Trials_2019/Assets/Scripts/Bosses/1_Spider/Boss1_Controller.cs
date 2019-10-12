@@ -130,7 +130,7 @@ public class Boss1_Controller : _BossBase
     {
         Destroy(eyes.miniEyeL.gameObject);
         Destroy(eyes.miniEyeR.gameObject);
-        healthBar.gameObject.SetActive(false);
+        eyes.enabled = false;
         animator.Play("Death");       
     }
 

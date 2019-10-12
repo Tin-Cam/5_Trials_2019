@@ -24,20 +24,14 @@ public class Boss1_Move : _MoveBase
         SetIsMoving(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!isMoving)
             return;
 
         moveTime += 1 * (speed / 10);
         movement = new Vector2(Mathf.Sin(moveTime * Mathf.Deg2Rad) * moveRange, movement.y);
-    }
 
-    void FixedUpdate()
-    {
-        if (!isMoving)
-            return;
         rig.MovePosition(movement * new Vector2(Time.fixedDeltaTime, 1));
     }
 
