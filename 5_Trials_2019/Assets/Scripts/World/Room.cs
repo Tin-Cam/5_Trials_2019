@@ -6,7 +6,9 @@ public class Room : MonoBehaviour
 {
     private GameManager gameManager;
 
-    public bool hasMovingCamera;
+    public bool cameraLockX;
+    public bool cameraLockY;
+
     public bool hasIntro;
     public Vector2 playerSpawn;
     public int bossCode; //Set to 0 if there is no boss in the room

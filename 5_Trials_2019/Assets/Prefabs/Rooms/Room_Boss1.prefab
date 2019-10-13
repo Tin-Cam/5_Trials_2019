@@ -464,7 +464,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2dc7a4edd9e67d409db6f33c1f2c4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasMovingCamera: 0
+  cameraLockX: 1
+  cameraLockY: 1
   hasIntro: 0
   playerSpawn: {x: 0, y: -4}
   bossCode: 1
@@ -1059,7 +1060,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2dc7a4edd9e67d409db6f33c1f2c4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasMovingCamera: 0
+  cameraLockX: 0
+  cameraLockY: 0
   hasIntro: 0
   playerSpawn: {x: 0, y: -4}
   bossCode: 1
@@ -2502,11 +2504,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1630274263261058925}
     m_Modifications:
-    - target: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
-        type: 3}
-      propertyPath: destination
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 779836689316659747, guid: 73ee77e064dd62d41a082ac7cc657a9a,
         type: 3}
       propertyPath: m_Name
@@ -2517,6 +2514,11 @@ PrefabInstance:
       propertyPath: exit
       value: 
       objectReference: {fileID: 609085940932551157}
+    - target: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: destination
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
         type: 3}
       propertyPath: m_LocalPosition.x

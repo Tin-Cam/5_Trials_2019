@@ -7,10 +7,12 @@ public class RoomManager : MonoBehaviour
     private GameManager gameManager;
     private BossManager bossManager;
 
+    public CameraFollow cameraFollow;
+
     public GameObject player;
     public MainDoor door;
     public List<Room> roomList = new List<Room>();
-      
+    
     private Room currentRoom;
     private _BossHolder currentBoss;
 
@@ -30,6 +32,7 @@ public class RoomManager : MonoBehaviour
             currentRoom = CreateRoom(roomCode);
             currentBoss = CreateBoss();
             player.transform.position = currentRoom.playerSpawn;
+            SetCamera();
         }
         catch (MissingReferenceException)
         {
@@ -67,6 +70,20 @@ public class RoomManager : MonoBehaviour
         boss = Instantiate(boss);
 
         return boss;
+    }
+
+    private void SetCamera()
+    {     
+        cameraFollow.lockX = currentRoom.cameraLockX;
+        cameraFollow.lockY = currentRoom.cameraLockY;
+
+        if (cameraFollow.lockX & cameraFollow.lockY)
+        {
+            cameraFollow.ResetCamera();
+            return;
+        }
+
+        cameraFollow.ResetCamera(player.transform.position);
     }
 
     private void UnloadRoom()

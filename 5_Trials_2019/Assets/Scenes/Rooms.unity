@@ -208,7 +208,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d797bbeb371cd1b4ea24b1bde585cd38, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -824,6 +824,7 @@ GameObject:
   - component: {fileID: 1204123197}
   - component: {fileID: 1204123196}
   - component: {fileID: 1204123195}
+  - component: {fileID: 1204123199}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -916,6 +917,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1204123199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204123194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ce4220aa4c26349a770f5afc54869b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1319306265}
+  smoothSpeed: 10
+  lockX: 0
+  lockY: 0
+  offset: {x: 0, y: 0, z: -10}
 --- !u!1 &1275010771
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,6 +1011,12 @@ CanvasRenderer:
 --- !u!1 &1319306258 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9182096197023116857, guid: eb5d813d44eb64f4791a90e539078c1f,
+    type: 3}
+  m_PrefabInstance: {fileID: 370196630}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1319306265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9182096197023116855, guid: eb5d813d44eb64f4791a90e539078c1f,
     type: 3}
   m_PrefabInstance: {fileID: 370196630}
   m_PrefabAsset: {fileID: 0}
@@ -1096,13 +1120,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994d502952eafd04ca7177c321a24083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraFollow: {fileID: 1204123199}
   player: {fileID: 1319306258}
   door: {fileID: 0}
   roomList:
   - {fileID: 688142469522494634, guid: ea89b891bec98de4ca894a5741c2bd3b, type: 3}
   - {fileID: 6174863984518241047, guid: 4c8d3ea7038392a4eb41bfbc252f09d4, type: 3}
   - {fileID: 6282878575492069041, guid: 955a066485b927f428fbbc405601b7f1, type: 3}
-  - {fileID: 0}
+  - {fileID: 3893562132920471541, guid: 58f6ce58268165b448381f7cf65189aa, type: 3}
   - {fileID: 0}
 --- !u!1 &1682181297
 GameObject:
