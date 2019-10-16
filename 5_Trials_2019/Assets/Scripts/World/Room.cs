@@ -15,15 +15,19 @@ public class Room : MonoBehaviour
     public AudioClip music;
     public MainDoor door;
 
-    void Start()
+    public void ChangeRoom(int destination)
     {
-        if(door != null)
-            door.exit.SetGameManager(gameManager);
+        gameManager.LoadNewRoom(destination);
     }
 
     public void SetGameManager(GameManager gameManager)
     {
         this.gameManager = gameManager;
+    }
+
+    public GameManager GetGameManager()
+    {
+        return gameManager;
     }
 
     public void OpenDoor()

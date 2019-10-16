@@ -6373,11 +6373,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1391110311103279070}
     m_Modifications:
-    - target: {fileID: 779836689316659747, guid: 73ee77e064dd62d41a082ac7cc657a9a,
-        type: 3}
-      propertyPath: m_Name
-      value: Main Door
-      objectReference: {fileID: 0}
     - target: {fileID: 6435972236717154888, guid: 73ee77e064dd62d41a082ac7cc657a9a,
         type: 3}
       propertyPath: exit
@@ -6386,7 +6381,17 @@ PrefabInstance:
     - target: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
         type: 3}
       propertyPath: destination
-      value: 0
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 3893562132920471541}
+    - target: {fileID: 779836689316659747, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: m_Name
+      value: Main Door
       objectReference: {fileID: 0}
     - target: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
         type: 3}

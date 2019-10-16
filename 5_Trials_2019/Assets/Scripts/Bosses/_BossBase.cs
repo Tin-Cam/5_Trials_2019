@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class _BossBase : MonoBehaviour
 {
     public GameManager gameManager;
-    public GameObject boss;
 
     protected _ActionBase actionBase;
     protected _MoveBase moveBase;
