@@ -12,9 +12,9 @@ public class RoomManager : MonoBehaviour
     public GameObject player;
     public MainDoor door;
     public List<Room> roomList = new List<Room>();
+    public int startingRoom;
     
     private Room currentRoom;
-    private _BossHolder currentBoss;
 
     void Awake()
     {
@@ -22,15 +22,20 @@ public class RoomManager : MonoBehaviour
         bossManager = GetComponent<BossManager>();
     }
 
+    void Start()
+    {
+        LoadRoom(startingRoom);
+    }
+
     //Make a corutine?
-    public Room LoadRoom(int roomCode)
+    public void LoadRoom(int roomCode)
     {
         UnloadRoom();
         
         try
         {
             currentRoom = CreateRoom(roomCode);
-            currentBoss = CreateBoss();
+            bossManager.LoadBoss(currentRoom.bossID);
             player.transform.position = currentRoom.playerSpawn;
             SetCamera();
         }
@@ -44,8 +49,7 @@ public class RoomManager : MonoBehaviour
             LoadRoom(0);
             Debug.Log("No room to load. Room has been set to default.");
         }
-
-        return currentRoom;
+        
     }
 
     //Create a room from a prefab
@@ -57,19 +61,6 @@ public class RoomManager : MonoBehaviour
         room.SetGameManager(gameManager);
         
         return room;
-    }
-
-    //Creates a boss for the room if it has one
-    private _BossHolder CreateBoss()
-    {
-        if (currentRoom.bossCode == 0)
-            return null;
-
-        _BossHolder boss;
-        boss = bossManager.CreateBoss(currentRoom.bossCode);
-        boss = Instantiate(boss);
-
-        return boss;
     }
 
     private void SetCamera()
@@ -103,21 +94,7 @@ public class RoomManager : MonoBehaviour
             Debug.Log("No room to unload");
         }
 
-        //Destroys current boss
-        try
-        {
-            Destroy(currentBoss.gameObject);
-            currentBoss = null;
-        }
-        catch (System.NullReferenceException)
-        {
-            Debug.Log("No boss to unload");
-        }
-        catch (MissingReferenceException)
-        {
-            Debug.Log("No boss to unload");
-        }
-
+        bossManager.UnloadBoss();
     }
 
 
@@ -128,7 +105,7 @@ public class RoomManager : MonoBehaviour
 
     public bool RoomHasBoss()
     {
-        if (currentRoom.bossCode == 0)
+        if (currentRoom.bossID == 0)
             return false;
 
         return true;
@@ -136,6 +113,6 @@ public class RoomManager : MonoBehaviour
 
     public _BossBase GetBossBase()
     {
-        return currentBoss.boss;
+        return bossManager.GetBossBase();
     }
 }

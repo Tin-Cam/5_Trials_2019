@@ -30,10 +30,7 @@ public class GameManager : MonoBehaviour
         //bossManager.SetVariables(player, bossHealthBar);
 
         playerHealth = playerMaxHealth;
-        playerHealthBar.initHealth(playerMaxHealth);
-
-        LoadNewRoom(startingRoom);
-        
+        playerHealthBar.initHealth(playerMaxHealth);      
     }
 
     void Update()

@@ -278,6 +278,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1319306258}
+    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: playerHealthBar
+      value: 
+      objectReference: {fileID: 602503005}
+    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: bossHealthBar
+      value: 
+      objectReference: {fileID: 549875884}
+    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: fader
+      value: 
+      objectReference: {fileID: 117616661}
     - target: {fileID: 2556536046020970673, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -343,26 +363,16 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1319306258}
-    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+    - target: {fileID: 2556536046020970685, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1319306258}
-    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+      propertyPath: startingRoom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556536046020970685, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
-      propertyPath: playerHealthBar
-      value: 
-      objectReference: {fileID: 602503005}
-    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
-        type: 3}
-      propertyPath: bossHealthBar
-      value: 
-      objectReference: {fileID: 549875884}
-    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
-        type: 3}
-      propertyPath: fader
-      value: 
-      objectReference: {fileID: 117616661}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2556536046020970687, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
       propertyPath: player
@@ -506,6 +516,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 8549575789793378869, guid: 9649d9d737f03f444a927cccc1a196c8,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1319306265}
     - target: {fileID: 8549575789793378868, guid: 9649d9d737f03f444a927cccc1a196c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -561,10 +576,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8549575789793378869, guid: 9649d9d737f03f444a927cccc1a196c8,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1319306265}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9649d9d737f03f444a927cccc1a196c8, type: 3}

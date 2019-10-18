@@ -6,8 +6,11 @@ public class BossManager : MonoBehaviour
 {
     private GameManager gameManager;
 
+    public _BossHolder currentBoss;
+
     public GameObject player;
     public HealthBar healthBar;
+
 
     [Space(15)]
     public List<_BossHolder> bosses = new List<_BossHolder>();
@@ -17,6 +20,16 @@ public class BossManager : MonoBehaviour
         gameManager = GetComponent<GameManager>();
     }
 
+    public void LoadBoss(int bossID)
+    {
+        if (bossID == 0)
+            return;
+
+        UnloadBoss();
+        currentBoss = Instantiate(CreateBoss(bossID));
+    }
+
+
     public _BossHolder CreateBoss(int bossID)
     {
         _BossHolder boss = bosses[bossID];
@@ -24,6 +37,35 @@ public class BossManager : MonoBehaviour
         boss.SetVariables(player, healthBar, gameManager);
 
         return boss;
+    }
+
+    //Unloads the boss if the player leaves the room
+    //(Theoretically should not trigger in normal gameplay)
+    public void UnloadBoss()
+    {
+        try
+        {
+            Destroy(currentBoss.gameObject);
+            currentBoss = null;
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.Log("No boss to unload");
+        }
+        catch (MissingReferenceException)
+        {
+            Debug.Log("No boss to unload");
+        }
+    }
+
+    public _BossHolder GetBoss()
+    {
+        return currentBoss;
+    }
+
+    public _BossBase GetBossBase()
+    {
+        return currentBoss.boss;
     }
 
     //REDUNDANT

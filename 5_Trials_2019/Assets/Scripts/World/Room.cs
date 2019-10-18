@@ -11,7 +11,7 @@ public class Room : MonoBehaviour
 
     public bool hasIntro;
     public Vector2 playerSpawn;
-    public int bossCode; //Set to 0 if there is no boss in the room
+    public int bossID; //Set to 0 if there is no boss in the room
     public AudioClip music;
     public MainDoor door;
 
