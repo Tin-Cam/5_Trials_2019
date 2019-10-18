@@ -27,8 +27,6 @@ public class GameManager : MonoBehaviour
         roomManager = GetComponent<RoomManager>();
         //bossManager = GetComponent<BossManager>();
 
-        //bossManager.SetVariables(player, bossHealthBar);
-
         playerHealth = playerMaxHealth;
         playerHealthBar.initHealth(playerMaxHealth);      
     }

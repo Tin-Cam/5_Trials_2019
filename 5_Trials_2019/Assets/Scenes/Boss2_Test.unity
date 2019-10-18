@@ -299,6 +299,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1951528287}
+    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: bossHealthBar
+      value: 
+      objectReference: {fileID: 1062325171}
+    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: playerHealthBar
+      value: 
+      objectReference: {fileID: 190870682}
+    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: fader
+      value: 
+      objectReference: {fileID: 579716580}
     - target: {fileID: 2556536046020970673, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -357,14 +377,13 @@ PrefabInstance:
     - target: {fileID: 2556536046020970685, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
       propertyPath: roomList.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2556536046020970685, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
       propertyPath: roomList.Array.data[0]
       value: 
-      objectReference: {fileID: 6240635366112052466, guid: d2369435398208b4ea390a595e36a196,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2556536046020970685, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
       propertyPath: player
@@ -375,26 +394,26 @@ PrefabInstance:
       propertyPath: cameraFollow
       value: 
       objectReference: {fileID: 298066943}
-    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+    - target: {fileID: 2556536046020970685, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1951528287}
-    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+      propertyPath: loadOnStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556536046020970687, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
-      propertyPath: bossHealthBar
+      propertyPath: bosses.Array.data[2]
       value: 
-      objectReference: {fileID: 1062325171}
-    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556536046020970687, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
-      propertyPath: playerHealthBar
+      propertyPath: bosses.Array.data[1]
       value: 
-      objectReference: {fileID: 190870682}
-    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556536046020970687, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
-      propertyPath: fader
+      propertyPath: bosses.Array.data[0]
       value: 
-      objectReference: {fileID: 579716580}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84ca6cc32681ea748aff43707ab63a54, type: 3}
 --- !u!1001 &997082742
@@ -409,6 +428,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 8549575789793378869, guid: 9649d9d737f03f444a927cccc1a196c8,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1951528294}
     - target: {fileID: 8549575789793378868, guid: 9649d9d737f03f444a927cccc1a196c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -464,11 +488,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8549575789793378869, guid: 9649d9d737f03f444a927cccc1a196c8,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1951528294}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9649d9d737f03f444a927cccc1a196c8, type: 3}
 --- !u!114 &1062325171 stripped
@@ -579,6 +598,7 @@ GameObject:
   - component: {fileID: 2126194056}
   - component: {fileID: 2126194057}
   - component: {fileID: 2126194058}
+  - component: {fileID: 2126194059}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -614,7 +634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 396067381}
   player: {fileID: 1951528287}
-  health: 0
+  health: 5
   healthBar: {fileID: 1062325171}
   aiTimer: 100
   maxAiTimerRngValue: 50
@@ -665,7 +685,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!212 &2126194057
@@ -702,8 +722,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2133515337
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5da5841b595996c42abbc615190c4230, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -735,6 +755,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &2126194059
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126194051}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2129742015
 GameObject:
   m_ObjectHideFlags: 0

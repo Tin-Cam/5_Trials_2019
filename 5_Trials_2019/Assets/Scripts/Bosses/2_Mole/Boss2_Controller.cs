@@ -16,12 +16,12 @@ public class Boss2_Controller : _BossBase
 
     protected override void BossHurt()
     {
-        throw new System.NotImplementedException();
+        TakeDamage(1);
     }
 
     protected override void CheckHealth()
     {
-        throw new System.NotImplementedException();
+        //Add Phases
     }
 
     protected override void IncreasePhase()
@@ -32,7 +32,7 @@ public class Boss2_Controller : _BossBase
 
     protected override void StartDeath()
     {
-        throw new System.NotImplementedException();
+        Die();
     }
 
 

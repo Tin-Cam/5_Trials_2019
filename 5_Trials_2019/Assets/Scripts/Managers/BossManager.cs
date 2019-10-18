@@ -13,7 +13,7 @@ public class BossManager : MonoBehaviour
 
 
     [Space(15)]
-    public List<_BossHolder> bosses = new List<_BossHolder>();
+    public List<_BossHolder> bossList = new List<_BossHolder>();
 
     void Awake()
     {
@@ -22,17 +22,28 @@ public class BossManager : MonoBehaviour
 
     public void LoadBoss(int bossID)
     {
-        if (bossID == 0)
+        if (IsBossListEmpty())
             return;
+
+        if (bossID == 0)
+            return; 
 
         UnloadBoss();
         currentBoss = Instantiate(CreateBoss(bossID));
     }
 
+    private bool IsBossListEmpty()
+    {
+        if (bossList.Capacity > 0)
+            return false;
+
+        return true;
+    }
+
 
     public _BossHolder CreateBoss(int bossID)
     {
-        _BossHolder boss = bosses[bossID];
+        _BossHolder boss = bossList[bossID];
 
         boss.SetVariables(player, healthBar, gameManager);
 

@@ -14,7 +14,7 @@ public class RoomManager : MonoBehaviour
     public List<Room> roomList = new List<Room>();
     public int startingRoom;
     
-    private Room currentRoom;
+    private Room currentRoom = null;
 
     void Awake()
     {
@@ -24,12 +24,29 @@ public class RoomManager : MonoBehaviour
 
     void Start()
     {
-        LoadRoom(startingRoom);
+            LoadRoom(startingRoom);       
+    }
+
+    //Checks if the room list is empty
+    private bool RoomListIsEmpty()
+    {
+        if (roomList.Capacity > 0)
+            return false;
+
+        cameraFollow.lockX = true;
+        cameraFollow.lockY = true;
+        cameraFollow.ResetCamera();
+
+        Debug.Log("No room to load. Room list is empty.");
+        return true;
     }
 
     //Make a corutine?
     public void LoadRoom(int roomCode)
     {
+        if (RoomListIsEmpty())
+            return;
+
         UnloadRoom();
         
         try
@@ -40,16 +57,13 @@ public class RoomManager : MonoBehaviour
             SetCamera();
         }
         catch (MissingReferenceException)
-        {
-            LoadRoom(0);
-            Debug.Log("No room to load. Room has been set to default.");
+        {           
+            Debug.Log("No room to load. Room " + roomCode + " does not exist.");
         }
         catch (System.ArgumentException)
-        {
-            LoadRoom(0);
-            Debug.Log("No room to load. Room has been set to default.");
-        }
-        
+        {           
+            Debug.Log("No room to load.");
+        }    
     }
 
     //Create a room from a prefab
@@ -100,6 +114,12 @@ public class RoomManager : MonoBehaviour
 
     public void OpenRoomDoor()
     {
+        if (currentRoom == null)
+            return;
+
+        if (currentRoom.door == null)
+            return;
+
         currentRoom.OpenDoor();
     }
 
