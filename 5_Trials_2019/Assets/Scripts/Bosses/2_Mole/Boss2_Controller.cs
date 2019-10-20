@@ -7,12 +7,43 @@ using UnityEngine;
 [RequireComponent(typeof(Boss2_Move))]
 public class Boss2_Controller : _BossBase
 {
+    private Boss2_Actions action;
+    private Boss2_Move move;
+
     protected override void Init()
     {
-        
+        action = GetComponent<Boss2_Actions>();
+        move = GetComponent<Boss2_Move>();
     }
 
-    
+    void Update()
+    {
+        AI();
+    }
+
+    //AI -----------------------------------
+
+    private void AI()
+    {
+        if (!hasAI)
+            return;
+
+        if (action.isActing)
+            return;
+
+        aiTimerCount++;
+
+        if (aiTimerCount >= aiTimer)
+        {
+            Act();
+            DefaultState();
+        }
+    }
+
+    private void Act()
+    {
+        move.MovePosition();
+    }
 
     protected override void BossHurt()
     {
@@ -36,14 +67,10 @@ public class Boss2_Controller : _BossBase
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public override void DefaultState()
     {
-        throw new System.NotImplementedException();
+        SetAITimer();
     }
 }

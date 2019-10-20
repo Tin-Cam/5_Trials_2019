@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class Boss2_Move : _MoveBase
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<Transform> holes = new List<Transform>();
+
+    private Rigidbody2D rig;
+
+    public void Init()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    //Randomly chooses a position to jump to
+    public void MovePosition()
     {
-        
+        int rng = Random.Range(0, holes.Capacity);
+        MovePosition(rng);
+    }
+
+    //Picks a position to go to
+    public void MovePosition(int position)
+    {
+        transform.position = holes[position].position;
     }
 
     public override void DefaultState()

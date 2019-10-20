@@ -125,6 +125,9 @@ public class RoomManager : MonoBehaviour
 
     public bool RoomHasBoss()
     {
+        if(currentRoom == null)
+            return false;
+
         if (currentRoom.bossID == 0)
             return false;
 
