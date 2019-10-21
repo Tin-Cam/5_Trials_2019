@@ -622,6 +622,75 @@ Transform:
   m_Father: {fileID: 1876421377}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1517913774
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8180312297406515321, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
+        type: 3}
+      propertyPath: m_Name
+      value: Room_Boss2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180312297406515327, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180312297406515327, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180312297406515327, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180312297406515327, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180312297406515327, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180312297406515327, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180312297406515327, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180312297406515327, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180312297406515327, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180312297406515327, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180312297406515327, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4c8d3ea7038392a4eb41bfbc252f09d4, type: 3}
 --- !u!1001 &1578821965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -800,7 +869,7 @@ Transform:
   m_GameObject: {fileID: 2126194051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2129742016}
   m_RootOrder: 0
@@ -823,7 +892,7 @@ MonoBehaviour:
   healthBar: {fileID: 1062325171}
   aiTimer: 100
   maxAiTimerRngValue: 50
-  hasAI: 1
+  hasAI: 0
   phase: 0
   actionList: []
 --- !u!114 &2126194054
@@ -838,7 +907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba288595c4a91644e8713da17cb34112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positions:
+  holes:
   - {fileID: 936741334}
   - {fileID: 1666390171}
   - {fileID: 850460023}
@@ -916,7 +985,8 @@ SpriteRenderer:
   m_SortingLayerID: 2133515337
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5da5841b595996c42abbc615190c4230, type: 3}
+  m_Sprite: {fileID: 6642691135006647050, guid: a16e1f4c2bf423a49a19c6aafca74fa5,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -937,7 +1007,7 @@ Animator:
   m_GameObject: {fileID: 2126194051}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5e79ed37a4d30eb41bbe7bac20aed4ba, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -963,7 +1033,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
