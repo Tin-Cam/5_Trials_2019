@@ -14,6 +14,9 @@ public class Boss2_Controller : _BossBase
     {
         action = GetComponent<Boss2_Actions>();
         move = GetComponent<Boss2_Move>();
+
+        action.Init();
+        move.Init();
     }
 
     void Update()
@@ -23,24 +26,7 @@ public class Boss2_Controller : _BossBase
 
     //AI -----------------------------------
 
-    private void AI()
-    {
-        if (!hasAI)
-            return;
-
-        if (action.isActing)
-            return;
-
-        aiTimerCount++;
-
-        if (aiTimerCount >= aiTimer)
-        {
-            Act();
-            DefaultState();
-        }
-    }
-
-    private void Act()
+    protected override void Act()
     {
         move.MovePosition();
     }

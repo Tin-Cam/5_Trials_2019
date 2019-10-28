@@ -39,7 +39,24 @@ public abstract class _BossBase : MonoBehaviour
         Init();       
     }
 
-    
+    protected void AI()
+    {
+        if (!hasAI)
+            return;
+
+        if (actionBase.isActing)
+            return;
+
+        aiTimerCount++;
+
+        if (aiTimerCount >= aiTimer)
+        {
+            Act();
+            DefaultState();
+        }
+    }
+
+
     public void StopAction()
     {
         DefaultState();
@@ -87,6 +104,7 @@ public abstract class _BossBase : MonoBehaviour
     }
 
     abstract protected void Init();
+    abstract protected void Act();
     abstract protected void BossHurt();
     abstract protected void IncreasePhase();
     abstract protected void CheckHealth();

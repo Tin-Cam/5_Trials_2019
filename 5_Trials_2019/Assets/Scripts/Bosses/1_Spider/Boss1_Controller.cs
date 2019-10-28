@@ -44,26 +44,7 @@ public class Boss1_Controller : _BossBase
     }
 
     //AI------------------------------------
-
-    void AI()
-    {
-        if (!hasAI)
-            return;
-
-        if (action.isActing)
-            return;
-
-        aiTimerCount++;
-
-        if (aiTimerCount >= aiTimer)
-        {
-            Act();
-        }
-    }
-
-    
-
-    void Act()
+    protected override void Act()
     {
         int rng = Random.Range(0, maxAction);
 
