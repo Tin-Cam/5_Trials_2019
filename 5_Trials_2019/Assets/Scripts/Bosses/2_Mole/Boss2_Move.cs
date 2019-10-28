@@ -11,6 +11,7 @@ public class Boss2_Move : _MoveBase
 
     public void Init()
     {
+        Debug.Log("WHY");
         animator = GetComponent<Animator>();
     }
 

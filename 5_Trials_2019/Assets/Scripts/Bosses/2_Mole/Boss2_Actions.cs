@@ -6,7 +6,7 @@ public class Boss2_Actions : _ActionBase
 {  
     public void Init()
     {
-
+        Debug.Log("WHY");
     }
 
     // Update is called once per frame

@@ -8,6 +8,8 @@ public class Dummy_Boss : _BossBase
     {
         actionBase = null;
         moveBase = null;
+
+        hasAI = false;
     }
     
 
@@ -36,4 +38,8 @@ public class Dummy_Boss : _BossBase
 
     }
 
+    protected override void Act()
+    {
+        
+    }
 }
