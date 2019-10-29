@@ -10,8 +10,7 @@ public class Boss2_Move : _MoveBase
     private Animator animator;
 
     public void Init()
-    {
-        Debug.Log("WHY");
+    {        
         animator = GetComponent<Animator>();
     }
 
@@ -22,10 +21,22 @@ public class Boss2_Move : _MoveBase
         MovePosition(rng);
     }
 
-    //Picks a position to go to
+    //Picks a position to go to and starts moving to it
     public void MovePosition(int position)
+    {       
+        StartCoroutine(MovingPosition(position));
+    }
+
+    //Waits until boss is underground, then changes its position
+    private IEnumerator MovingPosition(int position)
     {
         animator.SetTrigger("Dig");
+        yield return new WaitForEndOfFrame();
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName("Boss2_Digging"))
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        Debug.Log(animator.GetCurrentAnimatorStateInfo(0).IsTag("Digging"));
         transform.position = holes[position].position;
     }
 
