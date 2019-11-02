@@ -24,7 +24,6 @@ public abstract class _BossBase : MonoBehaviour
     public bool hasAI = true;
 
     public int phase; //Value determines how the boss behaves
-    public List<string> actionList = new List<string>();
 
 
     // Start is called before the first frame update
@@ -52,7 +51,7 @@ public abstract class _BossBase : MonoBehaviour
         if (aiTimerCount >= aiTimer)
         {
             Act();
-            DefaultState();
+            //DefaultState();
         }
     }
 

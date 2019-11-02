@@ -374,7 +374,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  boss: {fileID: 0}
   player: {fileID: 0}
   health: 5
   healthBar: {fileID: 0}
@@ -382,8 +381,7 @@ MonoBehaviour:
   maxAiTimerRngValue: 500
   hasAI: 1
   phase: 0
-  actionList: []
-  maxAction: 0
+  maxAction: 3
 --- !u!1 &4688997081961257086
 GameObject:
   m_ObjectHideFlags: 0

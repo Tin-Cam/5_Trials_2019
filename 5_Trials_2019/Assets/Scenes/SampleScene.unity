@@ -276,6 +276,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &523105346 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4688997081891801398, guid: 080179585f2ff024491c5ee7138566bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 4688997081919575378}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c12518334a94c488d57eafc72eb14f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &573346272
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +436,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899668340}
   m_CullTransparentMesh: 0
+--- !u!114 &1028169855 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3725356967537007999, guid: 080179585f2ff024491c5ee7138566bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 4688997081919575378}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118527ea9f6779644b75969b5296464e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1227621087
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +459,8 @@ GameObject:
   - component: {fileID: 1227621089}
   - component: {fileID: 1227621088}
   - component: {fileID: 1227621090}
+  - component: {fileID: 1227621091}
+  - component: {fileID: 1227621092}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -460,6 +486,7 @@ MonoBehaviour:
   playerMaxHealth: 10
   playerHealthBar: {fileID: 410962687}
   hardcore: 0
+  testBoss: {fileID: 523105346}
   bossHealthBar: {fileID: 2065960939}
   fader: {fileID: 0}
 --- !u!4 &1227621089
@@ -489,6 +516,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugMode: 1
+--- !u!114 &1227621091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227621087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad5bea6203809042ade477b815d9add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentBoss: {fileID: 1028169855}
+  player: {fileID: 0}
+  healthBar: {fileID: 0}
+  bossList: []
+--- !u!114 &1227621092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227621087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994d502952eafd04ca7177c321a24083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraFollow: {fileID: 0}
+  player: {fileID: 0}
+  door: {fileID: 0}
+  roomList: []
+  startingRoom: 0
 --- !u!1 &1246777510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,16 +1279,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_1
       objectReference: {fileID: 0}
-    - target: {fileID: 4688997081891801398, guid: 080179585f2ff024491c5ee7138566bd,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1476381286}
-    - target: {fileID: 4688997081891801398, guid: 080179585f2ff024491c5ee7138566bd,
-        type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 2065960939}
     - target: {fileID: 4688997082714058125, guid: 080179585f2ff024491c5ee7138566bd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1284,6 +1334,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4688997081891801398, guid: 080179585f2ff024491c5ee7138566bd,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1476381286}
+    - target: {fileID: 4688997081891801398, guid: 080179585f2ff024491c5ee7138566bd,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 2065960939}
     - target: {fileID: 4688997081742843015, guid: 080179585f2ff024491c5ee7138566bd,
         type: 3}
       propertyPath: player

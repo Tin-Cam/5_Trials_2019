@@ -380,6 +380,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556536046020970687, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
+      propertyPath: bossList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556536046020970687, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1319306258}
@@ -388,6 +393,12 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 549875884}
+    - target: {fileID: 2556536046020970687, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: bossList.Array.data[1]
+      value: 
+      objectReference: {fileID: 3725356967537007999, guid: 080179585f2ff024491c5ee7138566bd,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84ca6cc32681ea748aff43707ab63a54, type: 3}
 --- !u!1001 &5312493438139633605

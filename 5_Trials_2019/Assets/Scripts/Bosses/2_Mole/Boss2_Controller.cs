@@ -20,18 +20,19 @@ public class Boss2_Controller : _BossBase
 
         action.Init();
         move.Init();
+        //move.MovePosition(5);
     }
 
     void Update()
     {
-        AI();
+        //AI();
     }
 
     //AI -----------------------------------
 
     protected override void Act()
     {
-        move.MovePosition();
+       
     }
 
     protected override void BossHurt()

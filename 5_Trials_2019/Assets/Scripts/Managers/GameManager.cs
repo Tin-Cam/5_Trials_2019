@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public bool hardcore;
 
     [Space(15)]
+    public _BossBase testBoss;
     public HealthBar bossHealthBar;
 
     [Space(15)]
