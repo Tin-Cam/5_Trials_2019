@@ -768,6 +768,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9182096197023116854, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 704331663}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb5d813d44eb64f4791a90e539078c1f, type: 3}
 --- !u!1 &1666390170
@@ -904,7 +909,6 @@ MonoBehaviour:
   maxAiTimerRngValue: 0
   hasAI: 1
   phase: 0
-  actionList: []
 --- !u!114 &2126194054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -938,7 +942,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionList: []
   isActing: 0
-  idleTime: 0
+  idleTime: 2
+  projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
+    type: 3}
 --- !u!50 &2126194056
 Rigidbody2D:
   serializedVersion: 4

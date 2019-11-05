@@ -108,5 +108,5 @@ public abstract class _BossBase : MonoBehaviour
     abstract protected void IncreasePhase();
     abstract protected void CheckHealth();
     abstract protected void StartDeath();
-    abstract public void DefaultState();
+    abstract public void DefaultState(); 
 }
