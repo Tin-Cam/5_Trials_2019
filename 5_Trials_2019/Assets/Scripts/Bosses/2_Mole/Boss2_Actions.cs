@@ -9,11 +9,13 @@ public class Boss2_Actions : _ActionBase
     private Boss2_Move move;
     private Boss2_Controller controller;
     private GameObject player;
+    private Animator animator;
 
     public GameObject projectile;
 
     public void Init()
     {
+        animator = GetComponent<Animator>();
         controller = GetComponent<Boss2_Controller>();
         move = GetComponent<Boss2_Move>();
 
@@ -23,21 +25,27 @@ public class Boss2_Actions : _ActionBase
         actionList.Add("Idle");
         actionList.Add("MoveRandom");
         actionList.Add("Attack");
+
+        actionList.Add("Desperation");
     }
 
     void Shoot(float offset)
     {
-        offset = Mathf.Deg2Rad * offset;
-        Vector2 offsetVector = new Vector2(Mathf.Cos(offset), -Mathf.Sin(offset));
+        //offset = Mathf.Deg2Rad * offset;
+        //Vector2 offsetVector = new Vector2(Mathf.Cos(offset), Mathf.Sin(-offset));
+
+        
 
         //Creates the projectile
         GameObject tempProjectile;
         tempProjectile = Instantiate(projectile, transform.position, transform.rotation);
 
-        //Calculates the direction of the player
+        //Calculates the direction of the player (and applies an offset to it)
         Vector2 direction = player.transform.position - gameObject.transform.position;
+        Quaternion offsetVector = Quaternion.AngleAxis(offset, Vector3.forward);
+
+        direction = offsetVector * direction;
         direction.Normalize();
-        direction += offsetVector;
 
         //'Fires' the projectile
         tempProjectile.GetComponent<Projectile_Simple>().direction = direction;
@@ -48,6 +56,7 @@ public class Boss2_Actions : _ActionBase
     //Action 0 - Idle
     private IEnumerator Idle()
     {
+        animator.SetTrigger("Idle");
         yield return new WaitForSeconds(idleTime);
     }
 
@@ -62,6 +71,17 @@ public class Boss2_Actions : _ActionBase
     //Action 2 - Attack
     private IEnumerator Attack()
     {
+        animator.SetTrigger("Attack");
+        Shoot(0);
+        Shoot(30);
+        Shoot(-30);
+        yield return new WaitForSeconds(1);
+    }
+
+    //Action ? - Desperation
+    private IEnumerator Desperation()
+    {
+        animator.SetTrigger("Desperation");
         Shoot(0);
         Shoot(30);
         Shoot(-30);
