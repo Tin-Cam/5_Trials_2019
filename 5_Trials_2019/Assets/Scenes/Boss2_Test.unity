@@ -921,7 +921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba288595c4a91644e8713da17cb34112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdTime: 2
+  holdTime: 1
   holes:
   - {fileID: 936741334}
   - {fileID: 1666390171}

@@ -31,11 +31,6 @@ public class Boss2_Actions : _ActionBase
 
     void Shoot(float offset)
     {
-        //offset = Mathf.Deg2Rad * offset;
-        //Vector2 offsetVector = new Vector2(Mathf.Cos(offset), Mathf.Sin(-offset));
-
-        
-
         //Creates the projectile
         GameObject tempProjectile;
         tempProjectile = Instantiate(projectile, transform.position, transform.rotation);
@@ -63,7 +58,11 @@ public class Boss2_Actions : _ActionBase
     //Action 1 - Move randomly across the room
     private IEnumerator MoveRandom()
     {
-        move.MovePosition(3);
+
+
+        for(int i = 0; i < 3; i++)
+            yield return move.MovePosition();
+    
         Debug.Log("Move Done");
         yield return new WaitForEndOfFrame();
     }

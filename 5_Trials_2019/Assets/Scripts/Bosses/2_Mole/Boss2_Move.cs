@@ -18,41 +18,40 @@ public class Boss2_Move : _MoveBase
     }
 
     //Randomly chooses a position to jump to
-    public void MovePosition(int times)
+    public IEnumerator MovePosition()
     {
         int rng = Random.Range(0, holes.Capacity);
-        MovePosition(times, rng);
+        yield return MovePosition(rng);
     }
 
-    //Picks a position to go to and starts moving to it
-    public void MovePosition(int times, int position)
-    {       
-        StartCoroutine(MovingPosition(times, position));
-    }
 
     //Waits until boss is underground, then changes its position
-    private IEnumerator MovingPosition(int times,  int position)
+    public IEnumerator MovePosition(int position)
     {
-        animator.SetTrigger("Dig");
-        yield return new WaitForEndOfFrame();
-        while (animator.GetCurrentAnimatorStateInfo(0).IsName("Boss2_Digging"))
-        {
-            yield return new WaitForFixedUpdate();
-        }
-        Debug.Log(animator.GetCurrentAnimatorStateInfo(0).IsTag("Digging"));
+        //Waits for the boss to dig and move
+        animator.SetTrigger("Dig");       
+        yield return WaitForAnimation("Boss2_Digging");
         transform.position = holes[position].position;
+        yield return WaitForAnimation("Boss2_Underground");
+        yield return WaitForAnimation("Boss2_Rising");
 
         yield return new WaitForSeconds(holdTime);
-
-        //Rerun function if times is greater than 0
-        times--;
-        if (times > 0)
-            MovePosition(times);
 
     }
 
     public override void DefaultState()
     {
         throw new System.NotImplementedException();
+    }
+
+    //Returns true when an animation stops playing
+    public IEnumerator WaitForAnimation(string animation)
+    {
+        yield return new WaitForEndOfFrame();
+        Debug.Log("Waiting for " + animation);
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName(animation))
+        {
+            yield return new WaitForFixedUpdate();
+        }
     }
 }
