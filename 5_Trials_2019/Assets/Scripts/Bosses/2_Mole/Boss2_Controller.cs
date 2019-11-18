@@ -10,6 +10,9 @@ public class Boss2_Controller : _BossBase
     private Boss2_Actions action;
     private Boss2_Move move;
 
+    public int maxAction;
+    private int vulCounter;
+
     protected override void Init()
     {
         action = GetComponent<Boss2_Actions>();
@@ -20,7 +23,7 @@ public class Boss2_Controller : _BossBase
 
         action.Init();
         move.Init();
-        //move.MovePosition(5);
+
     }
 
     void Update()
@@ -29,6 +32,26 @@ public class Boss2_Controller : _BossBase
     }
 
     //AI -----------------------------------
+
+    //Picks the next action to take. Runs after an action has been performed
+    public void NextAction()
+    {
+        int rng = Random.Range(0, maxAction);
+
+        while (action.CheckLastAction(rng))
+            rng = Random.Range(0, 3);
+
+        //Forces the boss to become vulnerable if it hasn't been so after a few cycles
+        if (rng == 0 | vulCounter >= 4)
+        {
+            vulCounter = 0;
+            PickAction(0);
+            return;
+        }
+
+        vulCounter++;
+        PickAction(rng);
+    }
 
     protected override void Act()
     {
@@ -42,12 +65,26 @@ public class Boss2_Controller : _BossBase
 
     protected override void CheckHealth()
     {
-        //Add Phases
+        if (health <= maxHealth * 0.6 & phase < 1)
+        {
+            IncreasePhase();
+        }
     }
 
     protected override void IncreasePhase()
     {
-        throw new System.NotImplementedException();
+        phase++;
+        if (phase == 1)
+            SetPhase_1();
+    }
+
+    private void SetPhase_1()
+    {
+        float newSpeed = move.digSpeed * 2;
+        float newHold =  action.moveHoldTime * (float) 0.5;
+
+        move.ChangeSpeed(newSpeed);
+        action.moveHoldTime *= (float) 0.5; 
     }
 
 
@@ -61,6 +98,7 @@ public class Boss2_Controller : _BossBase
 
     public override void DefaultState()
     {
-        SetAITimer();
+        move.DefaultState();
+        action.DefaultState();
     }
 }

@@ -12,6 +12,12 @@ public class Boss2_Actions : _ActionBase
     private Animator animator;
 
     public GameObject projectile;
+    public SpinningLaser laser;
+    public float doubleOffset;
+    public float tripleOffset;
+    public float moveHoldTime;
+    public int rapidMoveAmount;
+    public float desperationTime;
 
     public void Init()
     {
@@ -23,22 +29,102 @@ public class Boss2_Actions : _ActionBase
         isActing = false;
 
         actionList.Add("Idle");
-        actionList.Add("MoveRandom");
+        //actionList.Add("MoveRandom");
         actionList.Add("Attack");
-
+        actionList.Add("RapidAttack");
         actionList.Add("Desperation");
     }
 
-    void Shoot(float offset)
+    //ACTIONS ---------------------------------
+
+    //Default Action - Move randomly across the room
+    private IEnumerator MoveRandom()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            yield return move.MovePosition();
+            yield return new WaitForSeconds(moveHoldTime);
+        }
+
+        Debug.Log("Move Done");
+        yield return new WaitForEndOfFrame();
+        controller.NextAction();
+    }
+
+    //Action 0 - Idle
+    private IEnumerator Idle()
+    {
+        animator.SetTrigger("Idle");
+        yield return new WaitForSeconds(idleTime);
+        StartCoroutine(MoveRandom());
+    }
+
+    //Action 1 - Attack
+    private IEnumerator Attack()
+    {
+        //yield return move.MovePosition();
+        animator.SetTrigger("Attack");
+        Vector3 target = player.transform.position;
+
+        for (int i = 0; i < 5; i++)
+        {
+            TripleShot(target);
+            yield return new WaitForSeconds((float)0.2);
+        }
+
+        yield return new WaitForSeconds(1);
+        
+        StartCoroutine(MoveRandom());
+    }
+
+    //Action 2 - Rapid Attack
+    private IEnumerator RapidAttack()
+    {
+        float speed = move.digSpeed;
+
+        move.ChangeSpeed(speed * 2);
+
+        Vector3 target = player.transform.position;
+
+        for (int i = 0; i < rapidMoveAmount; i++)
+        {
+            yield return move.MovePosition();
+            animator.SetTrigger("Attack");
+            SingleShot(target);
+            yield return new WaitForSeconds((float)0.2);
+        }
+
+        move.ChangeSpeed(speed);
+        StartCoroutine(MoveRandom());
+    }
+
+    //Action 3 - Desperation
+    private IEnumerator Desperation()
+    {
+        yield return move.MovePosition(4);
+        animator.SetTrigger("Desperation");
+
+        laser.gameObject.SetActive(true);
+        yield return laser.StartSpin();
+        yield return new WaitForSeconds(desperationTime);
+        yield return laser.EndSpin();
+
+        yield return new WaitForSeconds(1);
+        StartCoroutine(MoveRandom());
+    }
+
+    //OTHER COMMANDS ----------------------
+    void Shoot(float offset, Vector3 target)
     {
         //Creates the projectile
         GameObject tempProjectile;
         tempProjectile = Instantiate(projectile, transform.position, transform.rotation);
 
         //Calculates the direction of the player (and applies an offset to it)
-        Vector2 direction = player.transform.position - gameObject.transform.position;
+        Vector2 direction = target - gameObject.transform.position;
         Quaternion offsetVector = Quaternion.AngleAxis(offset, Vector3.forward);
 
+        //Applies an offset angle
         direction = offsetVector * direction;
         direction.Normalize();
 
@@ -46,49 +132,27 @@ public class Boss2_Actions : _ActionBase
         tempProjectile.GetComponent<Projectile_Simple>().direction = direction;
     }
 
-    //ACTIONS ---------------------------------
-
-    //Action 0 - Idle
-    private IEnumerator Idle()
+    //The following functions shoot different amount of bullets at the same time
+    void SingleShot(Vector3 target)
     {
-        animator.SetTrigger("Idle");
-        yield return new WaitForSeconds(idleTime);
+        Shoot(0, target);
     }
 
-    //Action 1 - Move randomly across the room
-    private IEnumerator MoveRandom()
+    void DoubleShot(Vector3 target)
     {
-
-
-        for(int i = 0; i < 3; i++)
-            yield return move.MovePosition();
-    
-        Debug.Log("Move Done");
-        yield return new WaitForEndOfFrame();
+        Shoot(doubleOffset, target);
+        Shoot(-doubleOffset, target);
     }
 
-    //Action 2 - Attack
-    private IEnumerator Attack()
+    void TripleShot(Vector3 target)
     {
-        animator.SetTrigger("Attack");
-        Shoot(0);
-        Shoot(30);
-        Shoot(-30);
-        yield return new WaitForSeconds(1);
-    }
-
-    //Action ? - Desperation
-    private IEnumerator Desperation()
-    {
-        animator.SetTrigger("Desperation");
-        Shoot(0);
-        Shoot(30);
-        Shoot(-30);
-        yield return new WaitForSeconds(1);
+        Shoot(0, target);
+        Shoot(tripleOffset, target);
+        Shoot(-tripleOffset, target);
     }
 
     public override void DefaultState()
     {
-        throw new System.NotImplementedException();
+        StopActing();
     }
 }

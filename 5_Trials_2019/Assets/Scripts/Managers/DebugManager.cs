@@ -27,22 +27,22 @@ public class DebugManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Keypad0))
         {
-            GetBoss().PickAction(0);
+            PerformCommand(0);
         }
 
         if (Input.GetKeyDown(KeyCode.Keypad1))
         {
-            GetBoss().PickAction(1);
+            PerformCommand(1);
         }
 
         if (Input.GetKeyDown(KeyCode.Keypad2))
         {
-            GetBoss().PickAction(2);
+            PerformCommand(2);
         }
 
         if (Input.GetKeyDown(KeyCode.Keypad3))
         {
-            GetBoss().PickAction(3);
+            PerformCommand(3);
         }
 
         //Stops the boss from acting
@@ -50,6 +50,12 @@ public class DebugManager : MonoBehaviour
         {
             GetBoss().StopAction();
         }
+    }
+
+    private void PerformCommand(int action)
+    {
+        GetBoss().StopAction();
+        GetBoss().PickAction(action);
     }
 
     private void RoomCommands()
