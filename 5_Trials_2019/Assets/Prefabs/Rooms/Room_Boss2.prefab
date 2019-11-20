@@ -2497,7 +2497,7 @@ MonoBehaviour:
   cameraLockY: 1
   hasIntro: 0
   playerSpawn: {x: 0, y: -4}
-  bossID: 1
+  bossID: 2
   music: {fileID: 0}
   door: {fileID: 6005182784878521939}
 --- !u!1001 &722717013355842587
@@ -2507,11 +2507,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8180312297406515327}
     m_Modifications:
-    - target: {fileID: 779836689316659747, guid: 73ee77e064dd62d41a082ac7cc657a9a,
-        type: 3}
-      propertyPath: m_Name
-      value: Main Door
-      objectReference: {fileID: 0}
     - target: {fileID: 6435972236717154888, guid: 73ee77e064dd62d41a082ac7cc657a9a,
         type: 3}
       propertyPath: exit
@@ -2527,6 +2522,11 @@ PrefabInstance:
       propertyPath: room
       value: 
       objectReference: {fileID: 6174863984518241047}
+    - target: {fileID: 779836689316659747, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: m_Name
+      value: Main Door
+      objectReference: {fileID: 0}
     - target: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
         type: 3}
       propertyPath: m_LocalPosition.x

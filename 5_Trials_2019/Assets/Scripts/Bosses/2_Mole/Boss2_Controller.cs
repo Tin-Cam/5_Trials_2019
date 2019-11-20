@@ -12,6 +12,7 @@ public class Boss2_Controller : _BossBase
 
     public int maxAction;
     private int vulCounter;
+    public bool isHitable;
 
     protected override void Init()
     {
@@ -58,14 +59,21 @@ public class Boss2_Controller : _BossBase
        
     }
 
+    //Boss will not take damage when underground or using desperation attack
     protected override void BossHurt()
     {
-        TakeDamage(1);
+        if (isHitable)
+            TakeDamage(1);
     }
 
     protected override void CheckHealth()
     {
         if (health <= maxHealth * 0.6 & phase < 1)
+        {
+            IncreasePhase();
+        }
+
+        if (health <= maxHealth * 0.25 & phase < 2)
         {
             IncreasePhase();
         }
@@ -76,6 +84,9 @@ public class Boss2_Controller : _BossBase
         phase++;
         if (phase == 1)
             SetPhase_1();
+
+        if (phase == 2)
+            SetPhase_2();
     }
 
     private void SetPhase_1()
@@ -84,7 +95,26 @@ public class Boss2_Controller : _BossBase
         float newHold =  action.moveHoldTime * (float) 0.5;
 
         move.ChangeSpeed(newSpeed);
-        action.moveHoldTime *= (float) 0.5; 
+        action.moveHoldTime *= (float) 0.5;
+        action.attackSplits = 2;
+
+        
+    }
+
+    private void SetPhase_2()
+    {
+        float newSpeed = move.digSpeed * (float)1.5;
+        float newHold = action.moveHoldTime * (float)0.75;
+
+        move.ChangeSpeed(newSpeed);
+        action.moveHoldTime *= (float)0.5;
+
+        action.idleTime *= (float)0.66;
+        action.attackHoldTime *= (float)0.66;
+
+        DefaultState();
+        PickAction(3);
+        maxAction = 4;
     }
 
 
@@ -100,5 +130,6 @@ public class Boss2_Controller : _BossBase
     {
         move.DefaultState();
         action.DefaultState();
+        isHitable = true;
     }
 }

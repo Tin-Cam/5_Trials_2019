@@ -13,11 +13,17 @@ public class Boss2_Actions : _ActionBase
 
     public GameObject projectile;
     public SpinningLaser laser;
+    [Space(15)]
+    public int attackSplits = 1;
+    public int shotAmount;
     public float doubleOffset;
     public float tripleOffset;
+    public float attackHoldTime;
+    public float desperationTime;
+    [Space(15)]
     public float moveHoldTime;
     public int rapidMoveAmount;
-    public float desperationTime;
+    
 
     public void Init()
     {
@@ -29,7 +35,7 @@ public class Boss2_Actions : _ActionBase
         isActing = false;
 
         actionList.Add("Idle");
-        //actionList.Add("MoveRandom");
+
         actionList.Add("Attack");
         actionList.Add("RapidAttack");
         actionList.Add("Desperation");
@@ -61,18 +67,24 @@ public class Boss2_Actions : _ActionBase
 
     //Action 1 - Attack
     private IEnumerator Attack()
-    {
-        //yield return move.MovePosition();
+    {       
         animator.SetTrigger("Attack");
+        yield return new WaitForSeconds((float) 0.5);
+
         Vector3 target = player.transform.position;
 
-        for (int i = 0; i < 5; i++)
+        int rng = Random.Range(0, attackSplits);
+
+        for (int i = 0; i < shotAmount; i++)
         {
-            TripleShot(target);
+            if (rng == 0)
+                TripleShot(target);
+            else
+                DoubleShot(target);
             yield return new WaitForSeconds((float)0.2);
         }
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(attackHoldTime);
         
         StartCoroutine(MoveRandom());
     }
@@ -82,15 +94,13 @@ public class Boss2_Actions : _ActionBase
     {
         float speed = move.digSpeed;
 
-        move.ChangeSpeed(speed * 2);
-
-        Vector3 target = player.transform.position;
+        move.ChangeSpeed(speed * 2);    
 
         for (int i = 0; i < rapidMoveAmount; i++)
         {
             yield return move.MovePosition();
             animator.SetTrigger("Attack");
-            SingleShot(target);
+            yield return RapidShot(shotAmount);
             yield return new WaitForSeconds((float)0.2);
         }
 
@@ -98,11 +108,12 @@ public class Boss2_Actions : _ActionBase
         StartCoroutine(MoveRandom());
     }
 
-    //Action 3 - Desperation
+    //Action 3 - Desperation (Cannot be damaged during attack)
     private IEnumerator Desperation()
     {
         yield return move.MovePosition(4);
         animator.SetTrigger("Desperation");
+        controller.isHitable = false;
 
         laser.gameObject.SetActive(true);
         yield return laser.StartSpin();
@@ -110,6 +121,7 @@ public class Boss2_Actions : _ActionBase
         yield return laser.EndSpin();
 
         yield return new WaitForSeconds(1);
+        controller.isHitable = true;
         StartCoroutine(MoveRandom());
     }
 
@@ -133,9 +145,19 @@ public class Boss2_Actions : _ActionBase
     }
 
     //The following functions shoot different amount of bullets at the same time
-    void SingleShot(Vector3 target)
+    private IEnumerator RapidShot(int amount)
     {
-        Shoot(0, target);
+        int rng = Random.Range(0, attackSplits);
+        Vector3 target = player.transform.position;
+
+        for (int i = 0; i < amount; i++)
+        {
+            if (rng == 0)
+                Shoot(0, target);
+            else
+                DoubleShot(target);
+            yield return new WaitForSeconds((float)0.1);
+        }
     }
 
     void DoubleShot(Vector3 target)
@@ -154,5 +176,6 @@ public class Boss2_Actions : _ActionBase
     public override void DefaultState()
     {
         StopActing();
+        laser.EndSpin();
     }
 }
