@@ -27,16 +27,28 @@ public class SpinningLaser : MonoBehaviour
         transform.Rotate(Vector3.forward * Time.deltaTime * currentSpeed);
     }
 
-    public IEnumerator StartSpin()
+    //Starts spinning the laser
+    public IEnumerator Spin(float time)
     {
         ResetSpin();
         SetRotation();
+        
+        int rng = Random.Range(0, 2);
+        if (rng == 1)
+            ReverseDirection();
+
         yield return new WaitForEndOfFrame();
+
         animator.Play("Start");
         yield return WaitForAnimation();
+
         isSpinning = true;
+
+        yield return new WaitForSeconds(time);
+        yield return EndSpin();
     }
 
+    //Ends the spin
     public IEnumerator EndSpin()
     {   
         animator.Play("End");
@@ -45,13 +57,16 @@ public class SpinningLaser : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    //Calculates and applies acceleration to speed
     private float CalculateSpeed()
     {
         float speed = currentSpeed;
         speed += acceleration;
 
-        if (currentSpeed >= Mathf.Abs(maxSpeed))
-            return maxSpeed;
+        //If maxspeed is reached, return maxspeed (returns negative maxSpeed if currentSpeed is negative)
+        if (Mathf.Abs(currentSpeed) >= maxSpeed)
+            return maxSpeed * Mathf.Sign(acceleration);
+
         return speed;
     }
 
@@ -61,6 +76,18 @@ public class SpinningLaser : MonoBehaviour
         int rng = Random.Range(0, 3);
         Quaternion rotation = Quaternion.AngleAxis(45 * rng, Vector3.forward);
         this.transform.rotation = rotation;
+    }
+
+    public void ReverseDirection()
+    {
+        acceleration = -acceleration;
+    }
+
+    public void RandomDirection()
+    {
+        int rng = Random.Range(0, 2);
+        if (rng == 1)
+            ReverseDirection();
     }
 
     public void ResetSpin()

@@ -25,11 +25,7 @@ public class Boss2_Controller : _BossBase
         action.Init();
         move.Init();
 
-    }
-
-    void Update()
-    {
-        //AI();
+        PickAction(0);
     }
 
     //AI -----------------------------------
@@ -39,8 +35,9 @@ public class Boss2_Controller : _BossBase
     {
         int rng = Random.Range(0, maxAction);
 
+        //Checks if the picked action has already been used twice
         while (action.CheckLastAction(rng))
-            rng = Random.Range(0, 3);
+            rng = Random.Range(0, maxAction);
 
         //Forces the boss to become vulnerable if it hasn't been so after a few cycles
         if (rng == 0 | vulCounter >= 4)
@@ -54,6 +51,7 @@ public class Boss2_Controller : _BossBase
         PickAction(rng);
     }
 
+    //REDUNDANT
     protected override void Act()
     {
        
@@ -97,8 +95,7 @@ public class Boss2_Controller : _BossBase
         move.ChangeSpeed(newSpeed);
         action.moveHoldTime *= (float) 0.5;
         action.attackSplits = 2;
-
-        
+      
     }
 
     private void SetPhase_2()
@@ -123,8 +120,6 @@ public class Boss2_Controller : _BossBase
         Die();
     }
 
-
-    
 
     public override void DefaultState()
     {

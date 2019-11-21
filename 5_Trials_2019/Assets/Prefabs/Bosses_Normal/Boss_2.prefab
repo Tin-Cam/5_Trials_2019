@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5392826074778369685}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6, y: -4, z: 0}
+  m_LocalPosition: {x: -5, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5392826075535894754}
@@ -154,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5392826074864650806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 4, z: 0}
+  m_LocalPosition: {x: -5, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5392826075535894754}
@@ -249,7 +249,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5392826075594300281}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: 4, z: 0}
+  m_LocalPosition: {x: 5, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5392826075535894754}
@@ -411,11 +411,14 @@ MonoBehaviour:
   projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
     type: 3}
   laser: {fileID: 5392826076192878693}
-  doubleOffset: 0
+  attackSplits: 1
+  shotAmount: 5
+  doubleOffset: 10
   tripleOffset: 30
+  attackHoldTime: 3
+  desperationTime: 5
   moveHoldTime: 1
   rapidMoveAmount: 5
-  desperationTime: 5
 --- !u!114 &5392826075785668197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,7 +458,7 @@ MonoBehaviour:
   maxAiTimerRngValue: 0
   hasAI: 1
   phase: 0
-  maxAction: 0
+  maxAction: 3
   isHitable: 1
 --- !u!50 &5392826075785668203
 Rigidbody2D:
@@ -570,7 +573,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
 --- !u!1 &5392826075789216604
 GameObject:
@@ -642,7 +645,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5392826076139222029}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: -4, z: 0}
+  m_LocalPosition: {x: 5, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5392826075535894754}
@@ -698,7 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpinning: 0
   maxSpeed: 80
-  acceleration: 3
+  acceleration: -1
 --- !u!95 &5392826076192878692
 Animator:
   serializedVersion: 3

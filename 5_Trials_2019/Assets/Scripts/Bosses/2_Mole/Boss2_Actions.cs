@@ -34,8 +34,8 @@ public class Boss2_Actions : _ActionBase
         player = controller.player;
         isActing = false;
 
+        //Actions
         actionList.Add("Idle");
-
         actionList.Add("Attack");
         actionList.Add("RapidAttack");
         actionList.Add("Desperation");
@@ -43,21 +43,21 @@ public class Boss2_Actions : _ActionBase
 
     //ACTIONS ---------------------------------
 
-    //Default Action - Move randomly across the room
+    //Default Action - Move randomly across the room (Not part of actionlist; used after ebery other action)
     private IEnumerator MoveRandom()
     {
+        //Moves boss 3 times
         for (int i = 0; i < 3; i++)
         {
             yield return move.MovePosition();
             yield return new WaitForSeconds(moveHoldTime);
         }
 
-        Debug.Log("Move Done");
         yield return new WaitForEndOfFrame();
         controller.NextAction();
     }
 
-    //Action 0 - Idle
+    //Action 0 - Idle - Boss stays still, allowing the player to attack
     private IEnumerator Idle()
     {
         animator.SetTrigger("Idle");
@@ -65,16 +65,17 @@ public class Boss2_Actions : _ActionBase
         StartCoroutine(MoveRandom());
     }
 
-    //Action 1 - Attack
+    //Action 1 - Attack - Mole stays still and attacks player with a double or triple shot
     private IEnumerator Attack()
     {       
         animator.SetTrigger("Attack");
         yield return new WaitForSeconds((float) 0.5);
 
-        Vector3 target = player.transform.position;
+        Vector3 target = player.transform.position; //Position the boss aims at
 
-        int rng = Random.Range(0, attackSplits);
+        int rng = Random.Range(0, attackSplits); // Decides if the boss will do a double or triple shot
 
+        //Shoots at target postiion
         for (int i = 0; i < shotAmount; i++)
         {
             if (rng == 0)
@@ -89,11 +90,11 @@ public class Boss2_Actions : _ActionBase
         StartCoroutine(MoveRandom());
     }
 
-    //Action 2 - Rapid Attack
+    //Action 2 - Rapid Attack - Boss moves and attacks simultainously
     private IEnumerator RapidAttack()
     {
+        //Holds the boss' original speed and reapplies it after acting
         float speed = move.digSpeed;
-
         move.ChangeSpeed(speed * 2);    
 
         for (int i = 0; i < rapidMoveAmount; i++)
@@ -108,17 +109,17 @@ public class Boss2_Actions : _ActionBase
         StartCoroutine(MoveRandom());
     }
 
-    //Action 3 - Desperation (Cannot be damaged during attack)
+    //Action 3 - Desperation - Boss shoots a spinning laser (Cannot be damaged during attack)
     private IEnumerator Desperation()
     {
         yield return move.MovePosition(4);
         animator.SetTrigger("Desperation");
         controller.isHitable = false;
 
+        //Starts the laser (and randomly picks a spin direction)
         laser.gameObject.SetActive(true);
-        yield return laser.StartSpin();
-        yield return new WaitForSeconds(desperationTime);
-        yield return laser.EndSpin();
+        laser.RandomDirection();
+        yield return laser.Spin(desperationTime);
 
         yield return new WaitForSeconds(1);
         controller.isHitable = true;
