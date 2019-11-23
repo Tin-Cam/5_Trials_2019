@@ -11,13 +11,25 @@ public class ScreenFader : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void FadeIn()
+    public IEnumerator FadeIn()
     {
         animator.SetTrigger("FadeIn");
+        yield return WaitForAnimation();
     }
 
-    public void FadeOut()
+    public IEnumerator FadeOut()
     {
         animator.SetTrigger("FadeOut");
+        yield return WaitForAnimation();
+    }
+
+    //Finishes when an animation stops playing
+    public IEnumerator WaitForAnimation()
+    {
+        yield return new WaitForEndOfFrame();       
+        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
+        {
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

@@ -169,8 +169,12 @@ public class PlayerMove : MonoBehaviour
 
         if (other.tag == "Projectile")
         {
-            Vector2 playerPosition = transform.position;
             gameManager.PlayerTakeDamage(1);
+
+            if (gameManager.playerHealth <= 0)
+                return;
+
+            Vector2 playerPosition = transform.position;           
             Vector2 direction = playerPosition - other.ClosestPoint(playerPosition);
            
             StartCoroutine(knockBack(direction, defaultKnockBack));

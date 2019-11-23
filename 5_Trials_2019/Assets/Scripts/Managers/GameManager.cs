@@ -10,8 +10,9 @@ public class GameManager : MonoBehaviour
     public bool isPaused;
     public int startingRoom;
     public GameObject player;
-    public float playerMaxHealth;
-    private float playerHealth;
+    
+    public float playerHealth;
+    private float playerMaxHealth;
 
     public HealthBar playerHealthBar;
     public bool hardcore;
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour
         roomManager = GetComponent<RoomManager>();
         //bossManager = GetComponent<BossManager>();
 
-        playerHealth = playerMaxHealth;
+        playerMaxHealth = playerHealth;
         playerHealthBar.initHealth(playerMaxHealth);      
     }
 
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNewRoom(int roomCode)
     {
-        fader.FadeIn();
+        StartCoroutine(fader.FadeIn());
         roomManager.LoadRoom(roomCode);
         ShowGUI_Animate(roomManager.RoomHasBoss());
     }
@@ -92,6 +93,17 @@ public class GameManager : MonoBehaviour
         playerHealth -= damage;
         playerHealthBar.addOrSubtractHealth(-damage);
         if (playerHealth <= 0)
-            player.SetActive(false);
+            StartCoroutine(PlayerDeath());
+
     }
+
+    private IEnumerator PlayerDeath()
+    {
+        player.SetActive(false);
+        yield return new WaitForSeconds(1);
+        yield return fader.FadeOut();
+        Time.timeScale = 0;
+    }
+
+
 }

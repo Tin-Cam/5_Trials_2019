@@ -298,6 +298,11 @@ PrefabInstance:
       propertyPath: fader
       value: 
       objectReference: {fileID: 117616661}
+    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: playerHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2556536046020970673, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -355,6 +360,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556536046020970685, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
+      propertyPath: roomList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556536046020970685, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
       propertyPath: cameraFollow
       value: 
       objectReference: {fileID: 1204123199}
@@ -378,6 +388,18 @@ PrefabInstance:
       propertyPath: loadOnStart
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2556536046020970685, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: roomList.Array.data[3]
+      value: 
+      objectReference: {fileID: 3893562132920471541, guid: 58f6ce58268165b448381f7cf65189aa,
+        type: 3}
+    - target: {fileID: 2556536046020970685, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: roomList.Array.data[2]
+      value: 
+      objectReference: {fileID: 6174863984518241047, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
+        type: 3}
     - target: {fileID: 2556536046020970687, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
       propertyPath: bossList.Array.size
@@ -424,6 +446,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312493438252995564, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5312493438252995560, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
@@ -529,6 +556,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312493438611060894, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312493438664343407, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52fee9b99713a1841bb55128229d8880, type: 3}
