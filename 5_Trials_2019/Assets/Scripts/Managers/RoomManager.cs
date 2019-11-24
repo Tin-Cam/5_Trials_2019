@@ -24,8 +24,7 @@ public class RoomManager : MonoBehaviour
 
     void Start()
     {
-        LoadRoom(startingRoom);
-        gameManager.ShowGUI(RoomHasBoss());
+        gameManager.LoadNewRoom(startingRoom);
     }
 
     //Checks if the room list is empty

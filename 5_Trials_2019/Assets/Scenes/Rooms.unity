@@ -266,6 +266,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa22e8f676b480845b3ac57ec7b77620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1717058421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5312493438252995564, guid: 52fee9b99713a1841bb55128229d8880,
+    type: 3}
+  m_PrefabInstance: {fileID: 5312493438139633605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1717058426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717058421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adba872e3065dd54e859777fc3778123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealthBar: {fileID: 602503005}
+  bossHealthBar: {fileID: 549875884}
+  fader: {fileID: 117616661}
+  gameOverMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
 --- !u!1001 &2556536046814137238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -303,6 +326,11 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2556536046020970684, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: gui
+      value: 
+      objectReference: {fileID: 1717058426}
     - target: {fileID: 2556536046020970673, guid: 84ca6cc32681ea748aff43707ab63a54,
         type: 3}
       propertyPath: m_LocalPosition.x

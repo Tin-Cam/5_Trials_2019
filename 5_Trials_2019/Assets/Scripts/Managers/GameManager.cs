@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private RoomManager roomManager;
+    public GUIManager gui;
     //private BossManager bossManager;
 
     public bool isPaused;
@@ -14,23 +15,21 @@ public class GameManager : MonoBehaviour
     public float playerHealth;
     private float playerMaxHealth;
 
-    public HealthBar playerHealthBar;
+    //public HealthBar playerHealthBar;
     public bool hardcore;
 
     [Space(15)]
     public _BossBase testBoss;
-    public HealthBar bossHealthBar;
+    //public HealthBar bossHealthBar;
 
-    [Space(15)]
-    public ScreenFader fader;
 
-    void Start()
+    void Awake()
     {
         roomManager = GetComponent<RoomManager>();
         //bossManager = GetComponent<BossManager>();
 
         playerMaxHealth = playerHealth;
-        playerHealthBar.initHealth(playerMaxHealth);      
+        gui.InitHealth(playerMaxHealth);      
     }
 
     void Update()
@@ -43,28 +42,17 @@ public class GameManager : MonoBehaviour
 
     public void LoadNewRoom(int roomCode)
     {
-        StartCoroutine(fader.FadeIn());
+        StartCoroutine(gui.FadeTransition("In"));
         roomManager.LoadRoom(roomCode);
-        ShowGUI_Animate(roomManager.RoomHasBoss());
+        gui.ShowGUI_Animate(roomManager.RoomHasBoss());
     }
 
     public void BossDefeated()
     {
-        ShowGUI_Animate(false);
+        gui.ShowGUI_Animate(false);
         OpenRoomDoor();
         //Stop Music
-    }
-
-    public void ShowGUI(bool isVisible)
-    {
-        playerHealthBar.gameObject.SetActive(isVisible);
-        bossHealthBar.gameObject.SetActive(isVisible);
-    }
-
-    public void ShowGUI_Animate(bool isVisible)
-    {
-        ShowGUI(isVisible);
-    }
+    }   
 
     public void OpenRoomDoor()
     {
@@ -91,7 +79,7 @@ public class GameManager : MonoBehaviour
     public void PlayerTakeDamage(float damage)
     {
         playerHealth -= damage;
-        playerHealthBar.addOrSubtractHealth(-damage);
+        gui.AddHealth(-damage);
         if (playerHealth <= 0)
             StartCoroutine(PlayerDeath());
 
@@ -101,7 +89,7 @@ public class GameManager : MonoBehaviour
     {
         player.SetActive(false);
         yield return new WaitForSeconds(1);
-        yield return fader.FadeOut();
+        yield return gui.FadeTransition("Out");
         Time.timeScale = 0;
     }
 
