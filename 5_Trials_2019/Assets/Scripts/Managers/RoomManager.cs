@@ -41,7 +41,6 @@ public class RoomManager : MonoBehaviour
         return true;
     }
 
-    //Make a corutine?
     public void LoadRoom(int roomCode)
     {
         if (RoomListIsEmpty())
@@ -73,7 +72,7 @@ public class RoomManager : MonoBehaviour
         
         room = Instantiate(roomList[roomCode]);
         room.SetGameManager(gameManager);
-        
+
         return room;
     }
 

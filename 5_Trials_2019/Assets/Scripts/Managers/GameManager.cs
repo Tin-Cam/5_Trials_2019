@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public _BossBase testBoss;
     //public HealthBar bossHealthBar;
 
+    private int currentRoomCode;
 
     void Awake()
     {
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNewRoom(int roomCode)
     {
+        currentRoomCode = roomCode;
         StartCoroutine(gui.FadeTransition("In"));
         roomManager.LoadRoom(roomCode);
         gui.ShowGUI_Animate(roomManager.RoomHasBoss());
@@ -62,14 +64,25 @@ public class GameManager : MonoBehaviour
     public void PauseGame(bool state)
     {
         isPaused = state;
+        gui.ShowPause(isPaused);
 
-        if (state)
+        if (!isPaused)
             Time.timeScale = 1;
         else
             Time.timeScale = 0;
     }
 
-    
+    public void ResetRoom()
+    {
+        LoadNewRoom(currentRoomCode);
+
+        playerHealth = playerMaxHealth;
+        gui.InitHealth(playerMaxHealth);
+        player.SetActive(true);
+
+        gui.ShowGameOver(false);
+        Time.timeScale = 1;
+    }
 
     public _BossBase GetBoss()
     {
@@ -82,7 +95,6 @@ public class GameManager : MonoBehaviour
         gui.AddHealth(-damage);
         if (playerHealth <= 0)
             StartCoroutine(PlayerDeath());
-
     }
 
     private IEnumerator PlayerDeath()
@@ -91,7 +103,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         yield return gui.FadeTransition("Out");
         Time.timeScale = 0;
+        gui.ShowGameOver(true);
     }
-
-
 }

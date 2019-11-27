@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GUIManager : MonoBehaviour
 {
@@ -12,21 +13,34 @@ public class GUIManager : MonoBehaviour
     public GameObject gameOverMenu;
     public GameObject pauseMenu;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        gameOverMenu.SetActive(false);
+        pauseMenu.SetActive(false);
     }
 
     public void ShowGUI(bool isVisible)
     {
         playerHealthBar.gameObject.SetActive(isVisible);
         bossHealthBar.gameObject.SetActive(isVisible);
+
+        
     }
 
     public void ShowGUI_Animate(bool isVisible)
     {
         ShowGUI(isVisible);
+    }
+
+    public void ShowPause(bool state)
+    {
+        pauseMenu.SetActive(state);
+        fader.FadeMid(state);
+    }
+
+    public void ShowGameOver(bool state)
+    {
+        gameOverMenu.SetActive(state);
     }
 
     public void InitHealth(float health)
@@ -47,5 +61,16 @@ public class GUIManager : MonoBehaviour
             yield return fader.FadeOut();
         else
             throw new System.Exception("Error: " + direction + " is not a defined direction");
+    }
+
+
+    public void LoadScene()
+    {
+        SceneManager.LoadScene("Main_Menu");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

@@ -49,12 +49,8 @@ MonoBehaviour:
   cameraFollow: {fileID: 0}
   player: {fileID: 0}
   door: {fileID: 0}
-  roomList:
-  - {fileID: 6244833440702474301, guid: 71020b1cb318cd14baf9ad757b3742e4, type: 3}
-  - {fileID: 688142469522494634, guid: ea89b891bec98de4ca894a5741c2bd3b, type: 3}
-  - {fileID: 3893562132920471541, guid: 58f6ce58268165b448381f7cf65189aa, type: 3}
-  - {fileID: 6174863984518241047, guid: 4c8d3ea7038392a4eb41bfbc252f09d4, type: 3}
-  - {fileID: 6174863984518241047, guid: 4c8d3ea7038392a4eb41bfbc252f09d4, type: 3}
+  roomList: []
+  startingRoom: 0
 --- !u!114 &2556536046020970684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,14 +63,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa22e8f676b480845b3ac57ec7b77620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gui: {fileID: 0}
   isPaused: 0
   startingRoom: 0
   player: {fileID: 0}
-  playerMaxHealth: 10
-  playerHealthBar: {fileID: 0}
+  playerHealth: 1
   hardcore: 0
-  bossHealthBar: {fileID: 0}
-  fader: {fileID: 0}
+  testBoss: {fileID: 0}
 --- !u!114 &2556536046020970687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,13 +82,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad5bea6203809042ade477b815d9add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentBoss: {fileID: 0}
   player: {fileID: 0}
   healthBar: {fileID: 0}
-  bosses:
+  bossList:
   - {fileID: 961010412474161172, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
   - {fileID: 3725356967537007999, guid: 080179585f2ff024491c5ee7138566bd, type: 3}
-  - {fileID: 961010412474161172, guid: 56d4601746a163343ad2e11def910ed9, type: 3}
-  - {fileID: 0}
+  - {fileID: 5392826075789216546, guid: fcfc440f237623341b0f2959c0ebb1b5, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!114 &2556536046020970686
