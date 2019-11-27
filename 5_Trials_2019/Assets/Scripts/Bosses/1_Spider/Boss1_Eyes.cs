@@ -39,15 +39,24 @@ public class Boss1_Eyes : MonoBehaviour
 
         miniEyeL.player = player;
         miniEyeR.player = player;
+
+        StartCoroutine(ShootCycle());
     }
 
     //Periodically makes a mini eye shoot. (Mini eye won't shoot if it's closed)
-    void Update()
+    public IEnumerator ShootCycle()
     {
+        while(Time.timeScale == 0)
+            yield return new WaitForEndOfFrame();
+
+        yield return new WaitForEndOfFrame();
         miniTimercount++;
 
         if (miniTimercount < miniTimer)
-            return;
+        {
+            StartCoroutine(ShootCycle());
+            yield break;
+        }
 
         Boss1_MiniEye miniEye;
 
@@ -60,6 +69,8 @@ public class Boss1_Eyes : MonoBehaviour
 
         miniEye.shoot();
         miniTimercount = 0;
+
+        StartCoroutine(ShootCycle());
     }
 
     //MAIN EYE -----------------------------------
