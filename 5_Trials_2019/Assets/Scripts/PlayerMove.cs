@@ -161,6 +161,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+
     //Methods for player getting hit
     private void OnTriggerEnter2D(Collider2D other)
     {

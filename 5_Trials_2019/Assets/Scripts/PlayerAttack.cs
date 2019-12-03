@@ -48,9 +48,21 @@ public class PlayerAttack : MonoBehaviour
         animator.SetBool("Attack", true);
         yield return new WaitForSeconds(holdTime);
 
-        
+        DefaultState();
+    }
+
+    public void DefaultState()
+    {
         animator.SetBool("Attack", false);
         canAttack = true;
         playerMove.canMove = true;
+        StartCoroutine(ResetSword());
+    }
+
+    private IEnumerator ResetSword()
+    {
+        yield return new WaitForEndOfFrame();
+        sword.SetActive(false);
+        sword.transform.position = Vector3.zero;
     }
 }

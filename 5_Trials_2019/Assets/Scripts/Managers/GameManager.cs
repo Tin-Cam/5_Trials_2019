@@ -75,13 +75,25 @@ public class GameManager : MonoBehaviour
     public void ResetRoom()
     {
         LoadNewRoom(currentRoomCode);
+        DeleteObjectsOfTag("Projectile");
 
         playerHealth = playerMaxHealth;
         gui.InitHealth(playerMaxHealth);
         player.SetActive(true);
+        player.GetComponent<PlayerAttack>().DefaultState();
 
         gui.ShowGameOver(false);
         Time.timeScale = 1;
+    }
+
+    private void DeleteObjectsOfTag(string tag)
+    {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
+
+        foreach (GameObject item in objects)
+        {
+            Destroy(item);
+        }
     }
 
     public _BossBase GetBoss()
