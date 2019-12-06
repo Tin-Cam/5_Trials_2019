@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
     public GUIManager gui;
     //private BossManager bossManager;
 
-    public bool isPaused;
+    public bool isPaused = false;
+    public bool noInterupts = false;
+
     public int startingRoom;
     public GameObject player;
     
@@ -43,10 +45,46 @@ public class GameManager : MonoBehaviour
 
     public void LoadNewRoom(int roomCode)
     {
+        bool transition = true;
+
+        if (roomCode == 0)
+            transition = false;
+
+        StartCoroutine(LoadRoomCo(roomCode, transition));
+    }
+
+    private IEnumerator LoadRoomCo(int roomCode, bool transition)
+    {
         currentRoomCode = roomCode;
-        StartCoroutine(gui.FadeTransition("In"));
+
+        //Swap Rooms
+        noInterupts = true;
+        Time.timeScale = 0;
+
+        if(transition)
+            yield return gui.FadeTransition("Out");
+
         roomManager.LoadRoom(roomCode);
-        gui.ShowGUI_Animate(roomManager.RoomHasBoss());
+
+        bool hasBoss = roomManager.RoomHasBoss();
+        //gui.ShowGUI(false);
+        if (hasBoss)
+        {
+            //Plays the boss intro
+            yield return gui.FadeTransition("In");
+
+            yield return new WaitForSecondsRealtime(2);
+
+            gui.ShowGUI_Animate(hasBoss);
+            yield return new WaitForSecondsRealtime(1);
+        }
+        else
+        {
+            gui.ShowGUI(hasBoss);
+            yield return gui.FadeTransition("In");                               
+        }
+        Time.timeScale = 1;
+        noInterupts = false;
     }
 
     public void BossDefeated()
@@ -63,6 +101,9 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame(bool state)
     {
+        if (noInterupts)
+            return;
+
         isPaused = state;
         gui.ShowPause(isPaused);
 
@@ -74,7 +115,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetRoom()
     {
-        LoadNewRoom(currentRoomCode);
+        StartCoroutine(LoadRoomCo(currentRoomCode, false));
         DeleteObjectsOfTag("Projectile");
 
         playerHealth = playerMaxHealth;

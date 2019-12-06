@@ -13,22 +13,25 @@ public class GUIManager : MonoBehaviour
     public GameObject gameOverMenu;
     public GameObject pauseMenu;
 
+    private Animator animator;
+
     void Awake()
     {
         gameOverMenu.SetActive(false);
         pauseMenu.SetActive(false);
+        animator = GetComponent<Animator>();
     }
 
     public void ShowGUI(bool isVisible)
     {
         playerHealthBar.gameObject.SetActive(isVisible);
         bossHealthBar.gameObject.SetActive(isVisible);
-
-        
+       
     }
 
     public void ShowGUI_Animate(bool isVisible)
     {
+        animator.SetTrigger("Intro");
         ShowGUI(isVisible);
     }
 

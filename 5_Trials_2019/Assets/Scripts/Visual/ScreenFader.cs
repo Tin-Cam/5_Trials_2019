@@ -18,6 +18,8 @@ public class ScreenFader : MonoBehaviour
 
     public IEnumerator FadeIn()
     {
+        image.color = new Color(0, 0, 0, 1);
+
         float alpha = image.color.a;
 
         while (image.color.a > 0)
@@ -30,6 +32,8 @@ public class ScreenFader : MonoBehaviour
 
     public IEnumerator FadeOut()
     {
+        image.color = new Color(0, 0, 0, 0);
+
         float alpha = image.color.a;
 
         while (image.color.a < 1)

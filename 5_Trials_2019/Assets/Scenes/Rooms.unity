@@ -216,6 +216,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb5d813d44eb64f4791a90e539078c1f, type: 3}
+--- !u!1 &498007137 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5312493438252995564, guid: 52fee9b99713a1841bb55128229d8880,
+    type: 3}
+  m_PrefabInstance: {fileID: 5312493438139633605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &498007142
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498007137}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8bdf5def197b65b43ad562df0af76fb7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &549875884 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5312493438664343401, guid: 52fee9b99713a1841bb55128229d8880,
@@ -294,7 +319,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 5312493438139633605}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 498007137}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adba872e3065dd54e859777fc3778123, type: 3}
@@ -630,6 +655,25 @@ PrefabInstance:
     - target: {fileID: 1440496136, guid: 52fee9b99713a1841bb55128229d8880, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 615156839, guid: 52fee9b99713a1841bb55128229d8880, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312493438664343406, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312493438611060889, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312493438156586965, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52fee9b99713a1841bb55128229d8880, type: 3}
