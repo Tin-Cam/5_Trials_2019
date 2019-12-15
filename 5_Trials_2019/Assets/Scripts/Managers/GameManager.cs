@@ -18,8 +18,11 @@ public class GameManager : MonoBehaviour
     public float playerHealth;
     private float playerMaxHealth;
 
-    //public HealthBar playerHealthBar;
-    public bool hardcore;
+    //Difficulty:
+    //0: Easy
+    //1: Normal
+    //2: Hardcore
+    public int difficulty;
 
     [Space(15)]
     public _BossBase testBoss;
@@ -65,6 +68,7 @@ public class GameManager : MonoBehaviour
         if(transition)
             yield return gui.FadeTransition("Out");
 
+        DeleteObjectsOfTag("Projectile");
         roomManager.LoadRoom(roomCode);
 
         bool hasBoss = roomManager.RoomHasBoss();
@@ -117,7 +121,7 @@ public class GameManager : MonoBehaviour
     public void ResetRoom()
     {
         StartCoroutine(LoadRoomCo(currentRoomCode, false));
-        DeleteObjectsOfTag("Projectile");
+        
 
         playerHealth = playerMaxHealth;
         gui.InitHealth(playerMaxHealth);

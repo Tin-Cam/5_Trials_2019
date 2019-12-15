@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class _BossBase : MonoBehaviour
 {
     public GameManager gameManager;
+    public GameObject deathExplosion;
 
     protected _ActionBase actionBase;
     protected _MoveBase moveBase;
@@ -93,6 +94,8 @@ public abstract class _BossBase : MonoBehaviour
     public void Die()
     {
         gameManager.BossDefeated();
+
+        Instantiate(deathExplosion, transform.position, transform.rotation);
 
         Destroy(this.gameObject);
     }
