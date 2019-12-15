@@ -9,11 +9,18 @@ public class ScreenFader : MonoBehaviour
     private Animator animator;
 
     public float fadeSpeed = 1;
+    public bool fadeOnStart = false;
 
     void Awake()
     {
         image = GetComponent<Image>();
         animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        if (fadeOnStart)
+            StartCoroutine(FadeIn());
     }
 
     public IEnumerator FadeIn()

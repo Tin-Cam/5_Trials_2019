@@ -20,9 +20,14 @@ public class MenuManager : MonoBehaviour
             menus[i].SetActive(false);
     }
 
+    public void LoadScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
+
     public void StartGame(int difficulty)
     {
-        SceneManager.LoadScene("Rooms");
+        LoadScene("Rooms");
     }
 
     public void QuitGame()
