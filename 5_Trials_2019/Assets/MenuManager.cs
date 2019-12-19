@@ -27,6 +27,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame(int difficulty)
     {
+        GameData.difficulty = difficulty;
         LoadScene("Rooms");
     }
 

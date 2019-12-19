@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 9182096197023116851}
   - component: {fileID: 9182096197023116856}
   - component: {fileID: 1476381293}
+  - component: {fileID: 3110920518570304648}
+  - component: {fileID: 3943025571021627613}
+  - component: {fileID: 5132524472880421399}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -190,6 +193,54 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.64}
   m_EdgeRadius: 0
+--- !u!58 &3110920518570304648
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9182096197023116857}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 48be240688d6ff3499a9203586202852, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.25}
+  serializedVersion: 2
+  m_Radius: 0.1
+--- !u!58 &3943025571021627613
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9182096197023116857}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 48be240688d6ff3499a9203586202852, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.25}
+  serializedVersion: 2
+  m_Radius: 0.1
+--- !u!58 &5132524472880421399
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9182096197023116857}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 48be240688d6ff3499a9203586202852, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.17
 --- !u!1 &9182096197862901493
 GameObject:
   m_ObjectHideFlags: 0

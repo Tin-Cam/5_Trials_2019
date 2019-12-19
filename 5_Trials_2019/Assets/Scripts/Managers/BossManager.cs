@@ -46,10 +46,7 @@ public class BossManager : MonoBehaviour
     {
         _BossHolder boss;
 
-        if (gameManager.difficulty == 0)
-            boss = easyBossList[bossID];
-        else
-            boss = bossList[bossID];
+        boss = bossList[bossID];
 
         boss.SetVariables(player, healthBar, gameManager);
 

@@ -33,6 +33,9 @@ public class Boss1_Controller : _BossBase
         action.Init();
         move.Init();
         eyes.Init();
+
+        if (GameData.difficulty == 0)
+            EasyMode();
     }
 
 
@@ -86,19 +89,17 @@ public class Boss1_Controller : _BossBase
 
     private void SetPhase_1()
     {
-        move.speed *= 2;
-        eyes.setMiniEyeTimer(500);
-
-        action.shortAttackAmount += 2;
-        action.longAttackAmount += 5;
+        move.Speed *= 2;
+        eyes.openMiniEyes(true);
     }
 
     private void SetPhase_2()
     {
-        move.speed *= 2;
-        eyes.setMiniEyeTimer(250);
+        move.Speed *= 2;
+        eyes.setMiniEyeTimer(eyes.miniTimer - 200);
         maxAction = 4;
 
+        action.shortAttackAmount += 4;
         action.shortAttackFrequency *= (float) 0.5;
         action.exposeEyeTime -= 1;
 
@@ -106,6 +107,16 @@ public class Boss1_Controller : _BossBase
         PickAction(3);
     }
 
+    private void EasyMode()
+    {
+        health -= 5;
+        healthBar.initHealth(health);
+
+        eyes.miniTimer *= 2;
+        action.shortAttackFrequency *= (float)1.5;
+        action.longAttackAmount /= 2;
+        action.desperationAmount /= 2;
+    }
 
     protected override void StartDeath()
     {

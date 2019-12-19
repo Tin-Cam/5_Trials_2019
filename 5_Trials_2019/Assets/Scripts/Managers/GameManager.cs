@@ -18,12 +18,6 @@ public class GameManager : MonoBehaviour
     public float playerHealth;
     private float playerMaxHealth;
 
-    //Difficulty:
-    //0: Easy
-    //1: Normal
-    //2: Hardcore
-    public int difficulty;
-
     [Space(15)]
     public _BossBase testBoss;
     //public HealthBar bossHealthBar;
@@ -34,6 +28,9 @@ public class GameManager : MonoBehaviour
     {
         roomManager = GetComponent<RoomManager>();
         //bossManager = GetComponent<BossManager>();
+
+        if (GameData.difficulty == 0)
+            playerHealth *= 2;
 
         playerMaxHealth = playerHealth;
         gui.InitHealth(playerMaxHealth);      
@@ -70,6 +67,10 @@ public class GameManager : MonoBehaviour
 
         DeleteObjectsOfTag("Projectile");
         roomManager.LoadRoom(roomCode);
+
+        //Restores Player health if not on hardcore mode
+        if (GameData.difficulty != 2)
+            ResetHealth();
 
         bool hasBoss = roomManager.RoomHasBoss();
         //gui.ShowGUI(false);
@@ -121,15 +122,20 @@ public class GameManager : MonoBehaviour
     public void ResetRoom()
     {
         StartCoroutine(LoadRoomCo(currentRoomCode, false));
-        
 
-        playerHealth = playerMaxHealth;
-        gui.InitHealth(playerMaxHealth);
+
+        ResetHealth();
         player.SetActive(true);
         player.GetComponent<PlayerAttack>().DefaultState();
 
         gui.ShowGameOver(false);
         Time.timeScale = 1;
+    }
+
+    private void ResetHealth()
+    {
+        playerHealth = playerMaxHealth;
+        gui.InitHealth(playerMaxHealth);
     }
 
     private void DeleteObjectsOfTag(string tag)

@@ -323,7 +323,7 @@ MonoBehaviour:
   shortAttackAmount: 3
   shortAttackFrequency: 0.5
   longAttackAmount: 30
-  longAttackFrequency: 0.16
+  longAttackFrequency: 0.1
   chargeTime: 2
   desperationAmount: 60
   desperationFrequency: 0.05
@@ -377,7 +377,7 @@ MonoBehaviour:
   deathExplosion: {fileID: 3902850035807575547, guid: d29c27cbad988c840a662ddf6186b841,
     type: 3}
   player: {fileID: 0}
-  health: 5
+  health: 15
   healthBar: {fileID: 0}
   aiTimer: 1000
   maxAiTimerRngValue: 500

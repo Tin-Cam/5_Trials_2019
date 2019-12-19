@@ -17,11 +17,26 @@ public class Boss1_Move : _MoveBase
 
     public void Init()
     {
+        Speed = speed;
+
         rig = GetComponent<Rigidbody2D>();
         controller = GetComponent<Boss1_Controller>();   
 
         movement = new Vector2(rig.position.x, rig.position.y);
         SetIsMoving(true);
+    }
+
+    public float Speed
+    {
+        get
+        {
+            return speed;
+        }
+        set
+        {
+            speed = value;
+            legs.SetFloat("Speed", value * (float)0.05);
+        }
     }
 
     void FixedUpdate()
