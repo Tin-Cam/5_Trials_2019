@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class _BossBase : MonoBehaviour
 {
+    [HideInInspector]
+    public AudioManager audioManager;
+
     public GameManager gameManager;
     public GameObject deathExplosion;
 
@@ -18,6 +21,7 @@ public abstract class _BossBase : MonoBehaviour
 
     protected Rigidbody2D rig;
     protected Animator animator;
+    private SpriteRenderer render;
 
     public int aiTimer;
     protected int aiTimerCount;
@@ -32,6 +36,9 @@ public abstract class _BossBase : MonoBehaviour
     {
         rig = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        render = GetComponent<SpriteRenderer>();
+
+        audioManager = FindObjectOfType<AudioManager>();
 
         maxHealth = health;
 
@@ -72,11 +79,15 @@ public abstract class _BossBase : MonoBehaviour
 
     protected void TakeDamage(float value)
     {
+
+        StartCoroutine(FlashRed());
+        audioManager.Play("Boss_Hit");
         health -= value;
         healthBar.addOrSubtractHealth(-1);
         CheckHealth();
         if (health <= 0)
             StartDeath();
+
     }
 
 
@@ -96,6 +107,7 @@ public abstract class _BossBase : MonoBehaviour
         gameManager.BossDefeated();
 
         Instantiate(deathExplosion, transform.position, transform.rotation);
+        audioManager.Play("Boss_Death");
 
         Destroy(this.gameObject);
     }
@@ -103,6 +115,14 @@ public abstract class _BossBase : MonoBehaviour
     public void SetGameManager(GameManager gameManager)
     {
         this.gameManager = gameManager;
+    }
+
+    //Alternates player's color from white to red when hit
+    private IEnumerator FlashRed()
+    {
+        render.color = Color.red;
+        yield return new WaitForSeconds((float)0.1);
+        render.color = Color.white;
     }
 
     abstract protected void Init();

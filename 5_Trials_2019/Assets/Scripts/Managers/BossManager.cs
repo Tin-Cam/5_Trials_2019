@@ -13,7 +13,6 @@ public class BossManager : MonoBehaviour
 
 
     [Space(15)]
-    public List<_BossHolder> easyBossList = new List<_BossHolder>();
     public List<_BossHolder> bossList = new List<_BossHolder>();
 
     void Awake()
@@ -35,7 +34,7 @@ public class BossManager : MonoBehaviour
 
     private bool IsBossListEmpty()
     {
-        if (bossList.Capacity > 0 | easyBossList.Capacity > 0)
+        if (bossList.Capacity > 0)
             return false;
 
         return true;

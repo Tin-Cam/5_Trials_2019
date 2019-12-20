@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [HideInInspector]
+    public AudioManager audioManager;
 
     private PlayerMove playerMove;
 
@@ -15,6 +17,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         playerMove = GetComponent<PlayerMove>();
         sword.SetActive(false);
     }
@@ -33,6 +36,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetButtonDown("Attack"))
         {
+            audioManager.Play("Player_Attack");
             canAttack = false;
             playerMove.canMove = false;
             StartCoroutine("AttackCo");

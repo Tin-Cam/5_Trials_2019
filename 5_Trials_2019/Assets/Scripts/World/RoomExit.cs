@@ -12,6 +12,7 @@ public class RoomExit : MonoBehaviour
 
     private void ChangeRoom()
     {
+        AudioManager.instance.Play("Door_Enter");
         room.ChangeRoom(destination);
     }
 

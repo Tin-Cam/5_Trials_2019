@@ -21,6 +21,7 @@ public class Boss2_Actions : _ActionBase
     public float attackHoldTime;
     public float desperationTime;
     [Space(15)]
+    public int moveAmount;
     public float moveHoldTime;
     public int rapidMoveAmount;
     
@@ -39,15 +40,17 @@ public class Boss2_Actions : _ActionBase
         actionList.Add("Attack");
         actionList.Add("RapidAttack");
         actionList.Add("Desperation");
+
+        StartCoroutine(MoveRandom());
     }
 
     //ACTIONS ---------------------------------
 
-    //Default Action - Move randomly across the room (Not part of actionlist; used after ebery other action)
+    //Default Action - Move randomly across the room (Not part of actionlist; used after every other action)
     private IEnumerator MoveRandom()
     {
-        //Moves boss 3 times
-        for (int i = 0; i < 3; i++)
+        //Moves boss x times
+        for (int i = 0; i < moveAmount; i++)
         {
             yield return move.MovePosition();
             yield return new WaitForSeconds(moveHoldTime);
@@ -79,9 +82,9 @@ public class Boss2_Actions : _ActionBase
         for (int i = 0; i < shotAmount; i++)
         {
             if (rng == 0)
-                TripleShot(target);
+                TripleShot(player.transform.position);
             else
-                DoubleShot(target);
+                DoubleShot(player.transform.position);
             yield return new WaitForSeconds((float)0.2);
         }
 
@@ -154,9 +157,9 @@ public class Boss2_Actions : _ActionBase
         for (int i = 0; i < amount; i++)
         {
             if (rng == 0)
-                Shoot(0, target);
+                Shoot(0, player.transform.position);
             else
-                DoubleShot(target);
+                DoubleShot(player.transform.position);
             yield return new WaitForSeconds((float)0.1);
         }
     }

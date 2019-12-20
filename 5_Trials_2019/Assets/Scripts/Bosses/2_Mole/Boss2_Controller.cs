@@ -22,10 +22,11 @@ public class Boss2_Controller : _BossBase
         actionBase = action;
         moveBase = move;
 
-        action.Init();
-        move.Init();
+        if (GameData.difficulty == 0)
+            EasyMode();
 
-        PickAction(0);
+        move.Init();
+        action.Init();
     }
 
     //AI -----------------------------------
@@ -112,6 +113,18 @@ public class Boss2_Controller : _BossBase
         DefaultState();
         PickAction(3);
         maxAction = 4;
+    }
+
+    private void EasyMode()
+    {
+        health -= 5;
+        healthBar.initHealth(health);
+
+        action.attackHoldTime += 1;
+        action.idleTime += 1;
+        action.moveAmount += 1;
+        action.moveHoldTime += 1;
+        action.shotAmount -= 3;
     }
 
 

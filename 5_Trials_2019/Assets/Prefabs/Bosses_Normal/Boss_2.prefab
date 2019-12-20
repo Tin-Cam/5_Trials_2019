@@ -412,11 +412,12 @@ MonoBehaviour:
     type: 3}
   laser: {fileID: 5392826076192878693}
   attackSplits: 1
-  shotAmount: 5
+  shotAmount: 8
   doubleOffset: 10
   tripleOffset: 30
   attackHoldTime: 3
   desperationTime: 5
+  moveAmount: 2
   moveHoldTime: 1
   rapidMoveAmount: 5
 --- !u!114 &5392826075785668197

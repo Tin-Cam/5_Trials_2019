@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [HideInInspector]
+    public AudioManager audioManager;
+
     private RoomManager roomManager;
     public GUIManager gui;
     //private BossManager bossManager;
@@ -27,10 +30,8 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         roomManager = GetComponent<RoomManager>();
-        //bossManager = GetComponent<BossManager>();
-
-        if (GameData.difficulty == 0)
-            playerHealth *= 2;
+        
+        audioManager = FindObjectOfType<AudioManager>();
 
         playerMaxHealth = playerHealth;
         gui.InitHealth(playerMaxHealth);      
@@ -73,13 +74,13 @@ public class GameManager : MonoBehaviour
             ResetHealth();
 
         bool hasBoss = roomManager.RoomHasBoss();
-        //gui.ShowGUI(false);
+        gui.ShowGUI(false);
         if (hasBoss)
         {
             //Plays the boss intro
             yield return gui.FadeTransition("In");
 
-            yield return new WaitForSecondsRealtime(2);
+            yield return new WaitForSecondsRealtime(1);
 
             gui.ShowGUI_Animate(hasBoss);
             yield return new WaitForSecondsRealtime(1);
@@ -121,15 +122,13 @@ public class GameManager : MonoBehaviour
 
     public void ResetRoom()
     {
-        StartCoroutine(LoadRoomCo(currentRoomCode, false));
-
-
+        
         ResetHealth();
         player.SetActive(true);
         player.GetComponent<PlayerAttack>().DefaultState();
 
         gui.ShowGameOver(false);
-        Time.timeScale = 1;
+        StartCoroutine(LoadRoomCo(currentRoomCode, false));
     }
 
     private void ResetHealth()
@@ -155,6 +154,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerTakeDamage(float damage)
     {
+        audioManager.Play("Player_Hit");
         playerHealth -= damage;
         gui.AddHealth(-damage);
         if (playerHealth <= 0)
@@ -163,6 +163,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator PlayerDeath()
     {
+        audioManager.Play("Player_Death");
         player.SetActive(false);
         yield return new WaitForSeconds(1);
         yield return gui.FadeTransition("Out");
