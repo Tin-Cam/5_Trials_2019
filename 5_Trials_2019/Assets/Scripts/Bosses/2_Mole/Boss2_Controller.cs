@@ -63,6 +63,8 @@ public class Boss2_Controller : _BossBase
     {
         if (isHitable)
             TakeDamage(1);
+        else
+            audioManager.Play("Boss_NoDamage");
     }
 
     protected override void CheckHealth()
@@ -118,6 +120,7 @@ public class Boss2_Controller : _BossBase
     private void EasyMode()
     {
         health -= 5;
+        maxHealth -= 5;
         healthBar.initHealth(health);
 
         action.attackHoldTime += 1;

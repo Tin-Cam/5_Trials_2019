@@ -10,6 +10,7 @@ public class Boss2_Actions : _ActionBase
     private Boss2_Controller controller;
     private GameObject player;
     private Animator animator;
+    private AudioManager audioManager;
 
     public GameObject projectile;
     public SpinningLaser laser;
@@ -31,6 +32,7 @@ public class Boss2_Actions : _ActionBase
         animator = GetComponent<Animator>();
         controller = GetComponent<Boss2_Controller>();
         move = GetComponent<Boss2_Move>();
+        audioManager = controller.audioManager;
 
         player = controller.player;
         isActing = false;
@@ -116,6 +118,7 @@ public class Boss2_Actions : _ActionBase
     private IEnumerator Desperation()
     {
         yield return move.MovePosition(4);
+        ShowDesperationFilter(true);
         animator.SetTrigger("Desperation");
         controller.isHitable = false;
 
@@ -126,12 +129,14 @@ public class Boss2_Actions : _ActionBase
 
         yield return new WaitForSeconds(1);
         controller.isHitable = true;
+        ShowDesperationFilter(false);
         StartCoroutine(MoveRandom());
     }
 
     //OTHER COMMANDS ----------------------
     void Shoot(float offset, Vector3 target)
     {
+        audioManager.Play("Boss_Shoot");
         //Creates the projectile
         GameObject tempProjectile;
         tempProjectile = Instantiate(projectile, transform.position, transform.rotation);

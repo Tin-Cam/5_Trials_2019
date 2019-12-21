@@ -7,6 +7,9 @@ public abstract class _ActionBase : MonoBehaviour
     public List<string> actionList = new List<string>();
 
     public bool isActing;
+    public SpriteRenderer desperationSprite;
+    private static readonly float fadeSpeed = (float)0.05;
+    private static readonly float fadeAlpha = (float)0.5;
 
     private Vector2Int last2Actions;
 
@@ -39,6 +42,47 @@ public abstract class _ActionBase : MonoBehaviour
         last2Actions.x = action;
 
         return false;
+    }
+
+    public void ShowDesperationFilter(bool isVisible)
+    {
+        if (isVisible)
+            StartCoroutine(FadeOut());
+        if (!isVisible)
+            StartCoroutine(FadeIn());
+    }
+
+    public IEnumerator FadeIn()
+    {
+        //desperationSprite.color = new Color(0, 0, 0, fadeAlpha);
+
+        float alpha = desperationSprite.color.a;
+
+        while (desperationSprite.color.a > 0)
+        {
+            alpha -= fadeSpeed;
+            if (alpha < 0)
+                alpha = 0;
+            desperationSprite.color = new Color(0, 0, 0, alpha);
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    public IEnumerator FadeOut()
+    {
+        desperationSprite.color = new Color(0, 0, 0, 0);
+
+        float alpha = desperationSprite.color.a;
+
+        while (desperationSprite.color.a < fadeAlpha)
+        {
+            alpha += fadeSpeed;
+            if (alpha > fadeAlpha)
+                alpha = fadeAlpha;
+
+            desperationSprite.color = new Color(0, 0, 0, alpha);
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     abstract public void DefaultState();

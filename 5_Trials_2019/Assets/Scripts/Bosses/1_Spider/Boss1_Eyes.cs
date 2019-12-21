@@ -47,9 +47,9 @@ public class Boss1_Eyes : MonoBehaviour
     public IEnumerator ShootCycle()
     {
         while(Time.timeScale == 0)
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
 
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForFixedUpdate();
         miniTimercount++;
 
         if (miniTimercount < miniTimer)
@@ -92,6 +92,7 @@ public class Boss1_Eyes : MonoBehaviour
         animator.ResetTrigger("Closed");
 
         this.isEyeOpen = isEyeOpen;
+        AudioManager.instance.Play("Boss_Charge");
         if (isEyeOpen)
             animator.SetTrigger("Charging_Open");
         else if (!isEyeOpen)
@@ -110,12 +111,13 @@ public class Boss1_Eyes : MonoBehaviour
     //Starts the timers for the mini eyes. Eyes will alternate shots
     public void setMiniEyeTimer(int timer)
     {
-        miniTimer = timer;
+        miniTimer = timer;      
         openMiniEyes(true);
     }
 
     public void openMiniEyes(bool isOpen)
     {
+        miniTimercount = 0;
         miniEyeL.openEye(isOpen);
         miniEyeR.openEye(isOpen);
     }

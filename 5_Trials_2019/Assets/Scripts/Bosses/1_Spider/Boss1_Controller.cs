@@ -41,7 +41,7 @@ public class Boss1_Controller : _BossBase
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         AI();
     }
@@ -96,7 +96,7 @@ public class Boss1_Controller : _BossBase
     private void SetPhase_2()
     {
         move.Speed *= 2;
-        eyes.setMiniEyeTimer(eyes.miniTimer - 200);
+        eyes.setMiniEyeTimer(eyes.miniTimer - 60);
         maxAction = 4;
 
         action.shortAttackAmount += 4;
@@ -110,6 +110,7 @@ public class Boss1_Controller : _BossBase
     private void EasyMode()
     {
         health -= 5;
+        maxHealth -= 5;
         healthBar.initHealth(health);
 
         eyes.miniTimer *= 2;
@@ -130,6 +131,8 @@ public class Boss1_Controller : _BossBase
     {
         if (eyes.isEyeOpen)
             TakeDamage(1);
+        else
+            audioManager.Play("Boss_NoDamage");
     }
 
 

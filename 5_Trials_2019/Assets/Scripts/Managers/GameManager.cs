@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = 60;
+
         roomManager = GetComponent<RoomManager>();
         
         audioManager = FindObjectOfType<AudioManager>();
@@ -51,19 +53,20 @@ public class GameManager : MonoBehaviour
 
         if (roomCode == 0)
             transition = false;
-
+        StopAllCoroutines();
         StartCoroutine(LoadRoomCo(roomCode, transition));
     }
 
     private IEnumerator LoadRoomCo(int roomCode, bool transition)
     {
+        
         currentRoomCode = roomCode;
 
         //Swap Rooms
         noInterupts = true;
         Time.timeScale = 0;
 
-        if(transition)
+        if (transition)
             yield return gui.FadeTransition("Out");
 
         DeleteObjectsOfTag("Projectile");
@@ -75,6 +78,7 @@ public class GameManager : MonoBehaviour
 
         bool hasBoss = roomManager.RoomHasBoss();
         gui.ShowGUI(false);
+        
         if (hasBoss)
         {
             //Plays the boss intro
@@ -87,7 +91,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            gui.ShowGUI(hasBoss);
             yield return gui.FadeTransition("In");                               
         }
         Time.timeScale = 1;

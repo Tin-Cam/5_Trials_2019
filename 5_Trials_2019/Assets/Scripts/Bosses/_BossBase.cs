@@ -9,6 +9,7 @@ public abstract class _BossBase : MonoBehaviour
 
     public GameManager gameManager;
     public GameObject deathExplosion;
+    public SpriteRenderer hitSprite;
 
     protected _ActionBase actionBase;
     protected _MoveBase moveBase;
@@ -120,9 +121,9 @@ public abstract class _BossBase : MonoBehaviour
     //Alternates player's color from white to red when hit
     private IEnumerator FlashRed()
     {
-        render.color = Color.red;
+        hitSprite.enabled = true;
         yield return new WaitForSeconds((float)0.1);
-        render.color = Color.white;
+        hitSprite.enabled = false;
     }
 
     abstract protected void Init();

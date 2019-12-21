@@ -10,6 +10,7 @@ public class SpinningLaser : MonoBehaviour
 
     private float currentSpeed;
     private Animator animator;
+    private AudioManager audioManager;
 
     void Start()
     {

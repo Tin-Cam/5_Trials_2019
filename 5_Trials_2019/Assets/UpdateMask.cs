@@ -10,11 +10,12 @@ public class UpdateMask : MonoBehaviour
 
     void Start()
     {
+        reference = GetComponent<SpriteRenderer>();
         mask = GetComponent<SpriteMask>();
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         mask.sprite = reference.sprite;
     }

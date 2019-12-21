@@ -7,6 +7,7 @@ public class Boss1_Actions : _ActionBase
     private Boss1_Move move;
     private Boss1_Controller controller;
     private Boss1_Eyes eyes;
+    private AudioManager audioManager;
 
     private GameObject player;
 
@@ -38,6 +39,7 @@ public class Boss1_Actions : _ActionBase
         controller = GetComponent<Boss1_Controller>();
         move = GetComponent<Boss1_Move>();
         eyes = GetComponent<Boss1_Eyes>();
+        audioManager = controller.audioManager;
 
         player = controller.player;
         isActing = false;
@@ -51,6 +53,8 @@ public class Boss1_Actions : _ActionBase
 
     void Shoot()
     {
+        audioManager.Play("Boss_Shoot");
+
         //Creates the projectile
         GameObject tempProjectile;
         tempProjectile = Instantiate(projectile, transform.position, transform.rotation);
@@ -109,7 +113,7 @@ public class Boss1_Actions : _ActionBase
         move.SetIsMoving(false);
         eyes.chargeEye(false);
         eyes.chargeMiniEyes();
-
+        ShowDesperationFilter(true);
 
         yield return new WaitForSeconds(chargeTime);
 
@@ -129,5 +133,6 @@ public class Boss1_Actions : _ActionBase
     public override void DefaultState()
     {
         StopActing();
+        ShowDesperationFilter(false);
     }
 }

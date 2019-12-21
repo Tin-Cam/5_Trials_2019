@@ -27,17 +27,20 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame(int difficulty)
     {
+        AudioManager.instance.Play("Button_Press");
         GameData.difficulty = difficulty;
         LoadScene("Rooms");
     }
 
     public void QuitGame()
     {
+        AudioManager.instance.Play("Button_Press");
         Application.Quit();
     }
 
     public void ChangeMenu(int menu)
     {
+        AudioManager.instance.Play("Button_Press");
         currentMenu.SetActive(false);
         currentMenu = menus[menu];
         currentMenu.SetActive(true);

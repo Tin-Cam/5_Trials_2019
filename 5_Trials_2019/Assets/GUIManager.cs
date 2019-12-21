@@ -31,6 +31,8 @@ public class GUIManager : MonoBehaviour
 
     public void ShowGUI_Animate(bool isVisible)
     {
+        if(isVisible)
+            AudioManager.instance.Play("GUI_Appear");
         animator.SetTrigger("Intro");
         ShowGUI(isVisible);
     }
@@ -58,6 +60,7 @@ public class GUIManager : MonoBehaviour
 
     public IEnumerator FadeTransition(string direction)
     {
+        
         if (direction == "In")
             yield return fader.FadeIn();
         else if (direction == "Out")

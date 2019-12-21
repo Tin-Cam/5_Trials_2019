@@ -32,6 +32,8 @@ public class ScreenFader : MonoBehaviour
         while (image.color.a > 0)
         {
             alpha -= fadeSpeed;
+            if (alpha < 0)
+                alpha = 0;
             image.color = new Color(0, 0, 0, alpha);
             yield return new WaitForEndOfFrame();
         }
@@ -42,10 +44,12 @@ public class ScreenFader : MonoBehaviour
         image.color = new Color(0, 0, 0, 0);
 
         float alpha = image.color.a;
-
+      
         while (image.color.a < 1)
         {
             alpha += fadeSpeed;
+            if (alpha > 1)
+                alpha = 1;
             image.color = new Color(0, 0, 0, alpha);
             yield return new WaitForEndOfFrame();
         }

@@ -8,6 +8,7 @@ public class Boss1_MiniEye : MonoBehaviour
     public bool isActing;
     public float stunTime;
     private Animator animator;
+    private AudioManager audioManager;
 
     public GameObject projectile;
     public GameObject player;
@@ -15,6 +16,7 @@ public class Boss1_MiniEye : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
+        audioManager = AudioManager.instance;
     }
 
     //Shoots the eye if it can
@@ -23,6 +25,7 @@ public class Boss1_MiniEye : MonoBehaviour
         if (!isEyeOpen | isActing)
             return;
 
+        audioManager.Play("Boss_Shoot"); //Sound is played here to avoid it playing during a desperation attack (Reduces it's volume during it #savetheears)
         ForceShoot();
     }
 
