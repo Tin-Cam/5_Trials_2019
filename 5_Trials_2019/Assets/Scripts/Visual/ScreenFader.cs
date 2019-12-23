@@ -9,6 +9,7 @@ public class ScreenFader : MonoBehaviour
     private Animator animator;
 
     public float fadeSpeed = 1;
+    public float updateInterval;
     public bool fadeOnStart = false;
 
     void Awake()
@@ -35,7 +36,7 @@ public class ScreenFader : MonoBehaviour
             if (alpha < 0)
                 alpha = 0;
             image.color = new Color(0, 0, 0, alpha);
-            yield return new WaitForEndOfFrame();
+            yield return PseudoWaitForSeconds(updateInterval);
         }
     }
 
@@ -51,7 +52,7 @@ public class ScreenFader : MonoBehaviour
             if (alpha > 1)
                 alpha = 1;
             image.color = new Color(0, 0, 0, alpha);
-            yield return new WaitForEndOfFrame();
+            yield return PseudoWaitForSeconds(updateInterval);
         }
     }
 
@@ -71,7 +72,19 @@ public class ScreenFader : MonoBehaviour
         yield return new WaitForEndOfFrame();       
         while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
         {
-            yield return new WaitForFixedUpdate();
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    public IEnumerator PseudoWaitForSeconds(float seconds)
+    {
+        float startTime = Time.realtimeSinceStartup;
+        float currentTime = startTime;
+
+        while (currentTime <= startTime + seconds)
+        {
+            currentTime = Time.realtimeSinceStartup;
+            yield return new WaitForEndOfFrame();
         }
     }
 }

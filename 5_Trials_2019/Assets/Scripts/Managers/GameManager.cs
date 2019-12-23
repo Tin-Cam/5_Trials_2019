@@ -29,8 +29,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        Application.targetFrameRate = 60;
-
         roomManager = GetComponent<RoomManager>();
         
         audioManager = FindObjectOfType<AudioManager>();
@@ -116,6 +114,7 @@ public class GameManager : MonoBehaviour
 
         isPaused = state;
         gui.ShowPause(isPaused);
+        audioManager.Play("Button_Press");
 
         if (!isPaused)
             Time.timeScale = 1;
