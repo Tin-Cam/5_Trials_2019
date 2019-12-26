@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = AudioManager.instance;
         playerMove = GetComponent<PlayerMove>();
         sword.SetActive(false);
     }

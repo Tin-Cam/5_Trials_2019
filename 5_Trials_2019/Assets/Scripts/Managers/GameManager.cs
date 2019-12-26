@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         roomManager = GetComponent<RoomManager>();
-        
-        audioManager = FindObjectOfType<AudioManager>();
+
+        audioManager = AudioManager.instance;
 
         playerMaxHealth = playerHealth;
         gui.InitHealth(playerMaxHealth);      
@@ -169,6 +169,7 @@ public class GameManager : MonoBehaviour
         player.SetActive(false);
         yield return new WaitForSeconds(1);
         yield return gui.FadeTransition("Out");
+        DeleteObjectsOfTag("Projectile");
         Time.timeScale = 0;
         gui.ShowGameOver(true);
     }

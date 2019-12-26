@@ -133,8 +133,6 @@ public class PlayerMove : MonoBehaviour
     //Makes the player invincible; used when they're hit
     public IEnumerator invincible()
     {
-        
-
         isInvincible = true;
         for (int i = 0; i < flashAmount; i++)
         {
