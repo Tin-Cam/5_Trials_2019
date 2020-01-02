@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
+    public GameObject laser;
     public float gainSpeed;    
     public float diminishSpeed;
     public float holdTime;
+
+    public bool indicateAttack;
+    public GameObject indicator;
+    public float indicatorTime;
+
 
     public float maxWidth;
 
@@ -18,16 +24,27 @@ public class Laser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.localScale = new Vector3(1, 0, 1);
+        laser.transform.localScale = new Vector3(1, 0, 1);
+        laser.SetActive(false);
         StartCoroutine(FireLaser());
     }
 
     private IEnumerator FireLaser()
     {
+        yield return LaserIndicate();
+        laser.SetActive(true);
         yield return LaserGain();
         yield return LaserHold();
         yield return LaserDiminish();
         Destroy(this.gameObject);
+    }
+
+    private IEnumerator LaserIndicate()
+    {
+        Debug.Log("Indicating");
+        if(indicateAttack)
+            yield return new WaitForSeconds(indicatorTime);
+        Destroy(indicator.gameObject);
     }
 
     private IEnumerator LaserGain()
@@ -42,7 +59,7 @@ public class Laser : MonoBehaviour
     private IEnumerator LaserHold()
     {
         Debug.Log("Holding");
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(holdTime);
     }
 
     private IEnumerator LaserDiminish()
@@ -59,7 +76,7 @@ public class Laser : MonoBehaviour
     {
         AppendScale(y);
 
-        if (transform.localScale.y >= targetY)
+        if (laser.transform.localScale.y >= targetY)
             return true;
         return false;
     }
@@ -68,7 +85,7 @@ public class Laser : MonoBehaviour
     {
         AppendScale(-y);
 
-        if (transform.localScale.y <= targetY)
+        if (laser.transform.localScale.y <= targetY)
             return true;
         return false;
     }
@@ -76,6 +93,6 @@ public class Laser : MonoBehaviour
     private void AppendScale(float y)
     {
         Vector3 scale = new Vector3(0, y, 0);
-        transform.localScale += scale;
+        laser.transform.localScale += scale;
     }
 }

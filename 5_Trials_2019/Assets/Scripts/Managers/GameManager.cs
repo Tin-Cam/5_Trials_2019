@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     [Space(15)]
     public _BossBase testBoss;
+    public bool testMode = false;
     //public HealthBar bossHealthBar;
 
     private int currentRoomCode;
@@ -67,7 +68,9 @@ public class GameManager : MonoBehaviour
         if (transition)
             yield return gui.FadeTransition("Out");
 
-        DeleteObjectsOfTag("Projectile");
+        if(!testMode)
+            DeleteObjectsOfTag("Projectile");
+
         roomManager.LoadRoom(roomCode);
 
         //Restores Player health if not on hardcore mode
