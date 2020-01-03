@@ -55,7 +55,7 @@ public class Boss1_Controller : _BossBase
             rng = Random.Range(0, 3);
 
         //Forces the boss to become vulnerable if it hasn't been so after a few cycles
-        if (rng == 0 | vulCounter >= 4)
+        if (rng == 0 | vulCounter >= 3)
         {
             vulCounter = 0;
             PickAction(0);

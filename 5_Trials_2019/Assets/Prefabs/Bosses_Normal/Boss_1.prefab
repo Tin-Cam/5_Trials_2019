@@ -474,7 +474,7 @@ MonoBehaviour:
   isEyeOpen: 0
   miniEyesOpen: 0
   miniTimer: 150
-  miniEyeStunTime: 5
+  miniEyeStunTime: 10
   miniEyeR: {fileID: 4688997081742843015}
   miniEyeL: {fileID: 4688997081961257085}
 --- !u!114 &4688997081891801397
