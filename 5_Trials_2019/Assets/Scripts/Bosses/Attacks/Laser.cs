@@ -13,13 +13,7 @@ public class Laser : MonoBehaviour
     public GameObject indicator;
     public float indicatorTime;
 
-
     public float maxWidth;
-
-    private int state;
-    // 0: Gaining
-    // 1: Holding
-    // 2: Diminishing
 
     // Start is called before the first frame update
     void Start()
@@ -95,4 +89,5 @@ public class Laser : MonoBehaviour
         Vector3 scale = new Vector3(0, y, 0);
         laser.transform.localScale += scale;
     }
+
 }

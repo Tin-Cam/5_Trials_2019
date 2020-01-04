@@ -10,6 +10,7 @@ public class Boss3_Controller : _BossBase
     protected override void Init()
     {
         action = GetComponent<Boss3_Actions>();
+        
         action.Init();
 
         actionBase = action;
