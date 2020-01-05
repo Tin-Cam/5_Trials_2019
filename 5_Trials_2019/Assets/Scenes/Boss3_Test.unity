@@ -611,6 +611,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9182096197862901493, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Sword
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb5d813d44eb64f4791a90e539078c1f, type: 3}
 --- !u!1001 &1850908499
@@ -1686,6 +1691,7 @@ GameObject:
   - component: {fileID: 2097538262}
   - component: {fileID: 2890213894033778231}
   - component: {fileID: 2890213894033778230}
+  - component: {fileID: 2890213894033778232}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -1732,7 +1738,20 @@ MonoBehaviour:
   actionList: []
   isActing: 0
   desperationSprite: {fileID: 8368630274155626293}
-  laser: {fileID: 7828657115819629287, guid: c883c613d6102744795584bd2d443313, type: 3}
+--- !u!114 &2890213894033778232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2890213894033778229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd83c40dc8b3eb4780fb99fbf6184ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserPrefab: {fileID: 7828657115819629287, guid: c883c613d6102744795584bd2d443313,
+    type: 3}
 --- !u!156049354 &2901094200162091791
 Grid:
   m_ObjectHideFlags: 0

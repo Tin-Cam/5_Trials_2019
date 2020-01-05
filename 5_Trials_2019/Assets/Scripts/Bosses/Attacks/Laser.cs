@@ -9,9 +9,9 @@ public class Laser : MonoBehaviour
     public float diminishSpeed;
     public float holdTime;
 
-    public bool indicateAttack;
+    public bool indicateAttack = true;
     public GameObject indicator;
-    public float indicatorTime;
+    public float indicatorTime = 1;
 
     public float maxWidth;
 
