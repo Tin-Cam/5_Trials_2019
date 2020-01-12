@@ -8,12 +8,13 @@ public class Laser : MonoBehaviour
     public float gainSpeed;    
     public float diminishSpeed;
     public float holdTime;
+    public float maxWidth;
 
     public bool indicateAttack = true;
     public GameObject indicator;
     public float indicatorTime = 1;
 
-    public float maxWidth;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -89,5 +90,4 @@ public class Laser : MonoBehaviour
         Vector3 scale = new Vector3(0, y, 0);
         laser.transform.localScale += scale;
     }
-
 }

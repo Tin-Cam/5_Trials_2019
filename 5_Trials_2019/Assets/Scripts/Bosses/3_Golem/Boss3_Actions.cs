@@ -27,19 +27,21 @@ public class Boss3_Actions : _ActionBase
         ShootLaser(player.transform.position);
         yield return new WaitForSeconds(2);
 
-        Laser laser = laserManager.CreateLaser((float) 0.01, (float) 0.1, (float) 40);
-        ShootLaser(player.transform.position, laser);
-
+        ShootLaser(player.transform.position, BigLaser());
 
         yield return new WaitForSeconds(2);
         ShootLaser(player.transform.position);
     }
 
+
     public void ShootLaser(Vector3 target)
     {
-        Laser laser = laserManager.GetLaser();
+        Vector2 targetVector = target - transform.position;
+        float angle = Mathf.Atan2(targetVector.y, targetVector.x) * Mathf.Rad2Deg;
 
-        ShootLaser(target, laser);
+        Quaternion targetAngle = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        laserManager.CreateLaser(targetAngle);
     }
 
     public void ShootLaser(Vector3 target, Laser laser)
@@ -49,7 +51,23 @@ public class Boss3_Actions : _ActionBase
 
         Quaternion targetAngle = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        Instantiate(laserManager.GetLaser(), transform.position, targetAngle);
+        laserManager.CreateLaser(targetAngle, laser);
+    }
+
+    public Laser BigLaser()
+    {
+        Laser laser = new Laser
+        {
+            gainSpeed = (float)0.1,
+            diminishSpeed = (float)0.1,
+            holdTime = 5,
+            maxWidth = 10,
+
+            indicateAttack = true,
+            indicatorTime = 3
+        };
+
+        return laser;
     }
 
     public override void DefaultState()
