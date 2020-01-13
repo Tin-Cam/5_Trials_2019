@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
 
     [Space(15)]
     public float defaultKnockBack;
+    public Vector2 roomBounds;
     public bool isInvincible;
     public float flashAmount;
     public float flashSpeed = 1;
@@ -125,9 +126,23 @@ public class PlayerMove : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            rig.AddForce(direction * intensity);
+            rig.AddForce(direction * intensity);           
             yield return new WaitForFixedUpdate();
-        }
+            CheckBounds();
+        }     
+    }
+
+    //Code to ensure player doesn't get pushed out of the room
+    private void CheckBounds()
+    {
+        
+        float objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x;
+        float objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
+
+        Vector3 position = transform.position;
+        position.x = Mathf.Clamp(position.x, roomBounds.x * -1 - objectWidth, roomBounds.x + objectWidth);
+        position.y = Mathf.Clamp(position.y, roomBounds.y * -1 - objectHeight, roomBounds.y + objectHeight);
+        transform.position = position;
     }
 
     //Makes the player invincible; used when they're hit

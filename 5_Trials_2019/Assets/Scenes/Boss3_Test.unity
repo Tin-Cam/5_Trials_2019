@@ -411,7 +411,7 @@ PrefabInstance:
         type: 3}
       propertyPath: currentBoss
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3767492221612649850}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84ca6cc32681ea748aff43707ab63a54, type: 3}
 --- !u!1001 &997082742
@@ -544,12 +544,12 @@ PrefabInstance:
     - target: {fileID: 9182096197023116855, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.7
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9182096197023116855, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9182096197023116855, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
@@ -601,6 +601,16 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 704331663}
+    - target: {fileID: 9182096197023116854, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: roomBounds.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182096197023116854, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: roomBounds.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4638226818678677906, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
       propertyPath: reference
@@ -862,6 +872,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6131234046274529260, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
         type: 3}
+    - target: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: destination
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 6174863984518241047, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
+        type: 3}
+    - target: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: loadScene
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
+        type: 3}
+      propertyPath: scene
+      value: Demo_End
+      objectReference: {fileID: 0}
     - target: {fileID: 2839835713716930557, guid: 73ee77e064dd62d41a082ac7cc657a9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -916,27 +947,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
-        type: 3}
-      propertyPath: destination
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
-        type: 3}
-      propertyPath: room
-      value: 
-      objectReference: {fileID: 6174863984518241047, guid: 4c8d3ea7038392a4eb41bfbc252f09d4,
-        type: 3}
-    - target: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
-        type: 3}
-      propertyPath: loadScene
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
-        type: 3}
-      propertyPath: scene
-      value: Demo_End
       objectReference: {fileID: 0}
     - target: {fileID: 474678413799831339, guid: 73ee77e064dd62d41a082ac7cc657a9a,
         type: 3}
@@ -1738,6 +1748,7 @@ MonoBehaviour:
   actionList: []
   isActing: 0
   desperationSprite: {fileID: 8368630274155626293}
+  pushbackIntensity: 0.5
 --- !u!114 &2890213894033778232
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,6 +24,7 @@ public class Laser : MonoBehaviour
         StartCoroutine(FireLaser());
     }
 
+    //Works through the steps of firing a laser
     private IEnumerator FireLaser()
     {
         yield return LaserIndicate();
@@ -36,7 +37,6 @@ public class Laser : MonoBehaviour
 
     private IEnumerator LaserIndicate()
     {
-        Debug.Log("Indicating");
         if(indicateAttack)
             yield return new WaitForSeconds(indicatorTime);
         Destroy(indicator.gameObject);
@@ -44,7 +44,6 @@ public class Laser : MonoBehaviour
 
     private IEnumerator LaserGain()
     {
-        Debug.Log("Gaining");
         while(!IncreaseScale(gainSpeed, maxWidth))
         {
             yield return new WaitForFixedUpdate();
@@ -53,13 +52,11 @@ public class Laser : MonoBehaviour
 
     private IEnumerator LaserHold()
     {
-        Debug.Log("Holding");
         yield return new WaitForSeconds(holdTime);
     }
 
     private IEnumerator LaserDiminish()
     {
-        Debug.Log("Diminishing");
         while (!ReduceScale(diminishSpeed, 0))
         {
             yield return new WaitForFixedUpdate();
