@@ -10,27 +10,40 @@ public class Boss3_Actions : _ActionBase
     private LaserManager laserManager;
     private GameObject player;
 
+    public float pushbackIntensity;
+    
+
     public void Init()
     {
         controller = GetComponent<Boss3_Controller>();
         laserManager = GetComponent<LaserManager>();
         player = controller.player;
 
-        StartCoroutine(ShootLaser());
+        actionList.Add("Idle");
+        actionList.Add("ShootPlayer");
+        actionList.Add("Pushback");
     }
 
     //ACTIONS ---------------------
 
-    public IEnumerator ShootLaser()
+    //Action 0 - Idle
+    public IEnumerator Idle()
     {
         yield return new WaitForSeconds(1);
-        ShootLaser(player.transform.position);
-        yield return new WaitForSeconds(2);
+    }
 
-        ShootLaser(player.transform.position, BigLaser());
-
-        yield return new WaitForSeconds(2);
+    //Action 1 - Shoot Player
+    public IEnumerator ShootPlayer()
+    {
         ShootLaser(player.transform.position);
+        yield break;
+    }
+
+    //Action 2 - Pushback player
+    public IEnumerator Pushback()
+    {
+        PlayerMove playerMove = player.GetComponent<PlayerMove>();
+        yield return StartCoroutine(playerMove.knockBack(Vector2.down, pushbackIntensity));
     }
 
 
