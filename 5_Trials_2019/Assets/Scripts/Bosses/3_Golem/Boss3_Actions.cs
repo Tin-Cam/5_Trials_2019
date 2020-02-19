@@ -8,6 +8,7 @@ public class Boss3_Actions : _ActionBase
 
     private Boss3_Controller controller;
     private LaserManager laserManager;
+    private LookAtTarget lookAtTarget;
     private GameObject player;
 
     public float pushbackIntensity;
@@ -17,6 +18,7 @@ public class Boss3_Actions : _ActionBase
     {
         controller = GetComponent<Boss3_Controller>();
         laserManager = GetComponent<LaserManager>();
+        lookAtTarget = GetComponentInChildren<LookAtTarget>();
         player = controller.player;
 
         actionList.Add("Idle");
@@ -35,8 +37,11 @@ public class Boss3_Actions : _ActionBase
     //Action 1 - Shoot Player
     public IEnumerator ShootPlayer()
     {
+        lookAtTarget.isAiming = false;
         ShootLaser(player.transform.position);
-        yield break;
+        //yield break;
+        yield return new WaitForSeconds(2);
+        lookAtTarget.isAiming = true;
     }
 
     //Action 2 - Pushback player
