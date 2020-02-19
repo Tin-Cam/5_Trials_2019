@@ -16,8 +16,8 @@ public class LaserManager : MonoBehaviour
         laser.holdTime = laserClass.holdTime;
         laser.maxWidth = laserClass.maxWidth;
 
-        laser.indicateAttack = laserClass.indicateAttack;
-        laser.indicatorTime = laserClass.indicatorTime;
+        //laser.indicateAttack = laserClass.indicateAttack;
+        //laser.indicatorTime = laserClass.indicatorTime;
 
         return laser;
     }

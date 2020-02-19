@@ -59,7 +59,10 @@ public class Boss3_Actions : _ActionBase
 
         Quaternion targetAngle = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        laserManager.CreateLaser(targetAngle);
+
+        
+
+        laserManager.CreateLaser(lookAtTarget.aimAngle);
     }
 
     public void ShootLaser(Vector3 target, Laser laser)
@@ -81,8 +84,8 @@ public class Boss3_Actions : _ActionBase
             holdTime = 5,
             maxWidth = 10,
 
-            indicateAttack = true,
-            indicatorTime = 3
+            //indicateAttack = true,
+            //indicatorTime = 3
         };
 
         return laser;

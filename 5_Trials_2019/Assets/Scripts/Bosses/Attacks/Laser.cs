@@ -9,11 +9,6 @@ public class Laser : MonoBehaviour
     public float diminishSpeed;
     public float holdTime;
     public float maxWidth;
-
-    public bool indicateAttack = true;
-    public GameObject indicator;
-    public float indicatorTime = 1;
-
     
 
     // Start is called before the first frame update
@@ -27,19 +22,11 @@ public class Laser : MonoBehaviour
     //Works through the steps of firing a laser
     private IEnumerator FireLaser()
     {
-        yield return LaserIndicate();
         laser.SetActive(true);
         yield return LaserGain();
         yield return LaserHold();
         yield return LaserDiminish();
         Destroy(this.gameObject);
-    }
-
-    private IEnumerator LaserIndicate()
-    {
-        if(indicateAttack)
-            yield return new WaitForSeconds(indicatorTime);
-        Destroy(indicator.gameObject);
     }
 
     private IEnumerator LaserGain()
