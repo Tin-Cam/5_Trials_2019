@@ -38,6 +38,9 @@ public class Boss3_Actions : _ActionBase
     public IEnumerator ShootPlayer()
     {
         lookAtTarget.isAiming = false;
+        Quaternion angle = lookAtTarget.aimAngle;
+
+        yield return laserManager.IndicateLaser(1, angle);
         ShootLaser(player.transform.position);
         //yield break;
         yield return new WaitForSeconds(2);

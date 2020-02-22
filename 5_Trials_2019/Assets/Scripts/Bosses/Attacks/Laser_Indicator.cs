@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Laser_Indicator : MonoBehaviour
 {
-    public float indicatorTime = 1;
-
-    public IEnumerator Indicate()
+    public IEnumerator Indicate(float indicatorTime)
     {
         yield return new WaitForSeconds(indicatorTime);
-        Destroy(this);
+        Destroy(this.gameObject);
     }
-
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LaserManager : MonoBehaviour
 {
+    public Laser_Indicator indicatorPrefab;
     public Laser laserPrefab;
 
     //Copies the values of a laser object to a prefab instance
@@ -21,6 +22,13 @@ public class LaserManager : MonoBehaviour
 
         return laser;
     }
+
+    public IEnumerator IndicateLaser(float time, Quaternion angle)
+    {
+        Laser_Indicator indicator = Instantiate(indicatorPrefab, transform.position, angle);
+        yield return indicator.Indicate(time);
+    }
+
 
     public Laser CreateLaser(Quaternion angle)
     {
