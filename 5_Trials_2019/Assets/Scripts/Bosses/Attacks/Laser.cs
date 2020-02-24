@@ -12,15 +12,15 @@ public class Laser : MonoBehaviour
     
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         laser.transform.localScale = new Vector3(1, 0, 1);
-        laser.SetActive(false);
-        StartCoroutine(FireLaser());
+        //laser.SetActive(false);
+        //StartCoroutine(FireLaser());
     }
 
     //Works through the steps of firing a laser
-    private IEnumerator FireLaser()
+    public IEnumerator FireLaser()
     {
         laser.SetActive(true);
         yield return LaserGain();

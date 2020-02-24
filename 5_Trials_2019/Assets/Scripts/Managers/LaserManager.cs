@@ -29,6 +29,13 @@ public class LaserManager : MonoBehaviour
         yield return indicator.Indicate(time);
     }
 
+    public IEnumerator ShootLaser(Quaternion angle)
+    {
+        Laser laser = CreateLaser(angle);
+        yield return laser.FireLaser();
+        yield break;
+    }
+
 
     public Laser CreateLaser(Quaternion angle)
     {
