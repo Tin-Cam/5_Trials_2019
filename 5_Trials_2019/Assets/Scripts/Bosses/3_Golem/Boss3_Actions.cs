@@ -35,6 +35,8 @@ public class Boss3_Actions : _ActionBase
         actionList.Add("Idle");
         actionList.Add("ShootPlayer");
         actionList.Add("Pushback");
+        actionList.Add("SweepAttack");
+        actionList.Add("DesperationAttack");
     }
 
     //ACTIONS ---------------------
@@ -71,16 +73,34 @@ public class Boss3_Actions : _ActionBase
         yield return StartCoroutine(playerMove.knockBack(Vector2.down, pushbackIntensity));
     }
 
+    //Action 3 - Sweeping Attack
+    public IEnumerator SweepAttack()
+    {
+        yield break;
+    }
+
+    //Action 4 - Desperation Attack
+    public IEnumerator DesperationAttack()
+    {
+        ShowDesperationFilter(true);
+        animator.SetTrigger(BossAnimation.AttackDesperation);
+
+
+        yield return new WaitForSeconds(1);
+        animator.SetTrigger(BossAnimation.Fire);
+        yield return laserManager.CreateLaser(lookAtTarget.aimAngle, BigLaser());
+        animator.SetTrigger(BossAnimation.Idle);
+        ShowDesperationFilter(false);
+    }
+
+
 
     public void ShootLaser(Vector3 target)
     {
         Vector2 targetVector = target - transform.position;
         float angle = Mathf.Atan2(targetVector.y, targetVector.x) * Mathf.Rad2Deg;
 
-        Quaternion targetAngle = Quaternion.AngleAxis(angle, Vector3.forward);
-
-
-        
+        Quaternion targetAngle = Quaternion.AngleAxis(angle, Vector3.forward);        
 
         laserManager.CreateLaser(lookAtTarget.aimAngle);
     }
@@ -92,7 +112,7 @@ public class Boss3_Actions : _ActionBase
 
         Quaternion targetAngle = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        laserManager.CreateLaser(targetAngle, laser);
+        //laserManager.CreateLaser(targetAngle, laser);
     }
 
     public Laser BigLaser()
