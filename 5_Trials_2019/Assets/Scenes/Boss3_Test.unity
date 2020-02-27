@@ -318,6 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a35f2a7d3c1994ba10484b3643dcc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  referenceThisObject: 1
   reference: {fileID: 791685998}
 --- !u!95 &791685996
 Animator:
@@ -1073,8 +1074,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2133515337
-  m_SortingLayer: -1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ea88760433ab0514b954f6a41d98cc8f, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 0.8}
@@ -1958,6 +1959,7 @@ MonoBehaviour:
   actionList: []
   isActing: 0
   desperationSprite: {fileID: 8368630274155626293}
+  laserRef: {fileID: 349397956163245814, guid: 00a451fc2d2a5e44d9ec1c05ddcdef7d, type: 3}
   pushbackIntensity: 0.5
 --- !u!114 &2890213894033778232
 MonoBehaviour:

@@ -22,6 +22,7 @@ public class Boss3_Actions : _ActionBase
     private Animator animator;
     private GameObject player;
 
+    public Laser laserRef;
     public float pushbackIntensity;
 
     public void Init()
@@ -61,9 +62,7 @@ public class Boss3_Actions : _ActionBase
         animator.SetTrigger(BossAnimation.Fire);
         yield return laserManager.ShootLaser(lookAtTarget.aimAngle);
 
-        //Back to Default State
-        lookAtTarget.isAiming = true;
-        animator.SetTrigger(BossAnimation.Idle);
+        DefaultState();
     }
 
     //Action 2 - Pushback player
@@ -83,14 +82,17 @@ public class Boss3_Actions : _ActionBase
     public IEnumerator DesperationAttack()
     {
         ShowDesperationFilter(true);
+        lookAtTarget.isAiming = false;
         animator.SetTrigger(BossAnimation.AttackDesperation);
 
 
         yield return new WaitForSeconds(1);
         animator.SetTrigger(BossAnimation.Fire);
-        yield return laserManager.CreateLaser(lookAtTarget.aimAngle, BigLaser());
+        yield return laserManager.ShootLaser(lookAtTarget.aimAngle, BigLaser());
         animator.SetTrigger(BossAnimation.Idle);
         ShowDesperationFilter(false);
+
+        DefaultState();
     }
 
 
@@ -117,22 +119,19 @@ public class Boss3_Actions : _ActionBase
 
     public Laser BigLaser()
     {
-        Laser laser = new Laser
-        {
-            gainSpeed = (float)0.1,
-            diminishSpeed = (float)0.1,
-            holdTime = 5,
-            maxWidth = 10,
+        Laser laser = laserRef;
 
-            //indicateAttack = true,
-            //indicatorTime = 3
-        };
+        laser.gainSpeed = (float)0.1;
+        laser.diminishSpeed = (float)0.1;
+        laser.holdTime = 5;
+        laser.maxWidth = 10;
 
-        return laser;
+        return laserRef;
     }
 
     public override void DefaultState()
     {
-        
+        lookAtTarget.isAiming = true;
+        animator.SetTrigger(BossAnimation.Idle);
     }
 }
