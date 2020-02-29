@@ -23,6 +23,7 @@ public class Boss3_Actions : _ActionBase
     private GameObject player;
 
     public Laser laserRef;
+    public GameObject[] desperationTargets;
     public float pushbackIntensity;
 
     public void Init()
@@ -81,30 +82,34 @@ public class Boss3_Actions : _ActionBase
     //Action 4 - Desperation Attack
     public IEnumerator DesperationAttack()
     {
+        //Pick a target to aim at
+        Transform target = desperationTargets[Random.Range(0, desperationTargets.Length)].transform;
+
+        //Charge Attack
         ShowDesperationFilter(true);
-        lookAtTarget.isAiming = false;
+        lookAtTarget.ChangeTarget(target);
         animator.SetTrigger(BossAnimation.AttackDesperation);
+        yield return new WaitForSeconds(2);
 
-
-        yield return new WaitForSeconds(1);
+        //Shoot
+        Quaternion targetAngle = CalculateAim(target.position);
         animator.SetTrigger(BossAnimation.Fire);
-        yield return laserManager.ShootLaser(lookAtTarget.aimAngle, BigLaser());
-        animator.SetTrigger(BossAnimation.Idle);
-        ShowDesperationFilter(false);
+        yield return laserManager.ShootLaser(targetAngle, BigLaser());
 
+        ShowDesperationFilter(false);
         DefaultState();
     }
 
 
 
-    public void ShootLaser(Vector3 target)
+    public Quaternion CalculateAim(Vector3 target)
     {
         Vector2 targetVector = target - transform.position;
         float angle = Mathf.Atan2(targetVector.y, targetVector.x) * Mathf.Rad2Deg;
 
-        Quaternion targetAngle = Quaternion.AngleAxis(angle, Vector3.forward);        
+        Quaternion targetAngle = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        laserManager.CreateLaser(lookAtTarget.aimAngle);
+        return targetAngle;
     }
 
     public void ShootLaser(Vector3 target, Laser laser)
@@ -124,7 +129,7 @@ public class Boss3_Actions : _ActionBase
         laser.gainSpeed = (float)0.1;
         laser.diminishSpeed = (float)0.1;
         laser.holdTime = 5;
-        laser.maxWidth = 10;
+        laser.maxWidth = 15;
 
         return laserRef;
     }
@@ -133,5 +138,6 @@ public class Boss3_Actions : _ActionBase
     {
         lookAtTarget.isAiming = true;
         animator.SetTrigger(BossAnimation.Idle);
+        lookAtTarget.ChangeTarget(player.transform);
     }
 }

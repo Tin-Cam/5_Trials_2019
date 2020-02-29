@@ -23,4 +23,9 @@ public class LookAtTarget : MonoBehaviour
 
         aimAngle = transform.rotation * Quaternion.Euler(0, 0, -90);
     }
+
+    public void ChangeTarget(Transform newTarget)
+    {
+        target = newTarget;
+    }
 }
