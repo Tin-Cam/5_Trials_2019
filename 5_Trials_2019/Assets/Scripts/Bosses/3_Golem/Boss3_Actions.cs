@@ -78,11 +78,13 @@ public class Boss3_Actions : _ActionBase
 
     //Action 2.1 - Retaliate after pushback (using a spreadshot)
     public IEnumerator SpreadShot()
-    {
-        Instantiate(spreadShot);
+    {      
+        spreadShot.transform.position = new Vector3(0, -1, 0);
+
+        Instantiate(spreadShot, transform);
         yield break;
     }
-
+ 
     //Action 3 - Sweeping Attack
     public IEnumerator SweepAttack()
     {
