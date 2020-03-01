@@ -23,6 +23,7 @@ public class Boss3_Actions : _ActionBase
     private GameObject player;
 
     public Laser laserRef;
+    public GameObject spreadShot;
     public GameObject[] desperationTargets;
     public float pushbackIntensity;
 
@@ -70,7 +71,16 @@ public class Boss3_Actions : _ActionBase
     public IEnumerator Pushback()
     {
         PlayerMove playerMove = player.GetComponent<PlayerMove>();
-        yield return StartCoroutine(playerMove.knockBack(Vector2.down, pushbackIntensity));
+        //yield return StartCoroutine(playerMove.knockBack(Vector2.down, pushbackIntensity));
+        //yield return new WaitForSeconds(2);
+        yield return SpreadShot();
+    }
+
+    //Action 2.1 - Retaliate after pushback (using a spreadshot)
+    public IEnumerator SpreadShot()
+    {
+        Instantiate(spreadShot);
+        yield break;
     }
 
     //Action 3 - Sweeping Attack
