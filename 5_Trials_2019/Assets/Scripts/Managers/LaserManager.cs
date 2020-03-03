@@ -11,6 +11,7 @@ public class LaserManager : MonoBehaviour
     public IEnumerator IndicateLaser(float time, Quaternion angle)
     {
         Laser_Indicator indicator = Instantiate(indicatorPrefab, transform.position, angle);
+        indicator.transform.parent = gameObject.transform;
         yield return indicator.Indicate(time);
     }
 
@@ -31,6 +32,7 @@ public class LaserManager : MonoBehaviour
     public Laser CreateLaser(Quaternion angle)
     {
         Laser laser  = Instantiate(laserPrefab, transform.position, angle);
+        laser.transform.parent = gameObject.transform;
         return laser;
     }
 

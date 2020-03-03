@@ -71,8 +71,8 @@ public class Boss3_Actions : _ActionBase
     public IEnumerator Pushback()
     {
         PlayerMove playerMove = player.GetComponent<PlayerMove>();
-        //yield return StartCoroutine(playerMove.knockBack(Vector2.down, pushbackIntensity));
-        //yield return new WaitForSeconds(2);
+        yield return StartCoroutine(playerMove.knockBack(Vector2.down, pushbackIntensity));
+        yield return new WaitForSeconds(1);
         yield return SpreadShot();
     }
 
