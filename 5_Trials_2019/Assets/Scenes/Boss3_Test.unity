@@ -1177,7 +1177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {x: 3, y: 5, z: 0}
-  startSpeed: 0.5
+  speedDivision: 20
 --- !u!50 &1924420739
 Rigidbody2D:
   serializedVersion: 4

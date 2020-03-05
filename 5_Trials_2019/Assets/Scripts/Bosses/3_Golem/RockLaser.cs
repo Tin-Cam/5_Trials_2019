@@ -5,8 +5,9 @@ using UnityEngine;
 public class RockLaser : MonoBehaviour
 {
     public Vector3 startPosition;
-    public float startSpeed;
+    public float speedDivision;
 
+    private readonly float startSpeed = 2;
     private LaserManager laserManager;
     private Rigidbody2D rig;
     private bool isShooting = false;
@@ -19,29 +20,29 @@ public class RockLaser : MonoBehaviour
         StartCoroutine(FireSequence());
     }
 
-    private IEnumerator MoveToPosition()
+    private IEnumerator MoveToPosition(Vector3 target, float stepSpeed)
     {
-        while (transform.position != startPosition)
+        float step = 0;
+        float rate = 1 / stepSpeed;
+
+        while (transform.position != target)
         {
-            transform.position = Vector3.MoveTowards(transform.position, startPosition, startSpeed);
+            step += Time.deltaTime * rate;
+            transform.position = Vector3.Lerp(transform.position, target, step);
+            
             yield return new WaitForFixedUpdate();
         }
     }
 
     private IEnumerator FireSequence()
     {
-        yield return MoveToPosition();
+        Vector3 pos = new Vector3(-20, startPosition.y, startPosition.z);
+
+        yield return MoveToPosition(startPosition, startSpeed);
         yield return laserManager.IndicateLaser(1, Quaternion.Euler(0, 0, -90));
-        yield return laserManager.ShootLaser(Quaternion.Euler(0, 0, -90));
+        StartCoroutine(laserManager.ShootLaser(Quaternion.Euler(0, 0, -90)));
+        yield return MoveToPosition(pos, speedDivision);
+        Destroy(this.gameObject);
     }
 
-    void FixedUpdate()
-    {
-        if (!isShooting)
-            return;
-
-        Vector2 movement;
-
-        //rig.MovePosition(movement * new Vector2(Time.fixedDeltaTime, 1));
-    }
 }
