@@ -23,6 +23,7 @@ public class Boss3_Actions : _ActionBase
     private GameObject player;
 
     public Laser laserRef;
+    public RockLaser rockLaser;
     public GameObject spreadShot;
     public GameObject[] desperationTargets;
     public float pushbackIntensity;
@@ -88,6 +89,12 @@ public class Boss3_Actions : _ActionBase
     //Action 3 - Sweeping Attack
     public IEnumerator SweepAttack()
     {
+        RockLaser temp = Instantiate(rockLaser, transform);
+
+        //Randomise direction to move Rock Laser
+        temp.isMirror = (Random.value > 0.5f);
+
+
         yield break;
     }
 
