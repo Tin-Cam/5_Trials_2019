@@ -74,16 +74,16 @@ public class Boss3_Actions : _ActionBase
         PlayerMove playerMove = player.GetComponent<PlayerMove>();
         yield return StartCoroutine(playerMove.knockBack(Vector2.down, pushbackIntensity));
         yield return new WaitForSeconds(1);
-        yield return SpreadShot();
+        SpreadShot();
+        DefaultState();
     }
 
     //Action 2.1 - Retaliate after pushback (using a spreadshot)
-    public IEnumerator SpreadShot()
+    public void SpreadShot()
     {      
         spreadShot.transform.position = new Vector3(0, -1, 0);
 
         Instantiate(spreadShot, transform);
-        yield break;
     }
  
     //Action 3 - Sweeping Attack
@@ -94,7 +94,7 @@ public class Boss3_Actions : _ActionBase
         //Randomise direction to move Rock Laser
         temp.isMirror = (Random.value > 0.5f);
 
-
+        DefaultState();
         yield break;
     }
 
@@ -158,5 +158,6 @@ public class Boss3_Actions : _ActionBase
         lookAtTarget.isAiming = true;
         animator.SetTrigger(BossAnimation.Idle);
         lookAtTarget.ChangeTarget(player.transform);
+        StartCoroutine(controller.NextAction());
     }
 }
