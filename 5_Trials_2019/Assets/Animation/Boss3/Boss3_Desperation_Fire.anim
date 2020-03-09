@@ -26,10 +26,10 @@ AnimationClip:
       value: {fileID: 8493845903913976765, guid: 85e83a015942a18409244dcf7b0b33d8,
         type: 3}
     - time: 1
-      value: {fileID: 8493845903913976765, guid: 85e83a015942a18409244dcf7b0b33d8,
+      value: {fileID: -9115054308179433396, guid: 85e83a015942a18409244dcf7b0b33d8,
         type: 3}
     attribute: m_Sprite
-    path: 
+    path: Boss_Head
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -40,7 +40,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 0
+      path: 3545687621
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -49,7 +49,7 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: -9115054308179433396, guid: 85e83a015942a18409244dcf7b0b33d8, type: 3}
     - {fileID: 8493845903913976765, guid: 85e83a015942a18409244dcf7b0b33d8, type: 3}
-    - {fileID: 8493845903913976765, guid: 85e83a015942a18409244dcf7b0b33d8, type: 3}
+    - {fileID: -9115054308179433396, guid: 85e83a015942a18409244dcf7b0b33d8, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

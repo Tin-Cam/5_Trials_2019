@@ -17,7 +17,10 @@ public abstract class _ActionBase : MonoBehaviour
     public void StartAction(int action)
     {
         if (action > actionList.Count)
+        {
+            Debug.LogError("Error starting an action: Action number cannot be higher than actionList's count");
             return;
+        }
 
         StartCoroutine(actionList[action]);
     }

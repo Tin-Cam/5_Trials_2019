@@ -10,6 +10,7 @@ public class BossAnimation
     public static readonly string AttackStandard = "Atk_Standard";
     public static readonly string AttackDesperation = "Atk_Desperation";
     public static readonly string Fire = "Fire";
+    public static readonly string Retaliate = "Retaliate";
 }
 
 public class Boss3_Actions : _ActionBase
@@ -33,12 +34,12 @@ public class Boss3_Actions : _ActionBase
         controller = GetComponent<Boss3_Controller>();
         laserManager = GetComponent<LaserManager>();
         lookAtTarget = GetComponentInChildren<LookAtTarget>();
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
         player = controller.player;
 
         actionList.Add("Idle");
         actionList.Add("ShootPlayer");
-        actionList.Add("Pushback");
+        actionList.Add("Retaliate");
         actionList.Add("SweepAttack");
         actionList.Add("DesperationAttack");
     }
@@ -49,6 +50,7 @@ public class Boss3_Actions : _ActionBase
     public IEnumerator Idle()
     {
         yield return new WaitForSeconds(1);
+        DefaultState();
     }
 
     //Action 1 - Shoot Player
@@ -65,22 +67,38 @@ public class Boss3_Actions : _ActionBase
         animator.SetTrigger(BossAnimation.Fire);
         yield return laserManager.ShootLaser(lookAtTarget.aimAngle);
 
+        animator.SetTrigger(BossAnimation.Idle);
         DefaultState();
     }
 
-    //Action 2 - Pushback player
-    public IEnumerator Pushback()
+    //Action 2 - Retaliate
+    public IEnumerator Retaliate()
     {
         PlayerMove playerMove = player.GetComponent<PlayerMove>();
-        yield return StartCoroutine(playerMove.knockBack(Vector2.down, pushbackIntensity));
+        animator.SetTrigger(BossAnimation.Retaliate);
+
+        yield return new WaitForEndOfFrame();
+        yield return WaitForAnimation("Boss3_Retaliate");
         yield return new WaitForSeconds(1);
         SpreadShot();
+
+        yield return new WaitForSeconds(1);
+        animator.SetTrigger(BossAnimation.Idle);
         DefaultState();
     }
 
-    //Action 2.1 - Retaliate after pushback (using a spreadshot)
+    //Action 2.1 - Pushback player
+    public void Pushback()
+    {
+        PlayerMove playerMove = player.GetComponent<PlayerMove>();
+        StartCoroutine(playerMove.knockBack(Vector2.down, pushbackIntensity));
+    }
+
+    //Action 2.2 - Retaliate after pushback (using a spreadshot)
     public void SpreadShot()
-    {      
+    {
+        animator.SetTrigger(BossAnimation.AttackStandard);
+        animator.SetTrigger(BossAnimation.Fire);
         spreadShot.transform.position = new Vector3(0, -1, 0);
 
         Instantiate(spreadShot, transform);
@@ -115,6 +133,7 @@ public class Boss3_Actions : _ActionBase
         animator.SetTrigger(BossAnimation.Fire);
         yield return laserManager.ShootLaser(targetAngle, BigLaser());
 
+        animator.SetTrigger(BossAnimation.Idle);
         ShowDesperationFilter(false);
         DefaultState();
     }
@@ -153,10 +172,21 @@ public class Boss3_Actions : _ActionBase
         return laserRef;
     }
 
+    //Finishes when an animation stops playing
+    public IEnumerator WaitForAnimation(string animation)
+    {
+        yield return new WaitForEndOfFrame();
+        Debug.Log("Waiting for " + animation);
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName(animation))
+        {
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
     public override void DefaultState()
     {
         lookAtTarget.isAiming = true;
-        animator.SetTrigger(BossAnimation.Idle);
+        
         lookAtTarget.ChangeTarget(player.transform);
         StartCoroutine(controller.NextAction());
     }

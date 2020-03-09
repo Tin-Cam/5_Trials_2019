@@ -150,7 +150,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2890213894033778224}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!331 &44484789
 SpriteMask:
@@ -282,7 +282,6 @@ GameObject:
   - component: {fileID: 791685994}
   - component: {fileID: 791685998}
   - component: {fileID: 791685997}
-  - component: {fileID: 791685996}
   - component: {fileID: 791685995}
   - component: {fileID: 791685999}
   m_Layer: 0
@@ -320,25 +319,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   referenceThisObject: 1
   reference: {fileID: 791685998}
---- !u!95 &791685996
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791685993}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b7fa80e9a06501141b12914910e9c08b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!331 &791685997
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -507,7 +487,7 @@ PrefabInstance:
     - target: {fileID: 5312493438252995560, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5312493438252995560, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
@@ -1046,7 +1026,7 @@ PrefabInstance:
     - target: {fileID: 7282111899576251240, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7282111899576251240, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
@@ -1160,7 +1140,7 @@ Transform:
   m_LocalScale: {x: 30, y: 30, z: 1}
   m_Children: []
   m_Father: {fileID: 2890213894033778224}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2126071215 stripped
 MonoBehaviour:
@@ -1929,8 +1909,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 791685994}
-  - {fileID: 1978234426}
   - {fileID: 44484788}
+  - {fileID: 1978234426}
   m_Father: {fileID: 3767492221612649851}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1973,6 +1953,7 @@ GameObject:
   - component: {fileID: 2890213894033778231}
   - component: {fileID: 2890213894033778230}
   - component: {fileID: 2890213894033778232}
+  - component: {fileID: 2890213894033778233}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -2045,6 +2026,25 @@ MonoBehaviour:
     type: 3}
   laserPrefab: {fileID: 7828657115819629287, guid: c883c613d6102744795584bd2d443313,
     type: 3}
+--- !u!95 &2890213894033778233
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2890213894033778229}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b7fa80e9a06501141b12914910e9c08b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!156049354 &2901094200162091791
 Grid:
   m_ObjectHideFlags: 0
@@ -2103,7 +2103,7 @@ Transform:
   - {fileID: 1367151642}
   - {fileID: 970539426}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!19719996 &5021319345378587430
 TilemapCollider2D:
@@ -2241,7 +2241,7 @@ Transform:
   - {fileID: 1410996807}
   - {fileID: 7777231986860824505}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8180312295899221719
 GameObject:

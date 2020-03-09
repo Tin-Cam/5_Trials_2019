@@ -34,18 +34,19 @@ public class Boss3_Controller : _BossBase
 
     public IEnumerator NextAction()
     {
+        yield break;
         //Wait Idle for some time
         float rngIdle = Random.Range(3, 10);
+        Debug.Log("Waiting for " + rngIdle + " seconds");
         yield return new WaitForSeconds(rngIdle);
 
         //Retaliate if possible
 
 
         //Pick an Attack
-        int rngAction = Random.Range(0, 4);
+        int rngAction = Random.Range(0, 3);
+        Debug.Log("Starting action " + rngAction);
         action.StartAction(rngAction);
-
-        yield return NextAction();
     }
 
 
