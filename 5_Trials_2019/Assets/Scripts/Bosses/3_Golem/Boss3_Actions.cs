@@ -37,9 +37,9 @@ public class Boss3_Actions : _ActionBase
         animator = GetComponent<Animator>();
         player = controller.player;
 
-        actionList.Add("Idle");
+        //actionList.Add("Idle");
         actionList.Add("ShootPlayer");
-        actionList.Add("Retaliate");
+        //actionList.Add("Retaliate");
         actionList.Add("SweepAttack");
         actionList.Add("DesperationAttack");
     }

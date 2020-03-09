@@ -6,6 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(Boss3_Actions))]
 public class Boss3_Controller : _BossBase
 {
+    public int maxAction;
+    public int minIdle;
+    public int maxIdle;
+
     public int retaliateHitCount;
     private int retaliateCounter;
 
@@ -34,17 +38,21 @@ public class Boss3_Controller : _BossBase
 
     public IEnumerator NextAction()
     {
-        yield break;
         //Wait Idle for some time
-        float rngIdle = Random.Range(3, 10);
+        float rngIdle = Random.Range(minIdle, (maxIdle + 1));
         Debug.Log("Waiting for " + rngIdle + " seconds");
         yield return new WaitForSeconds(rngIdle);
 
         //Retaliate if possible
-
+        if(retaliateCounter >= retaliateHitCount)
+        {
+            retaliateCounter = 0;
+            StartCoroutine(action.Retaliate());
+            yield break;
+        }
 
         //Pick an Attack
-        int rngAction = Random.Range(0, 3);
+        int rngAction = Random.Range(0, maxAction);
         Debug.Log("Starting action " + rngAction);
         action.StartAction(rngAction);
     }
@@ -63,7 +71,7 @@ public class Boss3_Controller : _BossBase
 
     protected override void BossHurt()
     {
-        retaliateCounter += retaliateHitCount / 5;
+        retaliateCounter++;
         TakeDamage(1);
     }
 
