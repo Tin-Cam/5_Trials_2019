@@ -58,10 +58,7 @@ public class Boss3_Controller : _BossBase
     }
 
 
-    public override void DefaultState()
-    {
-        
-    }
+    
 
     //REDUNDANT
     protected override void Act()
@@ -77,12 +74,43 @@ public class Boss3_Controller : _BossBase
 
     protected override void CheckHealth()
     {
-        
+        if (health <= maxHealth * 0.6 & phase < 1)
+        {
+            IncreasePhase();
+        }
+
+        if (health <= maxHealth * 0.25 & phase < 2)
+        {
+            IncreasePhase();
+        }
     }
 
     protected override void IncreasePhase()
     {
-        throw new System.NotImplementedException();
+        phase++;
+        if (phase == 1)
+            SetPhase_1();
+
+        if (phase == 2)
+            SetPhase_2();
+    }
+
+    private void SetPhase_1()
+    {
+
+    }
+
+    private void SetPhase_2()
+    {
+
+        DefaultState();
+        PickAction(2);
+        maxAction = 3;
+    }
+
+    public override void DefaultState()
+    {
+
     }
 
     protected override void StartDeath()

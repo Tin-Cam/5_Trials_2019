@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossAnimation
 {
     //Animation Triggers
-    public static readonly string Idle = "Exit";
+    public static readonly string Idle = "Idle";
 
     public static readonly string AttackStandard = "Atk_Standard";
     public static readonly string AttackDesperation = "Atk_Desperation";
@@ -67,7 +67,6 @@ public class Boss3_Actions : _ActionBase
         animator.SetTrigger(BossAnimation.Fire);
         yield return laserManager.ShootLaser(lookAtTarget.aimAngle);
 
-        animator.SetTrigger(BossAnimation.Idle);
         DefaultState();
     }
 
@@ -83,7 +82,7 @@ public class Boss3_Actions : _ActionBase
         SpreadShot();
 
         yield return new WaitForSeconds(1);
-        animator.SetTrigger(BossAnimation.Idle);
+        
         DefaultState();
     }
 
@@ -100,7 +99,6 @@ public class Boss3_Actions : _ActionBase
         animator.SetTrigger(BossAnimation.AttackStandard);
         animator.SetTrigger(BossAnimation.Fire);
         spreadShot.transform.position = new Vector3(0, -1, 0);
-
         Instantiate(spreadShot, transform);
     }
  
@@ -133,7 +131,6 @@ public class Boss3_Actions : _ActionBase
         animator.SetTrigger(BossAnimation.Fire);
         yield return laserManager.ShootLaser(targetAngle, BigLaser());
 
-        animator.SetTrigger(BossAnimation.Idle);
         ShowDesperationFilter(false);
         DefaultState();
     }
@@ -185,8 +182,8 @@ public class Boss3_Actions : _ActionBase
 
     public override void DefaultState()
     {
+        animator.SetTrigger(BossAnimation.Idle);
         lookAtTarget.isAiming = true;
-        
         lookAtTarget.ChangeTarget(player.transform);
         StartCoroutine(controller.NextAction());
     }

@@ -1988,7 +1988,7 @@ MonoBehaviour:
   maxAction: 2
   minIdle: 3
   maxIdle: 7
-  retaliateHitCount: 10
+  retaliateHitCount: 6
 --- !u!114 &2890213894033778231
 MonoBehaviour:
   m_ObjectHideFlags: 0
