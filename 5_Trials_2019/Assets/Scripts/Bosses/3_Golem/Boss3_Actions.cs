@@ -13,6 +13,36 @@ public class BossAnimation
     public static readonly string Retaliate = "Retaliate";
 }
 
+public class StandardLaser
+{
+    Laser laser;
+
+    public float gainSpeed = 0.2f;
+    public float diminishSpeed = 0.2f;
+    public float holdTime = 1;
+    public float maxWidth = 1;
+
+    public StandardLaser(Laser reference)
+    {
+        laser = reference;
+    }
+
+    public void SetLaser()
+    {
+        laser.gainSpeed = gainSpeed;
+        laser.diminishSpeed = diminishSpeed;
+        laser.holdTime = holdTime;
+        laser.maxWidth = maxWidth;
+    }
+
+    public Laser GetLaser()
+    {
+        SetLaser();
+        return laser;
+    }
+}
+
+
 public class Boss3_Actions : _ActionBase
 {
     //public Laser laser;
@@ -22,6 +52,7 @@ public class Boss3_Actions : _ActionBase
     private LookAtTarget lookAtTarget;
     private Animator animator;
     private GameObject player;
+    private StandardLaser stLaser;
 
     public Laser laserRef;
     public RockLaser rockLaser;
@@ -36,6 +67,8 @@ public class Boss3_Actions : _ActionBase
         lookAtTarget = GetComponentInChildren<LookAtTarget>();
         animator = GetComponent<Animator>();
         player = controller.player;
+
+        stLaser = new StandardLaser(laserRef);
 
         //actionList.Add("Idle");
         actionList.Add("ShootPlayer");
@@ -65,7 +98,7 @@ public class Boss3_Actions : _ActionBase
         
         //Fire
         animator.SetTrigger(BossAnimation.Fire);
-        yield return laserManager.ShootLaser(lookAtTarget.aimAngle);
+        yield return laserManager.ShootLaser(lookAtTarget.aimAngle, stLaser.GetLaser());
 
         DefaultState();
     }
@@ -155,6 +188,18 @@ public class Boss3_Actions : _ActionBase
         Quaternion targetAngle = Quaternion.AngleAxis(angle, Vector3.forward);
 
         //laserManager.CreateLaser(targetAngle, laser);
+    }
+
+    public Laser StandardLaser()
+    {
+        Laser laser = laserRef;
+
+        laser.gainSpeed = (float)0.1;
+        laser.diminishSpeed = (float)0.1;
+        laser.holdTime = 5;
+        laser.maxWidth = 15;
+
+        return laserRef;
     }
 
     public Laser BigLaser()

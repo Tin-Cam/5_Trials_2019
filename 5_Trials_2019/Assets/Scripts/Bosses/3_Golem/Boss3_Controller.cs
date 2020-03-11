@@ -54,7 +54,7 @@ public class Boss3_Controller : _BossBase
         //Pick an Attack
         int rngAction = Random.Range(0, maxAction);
         Debug.Log("Starting action " + rngAction);
-        action.StartAction(rngAction);
+        PickAction(rngAction);
     }
 
 
@@ -97,13 +97,17 @@ public class Boss3_Controller : _BossBase
 
     private void SetPhase_1()
     {
-
+        minIdle--;
+        maxIdle--;
     }
 
     private void SetPhase_2()
     {
+        minIdle--;
+        maxIdle--;
 
         DefaultState();
+        action.StopActing();
         PickAction(2);
         maxAction = 3;
     }
