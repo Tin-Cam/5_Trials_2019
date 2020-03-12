@@ -47,7 +47,7 @@ public class Boss3_Controller : _BossBase
         if(retaliateCounter >= retaliateHitCount)
         {
             retaliateCounter = 0;
-            StartCoroutine(action.Retaliate());
+            StartCoroutine(action.SpreadShot());
             yield break;
         }
 

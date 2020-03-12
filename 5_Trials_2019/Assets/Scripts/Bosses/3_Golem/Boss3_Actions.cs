@@ -53,6 +53,7 @@ public class Boss3_Actions : _ActionBase
     private Animator animator;
     private GameObject player;
     private StandardLaser stLaser;
+    private RockLaser currentRockLaser;
 
     public Laser laserRef;
     public RockLaser rockLaser;
@@ -73,7 +74,7 @@ public class Boss3_Actions : _ActionBase
         //actionList.Add("Idle");
         actionList.Add("ShootPlayer");
         //actionList.Add("Retaliate");
-        actionList.Add("SweepAttack");
+        actionList.Add("RockLaserAttack");
         actionList.Add("DesperationAttack");
     }
 
@@ -111,12 +112,7 @@ public class Boss3_Actions : _ActionBase
 
         yield return new WaitForEndOfFrame();
         yield return WaitForAnimation("Boss3_Retaliate");
-        yield return new WaitForSeconds(1);
-        SpreadShot();
-
-        yield return new WaitForSeconds(1);
-        
-        DefaultState();
+        yield return new WaitForSeconds(1);      
     }
 
     //Action 2.1 - Pushback player
@@ -127,21 +123,25 @@ public class Boss3_Actions : _ActionBase
     }
 
     //Action 2.2 - Retaliate after pushback (using a spreadshot)
-    public void SpreadShot()
+    public IEnumerator SpreadShot()
     {
+        yield return Retaliate();
+        
         animator.SetTrigger(BossAnimation.AttackStandard);
         animator.SetTrigger(BossAnimation.Fire);
         spreadShot.transform.position = new Vector3(0, -1, 0);
         Instantiate(spreadShot, transform);
+        yield return new WaitForSeconds(1);
+        DefaultState();
     }
  
-    //Action 3 - Sweeping Attack
-    public IEnumerator SweepAttack()
+    //Action 3 - Rock Laser Attack
+    public IEnumerator RockLaserAttack()
     {
-        RockLaser temp = Instantiate(rockLaser, transform);
+        currentRockLaser = Instantiate(rockLaser, transform);
 
         //Randomise direction to move Rock Laser
-        temp.isMirror = (Random.value > 0.5f);
+        currentRockLaser.isMirror = (Random.value > 0.5f);
 
         DefaultState();
         yield break;
@@ -150,6 +150,11 @@ public class Boss3_Actions : _ActionBase
     //Action 4 - Desperation Attack
     public IEnumerator DesperationAttack()
     {
+        yield return Retaliate();
+
+        //Ensures there are no rock lasers to make the player get stuck
+        Destroy(currentRockLaser);
+
         //Pick a target to aim at
         Transform target = desperationTargets[Random.Range(0, desperationTargets.Length)].transform;
 
