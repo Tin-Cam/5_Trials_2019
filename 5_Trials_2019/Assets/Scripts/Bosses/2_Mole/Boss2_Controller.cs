@@ -119,7 +119,7 @@ public class Boss2_Controller : _BossBase
 
     private void EasyMode()
     {
-                health -= 5;
+        health -= 5;
         maxHealth -= 5;
         healthBar.initHealth(health);
 

@@ -23,6 +23,9 @@ public class Boss3_Controller : _BossBase
 
         actionBase = action;
 
+        //if (GameData.difficulty == 0)
+        //    EasyMode();
+
         StartCoroutine(NextAction());
     }
 
@@ -119,6 +122,31 @@ public class Boss3_Controller : _BossBase
         action.StopActing();
         PickAction(2);
         maxAction = 3;
+    }
+
+    private void EasyMode()
+    {
+        health -= 5;
+        maxHealth -= 5;
+        healthBar.initHealth(health);
+
+        minIdle++;
+        maxIdle++;
+
+        //Changes Laser Properties
+        float gain = action.GetStandardLaser().gainSpeed;
+        float diminish = action.GetStandardLaser().diminishSpeed;
+        float hold = action.GetStandardLaser().holdTime;
+        float width = action.GetStandardLaser().maxWidth;
+
+        gain *= 0.8f;
+        diminish *= 0.8f;
+        hold *= 0.2f;
+        width *= 0.9f;
+
+        action.indicateTime *= 1.2f;
+
+        action.SetStandardLaser(gain, diminish, hold, width);
     }
 
     public override void DefaultState()

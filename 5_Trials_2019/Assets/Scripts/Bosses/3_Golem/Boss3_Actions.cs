@@ -163,7 +163,18 @@ public class Boss3_Actions : _ActionBase
         yield return Retaliate();
 
         //Ensures there are no rock lasers to make the player get stuck
-        Destroy(currentRockLaser.gameObject);
+        try{
+            Destroy(currentRockLaser.gameObject);
+        }
+        catch (MissingReferenceException)
+        {
+
+        }
+        catch (System.NullReferenceException)
+        {
+
+        }
+
 
         //Pick a target to aim at
         Transform target = desperationTargets[Random.Range(0, desperationTargets.Length)].transform;
