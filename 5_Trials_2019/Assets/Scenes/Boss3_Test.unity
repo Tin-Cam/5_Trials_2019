@@ -892,7 +892,7 @@ PrefabInstance:
     - target: {fileID: 9182096197023116855, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 4.67
       objectReference: {fileID: 0}
     - target: {fileID: 9182096197023116855, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
@@ -2005,6 +2005,7 @@ MonoBehaviour:
   isActing: 0
   desperationSprite: {fileID: 8368630274155626293}
   laserRef: {fileID: 349397956163245814, guid: 00a451fc2d2a5e44d9ec1c05ddcdef7d, type: 3}
+  indicateTime: 1
   rockLaser: {fileID: 4095378150264730604, guid: 4584af172a1f7c243bd1dfe32a8345a7,
     type: 3}
   spreadShot: {fileID: 1336886872206774791, guid: 069047c5f1f9c8248a7664381f9c20f2,

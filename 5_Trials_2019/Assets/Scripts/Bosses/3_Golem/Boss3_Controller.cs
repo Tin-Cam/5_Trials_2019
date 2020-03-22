@@ -74,7 +74,7 @@ public class Boss3_Controller : _BossBase
 
     protected override void CheckHealth()
     {
-        if (health <= maxHealth * 0.6 & phase < 1)
+        if (health <= maxHealth * 0.8 & phase < 1)
         {
             IncreasePhase();
         }
@@ -88,23 +88,32 @@ public class Boss3_Controller : _BossBase
     protected override void IncreasePhase()
     {
         phase++;
-        if (phase == 1)
-            SetPhase_1();
-
-        if (phase == 2)
-            SetPhase_2();
+        SetPhase();
     }
 
-    private void SetPhase_1()
+    private void SetPhase()
     {
         minIdle--;
         maxIdle--;
-    }
 
-    private void SetPhase_2()
-    {
-        minIdle--;
-        maxIdle--;
+        //Changes Laser Properties
+        float gain = action.GetStandardLaser().gainSpeed;
+        float diminish = action.GetStandardLaser().diminishSpeed;
+        float hold = action.GetStandardLaser().holdTime;
+        float width = action.GetStandardLaser().maxWidth;
+
+        gain *= 1.2f;
+        diminish *= 1.2f;
+        hold *= 0.8f;
+        width *= 1.5f;
+
+        action.indicateTime *= 0.8f;
+
+        action.SetStandardLaser(gain, diminish, hold, width);
+
+
+        if (phase != 2)
+            return;
 
         DefaultState();
         action.StopActing();

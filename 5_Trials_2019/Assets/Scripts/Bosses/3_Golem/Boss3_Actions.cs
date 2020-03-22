@@ -35,6 +35,15 @@ public class StandardLaser
         laser.maxWidth = maxWidth;
     }
 
+    public void SetLaser(float gain, float diminish, float hold, float width)
+    {
+        gainSpeed = gain;
+        diminishSpeed = diminish;
+        holdTime = hold;
+        maxWidth = width;
+
+    }
+
     public Laser GetLaser()
     {
         SetLaser();
@@ -56,6 +65,7 @@ public class Boss3_Actions : _ActionBase
     private RockLaser currentRockLaser;
 
     public Laser laserRef;
+    public float indicateTime;
     public RockLaser rockLaser;
     public GameObject spreadShot;
     public GameObject[] desperationTargets;
@@ -95,7 +105,7 @@ public class Boss3_Actions : _ActionBase
 
         //Indicate
         animator.SetTrigger(BossAnimation.AttackStandard);
-        yield return laserManager.IndicateLaser(1, angle);
+        yield return laserManager.IndicateLaser(indicateTime, angle);
         
         //Fire
         animator.SetTrigger(BossAnimation.Fire);
@@ -153,7 +163,7 @@ public class Boss3_Actions : _ActionBase
         yield return Retaliate();
 
         //Ensures there are no rock lasers to make the player get stuck
-        Destroy(currentRockLaser);
+        Destroy(currentRockLaser.gameObject);
 
         //Pick a target to aim at
         Transform target = desperationTargets[Random.Range(0, desperationTargets.Length)].transform;
@@ -195,16 +205,14 @@ public class Boss3_Actions : _ActionBase
         //laserManager.CreateLaser(targetAngle, laser);
     }
 
-    public Laser StandardLaser()
+    public StandardLaser GetStandardLaser()
     {
-        Laser laser = laserRef;
+        return stLaser;
+    }
 
-        laser.gainSpeed = (float)0.1;
-        laser.diminishSpeed = (float)0.1;
-        laser.holdTime = 5;
-        laser.maxWidth = 15;
-
-        return laserRef;
+    public void SetStandardLaser(float gain, float diminish, float hold, float width)
+    {
+        stLaser.SetLaser(gain, diminish, hold, width);
     }
 
     public Laser BigLaser()
