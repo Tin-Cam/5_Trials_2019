@@ -183,6 +183,7 @@ public class Boss3_Actions : _ActionBase
         ShowDesperationFilter(true);
         lookAtTarget.ChangeTarget(target);
         animator.SetTrigger(BossAnimation.AttackDesperation);
+        controller.isHitable = false;
         yield return new WaitForSeconds(2);
 
         //Shoot
@@ -251,6 +252,7 @@ public class Boss3_Actions : _ActionBase
 
     public override void DefaultState()
     {
+        controller.DefaultState();
         animator.SetTrigger(BossAnimation.Idle);
         lookAtTarget.isAiming = true;
         lookAtTarget.ChangeTarget(player.transform);

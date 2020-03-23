@@ -13,6 +13,8 @@ public class Boss3_Controller : _BossBase
     public int retaliateHitCount;
     private int retaliateCounter;
 
+    public bool isHitable = true;
+
     private Boss3_Actions action;
 
     protected override void Init()
@@ -71,8 +73,13 @@ public class Boss3_Controller : _BossBase
 
     protected override void BossHurt()
     {
-        retaliateCounter++;
-        TakeDamage(1);
+        if (isHitable)
+        {
+            retaliateCounter++;
+            TakeDamage(1);
+        }
+        else
+            audioManager.Play("Boss_NoDamage");
     }
 
     protected override void CheckHealth()
@@ -118,7 +125,7 @@ public class Boss3_Controller : _BossBase
         if (phase != 2)
             return;
 
-        DefaultState();
+        StopCoroutine(NextAction());
         action.StopActing();
         PickAction(2);
         maxAction = 3;
@@ -151,7 +158,7 @@ public class Boss3_Controller : _BossBase
 
     public override void DefaultState()
     {
-
+        isHitable = true;
     }
 
     protected override void StartDeath()
