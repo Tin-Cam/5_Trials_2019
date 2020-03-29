@@ -67,7 +67,7 @@ public class Boss3_Actions : _ActionBase
     public Laser laserRef;
     public float indicateTime;
     public RockLaser rockLaser;
-    public GameObject spreadShot;
+    public SpreadShot spreadShot;
     public GameObject[] desperationTargets;
     public float pushbackIntensity;
 

@@ -43,6 +43,9 @@ public class Boss3_Controller : _BossBase
 
     public IEnumerator NextAction()
     {
+        if (!hasAI)
+            yield break;
+
         //Wait Idle for some time
         float rngIdle = Random.Range(minIdle, (maxIdle + 1));
         Debug.Log("Waiting for " + rngIdle + " seconds");
