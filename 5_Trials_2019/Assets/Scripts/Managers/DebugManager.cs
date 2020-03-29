@@ -85,7 +85,14 @@ public class DebugManager : MonoBehaviour
     private void PerformCommand(int action)
     {
         GetBoss().StopAction();
-        GetBoss().PickAction(action);
+        try {
+            GetBoss().PickAction(action);
+        }
+        catch (System.ArgumentOutOfRangeException)
+        {
+            Debug.Log("No command set to this key");
+        }
+
     }
 
     private void RoomCommands()
