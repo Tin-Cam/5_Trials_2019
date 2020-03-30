@@ -68,6 +68,7 @@ public class Boss3_Actions : _ActionBase
     public float indicateTime;
     public RockLaser rockLaser;
     public SpreadShot spreadShot;
+    public GameObject dustCloud;
     public GameObject[] desperationTargets;
     public float pushbackIntensity;
 
@@ -128,6 +129,7 @@ public class Boss3_Actions : _ActionBase
     //Action 2.1 - Pushback player
     public void Pushback()
     {
+        Instantiate(dustCloud, transform);
         PlayerMove playerMove = player.GetComponent<PlayerMove>();
         StartCoroutine(playerMove.knockBack(Vector2.down, pushbackIntensity));
     }
