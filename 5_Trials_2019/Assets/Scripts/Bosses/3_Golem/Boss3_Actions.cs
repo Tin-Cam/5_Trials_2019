@@ -63,14 +63,21 @@ public class Boss3_Actions : _ActionBase
     private GameObject player;
     private StandardLaser stLaser;
     private RockLaser currentRockLaser;
+    private GameObject currentSpreadShot;
 
     public Laser laserRef;
     public float indicateTime;
+
     public RockLaser rockLaser;
+
     public SpreadShot spreadShot;
+    public int spreadShotSubtraction;
+
     public GameObject dustCloud;
-    public GameObject[] desperationTargets;
     public float pushbackIntensity;
+
+    public GameObject[] desperationTargets;
+
 
     public void Init()
     {
@@ -81,6 +88,8 @@ public class Boss3_Actions : _ActionBase
         player = controller.player;
 
         stLaser = new StandardLaser(laserRef);
+
+        SetSpreadShotSubtraction(spreadShotSubtraction);
 
         //actionList.Add("Idle");
         actionList.Add("ShootPlayer");
@@ -123,7 +132,6 @@ public class Boss3_Actions : _ActionBase
 
         yield return new WaitForEndOfFrame();
         yield return WaitForAnimation("Boss3_Retaliate");
-        yield return new WaitForSeconds(1);      
     }
 
     //Action 2.1 - Pushback player
@@ -138,8 +146,12 @@ public class Boss3_Actions : _ActionBase
     public IEnumerator SpreadShot()
     {
         yield return Retaliate();
-        
+
         animator.SetTrigger(BossAnimation.AttackStandard);
+        yield return new WaitForSeconds(1);
+
+        RemoveExcess();
+     
         animator.SetTrigger(BossAnimation.Fire);
         spreadShot.transform.position = new Vector3(0, -1, 0);
         Instantiate(spreadShot, transform);
@@ -164,19 +176,7 @@ public class Boss3_Actions : _ActionBase
     {
         yield return Retaliate();
 
-        //Ensures there are no rock lasers to make the player get stuck
-        try{
-            Destroy(currentRockLaser.gameObject);
-        }
-        catch (MissingReferenceException)
-        {
-
-        }
-        catch (System.NullReferenceException)
-        {
-
-        }
-
+        RemoveExcess();
 
         //Pick a target to aim at
         Transform target = desperationTargets[Random.Range(0, desperationTargets.Length)].transform;
@@ -197,6 +197,23 @@ public class Boss3_Actions : _ActionBase
         DefaultState();
     }
 
+    //Removes rock lasers or spreadshots to avoid the player getting stuck
+    public void RemoveExcess()
+    {
+        try
+        {
+            Destroy(currentRockLaser.gameObject);
+            Destroy(currentSpreadShot);
+        }
+        catch (MissingReferenceException)
+        {
+
+        }
+        catch (System.NullReferenceException)
+        {
+
+        }
+    }
 
 
     public Quaternion CalculateAim(Vector3 target)
@@ -239,6 +256,15 @@ public class Boss3_Actions : _ActionBase
         laser.maxWidth = 15;
 
         return laserRef;
+    }
+
+    public void SetSpreadShotSubtraction(int subtraction)
+    {
+        if (subtraction < 1)
+            subtraction = 1;
+
+        spreadShotSubtraction = subtraction;
+        spreadShot.subtraction = spreadShotSubtraction;
     }
 
     //Finishes when an animation stops playing

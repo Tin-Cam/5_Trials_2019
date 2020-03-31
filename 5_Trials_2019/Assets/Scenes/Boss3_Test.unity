@@ -594,30 +594,34 @@ PrefabInstance:
     - target: {fileID: 5312493437674923097, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5312493439015129366, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5312493437873795976, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5312493438584653470, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5312493438641714020, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5312493439813419892, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 762867808, guid: 52fee9b99713a1841bb55128229d8880, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2013,12 +2017,12 @@ MonoBehaviour:
   healthBar: {fileID: 1062325171}
   aiTimer: 0
   maxAiTimerRngValue: 0
-  hasAI: 0
+  hasAI: 1
   phase: 0
   maxAction: 2
-  minIdle: 3
-  maxIdle: 7
-  retaliateHitCount: 6
+  minIdle: 2
+  maxIdle: 5
+  retaliateHitCount: 3
   isHitable: 1
 --- !u!114 &2890213894033778231
 MonoBehaviour:
@@ -2040,12 +2044,13 @@ MonoBehaviour:
   rockLaser: {fileID: 4095378150264730604, guid: 4584af172a1f7c243bd1dfe32a8345a7,
     type: 3}
   spreadShot: {fileID: 1943275877, guid: 069047c5f1f9c8248a7664381f9c20f2, type: 3}
+  spreadShotSubtraction: 3
   dustCloud: {fileID: 2797359860263523111, guid: 2eb654f5285e9784ca4244d82ed24746,
     type: 3}
+  pushbackIntensity: 0.5
   desperationTargets:
   - {fileID: 1367151641}
   - {fileID: 970539425}
-  pushbackIntensity: 0.5
 --- !u!114 &2890213894033778232
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -128,6 +128,10 @@ public class Boss3_Controller : _BossBase
         if (phase != 2)
             return;
 
+        int subtraction = action.spreadShotSubtraction - 1;
+
+        action.SetSpreadShotSubtraction(subtraction);
+
         StopCoroutine(NextAction());
         action.StopActing();
         PickAction(2);
