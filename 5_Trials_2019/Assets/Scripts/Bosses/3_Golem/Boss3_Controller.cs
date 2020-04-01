@@ -35,10 +35,7 @@ public class Boss3_Controller : _BossBase
     void OnDrawGizmos()
     {
         Vector3 pos = new Vector3( 3, 4, 0);
-
-        Handles.Label(pos, "Retaliation: " + retaliateCounter + "/" + retaliateHitCount);
-
-        
+        Handles.Label(pos, "Retaliation: " + retaliateCounter + "/" + retaliateHitCount);        
     }
 
     public IEnumerator NextAction()
@@ -132,7 +129,7 @@ public class Boss3_Controller : _BossBase
 
         action.SetSpreadShotSubtraction(subtraction);
 
-        StopCoroutine(NextAction());
+        StopAllCoroutines();
         action.StopActing();
         PickAction(2);
         maxAction = 3;

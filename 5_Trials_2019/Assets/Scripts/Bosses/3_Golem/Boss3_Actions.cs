@@ -63,7 +63,7 @@ public class Boss3_Actions : _ActionBase
     private GameObject player;
     private StandardLaser stLaser;
     private RockLaser currentRockLaser;
-    private GameObject currentSpreadShot;
+    private SpreadShot currentSpreadShot;
 
     public Laser laserRef;
     public float indicateTime;
@@ -145,17 +145,16 @@ public class Boss3_Actions : _ActionBase
     //Action 2.2 - Retaliate after pushback (using a spreadshot)
     public IEnumerator SpreadShot()
     {
+        RemoveExcess();
         yield return Retaliate();
 
         animator.SetTrigger(BossAnimation.AttackStandard);
-        yield return new WaitForSeconds(1);
-
-        RemoveExcess();
+        yield return new WaitForSeconds(1);       
      
         animator.SetTrigger(BossAnimation.Fire);
         spreadShot.transform.position = new Vector3(0, -1, 0);
-        Instantiate(spreadShot, transform);
-        yield return new WaitForSeconds(1);
+        currentSpreadShot = Instantiate(spreadShot, transform);
+        yield return new WaitForSeconds(2);
         DefaultState();
     }
  
@@ -168,7 +167,7 @@ public class Boss3_Actions : _ActionBase
         currentRockLaser.isMirror = (Random.value > 0.5f);
 
         DefaultState();
-        yield break;
+        yield return new WaitForSeconds(2);
     }
 
     //Action 4 - Desperation Attack
@@ -203,7 +202,7 @@ public class Boss3_Actions : _ActionBase
         try
         {
             Destroy(currentRockLaser.gameObject);
-            Destroy(currentSpreadShot);
+            Destroy(currentSpreadShot.gameObject);
         }
         catch (MissingReferenceException)
         {
