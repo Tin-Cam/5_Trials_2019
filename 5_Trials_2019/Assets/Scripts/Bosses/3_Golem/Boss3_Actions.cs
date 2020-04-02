@@ -199,18 +199,33 @@ public class Boss3_Actions : _ActionBase
     //Removes rock lasers or spreadshots to avoid the player getting stuck
     public void RemoveExcess()
     {
+        //Remove Rock Laser
         try
         {
             Destroy(currentRockLaser.gameObject);
+            
+        }
+        catch (MissingReferenceException)
+        {
+            Debug.Log("MissingReferenceException for Rock Laser");
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.Log("NullReferenceException for Rock Laser");
+        }
+
+        //Remove Spreadshot
+        try
+        {
             Destroy(currentSpreadShot.gameObject);
         }
         catch (MissingReferenceException)
         {
-
+            Debug.Log("MissingReferenceException for Spread Shot");
         }
         catch (System.NullReferenceException)
         {
-
+            Debug.Log("NullReferenceException for Spread Shot");
         }
     }
 
@@ -250,8 +265,8 @@ public class Boss3_Actions : _ActionBase
         Laser laser = laserRef;
 
         laser.gainSpeed = (float)0.1;
-        laser.diminishSpeed = (float)0.1;
-        laser.holdTime = 5;
+        laser.diminishSpeed = (float)0.3;
+        laser.holdTime = 3;
         laser.maxWidth = 15;
 
         return laserRef;

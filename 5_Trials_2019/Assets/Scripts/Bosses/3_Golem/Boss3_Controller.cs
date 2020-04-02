@@ -9,6 +9,7 @@ public class Boss3_Controller : _BossBase
     public int maxAction;
     public int minIdle;
     public int maxIdle;
+    private float idleTimer;
 
     public int retaliateHitCount;
     private int retaliateCounter;
@@ -43,10 +44,7 @@ public class Boss3_Controller : _BossBase
         if (!hasAI)
             yield break;
 
-        //Wait Idle for some time
-        float rngIdle = Random.Range(minIdle, (maxIdle + 1));
-        Debug.Log("Waiting for " + rngIdle + " seconds");
-        yield return new WaitForSeconds(rngIdle);
+        yield return Idle();
 
         //Retaliate if possible
         if(retaliateCounter >= retaliateHitCount)
@@ -62,7 +60,19 @@ public class Boss3_Controller : _BossBase
         PickAction(rngAction);
     }
 
+    //Handles Idleing. Hitting the boss increases the timer 
+    public IEnumerator Idle()
+    {
+        //Wait Idle for some time
+        float rngIdle = Random.Range(minIdle, (maxIdle + 1));
+        idleTimer = 0;
 
+        while(idleTimer < rngIdle)
+        {
+            idleTimer += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
     
 
     //REDUNDANT
@@ -75,6 +85,7 @@ public class Boss3_Controller : _BossBase
     {
         if (isHitable)
         {
+            idleTimer++;
             retaliateCounter++;
             TakeDamage(1);
         }
@@ -121,15 +132,15 @@ public class Boss3_Controller : _BossBase
 
         action.SetStandardLaser(gain, diminish, hold, width);
 
-
-        if (phase != 2)
-            return;
-
         int subtraction = action.spreadShotSubtraction - 1;
-
         action.SetSpreadShotSubtraction(subtraction);
 
-        StopAllCoroutines();
+        //Only applies on Phase 2
+        if (phase != 2)
+            return;       
+
+        StopCoroutine(NextAction());
+        StopCoroutine(Idle());
         action.StopActing();
         PickAction(2);
         maxAction = 3;
