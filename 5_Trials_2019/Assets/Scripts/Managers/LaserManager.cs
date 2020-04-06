@@ -7,12 +7,14 @@ public class LaserManager : MonoBehaviour
     public Laser_Indicator indicatorPrefab;
     public Laser laserPrefab;
 
+    private Laser_Indicator currentIndicator;
+    private Laser currentLaser;
 
     public IEnumerator IndicateLaser(float time, Quaternion angle)
     {
-        Laser_Indicator indicator = Instantiate(indicatorPrefab, transform.position, angle);
-        indicator.transform.parent = gameObject.transform;
-        yield return indicator.Indicate(time);
+        currentIndicator = Instantiate(indicatorPrefab, transform.position, angle);
+        currentIndicator.transform.parent = gameObject.transform;
+        yield return currentIndicator.Indicate(time);
     }
 
     public IEnumerator ShootLaser(Quaternion angle)
@@ -31,9 +33,9 @@ public class LaserManager : MonoBehaviour
 
     public Laser CreateLaser(Quaternion angle)
     {
-        Laser laser  = Instantiate(laserPrefab, transform.position, angle);
-        laser.transform.parent = gameObject.transform;
-        return laser;
+        currentLaser  = Instantiate(laserPrefab, transform.position, angle);
+        currentLaser.transform.parent = gameObject.transform;
+        return currentLaser;
     }
 
     //Copies the values of a laser object to a prefab instance
@@ -47,5 +49,37 @@ public class LaserManager : MonoBehaviour
         laser.maxWidth = laserRef.maxWidth;
 
         return laser;
+    }
+
+    public void RemoveExcess()
+    {
+        //Remove Rock Laser
+        try
+        {
+            Destroy(currentIndicator.gameObject);
+
+        }
+        catch (MissingReferenceException)
+        {
+            Debug.Log("MissingReferenceException for Indicator");
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.Log("NullReferenceException for Indicator");
+        }
+
+        //Remove Spreadshot
+        try
+        {
+            Destroy(currentLaser.gameObject);
+        }
+        catch (MissingReferenceException)
+        {
+            Debug.Log("MissingReferenceException for Laser");
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.Log("NullReferenceException for Laser");
+        }
     }
 }

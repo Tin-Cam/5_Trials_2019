@@ -296,8 +296,12 @@ public class Boss3_Actions : _ActionBase
     {
         controller.DefaultState();
         animator.SetTrigger(BossAnimation.Idle);
+
         lookAtTarget.isAiming = true;
         lookAtTarget.ChangeTarget(player.transform);
+
+        laserManager.RemoveExcess();
+
         StartCoroutine(controller.NextAction());
     }
 }

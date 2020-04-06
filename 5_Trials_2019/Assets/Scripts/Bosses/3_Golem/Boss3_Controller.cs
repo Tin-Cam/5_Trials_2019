@@ -56,6 +56,11 @@ public class Boss3_Controller : _BossBase
 
         //Pick an Attack
         int rngAction = Random.Range(0, maxAction);
+
+        //Ensures an action isn't used twice in a row
+        while (action.CheckLastAction(rngAction))
+            rngAction = Random.Range(0, maxAction);
+
         Debug.Log("Starting action " + rngAction);
         PickAction(rngAction);
     }
@@ -137,7 +142,9 @@ public class Boss3_Controller : _BossBase
 
         //Only applies on Phase 2
         if (phase != 2)
-            return;       
+            return;
+
+        action.DefaultState();
 
         StopCoroutine(NextAction());
         StopCoroutine(Idle());
