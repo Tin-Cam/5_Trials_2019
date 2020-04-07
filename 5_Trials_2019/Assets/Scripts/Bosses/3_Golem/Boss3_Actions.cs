@@ -87,6 +87,8 @@ public class Boss3_Actions : _ActionBase
         animator = GetComponent<Animator>();
         player = controller.player;
 
+        lookAtTarget.target = player.transform;
+
         stLaser = new StandardLaser(laserRef);
 
         SetSpreadShotSubtraction(spreadShotSubtraction);

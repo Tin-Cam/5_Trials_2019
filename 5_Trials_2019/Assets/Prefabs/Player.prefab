@@ -78,6 +78,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   godMode: 0
   defaultKnockBack: 0.1
+  roomBounds: {x: 6, y: 4}
   isInvincible: 0
   flashAmount: 10
   flashSpeed: 0.1
@@ -304,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a35f2a7d3c1994ba10484b3643dcc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  referenceThisObject: 1
   reference: {fileID: 0}
 --- !u!1 &9182096197862901493
 GameObject:

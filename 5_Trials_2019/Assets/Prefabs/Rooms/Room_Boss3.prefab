@@ -2482,7 +2482,7 @@ MonoBehaviour:
   cameraLockY: 1
   hasIntro: 0
   playerSpawn: {x: 0, y: -4}
-  bossID: 2
+  bossID: 3
   music: {fileID: 0}
   door: {fileID: 3539544720708358548}
 --- !u!1 &2691330106464540334
