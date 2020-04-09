@@ -134,6 +134,7 @@ public class Boss3_Actions : _ActionBase
 
         yield return new WaitForEndOfFrame();
         yield return WaitForAnimation("Boss3_Retaliate");
+        RemoveExcess();
     }
 
     //Action 2.1 - Pushback player
@@ -147,7 +148,6 @@ public class Boss3_Actions : _ActionBase
     //Action 2.2 - Retaliate after pushback (using a spreadshot)
     public IEnumerator SpreadShot()
     {
-        RemoveExcess();
         yield return Retaliate();
 
         animator.SetTrigger(BossAnimation.AttackStandard);
@@ -175,9 +175,7 @@ public class Boss3_Actions : _ActionBase
     //Action 4 - Desperation Attack
     public IEnumerator DesperationAttack()
     {
-        yield return Retaliate();
-
-        RemoveExcess();
+        yield return Retaliate();       
 
         //Pick a target to aim at
         Transform target = desperationTargets[Random.Range(0, desperationTargets.Length)].transform;
