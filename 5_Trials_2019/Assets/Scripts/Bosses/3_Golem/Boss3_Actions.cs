@@ -132,9 +132,10 @@ public class Boss3_Actions : _ActionBase
         PlayerMove playerMove = player.GetComponent<PlayerMove>();
         animator.SetTrigger(BossAnimation.Retaliate);
 
+        RemoveExcess();
         yield return new WaitForEndOfFrame();
         yield return WaitForAnimation("Boss3_Retaliate");
-        RemoveExcess();
+        
     }
 
     //Action 2.1 - Pushback player
