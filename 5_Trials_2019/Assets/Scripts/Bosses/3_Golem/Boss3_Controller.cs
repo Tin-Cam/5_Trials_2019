@@ -86,7 +86,7 @@ public class Boss3_Controller : _BossBase
         
     }
 
-    protected override void BossHurt()
+    public override void BossHurt()
     {
         if (isHitable)
         {

@@ -59,7 +59,7 @@ public class Boss2_Controller : _BossBase
     }
 
     //Boss will not take damage when underground or using desperation attack
-    protected override void BossHurt()
+    public override void BossHurt()
     {
         if (isHitable)
             TakeDamage(1);

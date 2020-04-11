@@ -55,6 +55,9 @@ public class PlayerMove : MonoBehaviour
             isMoving = true;
 
         animator.SetBool("Moving", isMoving);
+
+        if (!isMoving)
+            animator.SetTrigger("Idle");
     }
 
     //Handles horizontal movement
