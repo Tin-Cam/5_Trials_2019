@@ -14,9 +14,6 @@ public class PlayerAttack : MonoBehaviour
 
     public Animator animator;
 
-    public Transform attackPoint;
-    public float attackRange = 0.5f;
-
     void Start()
     {
         audioManager = AudioManager.instance;
@@ -40,7 +37,6 @@ public class PlayerAttack : MonoBehaviour
             audioManager.Play("Player_Attack");
             canAttack = false;
             playerMove.canMove = false;
-            AttackCollision();
             StartCoroutine("AttackCo");
         }
     }
@@ -50,20 +46,6 @@ public class PlayerAttack : MonoBehaviour
         animator.SetTrigger("Attack");
         yield return WaitForAnimation("Attack");
         DefaultState();
-    }
-
-    private void AttackCollision()
-    {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange);
-
-        foreach(Collider2D enemy in hitEnemies)
-        {
-            if (enemy.gameObject.GetComponent<_BossBase>() == null)
-                return;
-
-            _BossBase boss = enemy.gameObject.GetComponent<_BossBase>();
-            boss.BossHurt();
-        }
     }
 
     public void DefaultState()
@@ -90,14 +72,5 @@ public class PlayerAttack : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
     }
-
-    void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-            return;
-
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
-
 }
 
