@@ -6,18 +6,13 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     Rigidbody2D rig;
-    SpriteRenderer render;
     Animator animator;
 
     public GameManager gameManager;
-    public bool godMode;
 
     [Space(15)]
     public float defaultKnockBack;
     public Vector2 roomBounds;
-    public bool isInvincible;
-    public float flashAmount;
-    public float flashSpeed = 1;
 
     [Space(15)]
     public float moveSpeed;
@@ -35,7 +30,6 @@ public class PlayerMove : MonoBehaviour
 
     void Start() {
         rig = GetComponent<Rigidbody2D>();
-        render = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
 
@@ -148,54 +142,6 @@ public class PlayerMove : MonoBehaviour
         transform.position = position;
     }
 
-    //Makes the player invincible; used when they're hit
-    public IEnumerator invincible()
-    {
-        isInvincible = true;
-        for (int i = 0; i < flashAmount; i++)
-        {
-            flashRed();
-            yield return new WaitForSeconds(flashSpeed);
-        }
-        render.color = Color.white;
-        isInvincible = false;
-    }
-
-    //Alternates player's color from white to red when hit
-    private void flashRed()
-    {
-        if (render.color.Equals(Color.red))
-        {
-            render.color = Color.white;
-            return;
-        }
-
-        if (render.color.Equals(Color.white))
-        {
-            render.color = Color.red;
-            return;
-        }
-    }
-
-
-    //Methods for player getting hit
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (godMode | isInvincible)
-            return;
-
-        if (other.tag == "Projectile")
-        {
-            gameManager.PlayerTakeDamage(1);
-
-            if (gameManager.playerHealth <= 0)
-                return;
-
-            Vector2 playerPosition = transform.position;           
-            Vector2 direction = playerPosition - other.ClosestPoint(playerPosition);
-           
-            StartCoroutine(knockBack(direction, defaultKnockBack));
-            StartCoroutine(invincible());
-        }
-    }
+    
+    
 }
