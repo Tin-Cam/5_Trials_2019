@@ -10,7 +10,6 @@ public class PlayerAttack : MonoBehaviour
     private PlayerMove playerMove;
 
     public bool canAttack;
-    public GameObject sword;
     public float holdTime;
 
     public Animator animator;
@@ -19,7 +18,6 @@ public class PlayerAttack : MonoBehaviour
     {
         audioManager = AudioManager.instance;
         playerMove = GetComponent<PlayerMove>();
-        sword.SetActive(false);
     }
 
 
@@ -45,28 +43,34 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator AttackCo()
     {
-        //Sets the rotation of the sword using the player's direction
-        //sword.transform.rotation = Quaternion.Euler(0, 0, playerMove.getDirectionAngle());
-
-
-        animator.SetBool("Attack", true);
-        yield return new WaitForSeconds(holdTime);
-
+        animator.SetTrigger("Attack");
+        yield return WaitForAnimation("Attack");
         DefaultState();
     }
 
     public void DefaultState()
     {
-        animator.SetBool("Attack", false);
+        animator.SetTrigger("Idle");
         canAttack = true;
         playerMove.canMove = true;
-        StartCoroutine(ResetSword());
     }
 
-    private IEnumerator ResetSword()
+    //Finishes when an animation stops playing
+    public IEnumerator WaitForAnimation(string animation)
     {
-        yield return new WaitForEndOfFrame();
-        sword.SetActive(false);
-        sword.transform.position = Vector3.zero;
+        //Wait for animation to start playing
+        while (!animator.GetCurrentAnimatorStateInfo(0).IsName(animation))
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        Debug.Log("Waiting for " + animation);
+
+        //Waits for animation to finish
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName(animation))
+        {
+            yield return new WaitForFixedUpdate();
+        }
     }
 }
+

@@ -13,7 +13,7 @@ public class Dummy_Boss : _BossBase
     }
     
 
-    protected override void BossHurt()
+    public override void BossHurt()
     {
         TakeDamage(1);
     }
