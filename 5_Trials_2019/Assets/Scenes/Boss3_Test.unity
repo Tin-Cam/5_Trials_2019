@@ -636,6 +636,26 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 8484054452055755061, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484054452055755061, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722099411239320907, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: hitFlashRate
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722099411239320907, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: invincibleTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb5d813d44eb64f4791a90e539078c1f, type: 3}
 --- !u!1001 &1850908499

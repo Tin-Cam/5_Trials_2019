@@ -9,9 +9,9 @@ public class PlayerCollision : MonoBehaviour
 
     public bool godMode;
     public bool isInvincible;
+    public float invincibleTime;
 
-    public float flashAmount = 10;
-    public float flashSpeed = 1;
+    public float hitFlashRate;
 
     private GameManager gameManager;
 
@@ -36,36 +36,27 @@ public class PlayerCollision : MonoBehaviour
             Vector2 direction = playerPosition - other.ClosestPoint(playerPosition);
 
             StartCoroutine(playerMove.knockBack(direction, playerMove.defaultKnockBack));
-            StartCoroutine(invincible());
+            StartCoroutine(Invincible());
         }
     }
 
     //Makes the player invincible; used when they're hit
-    public IEnumerator invincible()
+    public IEnumerator Invincible()
     {
         isInvincible = true;
-        for (int i = 0; i < flashAmount; i++)
-        {
-            flashRed();
-            yield return new WaitForSeconds(flashSpeed);
-        }
-        render.color = Color.white;
+        StartCoroutine(FlashRed());
+        yield return new WaitForSeconds(invincibleTime);
         isInvincible = false;
     }
 
-    //Alternates player's color from white to red when hit
-    private void flashRed()
+    private IEnumerator FlashRed()
     {
-        if (render.color.Equals(Color.red))
-        {
-            render.color = Color.white;
-            return;
-        }
-
-        if (render.color.Equals(Color.white))
+        while (isInvincible)
         {
             render.color = Color.red;
-            return;
+            yield return new WaitForSeconds(hitFlashRate);
+            render.color = Color.white;
+            yield return new WaitForSeconds(hitFlashRate);
         }
     }
 }
