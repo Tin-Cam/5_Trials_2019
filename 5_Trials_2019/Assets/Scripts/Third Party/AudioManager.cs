@@ -40,11 +40,26 @@ public class AudioManager : MonoBehaviour
 
         Play(s);
 	}
- 
+
+    public void Play(string sound, float volume, float pitch)
+    {
+        Sound s = GetSound(sound);
+
+        Play(s, volume, pitch);
+    }
+
     public void Play(Sound s)
     {
         s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
         s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
+
+        s.source.Play();
+    }
+
+    public void Play(Sound s, float volume, float pitch)
+    {
+        s.source.volume = volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
+        s.source.pitch = pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
         s.source.Play();
     }

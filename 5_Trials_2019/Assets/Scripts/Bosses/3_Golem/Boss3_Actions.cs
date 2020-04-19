@@ -60,6 +60,8 @@ public class Boss3_Actions : _ActionBase
     private Boss3_Controller controller;
     private LaserManager laserManager;
     private LookAtTarget lookAtTarget;
+    private AudioManager audioManager;
+
     private Animator animator;
     private GameObject player;
     private StandardLaser stLaser;
@@ -86,6 +88,7 @@ public class Boss3_Actions : _ActionBase
         laserManager = GetComponent<LaserManager>();
         lookAtTarget = GetComponentInChildren<LookAtTarget>();
         animator = GetComponent<Animator>();
+        audioManager = controller.audioManager;
         player = controller.player;
 
         lookAtTarget.target = player.transform;
@@ -117,10 +120,12 @@ public class Boss3_Actions : _ActionBase
         Quaternion angle = lookAtTarget.aimAngle;
 
         //Indicate
+        audioManager.Play("Boss3_Indicate");
         animator.SetTrigger(BossAnimation.AttackStandard);
         yield return laserManager.IndicateLaser(indicateTime, angle);
-        
+
         //Fire
+        audioManager.Play("Boss3_Laser");
         animator.SetTrigger(BossAnimation.Fire);
         yield return laserManager.ShootLaser(lookAtTarget.aimAngle, stLaser.GetLaser());
 
@@ -133,7 +138,7 @@ public class Boss3_Actions : _ActionBase
         PlayerMove playerMove = player.GetComponent<PlayerMove>();
         animator.SetTrigger(BossAnimation.Retaliate);
 
-        RemoveExcess();
+        
         yield return new WaitForEndOfFrame();
         yield return WaitForAnimation("Boss3_Retaliate");
         
@@ -142,6 +147,8 @@ public class Boss3_Actions : _ActionBase
     //Action 2.1 - Pushback player
     public void Pushback()
     {
+        RemoveExcess();
+        audioManager.Play("Thump");
         Instantiate(dustCloud, transform);
         PlayerMove playerMove = player.GetComponent<PlayerMove>();
         StartCoroutine(playerMove.knockBack(Vector2.down, pushbackIntensity));
@@ -153,12 +160,16 @@ public class Boss3_Actions : _ActionBase
         yield return Retaliate();
 
         animator.SetTrigger(BossAnimation.AttackStandard);
-        yield return new WaitForSeconds(1);       
-     
+        yield return new WaitForSeconds(1);
+
+        audioManager.Play("Crash");
         animator.SetTrigger(BossAnimation.Fire);
         spreadShot.transform.position = new Vector3(0, -1, 0);
         currentSpreadShot = Instantiate(spreadShot, transform);
-        yield return new WaitForSeconds(2);
+
+        yield return new WaitForSeconds(1);
+        animator.SetTrigger(BossAnimation.Idle);
+        yield return new WaitForSeconds(1);
         DefaultState();
     }
  
@@ -177,12 +188,13 @@ public class Boss3_Actions : _ActionBase
     //Action 4 - Desperation Attack
     public IEnumerator DesperationAttack()
     {
-        yield return Retaliate();       
+        yield return Retaliate();      
 
         //Pick a target to aim at
         Transform target = desperationTargets[Random.Range(0, desperationTargets.Length)].transform;
 
         //Charge Attack
+        audioManager.Play("Boss3_Indicate", 0.75f, 0.5f);
         ShowDesperationFilter(true);
         lookAtTarget.ChangeTarget(target);
         animator.SetTrigger(BossAnimation.AttackDesperation);
@@ -190,6 +202,7 @@ public class Boss3_Actions : _ActionBase
         yield return new WaitForSeconds(2);
 
         //Shoot
+        audioManager.Play("Boss3_Laser", 0.75f, 0.5f);
         Quaternion targetAngle = CalculateAim(target.position);
         animator.SetTrigger(BossAnimation.Fire);
         yield return laserManager.ShootLaser(targetAngle, BigLaser());

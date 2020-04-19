@@ -12,13 +12,15 @@ public class RockLaser : MonoBehaviour
     private readonly float startSpeed = 2;
     private LaserManager laserManager;
     private Rigidbody2D rig;
+    private AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
         laserManager = GetComponent<LaserManager>();
         rig = GetComponent<Rigidbody2D>();
-
+        audioManager = AudioManager.instance;
+        audioManager.Play("Thump", 0.75f, 1.5f);
 
         //Changes (mirrors) the direction the laser moves
         if (isMirror)
@@ -49,8 +51,10 @@ public class RockLaser : MonoBehaviour
         yield return MoveToPosition(startPosition, startSpeed);//Gets into position
         yield return new WaitForSeconds(1);
 
+        audioManager.Play("Boss3_Indicate", 0.75f, 1.5f);
         yield return laserManager.IndicateLaser(1, Quaternion.Euler(0, 0, -90));//Indicates Attack
 
+        audioManager.Play("Boss3_Laser", 0.75f, 1.5f);
         StartCoroutine(laserManager.ShootLaser(Quaternion.Euler(0, 0, -90)));//Shoots and starts to move
         yield return MoveToPosition(targetPosition, speedDivision);
 
