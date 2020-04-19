@@ -925,5 +925,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1427080844259170918, guid: 3e92479b334faca41a93db78827215b5,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[167].second.m_TileIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1427080844259170918, guid: 3e92479b334faca41a93db78827215b5,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[167].second.m_TileSpriteIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1427080844259170918, guid: 3e92479b334faca41a93db78827215b5,
+        type: 3}
+      propertyPath: m_TileAssetArray.Array.data[1].m_RefCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1427080844259170918, guid: 3e92479b334faca41a93db78827215b5,
+        type: 3}
+      propertyPath: m_TileAssetArray.Array.data[1].m_Data
+      value: 
+      objectReference: {fileID: 11400000, guid: e58ce4b47de35c449839c9d5a858ab42,
+        type: 2}
+    - target: {fileID: 1427080844259170918, guid: 3e92479b334faca41a93db78827215b5,
+        type: 3}
+      propertyPath: m_TileAssetArray.Array.data[5].m_RefCount
+      value: 168
+      objectReference: {fileID: 0}
+    - target: {fileID: 1427080844259170918, guid: 3e92479b334faca41a93db78827215b5,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[1].m_RefCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1427080844259170918, guid: 3e92479b334faca41a93db78827215b5,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[1].m_Data
+      value: 
+      objectReference: {fileID: 5329262058087815351, guid: 67a5f874eb0451c419065898be880aee,
+        type: 3}
+    - target: {fileID: 1427080844259170918, guid: 3e92479b334faca41a93db78827215b5,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[5].m_RefCount
+      value: 168
+      objectReference: {fileID: 0}
+    - target: {fileID: 1427080844259170918, guid: 3e92479b334faca41a93db78827215b5,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[168].second.m_TileIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1427080844259170918, guid: 3e92479b334faca41a93db78827215b5,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[168].second.m_TileSpriteIndex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e92479b334faca41a93db78827215b5, type: 3}
