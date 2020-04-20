@@ -127,7 +127,7 @@ public class Boss1_Controller : _BossBase
         Die();    
     }
 
-    protected override void BossHurt()
+    public override void BossHurt()
     {
         if (eyes.isEyeOpen)
             TakeDamage(1);

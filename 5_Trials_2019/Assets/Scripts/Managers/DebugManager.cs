@@ -45,6 +45,36 @@ public class DebugManager : MonoBehaviour
             PerformCommand(3);
         }
 
+        if (Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            PerformCommand(4);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad5))
+        {
+            PerformCommand(5);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad6))
+        {
+            PerformCommand(6);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad7))
+        {
+            PerformCommand(7);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad8))
+        {
+            PerformCommand(8);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad9))
+        {
+            PerformCommand(9);
+        }
+
         //Stops the boss from acting
         if (Input.GetKeyDown(KeyCode.KeypadPeriod))
         {
@@ -55,7 +85,14 @@ public class DebugManager : MonoBehaviour
     private void PerformCommand(int action)
     {
         GetBoss().StopAction();
-        GetBoss().PickAction(action);
+        try {
+            GetBoss().PickAction(action);
+        }
+        catch (System.ArgumentOutOfRangeException)
+        {
+            Debug.Log("No command set to this key");
+        }
+
     }
 
     private void RoomCommands()

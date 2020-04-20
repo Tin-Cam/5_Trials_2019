@@ -17,7 +17,10 @@ public abstract class _ActionBase : MonoBehaviour
     public void StartAction(int action)
     {
         if (action > actionList.Count)
+        {
+            Debug.LogError("Error starting an action: Action number cannot be higher than actionList's count");
             return;
+        }
 
         StartCoroutine(actionList[action]);
     }
@@ -29,13 +32,13 @@ public abstract class _ActionBase : MonoBehaviour
         isActing = false;
     }
 
-    //Ensures no action is used 3 times in a row
+    //Ensures no action is used 3 times in a row. Returns true if the action has been used twice already
     public bool CheckLastAction(int action)
     {
-        int actionSum = action * 2;
-        int vecSum = last2Actions.x + last2Actions.y;
+        bool action1 = action == last2Actions.x;
+        bool action2 = action == last2Actions.y;
 
-        if (actionSum == vecSum)
+        if (action1 && action2)
             return true;
 
         last2Actions.y = last2Actions.x;

@@ -4,38 +4,82 @@ using UnityEngine;
 
 public class LaserManager : MonoBehaviour
 {
+    public Laser_Indicator indicatorPrefab;
     public Laser laserPrefab;
 
-    //Copies the values of a laser object to a prefab instance
-    public Laser CreateLaser(Quaternion angle, Laser laserClass)
+    private Laser_Indicator currentIndicator;
+    private Laser currentLaser;
+
+    public IEnumerator IndicateLaser(float time, Quaternion angle)
+    {
+        currentIndicator = Instantiate(indicatorPrefab, transform.position, angle);
+        currentIndicator.transform.parent = gameObject.transform;
+        yield return currentIndicator.Indicate(time);
+    }
+
+    public IEnumerator ShootLaser(Quaternion angle)
     {
         Laser laser = CreateLaser(angle);
+        yield return laser.FireLaser();
+        yield break;
+    }
 
-        laser.gainSpeed = laserClass.gainSpeed;
-        laser.diminishSpeed = laserClass.diminishSpeed;
-        laser.holdTime = laserClass.holdTime;
-        laser.maxWidth = laserClass.maxWidth;
-
-        laser.indicateAttack = laserClass.indicateAttack;
-        laser.indicatorTime = laserClass.indicatorTime;
-
-        return laser;
+    public IEnumerator ShootLaser(Quaternion angle, Laser laserRef)
+    {
+        Laser laser = CreateLaser(angle, laserRef);
+        yield return laser.FireLaser();
+        yield break;
     }
 
     public Laser CreateLaser(Quaternion angle)
     {
-        Laser laser  = Instantiate(laserPrefab, transform.position, angle);
-        return laser;
+        currentLaser  = Instantiate(laserPrefab, transform.position, angle);
+        currentLaser.transform.parent = gameObject.transform;
+        return currentLaser;
     }
 
-    public Laser CreateLaser(Quaternion angle, float gainSpeed, float dimisnishSpeed, float holdTime)
+    //Copies the values of a laser object to a prefab instance
+    public Laser CreateLaser(Quaternion angle, Laser laserRef)
     {
         Laser laser = CreateLaser(angle);
 
-        laser.gainSpeed = gainSpeed;
-        laser.diminishSpeed = dimisnishSpeed;
-        laser.holdTime = holdTime;
+        laser.gainSpeed = laserRef.gainSpeed;
+        laser.diminishSpeed = laserRef.diminishSpeed;
+        laser.holdTime = laserRef.holdTime;
+        laser.maxWidth = laserRef.maxWidth;
 
         return laser;
+    }
+
+    public void RemoveExcess()
+    {
+        //Remove Rock Laser
+        try
+        {
+            Destroy(currentIndicator.gameObject);
+
+        }
+        catch (MissingReferenceException)
+        {
+            Debug.Log("MissingReferenceException for Indicator");
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.Log("NullReferenceException for Indicator");
+        }
+
+        //Remove Spreadshot
+        try
+        {
+            Destroy(currentLaser.gameObject);
+        }
+        catch (MissingReferenceException)
+        {
+            Debug.Log("MissingReferenceException for Laser");
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.Log("NullReferenceException for Laser");
+        }
     }
 }

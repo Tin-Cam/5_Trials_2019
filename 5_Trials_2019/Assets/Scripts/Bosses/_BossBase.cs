@@ -118,7 +118,7 @@ public abstract class _BossBase : MonoBehaviour
         this.gameManager = gameManager;
     }
 
-    //Alternates player's color from white to red when hit
+    //Makes the boss flash red when hit
     private IEnumerator FlashRed()
     {
         hitSprite.enabled = true;
@@ -128,7 +128,7 @@ public abstract class _BossBase : MonoBehaviour
 
     abstract protected void Init();
     abstract protected void Act();
-    abstract protected void BossHurt();
+    abstract public void BossHurt();
     abstract protected void IncreasePhase();
     abstract protected void CheckHealth();
     abstract protected void StartDeath();

@@ -162,3 +162,39 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Boss3_Laser
+    clip: {fileID: 8300000, guid: ccc8742ebca05af42bd0d796239db7c5, type: 3}
+    volume: 0.75
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Boss3_Indicate
+    clip: {fileID: 8300000, guid: 25fc5d00d7c63cc418b2ea803f06adc5, type: 3}
+    volume: 0.75
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Thump
+    clip: {fileID: 8300000, guid: d8970b4ec3adf4c4b960fd731c3c1016, type: 3}
+    volume: 0.75
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Crash
+    clip: {fileID: 8300000, guid: 7ad3bd5a265827741b255a15f4df7fc5, type: 3}
+    volume: 0.75
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}

@@ -59,7 +59,7 @@ public class Boss2_Controller : _BossBase
     }
 
     //Boss will not take damage when underground or using desperation attack
-    protected override void BossHurt()
+    public override void BossHurt()
     {
         if (isHitable)
             TakeDamage(1);
@@ -119,7 +119,7 @@ public class Boss2_Controller : _BossBase
 
     private void EasyMode()
     {
-                health -= 5;
+        health -= 5;
         maxHealth -= 5;
         healthBar.initHealth(health);
 
