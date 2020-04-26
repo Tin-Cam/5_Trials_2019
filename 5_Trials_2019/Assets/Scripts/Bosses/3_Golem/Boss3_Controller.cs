@@ -32,13 +32,6 @@ public class Boss3_Controller : _BossBase
         StartCoroutine(NextAction());
     }
 
-
-    void OnDrawGizmos()
-    {
-        Vector3 pos = new Vector3( 3, 4, 0);
-        Handles.Label(pos, "Retaliation: " + retaliateCounter + "/" + retaliateHitCount);        
-    }
-
     public IEnumerator NextAction()
     {
         if (!hasAI)
