@@ -9,6 +9,8 @@ public class PlayerMove : MonoBehaviour
     Animator animator;
 
     public GameManager gameManager;
+    public Joystick joystick;
+    public bool joystickControls;
 
     [Space(15)]
     public float defaultKnockBack;
@@ -40,8 +42,11 @@ public class PlayerMove : MonoBehaviour
             return;
         }
 
-        MoveX();
-        MoveY();
+        float inputX = GetInput("Horizontal");
+        float inputY = GetInput("Vertical");
+
+        MoveX(inputX);
+        MoveY(inputY);
 
         if (rig.velocity.Equals(Vector3.zero))
             isMoving = false;
@@ -55,16 +60,16 @@ public class PlayerMove : MonoBehaviour
     }
 
     //Handles horizontal movement
-    private void MoveX()
+    private void MoveX(float input)
     {
         //Handles moving right
-        if (Input.GetAxisRaw("Horizontal") > 0f)
+        if (input > 0.2f)
         {
             rig.velocity = new Vector3(moveSpeed, rig.velocity.y, 0f);
             SetDirection(3);
         }
         //Handles moving left
-        else if (Input.GetAxisRaw("Horizontal") < 0f)
+        else if (input < -0.2f)
         {
             rig.velocity = new Vector3(-moveSpeed, rig.velocity.y, 0f);
             SetDirection(1);
@@ -76,16 +81,16 @@ public class PlayerMove : MonoBehaviour
     }
 
     //Handles vertical movement
-    private void MoveY()
+    private void MoveY(float input)
     {
         //Handles moving up
-        if (Input.GetAxisRaw("Vertical") > 0f)
+        if (input > 0.2f)
         {
             rig.velocity = new Vector3(rig.velocity.x, moveSpeed, 0f);
             SetDirection(0);
         }
         //Handles moving down
-        else if (Input.GetAxisRaw("Vertical") < 0f)
+        else if (input < -0.2f)
         {
             rig.velocity = new Vector3(rig.velocity.x, -moveSpeed, 0f);
             SetDirection(2);
@@ -95,6 +100,24 @@ public class PlayerMove : MonoBehaviour
             rig.velocity = new Vector3(rig.velocity.x, 0f, 0f);
         }
     }
+
+    private float GetInput(string axis)
+    {
+        //Returns standard Unity input
+        if (!joystickControls)
+            return Input.GetAxisRaw(axis);
+
+        //Returns stick input
+        if (axis == "Horizontal")
+            return joystick.Horizontal;
+        else if (axis == "Vertical")
+            return joystick.Vertical;
+        else
+            Debug.LogError("GetInput: Given string is not an input!");
+        return 0;
+    }
+
+
 
     //Direction uses an int value to determine which direction the player is facing
     // 0:   Up
