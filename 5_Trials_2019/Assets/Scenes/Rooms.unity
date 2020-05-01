@@ -579,7 +579,7 @@ PrefabInstance:
     - target: {fileID: 9182096197023116854, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
       propertyPath: joystickControls
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9182096197023116855, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
