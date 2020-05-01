@@ -23,22 +23,27 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (!canAttack)
-            return;
-
-        Attack();
+        AttackInput();
     }
 
-    //Stops the player from moving, then starts the Attack Coroutine
-    private void Attack()
+    private void AttackInput()
     {
         if (Input.GetButtonDown("Attack"))
         {
-            audioManager.Play("Player_Attack");
-            canAttack = false;
-            playerMove.canMove = false;
-            StartCoroutine("AttackCo");
+            Attack();
         }
+    }
+
+    //Stops the player from moving, then starts the Attack Coroutine
+    public void Attack()
+    {
+        if (!canAttack)
+            return;
+
+        audioManager.Play("Player_Attack");
+        canAttack = false;
+        playerMove.canMove = false;
+        StartCoroutine("AttackCo");     
     }
 
     private IEnumerator AttackCo()
