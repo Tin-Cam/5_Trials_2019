@@ -73,11 +73,7 @@ public class Boss3_Controller : _BossBase
     }
     
 
-    //REDUNDANT
-    protected override void Act()
-    {
-        
-    }
+    
 
     public override void BossHurt()
     {
@@ -179,5 +175,11 @@ public class Boss3_Controller : _BossBase
     protected override void StartDeath()
     {
         Die();
+    }
+
+    //REDUNDANT
+    protected override void Act()
+    {
+
     }
 }
