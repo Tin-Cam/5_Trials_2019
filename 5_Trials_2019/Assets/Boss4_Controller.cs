@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Boss4_Controller : _BossBase
 {
+    private Boss4_Move move;
+
     protected override void Init()
     {
-        
+        move = GetComponent<Boss4_Move>();
+        moveBase = move;
+        move.Init();
     }
 
 

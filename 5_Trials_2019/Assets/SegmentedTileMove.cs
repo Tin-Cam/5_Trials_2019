@@ -8,19 +8,21 @@ public class SegmentedTileMove : MonoBehaviour
 
     public bool isHead;
     public bool isEnd;
+    public bool atDestination;
 
     public SegmentedTileMove childSegment;
     //public SegmentedTileMove parentSegment;
 
     private Vector3 nextTile;
     public Vector3 destinationTile;
-    public Vector3 moveOffset;
 
     private bool wasLastMoveX;
 
     void Awake()
     {
         nextTile = transform.position;
+        if (isHead)
+            SetSpeed(speed);
     }
 
     // Start is called before the first frame update
@@ -35,11 +37,11 @@ public class SegmentedTileMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, nextTile, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, (nextTile), speed * Time.deltaTime);
 
-        if (transform.position == nextTile)
-        {
-            if(isHead)
+
+        if (isHead) { 
+            if (transform.position == nextTile)
                 CalculateNextTile();
         }
     }
@@ -62,10 +64,11 @@ public class SegmentedTileMove : MonoBehaviour
             wasLastMoveX = false;
         }
 
-
         Vector3 tile = new Vector3(x, y, 0);
-        tile += moveOffset;
         UpdateNextTiles(tile);
+
+        if (transform.position == destinationTile)
+            atDestination = true;
     }
 
     private float NudgeNumber(float number, float target)
@@ -80,7 +83,8 @@ public class SegmentedTileMove : MonoBehaviour
         else if (number > target)
             number -= amount;
 
-        number = Mathf.RoundToInt(number);
+        //Rounds the umber to the nearest 0.5
+        number = Mathf.Floor(number * 2) / 2;
 
         return number;
     }
@@ -90,5 +94,18 @@ public class SegmentedTileMove : MonoBehaviour
         nextTile = tile;
         if (!isEnd)
             childSegment.UpdateNextTiles(transform.position);
+    }
+
+    public void SetSpeed(float value)
+    {
+        speed = value;
+        if (!isEnd)
+            childSegment.SetSpeed(value);
+    }
+
+    public void SetDestination(Vector3 destination)
+    {
+        destinationTile = destination;
+        atDestination = false;
     }
 }
