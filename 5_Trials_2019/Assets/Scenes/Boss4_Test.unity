@@ -1226,6 +1226,7 @@ MonoBehaviour:
   - {fileID: 922346347}
   - {fileID: 1598961767}
   - {fileID: 207066482}
+  nodeCount: 0
 --- !u!1001 &857009890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3452,7 +3453,7 @@ SpriteMask:
   m_BackSortingLayer: 0
   m_FrontSortingOrder: 0
   m_BackSortingOrder: 0
-  m_IsCustomRangeActive: 0
+  m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
 --- !u!114 &2126071215 stripped
 MonoBehaviour:
@@ -4300,6 +4301,7 @@ GameObject:
   - component: {fileID: 2890213894033778225}
   - component: {fileID: 2097538262}
   - component: {fileID: 2890213894033778231}
+  - component: {fileID: 2890213894033778230}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -4307,6 +4309,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2890213894033778230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2890213894033778229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bcb1b968b55ccf42a3e1550c44994c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body:
+  - {fileID: 2890213894033778224}
+  - {fileID: 515160701}
+  - {fileID: 3681685}
+  - {fileID: 922346352}
+  - {fileID: 1598961772}
+  - {fileID: 207066487}
+  minDistance: 1
+  speed: 5
+  destination: {x: -4, y: -2, z: 0}
 --- !u!114 &2890213894033778231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4319,7 +4343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdea52830a5515a4bbcd3943fa375ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 0
   isHead: 1
   isEnd: 0
   atDestination: 0

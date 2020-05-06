@@ -83,7 +83,7 @@ public class SegmentedTileMove : MonoBehaviour
         else if (number > target)
             number -= amount;
 
-        //Rounds the umber to the nearest 0.5
+        //Rounds the number to the nearest 0.5
         number = Mathf.Floor(number * 2) / 2;
 
         return number;

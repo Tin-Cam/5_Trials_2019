@@ -8,6 +8,9 @@ public class Boss4_Move : _MoveBase
     public SegmentedTileMove[] bodySegments;
     private SegmentedTileMove head;
 
+    public int nodeCount = 0;
+    private int[] track = { 4, 8, 5, 10, 9, 5, 4 };
+
     public void Init()
     {
         head = bodySegments[0];
@@ -18,8 +21,13 @@ public class Boss4_Move : _MoveBase
     void FixedUpdate()
     {
         if (head.atDestination)
-            SetDestination(6);
+        {
+            SetDestination(track[nodeCount]);
+            nodeCount++;
+        }
     }
+
+
 
 
     public void SetDestination(int node)
