@@ -9,10 +9,10 @@ public class SnakeMovement : MonoBehaviour
 
     public float minDistance = 0.25f;
 
-
     public float speed = 1;
 
     public Vector3 destination;
+    public bool atDestination;
 
     private float distance;
     private Transform currentSegment;
@@ -21,13 +21,15 @@ public class SnakeMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        atDestination = false;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         Move();
+        if (transform.position == destination)
+            atDestination = true;
     }
 
     private void Move()
@@ -54,5 +56,17 @@ public class SnakeMovement : MonoBehaviour
             currentSegment.position = Vector3.Slerp(currentSegment.position, newpos, t);
             currentSegment.rotation = Quaternion.Slerp(currentSegment.rotation, previousSegment.rotation, t);
         }
+    }
+
+    public void SetDestination(Vector3 location)
+    {
+        destination = location;
+        atDestination = false;
+    }
+
+    public void Teleport(Vector3 location)
+    {
+        foreach (Transform segment in body)
+            segment.position = location;
     }
 }

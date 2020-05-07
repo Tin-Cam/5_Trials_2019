@@ -4,35 +4,39 @@ using UnityEngine;
 
 public class Boss4_Move : _MoveBase
 {
-    public PathNode[] path;
-    public SegmentedTileMove[] bodySegments;
-    private SegmentedTileMove head;
+    public PathNode[] pathNodes;
+    public SnakeMovement head;
 
     public int nodeCount = 0;
-    private int[] track = { 4, 8, 5, 10, 9, 5, 4 };
+
+    private int[] track = { 1, 4, 8, 7, 9, 5, 4 };
+    private int[] track2 = { 6, 5, 4, 8, 11 };
 
     public void Init()
     {
-        head = bodySegments[0];
-
-        SetDestination(8);
+        
     }
 
-    void FixedUpdate()
+
+    public IEnumerator FollowPath(int[] path)
     {
-        if (head.atDestination)
+        Vector3 startPos = pathNodes[path[0] - 1].transform.position;
+        head.Teleport(startPos);
+
+        foreach(int node in path)
         {
-            SetDestination(track[nodeCount]);
-            nodeCount++;
+            SetDestination(node);
+            while (!head.atDestination)
+            {
+                yield return new WaitForFixedUpdate();
+            }
         }
     }
 
 
-
-
     public void SetDestination(int node)
     {
-        head.SetDestination(path[node - 1].transform.position);
+        head.SetDestination(pathNodes[node - 1].transform.position);
     }
 
     public override void DefaultState()

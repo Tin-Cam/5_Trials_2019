@@ -148,7 +148,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3681679}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdea52830a5515a4bbcd3943fa375ce3, type: 3}
   m_Name: 
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207066481}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdea52830a5515a4bbcd3943fa375ce3, type: 3}
   m_Name: 
@@ -805,7 +805,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515160695}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdea52830a5515a4bbcd3943fa375ce3, type: 3}
   m_Name: 
@@ -1194,6 +1194,8 @@ MonoBehaviour:
   maxAiTimerRngValue: 0
   hasAI: 1
   phase: 0
+  minIdle: 0
+  maxIdle: 0
 --- !u!114 &727680878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1206,7 +1208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304981a097f121b49b53cb69537a954e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path:
+  pathNodes:
   - {fileID: 508283900}
   - {fileID: 437768081}
   - {fileID: 1230292221}
@@ -1219,13 +1221,7 @@ MonoBehaviour:
   - {fileID: 1965069764}
   - {fileID: 62809189}
   - {fileID: 1244604031}
-  bodySegments:
-  - {fileID: 2890213894033778231}
-  - {fileID: 515160696}
-  - {fileID: 3681680}
-  - {fileID: 922346347}
-  - {fileID: 1598961767}
-  - {fileID: 207066482}
+  head: {fileID: 2890213894033778230}
   nodeCount: 0
 --- !u!1001 &857009890
 PrefabInstance:
@@ -1415,7 +1411,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922346346}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdea52830a5515a4bbcd3943fa375ce3, type: 3}
   m_Name: 
@@ -2567,7 +2563,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598961766}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdea52830a5515a4bbcd3943fa375ce3, type: 3}
   m_Name: 
@@ -4331,6 +4327,7 @@ MonoBehaviour:
   minDistance: 1
   speed: 5
   destination: {x: -4, y: -2, z: 0}
+  atDestination: 0
 --- !u!114 &2890213894033778231
 MonoBehaviour:
   m_ObjectHideFlags: 0
