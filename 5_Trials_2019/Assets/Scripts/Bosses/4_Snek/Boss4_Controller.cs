@@ -22,10 +22,12 @@ public class Boss4_Controller : _BossBase
 
     public IEnumerator Action()
     {
-        yield return move.FollowPath(track);
-        yield return move.FollowPath(track2);
+        yield return move.FollowPath(move.FindPath(0, 11).ToArray());
+        yield return move.FollowPath(move.FindPath(0, 9).ToArray());
         StartCoroutine(Action());
     }
+
+
 
     //Handles idleing
     public IEnumerator Idle()
