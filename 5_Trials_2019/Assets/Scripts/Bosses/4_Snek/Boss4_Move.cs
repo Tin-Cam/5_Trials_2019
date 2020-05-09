@@ -9,8 +9,9 @@ public class Boss4_Move : _MoveBase
 
     public int nodeCount = 0;
 
-    private int[] track = { 1, 4, 8, 7, 9, 5, 4 };
-    private int[] track2 = { 6, 5, 4, 8, 11 };
+    private int[] endNodes = {0, 1, 2, 5, 6, 9, 10, 11};
+    private int[] middleNodes = {3, 4, 7, 8};
+
 
     public void Init()
     {
@@ -18,6 +19,22 @@ public class Boss4_Move : _MoveBase
         ints = FindPath(6, 9);
         ints = FindPath(1, 11);
         ints = FindPath(0, 11);       
+    }
+
+    public IEnumerator StartToEnd()
+    {
+        int start = endNodes[Random.Range(0, endNodes.Length)];
+        int end = endNodes[Random.Range(0, endNodes.Length)];
+
+        Debug.Log("Start: " + start + " End: " + end);
+
+        //Ensures start and end aren't the same node
+        while(start == end)
+            end = endNodes[Random.Range(0, endNodes.Length)];
+
+        int[] path = FindPath(start, end).ToArray();
+
+        yield return FollowPath(path);
     }
 
 
@@ -37,6 +54,10 @@ public class Boss4_Move : _MoveBase
         }
     }
 
+    //PATHFINDING ------------------------------------
+
+
+    //Finds the path between 2 points (Note: Works from the end to the start node)
     public List<int> FindPath(int start, int end)
     {
         Dictionary<int, int> nodeParents = new Dictionary<int, int>();
@@ -100,42 +121,17 @@ public class Boss4_Move : _MoveBase
 
 
 
-    private List<int> FindPathRec(int node, int end, IDictionary<PathNode, bool> exploredNodes)
-    {      
-        PathNode currentNode = pathNodes[node];
-        exploredNodes[currentNode] = true;
 
-        List<int> result = new List<int>();
 
-        if(node == end)
-        {
-            Debug.Log("Found the end!");
-            result.Add(node);
-            return result;
-        }
 
-        int min = 99;
-
-        foreach(PathNode nextNode in currentNode.linkedNodes)
-        {
-            if (exploredNodes[nextNode])
-                break;
-
-            Debug.Log("Exploring " + currentNode.nodeNumber);
-            List<int> list = FindPathRec(currentNode.nodeNumber, end, exploredNodes);
-
-            if (list.Count < min)
-                result = list;
-
-        }
-
-        result.Add(node);
-
-        return result;
+    public void SetSpeed(float speed)
+    {
+        head.speed = speed;
     }
 
 
-        public void SetDestination(int node)
+
+    public void SetDestination(int node)
     {
         head.SetDestination(pathNodes[node].transform.position);
     }

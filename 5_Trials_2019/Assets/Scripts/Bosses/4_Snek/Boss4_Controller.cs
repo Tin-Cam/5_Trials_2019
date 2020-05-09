@@ -5,25 +5,29 @@ using UnityEngine;
 public class Boss4_Controller : _BossBase
 {
     private Boss4_Move move;
+    private Boss4_Action action;
 
     public int minIdle;
     public int maxIdle;
 
-    private int[] track = {3, 4, 5, 6};
-    private int[] track2 = { 1, 4, 9, 12 };
 
     protected override void Init()
     {
         move = GetComponent<Boss4_Move>();
+        action = GetComponent<Boss4_Action>();
+
         moveBase = move;
+        actionBase = action;
+
         move.Init();
+        action.Init();
+
         StartCoroutine(Action());
     }
 
     public IEnumerator Action()
     {
-        yield return move.FollowPath(move.FindPath(0, 11).ToArray());
-        yield return move.FollowPath(move.FindPath(0, 9).ToArray());
+        yield return move.StartToEnd();
         StartCoroutine(Action());
     }
 
