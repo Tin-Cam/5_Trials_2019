@@ -10,6 +10,7 @@ public class Boss4_Controller : _BossBase
     public int minIdle;
     public int maxIdle;
 
+    public SnakeMovement head;
 
     protected override void Init()
     {
@@ -19,8 +20,15 @@ public class Boss4_Controller : _BossBase
         moveBase = move;
         actionBase = action;
 
-        move.Init();
-        action.Init();
+        foreach(Transform bodyPart in head.body)
+        {
+            Segment segment = bodyPart.GetComponent<Segment>();
+            segment.SetController(this);
+        }
+
+
+        move.Init(head);
+        action.Init(head);
 
         StartCoroutine(Action());
     }
@@ -47,8 +55,24 @@ public class Boss4_Controller : _BossBase
         }
     }
 
+    //Not used
     public override void BossHurt()
     {
+        
+    }
+
+    public void SegmentHurt()
+    {
+        //Bodged method of ensuring death explosions are displayed correctly
+        if ((health - 1) <= 0)
+        {
+            //Explosions for bodyparts
+            foreach (Transform bodyPart in head.body)
+                Instantiate(deathExplosion, bodyPart.position, transform.rotation);
+            //Explosion for head (AKA moving the controller to the head's position so that the explosion occurs at that positon instead <insert galaxy brain>)
+            transform.position = head.transform.position;
+        }
+
         TakeDamage(1);
     }
 

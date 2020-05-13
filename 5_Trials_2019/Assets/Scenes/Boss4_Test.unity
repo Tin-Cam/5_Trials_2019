@@ -148,17 +148,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3681679}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdea52830a5515a4bbcd3943fa375ce3, type: 3}
+  m_Script: {fileID: 11500000, guid: f984cb7ded1e24241914279619359f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isHead: 0
-  isEnd: 0
-  atDestination: 0
-  childSegment: {fileID: 922346347}
-  destinationTile: {x: 0, y: 0, z: 0}
+  head: 0
+  canShoot: 0
+  health: 5
 --- !u!331 &3681682
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -276,7 +273,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7552218760340626732, guid: 0aab6efaec386934f8950c575b0cf402,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.6358314, b: 0.28773582, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -340,17 +337,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207066481}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdea52830a5515a4bbcd3943fa375ce3, type: 3}
+  m_Script: {fileID: 11500000, guid: f984cb7ded1e24241914279619359f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isHead: 0
-  isEnd: 1
-  atDestination: 0
-  childSegment: {fileID: 0}
-  destinationTile: {x: 0, y: 0, z: 0}
+  head: 0
+  canShoot: 0
+  health: 5
 --- !u!331 &207066484
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -556,17 +550,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515160695}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdea52830a5515a4bbcd3943fa375ce3, type: 3}
+  m_Script: {fileID: 11500000, guid: f984cb7ded1e24241914279619359f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isHead: 0
-  isEnd: 0
-  atDestination: 0
-  childSegment: {fileID: 3681680}
-  destinationTile: {x: 0, y: 0, z: 0}
+  head: 0
+  canShoot: 0
+  health: 5
 --- !u!331 &515160698
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -940,7 +931,7 @@ MonoBehaviour:
     type: 3}
   hitSprite: {fileID: 1978234421}
   player: {fileID: 1951528287}
-  health: 10
+  health: 25
   healthBar: {fileID: 1062325171}
   aiTimer: 0
   maxAiTimerRngValue: 0
@@ -948,6 +939,7 @@ MonoBehaviour:
   phase: 0
   minIdle: 0
   maxIdle: 0
+  head: {fileID: 2890213894033778230}
 --- !u!114 &727680878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -973,7 +965,6 @@ MonoBehaviour:
   - {fileID: 1965069764}
   - {fileID: 62809189}
   - {fileID: 1244604031}
-  head: {fileID: 2890213894033778230}
   nodeCount: 0
 --- !u!114 &727680879
 MonoBehaviour:
@@ -1179,17 +1170,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922346346}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdea52830a5515a4bbcd3943fa375ce3, type: 3}
+  m_Script: {fileID: 11500000, guid: f984cb7ded1e24241914279619359f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isHead: 0
-  isEnd: 0
-  atDestination: 0
-  childSegment: {fileID: 1598961767}
-  destinationTile: {x: 0, y: 0, z: 0}
+  head: 0
+  canShoot: 0
+  health: 5
 --- !u!331 &922346349
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -2004,17 +1992,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598961766}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdea52830a5515a4bbcd3943fa375ce3, type: 3}
+  m_Script: {fileID: 11500000, guid: f984cb7ded1e24241914279619359f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isHead: 0
-  isEnd: 0
-  atDestination: 0
-  childSegment: {fileID: 207066482}
-  destinationTile: {x: 0, y: 0, z: 0}
+  head: 0
+  canShoot: 0
+  health: 5
 --- !u!331 &1598961769
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -2132,7 +2117,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7552218760340626732, guid: 0aab6efaec386934f8950c575b0cf402,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.63529414, b: 0.28627452, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3388,7 +3373,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7552218760340626732, guid: 0aab6efaec386934f8950c575b0cf402,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3066038, g: 1, b: 0.41316167, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3410,8 +3395,8 @@ GameObject:
   - component: {fileID: 2890213894033778227}
   - component: {fileID: 2890213894033778225}
   - component: {fileID: 2097538262}
-  - component: {fileID: 2890213894033778231}
   - component: {fileID: 2890213894033778230}
+  - component: {fileID: 2890213894033778231}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -3439,7 +3424,7 @@ MonoBehaviour:
   - {fileID: 1598961772}
   - {fileID: 207066487}
   minDistance: 1
-  speed: 5
+  speed: 2
   destination: {x: -4, y: -2, z: 0}
   atDestination: 0
 --- !u!114 &2890213894033778231
@@ -3451,15 +3436,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2890213894033778229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdea52830a5515a4bbcd3943fa375ce3, type: 3}
+  m_Script: {fileID: 11500000, guid: f984cb7ded1e24241914279619359f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  isHead: 1
-  isEnd: 0
-  atDestination: 0
-  childSegment: {fileID: 515160696}
-  destinationTile: {x: -4, y: -2, z: 0}
+  head: 0
+  canShoot: 0
+  health: 5
 --- !u!156049354 &2901094200162091791
 Grid:
   m_ObjectHideFlags: 0

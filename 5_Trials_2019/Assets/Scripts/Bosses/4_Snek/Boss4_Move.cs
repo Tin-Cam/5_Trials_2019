@@ -5,7 +5,7 @@ using UnityEngine;
 public class Boss4_Move : _MoveBase
 {
     public PathNode[] pathNodes;
-    public SnakeMovement head;
+    private SnakeMovement head;
 
     public int nodeCount = 0;
 
@@ -13,12 +13,9 @@ public class Boss4_Move : _MoveBase
     private int[] middleNodes = {3, 4, 7, 8};
 
 
-    public void Init()
+    public void Init(SnakeMovement head)
     {
-        List<int> ints = FindPath(2, 5);
-        ints = FindPath(6, 9);
-        ints = FindPath(1, 11);
-        ints = FindPath(0, 11);       
+        this.head = head;
     }
 
     public IEnumerator StartToEnd()
