@@ -67,8 +67,8 @@ public class Boss4_Controller : _BossBase
         if ((health - 1) <= 0)
         {
             //Explosions for bodyparts
-            foreach (Transform bodyPart in head.body)
-                Instantiate(deathExplosion, bodyPart.position, transform.rotation);
+            for(int i = 1; i < head.body.Count; i++)
+                Instantiate(deathExplosion, head.body[i].position, transform.rotation);
             //Explosion for head (AKA moving the controller to the head's position so that the explosion occurs at that positon instead <insert galaxy brain>)
             transform.position = head.transform.position;
         }

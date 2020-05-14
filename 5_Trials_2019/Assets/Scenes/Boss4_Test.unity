@@ -153,8 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f984cb7ded1e24241914279619359f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: 0
-  canShoot: 0
+  isHead: 0
+  canShoot: 1
+  projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
+    type: 3}
   health: 5
 --- !u!331 &3681682
 SpriteMask:
@@ -342,8 +344,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f984cb7ded1e24241914279619359f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: 0
+  isHead: 0
   canShoot: 0
+  projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
+    type: 3}
   health: 5
 --- !u!331 &207066484
 SpriteMask:
@@ -555,8 +559,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f984cb7ded1e24241914279619359f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: 0
+  isHead: 0
   canShoot: 0
+  projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
+    type: 3}
   health: 5
 --- !u!331 &515160698
 SpriteMask:
@@ -1175,8 +1181,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f984cb7ded1e24241914279619359f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: 0
+  isHead: 0
   canShoot: 0
+  projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
+    type: 3}
   health: 5
 --- !u!331 &922346349
 SpriteMask:
@@ -1997,8 +2005,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f984cb7ded1e24241914279619359f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: 0
-  canShoot: 0
+  isHead: 0
+  canShoot: 1
+  projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
+    type: 3}
   health: 5
 --- !u!331 &1598961769
 SpriteMask:
@@ -3439,8 +3449,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f984cb7ded1e24241914279619359f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: 0
-  canShoot: 0
+  isHead: 1
+  canShoot: 1
+  projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
+    type: 3}
   health: 5
 --- !u!156049354 &2901094200162091791
 Grid:

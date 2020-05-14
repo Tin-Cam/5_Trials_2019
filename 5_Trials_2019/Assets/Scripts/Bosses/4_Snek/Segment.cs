@@ -6,14 +6,16 @@ public class Segment : MonoBehaviour
 {
     public static Vector2 shootBounds = new Vector2(5, 3);
 
-    public bool head;
+    public bool isHead;
     public bool canShoot;
+
+    public GameObject projectile;
 
     public int health = 5;
     private bool isDestroyed = false;
 
     private Boss4_Controller controller;
-
+    private AudioManager audioManager;
     private SpriteRenderer render;
 
     private float initialG;
@@ -23,17 +25,31 @@ public class Segment : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+
         render = GetComponent<SpriteRenderer>();
 
         initialG = render.color.g;
-        initialG = render.color.b;
+        initialB = render.color.b;
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Shoot(Vector3 target)
     {
-        
+        if (!canShoot || isDestroyed)
+            return;
+
+
+        audioManager.Play("Boss_Shoot");
+        //Creates the projectile
+        GameObject tempProjectile;
+        tempProjectile = Instantiate(projectile, transform.position, transform.rotation);
+
+        //Calculates the direction of the target
+        Vector2 direction = target - gameObject.transform.position;
+
+        //'Fires' the projectile
+        tempProjectile.GetComponent<Projectile_Simple>().direction = direction;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -45,6 +61,10 @@ public class Segment : MonoBehaviour
             return;
 
         controller.SegmentHurt();
+
+        if (isHead)
+            return;
+
         health--;
 
         if (health <= 0)
