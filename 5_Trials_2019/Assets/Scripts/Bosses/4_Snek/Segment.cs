@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Segment : MonoBehaviour
 {
-    public static Vector2 shootBounds = new Vector2(5, 3);
+    public Obj_Segment segmentRef;
 
     public bool isHead;
     public bool canShoot;
 
-    public GameObject projectile;
 
-    public int health = 5;
+    private int health;
     private bool isDestroyed = false;
 
     private Boss4_Controller controller;
@@ -26,6 +25,8 @@ public class Segment : MonoBehaviour
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
+
+        health = segmentRef.health;
 
         render = GetComponent<SpriteRenderer>();
 
@@ -43,7 +44,7 @@ public class Segment : MonoBehaviour
         audioManager.Play("Boss_Shoot");
         //Creates the projectile
         GameObject tempProjectile;
-        tempProjectile = Instantiate(projectile, transform.position, transform.rotation);
+        tempProjectile = Instantiate(segmentRef.projectile, transform.position, transform.rotation);
 
         //Calculates the direction of the target
         Vector2 direction = target - gameObject.transform.position;
