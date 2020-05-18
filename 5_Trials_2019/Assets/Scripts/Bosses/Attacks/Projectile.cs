@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
-    public int damage;
-    public float moveSpeed;
-    public float lifeTime;
-    public Vector2 killDistance;
+    public Obj_Projectile objProjectile;
+    public Vector3 direction;
+    private float lifeTime;
+
+    void Start()
+    {
+        lifeTime = objProjectile.lifeTime;
+    }
 
     void Update ()
     {
@@ -20,12 +24,20 @@ public class Projectile : MonoBehaviour {
         }
 
         //Removes the object after reaching a certain distance
-        if (transform.position.x > killDistance.x | transform.position.x < -killDistance.x)
+        if (transform.position.x > objProjectile.killDistance.x | transform.position.x < -objProjectile.killDistance.x)
             Destroy(gameObject);
-        if (transform.position.y > killDistance.y | transform.position.y < -killDistance.y)
+        if (transform.position.y > objProjectile.killDistance.y | transform.position.y < -objProjectile.killDistance.y)
             Destroy(gameObject);
     }
 
+    public int GetDamage()
+    {
+        return objProjectile.damage;
+    }
 
+    public float GetMoveSpeed()
+    {
+        return objProjectile.moveSpeed;
+    }
 
 }

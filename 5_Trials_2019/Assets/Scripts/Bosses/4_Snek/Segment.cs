@@ -48,9 +48,10 @@ public class Segment : MonoBehaviour
 
         //Calculates the direction of the target
         Vector2 direction = target - gameObject.transform.position;
+        direction.Normalize();
 
         //'Fires' the projectile
-        tempProjectile.GetComponent<Projectile_Simple>().direction = direction;
+        tempProjectile.GetComponent<Projectile>().direction = direction;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -96,6 +97,10 @@ public class Segment : MonoBehaviour
         }
     }
 
+    public bool IsDestroyed()
+    {
+        return isDestroyed;
+    }
 
     public void SetController(Boss4_Controller controller)
     {
