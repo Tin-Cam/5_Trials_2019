@@ -6,7 +6,8 @@ public class Segment : MonoBehaviour
 {
     public Obj_Segment segmentRef;
 
-    public bool isHead;
+    public bool isEnd;
+
     public bool canShoot;
 
 
@@ -37,11 +38,16 @@ public class Segment : MonoBehaviour
 
     public void Shoot(Vector3 target)
     {
+        
         if (!canShoot || isDestroyed)
             return;
 
+        //Stops from shooting if Segment is outside shootBounds
+        if (!CheckShootBounds())
+            return;
 
-        audioManager.Play("Boss_Shoot");
+
+        audioManager.Play(segmentRef.shootSFX);
         //Creates the projectile
         GameObject tempProjectile;
         tempProjectile = Instantiate(segmentRef.projectile, transform.position, transform.rotation);
@@ -64,7 +70,7 @@ public class Segment : MonoBehaviour
 
         controller.SegmentHurt();
 
-        if (isHead)
+        if (isEnd)
             return;
 
         health--;
@@ -95,6 +101,11 @@ public class Segment : MonoBehaviour
         {
             render.color = Color.black;
         }
+    }
+
+    public bool CheckShootBounds()
+    {
+        return segmentRef.shootBounds.Contains(transform.position);
     }
 
     public bool IsDestroyed()

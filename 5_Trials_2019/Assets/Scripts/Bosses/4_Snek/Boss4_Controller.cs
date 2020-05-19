@@ -63,16 +63,6 @@ public class Boss4_Controller : _BossBase
 
     public void SegmentHurt()
     {
-        //Bodged method of ensuring death explosions are displayed correctly
-        if ((health - 1) <= 0)
-        {
-            //Explosions for bodyparts
-            for(int i = 1; i < head.body.Count; i++)
-                Instantiate(deathExplosion, head.body[i].position, transform.rotation);
-            //Explosion for head (AKA moving the controller to the head's position so that the explosion occurs at that positon instead <insert galaxy brain>)
-            transform.position = head.transform.position;
-        }
-
         TakeDamage(1);
     }
 
@@ -97,6 +87,12 @@ public class Boss4_Controller : _BossBase
 
     protected override void StartDeath()
     {
+        //Explosions for bodyparts
+        for (int i = 1; i < head.body.Count; i++)
+            Instantiate(deathExplosion, head.body[i].position, transform.rotation);
+        //Explosion for head (AKA moving the controller to the head's position so that the explosion occurs at that positon instead <insert galaxy brain>)
+        transform.position = head.transform.position;
+
         Die();
     }
 

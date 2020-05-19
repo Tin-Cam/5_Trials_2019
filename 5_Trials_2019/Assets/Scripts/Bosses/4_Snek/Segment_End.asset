@@ -15,3 +15,7 @@ MonoBehaviour:
   projectile: {fileID: 6446260953805970068, guid: 364da504051296f4d8999fdb90c2ad56,
     type: 3}
   health: 5
+  shootBounds:
+    m_Center: {x: 0, y: 0.5, z: 0}
+    m_Extent: {x: 7, y: 4.5, z: 10}
+  shootSFX: Boss_Shoot

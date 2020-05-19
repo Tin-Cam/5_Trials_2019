@@ -7,5 +7,6 @@ public class Obj_Segment : ScriptableObject
 {
     public GameObject projectile;
     public int health;
-    public static Vector2 shootBounds;
+    public Bounds shootBounds;
+    public string shootSFX;
 }

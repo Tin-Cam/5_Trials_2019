@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segmentRef: {fileID: 11400000, guid: 78f720a87c2532f41aee1926631ba7bf, type: 2}
-  isHead: 0
+  isEnd: 0
   canShoot: 1
 --- !u!331 &3681682
 SpriteMask:
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segmentRef: {fileID: 11400000, guid: 46612fd648f807b469410aab01befd57, type: 2}
-  isHead: 0
+  isEnd: 1
   canShoot: 1
 --- !u!331 &207066484
 SpriteMask:
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segmentRef: {fileID: 11400000, guid: 78f720a87c2532f41aee1926631ba7bf, type: 2}
-  isHead: 0
+  isEnd: 0
   canShoot: 0
 --- !u!331 &515160698
 SpriteMask:
@@ -983,6 +983,7 @@ MonoBehaviour:
   desperationSprite: {fileID: 0}
   desperation: 0
   shootCycleCount: 12
+  bomb: {fileID: 0}
 --- !u!1001 &857009890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1177,7 +1178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segmentRef: {fileID: 11400000, guid: 78f720a87c2532f41aee1926631ba7bf, type: 2}
-  isHead: 0
+  isEnd: 0
   canShoot: 0
 --- !u!331 &922346349
 SpriteMask:
@@ -2014,7 +2015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segmentRef: {fileID: 11400000, guid: 78f720a87c2532f41aee1926631ba7bf, type: 2}
-  isHead: 0
+  isEnd: 0
   canShoot: 1
 --- !u!331 &1598961769
 SpriteMask:
@@ -3456,7 +3457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segmentRef: {fileID: 11400000, guid: 78f720a87c2532f41aee1926631ba7bf, type: 2}
-  isHead: 1
+  isEnd: 1
   canShoot: 1
 --- !u!156049354 &2901094200162091791
 Grid:

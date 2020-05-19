@@ -8,6 +8,8 @@ public class Boss4_Action : _ActionBase
 
     public int shootCycleCount;
 
+    public Projectile bomb;
+
     private SnakeMovement head;
 
     private Boss4_Controller controller;
@@ -26,7 +28,7 @@ public class Boss4_Action : _ActionBase
         actionList.Add("Shoot");
         actionList.Add("LayBomb");
     }
-    222
+    
     public IEnumerator DesperationMode()
     {
         //Toggle desperation mode
@@ -44,11 +46,12 @@ public class Boss4_Action : _ActionBase
     {
         int counter = 0;
 
+        //Cycles through each segment (except the last one) and attempts to shoot it
         while (counter < shootCycleCount)
         {
-            foreach (Transform bodyPart in head.body)
+            for(int i = 1; i < head.body.Count; i++)
             {
-                Segment segment = bodyPart.GetComponent<Segment>();
+                Segment segment = head.body[i - 1].GetComponent<Segment>();
                 if (!segment.IsDestroyed())
                 {
                     segment.Shoot(player.transform.position);
@@ -61,14 +64,17 @@ public class Boss4_Action : _ActionBase
 
     public IEnumerator LayBomb()
     {
-
         Segment segment = head.body[head.body.Count - 1].GetComponent<Segment>();
         segment.Shoot(player.transform.position);
 
         yield break;
     }
 
-
+    public bool CheckSegmentBounds(int segmentNO)
+    {
+        Segment segment = head.body[segmentNO].GetComponent<Segment>();
+        return segment.CheckShootBounds();
+    }
 
 
     public override void DefaultState()
