@@ -15,6 +15,7 @@ public class Segment : MonoBehaviour
     private bool isDestroyed = false;
 
     private Boss4_Controller controller;
+    private Boss4_Action action;
     private AudioManager audioManager;
     private SpriteRenderer render;
 
@@ -62,11 +63,23 @@ public class Segment : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(action.desperation && other.tag == "Player")
+        {
+            controller.player.GetComponentInChildren<PlayerCollision>().TakeDamge(GetComponent<Collider2D>());
+            return;
+        }
+
         if (other.tag != "Sword")
             return;
 
         if (isDestroyed)
             return;
+
+        if (action.desperation)
+        {
+            audioManager.Play("Boss_NoDamage");
+            return;
+        }
 
         controller.SegmentHurt();
 
@@ -116,5 +129,10 @@ public class Segment : MonoBehaviour
     public void SetController(Boss4_Controller controller)
     {
         this.controller = controller;
+    }
+
+    public void SetAction(Boss4_Action action)
+    {
+        this.action = action;
     }
 }

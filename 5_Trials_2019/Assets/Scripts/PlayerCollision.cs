@@ -22,22 +22,25 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (godMode | isInvincible)
+        if (other.tag == "Projectile")
+            TakeDamge(other);
+    }
+
+    public void TakeDamge(Collider2D other)
+    {
+        if (godMode || isInvincible)
             return;
 
-        if (other.tag == "Projectile")
-        {
-            gameManager.PlayerTakeDamage(1);
+        gameManager.PlayerTakeDamage(1);
 
-            if (gameManager.playerHealth <= 0)
-                return;
+        if (gameManager.playerHealth <= 0)
+            return;
 
-            Vector2 playerPosition = transform.position;
-            Vector2 direction = playerPosition - other.ClosestPoint(playerPosition);
+        Vector2 playerPosition = transform.position;
+        Vector2 direction = playerPosition - other.ClosestPoint(playerPosition);
 
-            StartCoroutine(playerMove.knockBack(direction, playerMove.defaultKnockBack));
-            StartCoroutine(Invincible());
-        }
+        StartCoroutine(playerMove.knockBack(direction, playerMove.defaultKnockBack));
+        StartCoroutine(Invincible());
     }
 
     //Makes the player invincible; used when they're hit

@@ -9,6 +9,8 @@ public class Boss4_Move : _MoveBase
 
     public int nodeCount = 0;
 
+    private float defaultSpeed;
+
     private int[] endNodes = {0, 1, 2, 5, 6, 9, 10, 11};
     private int[] middleNodes = {3, 4, 7, 8};
 
@@ -16,6 +18,7 @@ public class Boss4_Move : _MoveBase
     public void Init(SnakeMovement head)
     {
         this.head = head;
+        defaultSpeed = head.speed;
     }
 
     public IEnumerator StartToEnd()
@@ -120,13 +123,22 @@ public class Boss4_Move : _MoveBase
 
 
 
-
+    //Changes speed of the body
     public void SetSpeed(float speed)
     {
         head.speed = speed;
     }
-
-
+    //Changes speed of the body and changes the default speed
+    public void HardSetSpeed(float speed)
+    {
+        head.speed = speed;
+        defaultSpeed = speed;
+    }
+    //Resets speed back to default
+    public void ResetSpeed()
+    {
+        head.speed = defaultSpeed;
+    }
 
     public void SetDestination(int node)
     {

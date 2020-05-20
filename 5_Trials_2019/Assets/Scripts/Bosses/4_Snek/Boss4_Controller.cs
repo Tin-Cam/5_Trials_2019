@@ -24,6 +24,7 @@ public class Boss4_Controller : _BossBase
         {
             Segment segment = bodyPart.GetComponent<Segment>();
             segment.SetController(this);
+            segment.SetAction(action);
         }
 
 

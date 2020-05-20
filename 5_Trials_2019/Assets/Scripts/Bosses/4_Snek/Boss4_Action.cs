@@ -31,15 +31,33 @@ public class Boss4_Action : _ActionBase
     
     public IEnumerator DesperationMode()
     {
-        //Toggle desperation mode
-        desperation = !desperation;
-
         if (desperation)
-            move.SetSpeed(10);
-        else
-            move.SetSpeed(5);
+            yield break;
 
-        yield break;
+        //Toggle desperation mode
+        desperation = true;
+        move.SetSpeed(10);
+
+        Color color = new Color(0.5f, 0.5f, 1, 1);
+        foreach(Transform bodyPart in head.body)
+        {
+            SpriteRenderer render = bodyPart.GetComponent<SpriteRenderer>();
+            render.color = color;
+        }
+
+        yield return new WaitForSeconds(5);
+        ExitDesperationMode();
+    }
+
+    private void ExitDesperationMode()
+    {
+        move.ResetSpeed();
+        desperation = false;
+        foreach (Transform bodyPart in head.body)
+        {
+            SpriteRenderer render = bodyPart.GetComponent<SpriteRenderer>();
+            render.color = Color.white;
+        }
     }
 
     public IEnumerator Shoot()
@@ -49,7 +67,7 @@ public class Boss4_Action : _ActionBase
         //Cycles through each segment (except the last one) and attempts to shoot it
         while (counter < shootCycleCount)
         {
-            for(int i = 1; i < head.body.Count; i++)
+            for (int i = 1; i < head.body.Count; i++)
             {
                 Segment segment = head.body[i - 1].GetComponent<Segment>();
                 if (!segment.IsDestroyed())
@@ -57,9 +75,9 @@ public class Boss4_Action : _ActionBase
                     segment.Shoot(player.transform.position);
                     counter++;
                     yield return new WaitForSeconds(0.1f);
-                }             
+                }
             }
-        } 
+        }
     }
 
     public IEnumerator LayBomb()
@@ -79,6 +97,6 @@ public class Boss4_Action : _ActionBase
 
     public override void DefaultState()
     {
-        throw new System.NotImplementedException();
+        ExitDesperationMode();
     }
 }
