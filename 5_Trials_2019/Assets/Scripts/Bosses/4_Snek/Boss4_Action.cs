@@ -34,6 +34,11 @@ public class Boss4_Action : _ActionBase
         if (desperation)
             yield break;
 
+        ShowDesperationFilter(true);
+
+        move.SetSpeed(2);
+        yield return new WaitForSeconds(1);
+
         //Toggle desperation mode
         desperation = true;
         move.SetSpeed(10);
@@ -51,6 +56,7 @@ public class Boss4_Action : _ActionBase
 
     private void ExitDesperationMode()
     {
+        ShowDesperationFilter(false);
         move.ResetSpeed();
         desperation = false;
         foreach (Transform bodyPart in head.body)

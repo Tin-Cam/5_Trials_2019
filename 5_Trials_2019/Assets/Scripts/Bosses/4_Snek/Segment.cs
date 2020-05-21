@@ -10,6 +10,7 @@ public class Segment : MonoBehaviour
 
     public bool canShoot;
 
+    public SpriteRenderer hitSprite;
 
     private int health;
     private bool isDestroyed = false;
@@ -82,6 +83,7 @@ public class Segment : MonoBehaviour
         }
 
         controller.SegmentHurt();
+        StartCoroutine(FlashRed());
 
         if (isEnd)
             return;
@@ -114,6 +116,14 @@ public class Segment : MonoBehaviour
         {
             render.color = Color.black;
         }
+    }
+
+    //Makes the segment flash red when hit
+    private IEnumerator FlashRed()
+    {
+        hitSprite.enabled = true;
+        yield return new WaitForSeconds((float)0.1);
+        hitSprite.enabled = false;
     }
 
     public bool CheckShootBounds()
