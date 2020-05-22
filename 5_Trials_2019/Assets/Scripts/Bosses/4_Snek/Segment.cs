@@ -121,9 +121,12 @@ public class Segment : MonoBehaviour
     //Makes the segment flash red when hit
     private IEnumerator FlashRed()
     {
+        
         hitSprite.enabled = true;
+        render.enabled = false;
         yield return new WaitForSeconds((float)0.1);
         hitSprite.enabled = false;
+        render.enabled = true;
     }
 
     public bool CheckShootBounds()

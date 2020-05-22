@@ -47,7 +47,7 @@ public class Boss4_Action : _ActionBase
         foreach(Transform bodyPart in head.body)
         {
             SpriteRenderer render = bodyPart.GetComponent<SpriteRenderer>();
-            render.color = color;
+            //render.color = color;
         }
 
         yield return new WaitForSeconds(5);
