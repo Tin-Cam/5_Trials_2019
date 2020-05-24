@@ -31,13 +31,26 @@ public class Boss4_Controller : _BossBase
         move.Init(head);
         action.Init(head);
 
-        StartCoroutine(Action());
+        StartCoroutine(StartCycle());
     }
 
     public IEnumerator Action()
     {
         yield return move.StartToEnd();
         StartCoroutine(Action());
+    }
+
+    public IEnumerator StartCycle()
+    {
+        //TO DO
+        //Decide if not attacking
+
+        //Decide Action
+        action.DecideActions();
+
+        //Decide how to move
+        yield return move.StartToEnd();
+        StartCoroutine(StartCycle());
     }
 
 

@@ -1085,7 +1085,7 @@ MonoBehaviour:
   - {fileID: 1965069764}
   - {fileID: 62809189}
   - {fileID: 1244604031}
-  nodeCount: 0
+  moveCount: 0
 --- !u!114 &727680879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1103,6 +1103,11 @@ MonoBehaviour:
   desperationSprite: {fileID: 27371481}
   desperation: 0
   shootCycleCount: 12
+  shootRate: 0.1
+  shootMaxDelay: 2
+  bombCycleCount: 2
+  bombRate: 2
+  maxAttackRNG: 5
   bomb: {fileID: 0}
 --- !u!1001 &857009890
 PrefabInstance:

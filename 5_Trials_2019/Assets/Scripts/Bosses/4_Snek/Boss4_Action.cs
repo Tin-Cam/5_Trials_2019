@@ -7,6 +7,14 @@ public class Boss4_Action : _ActionBase
     public bool desperation = false;
 
     public int shootCycleCount;
+    public float shootRate;
+    public float shootMaxDelay;
+
+    public int bombCycleCount;
+    public float bombRate;
+
+    public int maxAttackRNG;
+    private int defaultAttackRNG;
 
     public Projectile bomb;
 
@@ -28,7 +36,76 @@ public class Boss4_Action : _ActionBase
         actionList.Add("Shoot");
         actionList.Add("LayBomb");
     }
-    
+
+    public void DecideActions()
+    {
+        int rng;
+
+        //Decide if desperate
+        if (!desperation)
+        {
+            //Return if the boss goes desperate
+        }
+
+        //Decide if attacking
+        rng = Random.Range(0, maxAttackRNG);
+        Debug.Log("RNG is :" + rng);
+        switch (rng)
+        {
+            //Shoot
+            case 0:
+                StartCoroutine(PrepareShoot());
+                break;
+            case 1:
+                StartCoroutine(PrepareShoot());
+                break;
+
+            //Bomb
+            case 2:
+                StartCoroutine(PrepareBomb());
+                break;
+            case 3:
+                StartCoroutine(PrepareBomb());
+                break;
+
+            //Shoot and Bomb
+            case 4:
+                StartCoroutine(PrepareShoot());
+                StartCoroutine(PrepareBomb());
+                break;
+
+            default:
+                Debug.LogError("Unexpected attack RNG value: " + rng);
+                break;
+
+        }
+
+        
+    }
+
+    public IEnumerator PrepareShoot()
+    {
+        yield return WaitForMoveCount(2);
+
+        //Calculates the delay of attack
+        float rng = Random.Range(1, shootMaxDelay);
+        yield return new WaitForSeconds(rng);
+
+        StartCoroutine(Shoot());
+    }
+
+    public IEnumerator PrepareBomb()
+    {
+        yield return WaitForMoveCount(3);
+        StartCoroutine(LayBomb());
+    }
+
+    private IEnumerator WaitForMoveCount(int targetCount)
+    {
+        while(move.moveCount < targetCount)
+            yield return new WaitForFixedUpdate();
+    }
+
     public IEnumerator DesperationMode()
     {
         if (desperation)
@@ -80,7 +157,7 @@ public class Boss4_Action : _ActionBase
                 {
                     segment.Shoot(player.transform.position);
                     counter++;
-                    yield return new WaitForSeconds(0.1f);
+                    yield return new WaitForSeconds(shootRate);
                 }
             }
         }
@@ -88,10 +165,12 @@ public class Boss4_Action : _ActionBase
 
     public IEnumerator LayBomb()
     {
-        Segment segment = head.body[head.body.Count - 1].GetComponent<Segment>();
-        segment.Shoot(player.transform.position);
-
-        yield break;
+        for (int i = 0; i < bombCycleCount; i++)
+        {
+            Segment segment = head.body[head.body.Count - 1].GetComponent<Segment>();
+            segment.Shoot(player.transform.position);
+            yield return new WaitForSeconds(bombRate);
+        }
     }
 
     public bool CheckSegmentBounds(int segmentNO)
@@ -104,5 +183,6 @@ public class Boss4_Action : _ActionBase
     public override void DefaultState()
     {
         ExitDesperationMode();
+        
     }
 }

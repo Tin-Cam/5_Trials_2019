@@ -7,7 +7,7 @@ public class Boss4_Move : _MoveBase
     public PathNode[] pathNodes;
     private SnakeMovement head;
 
-    public int nodeCount = 0;
+    public int moveCount = 0;
 
     private float defaultSpeed;
 
@@ -26,7 +26,7 @@ public class Boss4_Move : _MoveBase
         int start = endNodes[Random.Range(0, endNodes.Length)];
         int end = endNodes[Random.Range(0, endNodes.Length)];
 
-        Debug.Log("Start: " + start + " End: " + end);
+        //Debug.Log("Start: " + start + " End: " + end);
 
         //Ensures start and end aren't the same node
         while(start == end)
@@ -41,6 +41,7 @@ public class Boss4_Move : _MoveBase
 
     public IEnumerator FollowPath(int[] path)
     {
+        moveCount = 0;
         Vector3 startPos = pathNodes[path[0]].transform.position;
         head.Teleport(startPos);
 
@@ -51,7 +52,9 @@ public class Boss4_Move : _MoveBase
             {
                 yield return new WaitForFixedUpdate();
             }
+            moveCount++;
         }
+        moveCount = 0;
     }
 
     //PATHFINDING ------------------------------------
