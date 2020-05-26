@@ -18,6 +18,9 @@ public class Boss4_Action : _ActionBase
 
     public Projectile bomb;
 
+    public int desperationCount;
+    private int currentDesperationCount;
+
     private SnakeMovement head;
 
     private Boss4_Controller controller;
@@ -113,12 +116,14 @@ public class Boss4_Action : _ActionBase
 
         ShowDesperationFilter(true);
 
+        currentDesperationCount = desperationCount;
+
         move.SetSpeed(2);
         yield return new WaitForSeconds(1);
 
         //Toggle desperation mode
         desperation = true;
-        move.SetSpeed(10);
+        move.SetSpeed(20);
 
         Color color = new Color(0.5f, 0.5f, 1, 1);
         foreach(Transform bodyPart in head.body)
@@ -126,9 +131,13 @@ public class Boss4_Action : _ActionBase
             SpriteRenderer render = bodyPart.GetComponent<SpriteRenderer>();
             //render.color = color;
         }
+    }
 
-        yield return new WaitForSeconds(5);
-        ExitDesperationMode();
+    public void ReduceDesperation()
+    {
+        currentDesperationCount--;
+        if (currentDesperationCount <= 0)
+            ExitDesperationMode();
     }
 
     private void ExitDesperationMode()

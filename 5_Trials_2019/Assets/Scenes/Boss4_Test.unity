@@ -1109,6 +1109,7 @@ MonoBehaviour:
   bombRate: 2
   maxAttackRNG: 5
   bomb: {fileID: 0}
+  desperationCount: 4
 --- !u!1001 &857009890
 PrefabInstance:
   m_ObjectHideFlags: 0

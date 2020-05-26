@@ -44,12 +44,14 @@ public class Boss4_Controller : _BossBase
     {
         //TO DO
         //Decide if not attacking
+        if (action.desperation)
+            action.ReduceDesperation();
 
         //Decide Action
         action.DecideActions();
 
         //Decide how to move
-        yield return move.StartToEnd();
+        yield return move.StartToMiddleToEnd();
         StartCoroutine(StartCycle());
     }
 
