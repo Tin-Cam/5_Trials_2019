@@ -69,8 +69,6 @@ public class PlayerAttack : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        Debug.Log("Waiting for " + animation);
-
         //Waits for animation to finish
         while (animator.GetCurrentAnimatorStateInfo(0).IsName(animation))
         {

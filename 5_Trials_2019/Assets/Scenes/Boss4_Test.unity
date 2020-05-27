@@ -1057,8 +1057,7 @@ MonoBehaviour:
   maxAiTimerRngValue: 0
   hasAI: 1
   phase: 0
-  minIdle: 0
-  maxIdle: 0
+  idleProbability: 4
   head: {fileID: 2890213894033778230}
 --- !u!114 &727680878
 MonoBehaviour:
@@ -1110,6 +1109,8 @@ MonoBehaviour:
   maxAttackRNG: 5
   bomb: {fileID: 0}
   desperationCount: 4
+  desperationChance: 0
+  maxDespChanceCounter: 20
 --- !u!1001 &857009890
 PrefabInstance:
   m_ObjectHideFlags: 0

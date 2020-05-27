@@ -21,6 +21,11 @@ public class Boss4_Action : _ActionBase
     public int desperationCount;
     private int currentDesperationCount;
 
+    [HideInInspector]
+    public int desperationChance;
+    public int maxDespChanceCounter;
+
+
     private SnakeMovement head;
 
     private Boss4_Controller controller;
@@ -47,7 +52,13 @@ public class Boss4_Action : _ActionBase
         //Decide if desperate
         if (!desperation)
         {
-            //Return if the boss goes desperate
+            rng = Random.Range(0, maxDespChanceCounter);
+            Debug.Log("RNG: " + rng + " < Chance: " + desperationChance + "------" + (rng < desperationChance));
+            if (rng < desperationChance)
+            {
+                StartCoroutine(PrepareDesperation());
+                return;
+            }
         }
 
         //Decide if attacking
@@ -103,6 +114,12 @@ public class Boss4_Action : _ActionBase
         StartCoroutine(LayBomb());
     }
 
+    public IEnumerator PrepareDesperation()
+    {
+        yield return WaitForMoveCount(2);
+        StartCoroutine(DesperationMode());
+    }
+
     private IEnumerator WaitForMoveCount(int targetCount)
     {
         while(move.moveCount < targetCount)
@@ -145,6 +162,7 @@ public class Boss4_Action : _ActionBase
         ShowDesperationFilter(false);
         move.ResetSpeed();
         desperation = false;
+        desperationChance = 0;
         foreach (Transform bodyPart in head.body)
         {
             SpriteRenderer render = bodyPart.GetComponent<SpriteRenderer>();

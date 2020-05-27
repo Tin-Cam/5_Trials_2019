@@ -7,8 +7,7 @@ public class Boss4_Controller : _BossBase
     private Boss4_Move move;
     private Boss4_Action action;
 
-    public int minIdle;
-    public int maxIdle;
+    [Range(0, 10)] public int idleProbability;
 
     public SnakeMovement head;
 
@@ -42,33 +41,42 @@ public class Boss4_Controller : _BossBase
 
     public IEnumerator StartCycle()
     {
-        //TO DO
-        //Decide if not attacking
-        if (action.desperation)
-            action.ReduceDesperation();
+        int rng;
 
-        //Decide Action
-        action.DecideActions();
+        //Decide if attacking
+        rng = Random.Range(0, 10);
+        if (rng > idleProbability - 1)
+        {
+
+            if (action.desperation)
+                action.ReduceDesperation();
+
+            //Decide Action
+            action.DecideActions();
+
+        }
 
         //Decide how to move
-        yield return move.StartToMiddleToEnd();
-        StartCoroutine(StartCycle());
-    }
+        rng = Random.Range(0, 2);
+        if (action.desperation)
+            rng += 1;
 
-
-
-    //Handles idleing
-    public IEnumerator Idle()
-    {
-        //Wait Idle for some time
-        float rngIdle = Random.Range(minIdle, (maxIdle + 1));
-        float idleTimer = 0;
-
-        while (idleTimer < rngIdle)
-        {
-            idleTimer += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
+        switch(rng){
+            case 0:
+                yield return move.StartToEnd();
+                break;
+            case 1:
+                yield return move.StartToMiddleToEnd();
+                break;
+            case 2:
+                yield return move.CircleMiddle();
+                break;
+            default:
+                yield return move.StartToEnd();
+                break;
         }
+        action.desperationChance +=1;
+        StartCoroutine(StartCycle());
     }
 
     //Not used
@@ -79,6 +87,7 @@ public class Boss4_Controller : _BossBase
 
     public void SegmentHurt()
     {
+        action.desperationChance++;
         TakeDamage(1);
     }
 
