@@ -26,9 +26,11 @@ public class Boss4_Controller : _BossBase
             segment.SetAction(action);
         }
 
-
         move.Init(head);
         action.Init(head);
+
+        if (GameData.difficulty == 0)
+            EasyMode();
 
         StartCoroutine(StartCycle());
     }
@@ -75,7 +77,8 @@ public class Boss4_Controller : _BossBase
                 yield return move.StartToEnd();
                 break;
         }
-        action.desperationChance +=1;
+        if (phase >= 2)
+            action.desperationChance +=1;
         StartCoroutine(StartCycle());
     }
 
@@ -87,7 +90,8 @@ public class Boss4_Controller : _BossBase
 
     public void SegmentHurt()
     {
-        action.desperationChance++;
+        if(phase >= 2)
+            action.desperationChance++;
         TakeDamage(1);
     }
 
@@ -99,16 +103,37 @@ public class Boss4_Controller : _BossBase
     
 
     protected override void CheckHealth()
-    { 
+    {
+        if (health <= maxHealth * 0.8 & phase < 1)
+        {
+            IncreasePhase();
+        }
 
+        if (health <= maxHealth * 0.5 & phase < 2)
+        {
+            IncreasePhase();
+        }
     }
 
     protected override void IncreasePhase()
     {
-        throw new System.NotImplementedException();
+        phase++;
+        move.HardSetSpeed(move.GetDefaultSpeed() + 1);
+
+        action.bombCycleCount++;
+        action.shootCycleCount += 3;
+
+        if (phase >= 2)
+            StartCoroutine(action.DesperationMode());
     }
 
-
+    private void EasyMode()
+    {
+        return;
+        move.HardSetSpeed(move.GetDefaultSpeed() - 1);
+        action.bombCycleCount--;
+        action.shootCycleCount -= 3;
+    }
 
     protected override void StartDeath()
     {

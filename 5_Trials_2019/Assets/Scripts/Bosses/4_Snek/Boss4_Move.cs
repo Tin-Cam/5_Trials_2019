@@ -193,6 +193,11 @@ public class Boss4_Move : _MoveBase
     {
         head.speed = defaultSpeed;
     }
+    //Returns Default Speed
+    public float GetDefaultSpeed()
+    {
+        return defaultSpeed;
+    }
 
     public void SetDestination(int node)
     {

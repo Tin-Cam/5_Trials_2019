@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
     type: 3}
-  health: 3
+  health: 7
   shootBounds:
     m_Center: {x: 0, y: 0.5, z: -10}
     m_Extent: {x: 7, y: 4.5, z: 10}

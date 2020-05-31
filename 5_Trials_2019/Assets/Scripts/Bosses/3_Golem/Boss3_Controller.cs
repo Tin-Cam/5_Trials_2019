@@ -26,8 +26,8 @@ public class Boss3_Controller : _BossBase
 
         actionBase = action;
 
-        //if (GameData.difficulty == 0)
-        //    EasyMode();
+        if (GameData.difficulty == 0)
+            EasyMode();
 
         StartCoroutine(NextAction());
     }

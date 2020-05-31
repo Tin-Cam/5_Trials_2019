@@ -138,15 +138,13 @@ public class Boss4_Action : _ActionBase
         move.SetSpeed(2);
         yield return new WaitForSeconds(1);
 
-        //Toggle desperation mode
         desperation = true;
-        move.SetSpeed(20);
+        move.SetSpeed(move.GetDefaultSpeed() * 3);
 
-        Color color = new Color(0.5f, 0.5f, 1, 1);
         foreach(Transform bodyPart in head.body)
         {
-            SpriteRenderer render = bodyPart.GetComponent<SpriteRenderer>();
-            //render.color = color;
+            Animator animator = bodyPart.GetComponent<Animator>();
+            animator.SetBool("Desperation", true);
         }
     }
 
@@ -165,8 +163,8 @@ public class Boss4_Action : _ActionBase
         desperationChance = 0;
         foreach (Transform bodyPart in head.body)
         {
-            SpriteRenderer render = bodyPart.GetComponent<SpriteRenderer>();
-            render.color = Color.white;
+            Animator animator = bodyPart.GetComponent<Animator>();
+            animator.SetBool("Desperation", false);
         }
     }
 
@@ -182,7 +180,7 @@ public class Boss4_Action : _ActionBase
                 Segment segment = head.body[i - 1].GetComponent<Segment>();
                 if (!segment.IsDestroyed())
                 {
-                    segment.Shoot(player.transform.position);
+                    yield return segment.StartShoot(player.transform.position);
                     counter++;
                     yield return new WaitForSeconds(shootRate);
                 }
@@ -210,6 +208,5 @@ public class Boss4_Action : _ActionBase
     public override void DefaultState()
     {
         ExitDesperationMode();
-        
     }
 }

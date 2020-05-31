@@ -19,6 +19,7 @@ public class Segment : MonoBehaviour
     private Boss4_Action action;
     private AudioManager audioManager;
     private SpriteRenderer render;
+    private Animator animator;
 
     private float initialG;
     private float initialB;
@@ -32,23 +33,30 @@ public class Segment : MonoBehaviour
         health = segmentRef.health;
 
         render = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
 
         initialG = render.color.g;
         initialB = render.color.b;
 
     }
 
-    public void Shoot(Vector3 target)
+    public IEnumerator StartShoot(Vector3 target)
     {
-        
         if (!canShoot || isDestroyed)
-            return;
+            yield break;
 
         //Stops from shooting if Segment is outside shootBounds
         if (!CheckShootBounds())
-            return;
+            yield break;
 
+        animator.SetTrigger("Attack");
+        yield return WaitForAnimation("Segment_Attack", 2);
 
+        Shoot(target);
+    }
+
+    public void Shoot(Vector3 target)
+    {
         audioManager.Play(segmentRef.shootSFX);
         //Creates the projectile
         GameObject tempProjectile;
@@ -147,5 +155,21 @@ public class Segment : MonoBehaviour
     public void SetAction(Boss4_Action action)
     {
         this.action = action;
+    }
+
+    //Finishes when an animation stops playing
+    public IEnumerator WaitForAnimation(string animation, int layer)
+    {
+        //Wait for animation to start playing
+        while (!animator.GetCurrentAnimatorStateInfo(layer).IsName(animation))
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        //Waits for animation to finish
+        while (animator.GetCurrentAnimatorStateInfo(layer).IsName(animation))
+        {
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

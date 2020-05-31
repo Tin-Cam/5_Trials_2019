@@ -34,14 +34,21 @@ public class SnakeMovement : MonoBehaviour
 
     private void Move()
     {
+        Vector3 previousPosition;
+
         //Moves the head
+        previousPosition = transform.position;
         transform.position = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
+
+        SetAnimationVelocity(transform, previousPosition);
 
         //Moves the body parts
         for (int i = 1; i < body.Count; i++)
         {
             currentSegment = body[i];
             previousSegment = body[i - 1];
+
+            previousPosition = currentSegment.position;
 
             distance = Vector3.Distance(previousSegment.position, currentSegment.position);
 
@@ -55,7 +62,25 @@ public class SnakeMovement : MonoBehaviour
                 t = 0.5f;
             currentSegment.position = Vector3.Slerp(currentSegment.position, newpos, t);
             currentSegment.rotation = Quaternion.Slerp(currentSegment.rotation, previousSegment.rotation, t);
+
+            SetAnimationVelocity(currentSegment, previousPosition);
         }
+    }
+
+    private void SetAnimationVelocity(Transform current, Vector3 previous)
+    {
+        Animator animator = current.GetComponent<Animator>();
+        Vector2 velocity = current.position - previous;
+        velocity.Normalize();
+        velocity = Vector2Int.RoundToInt(velocity);
+
+        if (velocity.x + velocity.y == 0)
+            Debug.Log(current.gameObject.name + " Has velocity of " + velocity);
+
+        animator.SetFloat("Velocity X", velocity.x);
+        animator.SetFloat("Velocity Y", velocity.y);
+
+        //Debug.Log("Head velocity: " + (current.position - previous) + " Normalised: " + velocity);
     }
 
     public void SetDestination(Vector3 location)
