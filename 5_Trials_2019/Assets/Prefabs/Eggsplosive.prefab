@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6446260953805970057}
   - component: {fileID: 6446260953805970058}
   - component: {fileID: 6446260953805970059}
+  - component: {fileID: 5727736279022118788}
   m_Layer: 0
-  m_Name: Bomb
+  m_Name: Eggsplosive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3815954189206336483, guid: 81405401f0829094ab014ca80b2807b3,
+  m_Sprite: {fileID: -5858235287848320664, guid: 89e164d603db24247a858d0da136cbb9,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,3 +101,22 @@ MonoBehaviour:
   projectile: {fileID: 101106125, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8, type: 3}
   projectileAmount: 10
   fuse: 2
+--- !u!95 &5727736279022118788
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6446260953805970068}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 88a046c724800f44a9e4ba9e7aa0baa7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
