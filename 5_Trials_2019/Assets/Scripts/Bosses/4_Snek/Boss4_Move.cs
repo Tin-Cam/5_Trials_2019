@@ -9,6 +9,7 @@ public class Boss4_Move : _MoveBase
     private SnakeMovement head;
 
     public int moveCount = 0;
+    public int circleTimes;
 
     private float defaultSpeed;
 
@@ -67,7 +68,7 @@ public class Boss4_Move : _MoveBase
         while (start == end)
             end = endNodes[Random.Range(0, endNodes.Length)];
 
-        int[] path2 = CirclePath(circleStart, 3);
+        int[] path2 = CirclePath(circleStart, circleTimes);
 
         int[] path1 = FindPath(start, path2[0]).ToArray();       
         int[] path3 = FindPath(path2[path2.Length - 1], end).ToArray();

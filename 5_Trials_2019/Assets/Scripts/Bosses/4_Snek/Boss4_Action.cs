@@ -6,6 +6,7 @@ public class Boss4_Action : _ActionBase
 {
     public bool desperation = false;
 
+    public float attackSpeed;
     public int shootCycleCount;
     public float shootRate;
     public float shootMaxDelay;
@@ -16,7 +17,6 @@ public class Boss4_Action : _ActionBase
     public int maxAttackRNG;
     private int defaultAttackRNG;
 
-    public Projectile bomb;
 
     public int desperationCount;
     private int currentDesperationCount;
@@ -39,6 +39,8 @@ public class Boss4_Action : _ActionBase
 
         this.head = head;
         player = controller.player;
+
+        SetAttackSpeed(attackSpeed);
 
         actionList.Add("DesperationMode");
         actionList.Add("Shoot");
@@ -168,6 +170,7 @@ public class Boss4_Action : _ActionBase
         }
     }
 
+
     public IEnumerator Shoot()
     {
         int counter = 0;
@@ -193,8 +196,19 @@ public class Boss4_Action : _ActionBase
         for (int i = 0; i < bombCycleCount; i++)
         {
             Segment segment = head.body[head.body.Count - 1].GetComponent<Segment>();
+            if (!segment.CheckShootBounds())
+                yield break;
             segment.Shoot(player.transform.position);
             yield return new WaitForSeconds(bombRate);
+        }
+    }
+
+    public void SetAttackSpeed(float speedMultiplier)
+    {
+        foreach (Transform bodyPart in head.body)
+        {
+            Animator animator = bodyPart.GetComponent<Animator>();
+            animator.SetFloat("Attack Speed", speedMultiplier);
         }
     }
 

@@ -8,6 +8,8 @@ public class Boss4_Controller : _BossBase
     private Boss4_Action action;
 
     [Range(0, 10)] public int idleProbability;
+    public int maxNoIdleCount;
+    private int noIdleCounter;
 
     public SnakeMovement head;
 
@@ -47,16 +49,20 @@ public class Boss4_Controller : _BossBase
 
         //Decide if attacking
         rng = Random.Range(0, 10);
-        if (rng > idleProbability - 1)
+        if (rng > idleProbability - 1 && noIdleCounter < maxNoIdleCount)
         {
-
-            if (action.desperation)
-                action.ReduceDesperation();
-
             //Decide Action
             action.DecideActions();
-
+            noIdleCounter++;
         }
+        else
+        {
+            noIdleCounter = 0;
+        }
+        
+
+        if (action.desperation)
+            action.ReduceDesperation();
 
         //Decide how to move
         rng = Random.Range(0, 2);
@@ -123,6 +129,11 @@ public class Boss4_Controller : _BossBase
         action.bombCycleCount++;
         action.shootCycleCount += 3;
 
+        idleProbability--;
+
+        action.attackSpeed += 0.5f;
+        action.SetAttackSpeed(action.attackSpeed);
+
         if (phase >= 2)
             StartCoroutine(action.DesperationMode());
     }
@@ -133,6 +144,7 @@ public class Boss4_Controller : _BossBase
         move.HardSetSpeed(move.GetDefaultSpeed() - 1);
         action.bombCycleCount--;
         action.shootCycleCount -= 3;
+        idleProbability += 2;
     }
 
     protected override void StartDeath()

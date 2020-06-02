@@ -40,6 +40,7 @@ public class Projectile_Bomb : Projectile
 
             tempProjectile.direction = direction;
         }
+        AudioManager.instance.Play("Crash");
         Destroy(gameObject);
     }
 }

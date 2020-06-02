@@ -51,10 +51,4 @@ public class SpreadShot : MonoBehaviour
         moveTowardsX.x = x;
         moveTowardsX.speed = spreadSpeed;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
