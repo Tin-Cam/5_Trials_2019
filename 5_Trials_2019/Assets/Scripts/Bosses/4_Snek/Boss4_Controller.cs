@@ -140,11 +140,17 @@ public class Boss4_Controller : _BossBase
 
     private void EasyMode()
     {
-        return;
-        move.HardSetSpeed(move.GetDefaultSpeed() - 1);
+        //return;
+        health -= 4;
+        maxHealth -= 4;
+        healthBar.initHealth(health);
+
         action.bombCycleCount--;
         action.shootCycleCount -= 3;
         idleProbability += 2;
+
+        action.attackSpeed -= 0.5f;
+        action.SetAttackSpeed(action.attackSpeed);
     }
 
     protected override void StartDeath()
