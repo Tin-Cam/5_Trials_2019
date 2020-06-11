@@ -160,6 +160,7 @@ public class Boss4_Controller : _BossBase
             Instantiate(deathExplosion, head.body[i].position, transform.rotation);
         //Explosion for head (AKA moving the controller to the head's position so that the explosion occurs at that positon instead <insert galaxy brain>)
         transform.position = head.transform.position;
+        action.ShowDesperationFilter(false);
 
         Die();
     }
