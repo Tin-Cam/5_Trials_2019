@@ -6,7 +6,7 @@ public class Boss5_Action : _ActionBase
 {
 
     // Start is called before the first frame update
-    void Start()
+    public void Init()
     {
         
     }
