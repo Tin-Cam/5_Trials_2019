@@ -12,7 +12,7 @@ public class Boss5_Move : _MoveBase
 
     public void Init()
     {
-        StartCoroutine(MoveToNodeCO(3));
+        //StartCoroutine(MoveToNodeCO(3));
     }
 
     public IEnumerator MoveToNodeCO(int node)

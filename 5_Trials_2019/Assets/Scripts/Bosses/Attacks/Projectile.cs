@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour {
     public Vector3 direction;
     private float lifeTime;
 
-    void Start()
+    void Awake()
     {
         lifeTime = objProjectile.lifeTime;
     }

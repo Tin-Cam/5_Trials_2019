@@ -21,30 +21,31 @@ public class Boss5_Controller : _BossBase
 
     public override void BossHurt()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public override void DefaultState()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void Act()
-    {
-        throw new System.NotImplementedException();
+        TakeDamage(1);
     }
 
     protected override void CheckHealth()
     {
-        throw new System.NotImplementedException();
+
     }
 
     protected override void IncreasePhase()
     {
-        throw new System.NotImplementedException();
-    }   
+
+    }
 
     protected override void StartDeath()
+    {
+        Die();
+    }
+
+    public override void DefaultState()
+    {
+        
+    }   
+
+    //Not Used
+    protected override void Act()
     {
         throw new System.NotImplementedException();
     }
