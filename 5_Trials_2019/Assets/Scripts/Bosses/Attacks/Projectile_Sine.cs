@@ -28,14 +28,14 @@ public class Projectile_Sine : Projectile
     {
         transform.position = transform.position + direction * GetMoveSpeed() * Time.deltaTime;
 
-        projectile1.transform.position = CalculateSineMovement(false);
+        projectile1.transform.localPosition = CalculateSineMovement(projectile1.transform, false);
         if (doubleProjectiles)
-            projectile2.transform.position = CalculateSineMovement(true);
+            projectile2.transform.localPosition = CalculateSineMovement(projectile2.transform, true);
 
         t += Time.deltaTime;
     }
 
-    private Vector3 CalculateSineMovement(bool invert)
+    private Vector3 CalculateSineMovement(Transform projectile, bool invert)
     {
         
         float x = waveAmplitude * Mathf.Sin(waveSpeed * t);
@@ -45,7 +45,6 @@ public class Projectile_Sine : Projectile
 
         Vector3 result = new Vector3(x, 0, 0);
 
-        result = transform.position + result;
         return result;
     }
 }

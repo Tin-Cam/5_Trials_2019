@@ -13,6 +13,9 @@ public class Boss5_Controller : _BossBase
         action = GetComponent<Boss5_Action>();
         move = GetComponent<Boss5_Move>();
 
+        actionBase = action;
+        moveBase = move;
+
         action.Init();
         move.Init();
 
