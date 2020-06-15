@@ -6,12 +6,7 @@ public class Projectile : MonoBehaviour {
 
     public Obj_Projectile objProjectile;
     public Vector3 direction;
-    private float lifeTime;
-
-    void Awake()
-    {
-        lifeTime = objProjectile.lifeTime;
-    }
+    private float lifeTime = 10;
 
     void Update ()
     {
@@ -28,11 +23,6 @@ public class Projectile : MonoBehaviour {
             Destroy(gameObject);
         if (transform.position.y > objProjectile.killDistance.y | transform.position.y < -objProjectile.killDistance.y)
             Destroy(gameObject);
-    }
-
-    public int GetDamage()
-    {
-        return objProjectile.damage;
     }
 
     public float GetMoveSpeed()
