@@ -8,6 +8,11 @@ public class Boss5_Action : _ActionBase
     public float firerate;
     public int burstAmount;
 
+    public Projectile_Spin projectileSpin;
+
+    public Projectile_Sine projectileDesp1;
+    public Projectile_Sine projectileDesp2;
+
     private GameObject player;
     private Boss5_Controller controller;
     private AudioManager audioManager;
@@ -23,6 +28,12 @@ public class Boss5_Action : _ActionBase
 
         actionList.Add("ShootSine");
         actionList.Add("ShootSineDouble");
+        actionList.Add("ShootSpin");
+
+        actionList.Add("ShootDesp1");
+        actionList.Add("ShootDesp2");
+
+        actionList.Add("Move");
     }
 
     public IEnumerator ShootSine()
@@ -52,8 +63,32 @@ public class Boss5_Action : _ActionBase
             //Rotates the projectile to face the player
             projectile.transform.rotation = Quaternion.AngleAxis(Vector2.SignedAngle(Vector2.up, target - projectile.transform.position), Vector3.forward);
             yield return new WaitForSeconds(firerate);
-        }
+        }   
+    }
 
+    public IEnumerator ShootSpin()
+    {
+        Instantiate(projectileSpin, transform.position, transform.rotation);
+        yield break;
+    }
+
+    public IEnumerator ShootDesp1()
+    {
+        GameObject projectile;
+        projectile = Shoot(projectileDesp1.gameObject, Vector3.zero);
+        yield break;
+    }
+
+    public IEnumerator ShootDesp2()
+    {
+        GameObject projectile;
+        projectile = Shoot(projectileDesp2.gameObject, Vector3.zero);
+        yield break;
+    }
+
+    public IEnumerator Move()
+    {
+        yield return GetComponent<Boss5_Move>().MoveToRandomNode();
         yield break;
     }
 

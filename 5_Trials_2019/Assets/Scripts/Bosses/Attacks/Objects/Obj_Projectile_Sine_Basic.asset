@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21efe8942042bf148a8d20805385e6a9, type: 3}
   m_Name: Obj_Projectile_Sine_Basic
   m_EditorClassIdentifier: 
-  damage: 1
   moveSpeed: 6
-  lifeTime: 10
   killDistance: {x: 10, y: 8}

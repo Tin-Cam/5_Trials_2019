@@ -8,6 +8,7 @@ public class Projectile_Spin : Projectile
     public int projectileAmount;
 
     public float startingSpeed;
+    public float speedCap;
     public float rotationAcceleration;
     private float speed;
 
@@ -30,7 +31,8 @@ public class Projectile_Spin : Projectile
     {
         transform.Rotate(Vector3.forward * Time.deltaTime * speed);
 
-        speed += rotationAcceleration;
+        if(Mathf.Abs(speed) < speedCap)
+            speed += rotationAcceleration;
     }
 
     private void SpawnProjectiles()
@@ -48,7 +50,6 @@ public class Projectile_Spin : Projectile
             direction.Normalize();
 
             tempProjectile.direction = direction;
-        }
-        AudioManager.instance.Play("Crash");
+        }       
     }
 }

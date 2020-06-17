@@ -9,10 +9,20 @@ public class Boss5_Move : _MoveBase
     public bool isMoving;
 
     public Transform[] MoveNodes;
+    private int currentNode;
 
     public void Init()
     {
-        //StartCoroutine(MoveToNodeCO(3));
+
+    }
+
+    public IEnumerator MoveToRandomNode()
+    {
+        int rng = Random.Range(1, MoveNodes.Length);
+        while(rng == currentNode)
+            rng = Random.Range(1, MoveNodes.Length);
+
+        yield return MoveToNodeCO(rng);
     }
 
     public IEnumerator MoveToNodeCO(int node)
@@ -34,6 +44,7 @@ public class Boss5_Move : _MoveBase
 
             yield return new WaitForFixedUpdate();
         }
+        currentNode = node;
     }
 
     public override void DefaultState()
