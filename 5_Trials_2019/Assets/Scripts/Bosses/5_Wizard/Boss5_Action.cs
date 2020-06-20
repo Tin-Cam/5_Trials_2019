@@ -12,6 +12,7 @@ public class Boss5_Action : _ActionBase
 
     public Projectile_Sine projectileDesp1;
     public Projectile_Sine projectileDesp2;
+    public float despVariablity;
 
     private GameObject player;
     private Boss5_Controller controller;
@@ -76,6 +77,11 @@ public class Boss5_Action : _ActionBase
     {
         GameObject projectile;
         projectile = Shoot(projectileDesp1.gameObject, Vector3.zero);
+
+        float rng = Random.Range(-despVariablity, despVariablity);
+        projectile.GetComponent<Projectile_Sine>().moveSpeed += rng;
+        projectile.GetComponent<Projectile_Sine>().waveSpeed += rng;
+
         yield break;
     }
 
@@ -83,6 +89,11 @@ public class Boss5_Action : _ActionBase
     {
         GameObject projectile;
         projectile = Shoot(projectileDesp2.gameObject, Vector3.zero);
+
+        float rng = Random.Range(-despVariablity, despVariablity);
+        projectile.GetComponent<Projectile_Sine>().moveSpeed += rng;
+        projectile.GetComponent<Projectile_Sine>().waveSpeed += rng;
+
         yield break;
     }
 
@@ -92,7 +103,7 @@ public class Boss5_Action : _ActionBase
         yield break;
     }
 
-    public GameObject Shoot(GameObject bullet, Vector3 target)
+    private GameObject Shoot(GameObject bullet, Vector3 target)
     {
         audioManager.Play("Boss_Shoot");
         //Creates the projectile
@@ -107,6 +118,11 @@ public class Boss5_Action : _ActionBase
         tempProjectile.GetComponent<Projectile>().direction = direction;
 
         return tempProjectile;
+    }
+
+    public float GetLevel()
+    {
+        return controller.bossLevel;
     }
 
     public override void DefaultState()

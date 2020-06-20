@@ -29,18 +29,17 @@ public class Boss5_Move : _MoveBase
     {
         isMoving = true;
         Vector3 targetNode = MoveNodes[node].position;
-        float length = Vector3.Distance(transform.position, targetNode);
-
-        float t = 0;
 
         while (isMoving)
         {
-            transform.position = Vector3.Lerp(transform.position, targetNode, t / length);
+            transform.position = Vector3.Lerp(transform.position, targetNode, Time.deltaTime * moveSpeed);
 
-            t += Time.deltaTime * moveSpeed;
-
-            if (transform.position == targetNode)
+            //Set position to node when boss is "close enough". (Speeds up move time)
+            if (Vector3.Distance(transform.position, targetNode) < 0.05)
+            {
+                transform.position = targetNode;
                 isMoving = false;
+            }
 
             yield return new WaitForFixedUpdate();
         }

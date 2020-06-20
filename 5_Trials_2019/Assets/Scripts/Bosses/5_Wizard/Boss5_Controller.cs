@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class Boss5_Controller : _BossBase
 {
+    public float bossLevel = 1;
+
     private Boss5_Action action;
-    private Boss5_Controller controller;
     private Boss5_Move move;
+    private Boss5_Commands command;
 
     protected override void Init()
     {
         action = GetComponent<Boss5_Action>();
         move = GetComponent<Boss5_Move>();
+        command = GetComponent<Boss5_Commands>();
 
         actionBase = action;
         moveBase = move;
 
         action.Init();
         move.Init();
-
-
+        command.Init();
     }
 
     public override void BossHurt()

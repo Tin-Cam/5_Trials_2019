@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Projectile_Sine : Projectile
 {
+    public float moveSpeed;
+
     public GameObject projectileRef;
 
     private GameObject projectile1;
@@ -26,7 +28,7 @@ public class Projectile_Sine : Projectile
 
     void FixedUpdate()
     {
-        transform.position = transform.position + direction * GetMoveSpeed() * Time.deltaTime;
+        transform.position = transform.position + direction * moveSpeed * Time.deltaTime;
 
         projectile1.transform.localPosition = CalculateSineMovement(projectile1.transform, false);
         if (doubleProjectiles)
