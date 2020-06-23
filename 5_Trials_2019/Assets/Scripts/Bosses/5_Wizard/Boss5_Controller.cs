@@ -9,12 +9,14 @@ public class Boss5_Controller : _BossBase
     private Boss5_Action action;
     private Boss5_Move move;
     private Boss5_Commands command;
+    private Boss5_Shield shield;
 
     protected override void Init()
     {
         action = GetComponent<Boss5_Action>();
         move = GetComponent<Boss5_Move>();
         command = GetComponent<Boss5_Commands>();
+        shield = GetComponent<Boss5_Shield>();
 
         actionBase = action;
         moveBase = move;
@@ -22,11 +24,17 @@ public class Boss5_Controller : _BossBase
         action.Init();
         move.Init();
         command.Init();
+        shield.Init();
     }
 
     public override void BossHurt()
     {
-        TakeDamage(1);
+        shield.BossHit();
+
+        if (!shield.isShieldActive)
+            TakeDamage(1);
+        else
+            audioManager.Play("Boss_NoDamage");
     }
 
     protected override void CheckHealth()

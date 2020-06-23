@@ -11,6 +11,7 @@ public class Boss5_Commands : MonoBehaviour
     private Boss5_Action action;
     private Boss5_Move move;
     private Boss5_Controller controller;
+    private Boss5_Shield shield;
 
     public bool randomCommands;
     private List<string> commandList = new List<string>();
@@ -22,6 +23,7 @@ public class Boss5_Commands : MonoBehaviour
         action = GetComponent<Boss5_Action>();
         move = GetComponent<Boss5_Move>();
         controller = GetComponent<Boss5_Controller>();
+        shield = GetComponent<Boss5_Shield>();
 
         ChangeCommandList(1);
 
@@ -33,6 +35,15 @@ public class Boss5_Commands : MonoBehaviour
         nextCommandNumber = NextCommandNumber();
         yield return StartCoroutine(commandList[nextCommandNumber]);
         yield return new WaitForSeconds(idleTime);
+
+        //Check shield
+        if (shield.isRecharging)
+        {
+            int recharge = shield.DecreaseRecharge();
+            if(recharge <= 0)
+                yield return ActivateShield();
+        }
+
         StartCoroutine(NextCommand());
     }
 
@@ -68,6 +79,17 @@ public class Boss5_Commands : MonoBehaviour
             yield return action.ShootSpin();
             yield return new WaitForSeconds(actionPause);
         }
+    }
+
+
+
+
+
+    //Moves once then shoots at the player x times
+    public IEnumerator ActivateShield()
+    {
+        shield.ShieldActive(true);
+        yield return new WaitForSeconds(actionPause);
     }
 
     public void ChangeCommandList(int phase)

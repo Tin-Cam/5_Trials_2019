@@ -2190,6 +2190,7 @@ GameObject:
   - component: {fileID: 2890213894033778231}
   - component: {fileID: 2890213894033778230}
   - component: {fileID: 2890213894033778233}
+  - component: {fileID: 2890213894033778234}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -2284,6 +2285,24 @@ MonoBehaviour:
   idleTime: 3
   actionPause: 0.5
   randomCommands: 0
+--- !u!114 &2890213894033778234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2890213894033778229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d8ef8dd8db86d4fbdb64680840f90a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useShield: 1
+  isShieldActive: 0
+  isRecharging: 0
+  shieldRender: {fileID: 724360194}
+  maxRechargeCount: 3
+  maxShieldTime: 5
 --- !u!156049354 &2901094200162091791
 Grid:
   m_ObjectHideFlags: 0
