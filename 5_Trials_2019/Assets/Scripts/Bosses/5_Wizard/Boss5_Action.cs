@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss5_Action : _ActionBase
 {
     public Projectile_Sine projectileSine;
+    public bool doubleProjectiles;
     public float firerate;
     public int burstAmount;
 
@@ -23,12 +24,11 @@ public class Boss5_Action : _ActionBase
         controller = GetComponent<Boss5_Controller>();
         audioManager = AudioManager.instance;
 
-        projectileSine.doubleProjectiles = false;
+        projectileSine.doubleProjectiles = doubleProjectiles;
 
         player = controller.player;
 
         actionList.Add("ShootSine");
-        actionList.Add("ShootSineDouble");
         actionList.Add("ShootSpin");
 
         actionList.Add("ShootDesp1");
@@ -39,7 +39,7 @@ public class Boss5_Action : _ActionBase
 
     public IEnumerator ShootSine()
     {
-        projectileSine.doubleProjectiles = false;
+        projectileSine.doubleProjectiles = doubleProjectiles;
         GameObject projectile;
         Vector3 target = player.transform.position;
 
@@ -50,21 +50,6 @@ public class Boss5_Action : _ActionBase
             projectile.transform.rotation = Quaternion.AngleAxis(Vector2.SignedAngle(Vector2.up, target - projectile.transform.position), Vector3.forward);
             yield return new WaitForSeconds(firerate);
         }
-    }
-
-    public IEnumerator ShootSineDouble()
-    {
-        projectileSine.doubleProjectiles = true;
-        GameObject projectile;
-        Vector3 target = player.transform.position;
-
-        for (int i = 0; i < burstAmount; i++)
-        {
-            projectile = Shoot(projectileSine.gameObject, target);
-            //Rotates the projectile to face the player
-            projectile.transform.rotation = Quaternion.AngleAxis(Vector2.SignedAngle(Vector2.up, target - projectile.transform.position), Vector3.forward);
-            yield return new WaitForSeconds(firerate);
-        }   
     }
 
     public IEnumerator ShootSpin()

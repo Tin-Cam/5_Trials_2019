@@ -15,6 +15,7 @@ public class Boss5_Commands : MonoBehaviour
 
     public bool randomCommands;
     private List<string> commandList = new List<string>();
+    private Queue<string> commandQueue = new Queue<string>();
     private int nextCommandNumber;
 
     // Start is called before the first frame update
@@ -25,15 +26,26 @@ public class Boss5_Commands : MonoBehaviour
         controller = GetComponent<Boss5_Controller>();
         shield = GetComponent<Boss5_Shield>();
 
-        ChangeCommandList(1);
+        ChangeCommandList(0);
 
         StartCoroutine(NextCommand());
     }
 
     public IEnumerator NextCommand()
     {
-        nextCommandNumber = NextCommandNumber();
-        yield return StartCoroutine(commandList[nextCommandNumber]);
+
+        if(commandQueue.Count != 0)
+        {
+            //Uses queued command if any
+            yield return StartCoroutine(commandQueue.Dequeue());
+        }
+        else
+        {
+            //Picks a command if nothing is queued
+            nextCommandNumber = NextCommandNumber();
+            yield return StartCoroutine(commandList[nextCommandNumber]);
+        }
+        
         yield return new WaitForSeconds(idleTime);
 
         //Check shield
@@ -97,10 +109,17 @@ public class Boss5_Commands : MonoBehaviour
         commandList.Clear();
         switch (phase)
         {
+            case 0: 
+                action.doubleProjectiles = false;
+                commandList.Add("JustShoot");
+                break;
+
             case 1:
+                action.doubleProjectiles = true;
+                shield.useShield = true;
                 commandList.Add("JustShoot");
                 commandList.Add("ShootAndMove");
-                commandList.Add("JustSpinShoot");
+                commandQueue.Enqueue("JustSpinShoot");
                 break;
 
             default:
