@@ -14,6 +14,7 @@ public class Boss5_Action : _ActionBase
     public Projectile_Sine projectileDesp1;
     public Projectile_Sine projectileDesp2;
     public float despVariablity;
+    public float despFireRate;
 
     private GameObject player;
     private Boss5_Controller controller;
@@ -61,13 +62,15 @@ public class Boss5_Action : _ActionBase
     public IEnumerator ShootDesp1()
     {
         GameObject projectile;
-        projectile = Shoot(projectileDesp1.gameObject, Vector3.zero);
 
-        float rng = Random.Range(-despVariablity, despVariablity);
-        projectile.GetComponent<Projectile_Sine>().moveSpeed += rng;
-        projectile.GetComponent<Projectile_Sine>().waveSpeed += rng;
+        int randomSign = RandomSign();
 
-        yield break;
+        for (int i = 0; i < 3; i++) {
+            projectile = Shoot(projectileDesp1.gameObject, Vector3.zero);
+            //Ramdomly decides to reverse the swing pattern of the projectile
+            projectile.GetComponent<Projectile_Sine>().waveSpeed *= randomSign;
+            yield return new WaitForSeconds(despFireRate);
+        }
     }
 
     public IEnumerator ShootDesp2()
@@ -78,6 +81,9 @@ public class Boss5_Action : _ActionBase
         float rng = Random.Range(-despVariablity, despVariablity);
         projectile.GetComponent<Projectile_Sine>().moveSpeed += rng;
         projectile.GetComponent<Projectile_Sine>().waveSpeed += rng;
+
+        //Ramdomly decides to reverse the swing pattern of the projectile
+        projectile.GetComponent<Projectile_Sine>().waveSpeed *= RandomSign();
 
         yield break;
     }
@@ -103,6 +109,13 @@ public class Boss5_Action : _ActionBase
         tempProjectile.GetComponent<Projectile>().direction = direction;
 
         return tempProjectile;
+    }
+
+    //Returns either a 1 or a -1
+    public int RandomSign()
+    {
+        int rng = Random.Range(0, 2) * 2 - 1;
+        return rng;
     }
 
     public float GetLevel()

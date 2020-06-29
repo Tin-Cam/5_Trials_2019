@@ -7,6 +7,7 @@ public class Boss5_Commands : MonoBehaviour
     public float idleTime;
 
     public float actionPause;
+    public float desperationPause;
 
     private Boss5_Action action;
     private Boss5_Move move;
@@ -94,7 +95,27 @@ public class Boss5_Commands : MonoBehaviour
     }
 
 
+    //Moves once then spin shoots at the player x times
+    public IEnumerator DesperationAttack()
+    {
+        action.ShowDesperationFilter(true);
+        yield return move.MoveToNodeCO(0);
+        yield return new WaitForSeconds(desperationPause);
 
+        int rng = Random.Range(0, 3);
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (rng < 2)
+                yield return action.ShootDesp1();
+            else
+                yield return action.ShootDesp2();
+
+            rng = Random.Range(0, 3);
+            yield return new WaitForSeconds(desperationPause);
+        }
+        action.ShowDesperationFilter(false);
+    }
 
 
     //Moves once then shoots at the player x times
@@ -111,14 +132,16 @@ public class Boss5_Commands : MonoBehaviour
         {
             case 0: 
                 action.doubleProjectiles = false;
-                commandList.Add("JustShoot");
+                commandList.Add("DesperationAttack");
                 break;
 
             case 1:
                 action.doubleProjectiles = true;
                 shield.useShield = true;
+
                 commandList.Add("JustShoot");
                 commandList.Add("ShootAndMove");
+
                 commandQueue.Enqueue("JustSpinShoot");
                 break;
 
