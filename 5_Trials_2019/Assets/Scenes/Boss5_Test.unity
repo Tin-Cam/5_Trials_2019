@@ -2313,6 +2313,7 @@ MonoBehaviour:
     type: 3}
   despVariablity: 0.5
   despFireRate: 0.1
+  despShotAmount: 1
 --- !u!114 &2890213894033778232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2354,6 +2355,7 @@ MonoBehaviour:
   actionPause: 0.5
   desperationPause: 2
   randomCommands: 0
+  maxDespCount: 10
 --- !u!114 &2890213894033778234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2366,12 +2368,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d8ef8dd8db86d4fbdb64680840f90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useShield: 1
+  useShield: 0
   isShieldActive: 0
   isRecharging: 0
   shieldRender: {fileID: 724360194}
   maxRechargeCount: 3
-  maxShieldTime: 5
+  maxShieldTime: 10
 --- !u!156049354 &2901094200162091791
 Grid:
   m_ObjectHideFlags: 0

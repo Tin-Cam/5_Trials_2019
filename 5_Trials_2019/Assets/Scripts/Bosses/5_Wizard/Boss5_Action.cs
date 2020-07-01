@@ -15,6 +15,7 @@ public class Boss5_Action : _ActionBase
     public Projectile_Sine projectileDesp2;
     public float despVariablity;
     public float despFireRate;
+    public float despShotAmount;
 
     private GameObject player;
     private Boss5_Controller controller;
@@ -65,7 +66,7 @@ public class Boss5_Action : _ActionBase
 
         int randomSign = RandomSign();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < despShotAmount; i++) {
             projectile = Shoot(projectileDesp1.gameObject, Vector3.zero);
             //Ramdomly decides to reverse the swing pattern of the projectile
             projectile.GetComponent<Projectile_Sine>().waveSpeed *= randomSign;

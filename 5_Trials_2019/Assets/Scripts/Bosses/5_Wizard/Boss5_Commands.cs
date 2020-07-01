@@ -19,6 +19,11 @@ public class Boss5_Commands : MonoBehaviour
     private Queue<string> commandQueue = new Queue<string>();
     private int nextCommandNumber;
 
+    public int maxDespCount;
+    private int despCounter;
+    private bool despCounterActive;
+    
+
     // Start is called before the first frame update
     public void Init()
     {
@@ -57,6 +62,9 @@ public class Boss5_Commands : MonoBehaviour
                 yield return ActivateShield();
         }
 
+        //Use Desperation attack after X amount of moves and/or hits
+        IncrementDespCount();
+
         StartCoroutine(NextCommand());
     }
 
@@ -94,6 +102,18 @@ public class Boss5_Commands : MonoBehaviour
         }
     }
 
+    //Spin shoots and moves x times
+    public IEnumerator SpinShootAndMove()
+    {
+        yield return action.ShootSpin();
+        for (int i = 0; i < 2; i++)
+        {
+            yield return new WaitForSeconds(actionPause * 3);
+            yield return move.MoveToRandomNode();
+            yield return action.ShootSpin();           
+        }
+    }
+
 
     //Moves once then spin shoots at the player x times
     public IEnumerator DesperationAttack()
@@ -115,14 +135,35 @@ public class Boss5_Commands : MonoBehaviour
             yield return new WaitForSeconds(desperationPause);
         }
         action.ShowDesperationFilter(false);
+        ResetDespCount();
     }
 
+    public void IncrementDespCount()
+    {
+        if (!despCounterActive)
+            return;
+
+        despCounter++;
+
+        if (despCounter >= maxDespCount)
+        {
+            commandQueue.Enqueue("DesperationAttack");
+            
+            despCounterActive = false;
+        }
+    }
+
+    public void ResetDespCount()
+    {
+        despCounter = 0;
+        despCounterActive = true;
+    }
 
     //Moves once then shoots at the player x times
     public IEnumerator ActivateShield()
     {
         shield.ShieldActive(true);
-        yield return new WaitForSeconds(actionPause);
+        yield return new WaitForSeconds(actionPause); 
     }
 
     public void ChangeCommandList(int phase)
@@ -132,17 +173,30 @@ public class Boss5_Commands : MonoBehaviour
         {
             case 0: 
                 action.doubleProjectiles = false;
-                commandList.Add("DesperationAttack");
+                commandList.Add("JustShoot");
                 break;
 
             case 1:
                 action.doubleProjectiles = true;
                 shield.useShield = true;
 
+                //commandQueue.Enqueue("DesperationAttack");
+
                 commandList.Add("JustShoot");
                 commandList.Add("ShootAndMove");
 
-                commandQueue.Enqueue("JustSpinShoot");
+                break;
+
+            case 2:
+                action.doubleProjectiles = true;
+                shield.useShield = true;
+
+                commandQueue.Enqueue("DesperationAttack");
+
+                commandList.Add("JustShoot");
+                commandList.Add("ShootAndMove");
+                commandList.Add("SpinShootAndMove");
+
                 break;
 
             default:
@@ -159,7 +213,17 @@ public class Boss5_Commands : MonoBehaviour
 
         if (randomCommands)
         {
-            return Random.Range(0, commandList.Count);
+            result = Random.Range(0, commandList.Count);
+
+            //Failsafe incase random commands is used with only one command
+            if(commandList.Count == 1)
+                return 0;
+
+            //Ensure a command isn't used twice in a row
+            while (result == nextCommandNumber)           
+                result = Random.Range(0, commandList.Count);
+
+            return result;
         }
 
         if (result >= commandList.Count)
@@ -167,5 +231,4 @@ public class Boss5_Commands : MonoBehaviour
 
         return result;
     }
-
 }

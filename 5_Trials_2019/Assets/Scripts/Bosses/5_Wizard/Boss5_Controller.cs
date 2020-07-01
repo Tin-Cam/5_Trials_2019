@@ -31,6 +31,7 @@ public class Boss5_Controller : _BossBase
     public override void BossHurt()
     {
         shield.BossHit();
+        command.IncrementDespCount();
 
         if (!shield.isShieldActive)
             TakeDamage(1);

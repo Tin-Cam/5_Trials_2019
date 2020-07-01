@@ -56,7 +56,7 @@ public class Boss5_Shield : MonoBehaviour
     //If boss is damaged, makes sure recharge is active; 
     public void BossHit()
     {
-        if (useShield)
+        if (!useShield)
             return;
         if (isShieldActive)
             return;

@@ -49,6 +49,6 @@ MonoBehaviour:
     type: 3}
   projectileAmount: 10
   startingSpeed: 0
-  speedCap: 150
+  speedCap: 100
   rotationAcceleration: 1
   antiClockwise: 0
