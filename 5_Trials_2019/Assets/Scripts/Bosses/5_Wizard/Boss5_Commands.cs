@@ -52,7 +52,9 @@ public class Boss5_Commands : MonoBehaviour
             yield return StartCoroutine(commandList[nextCommandNumber]);
         }
         
-        yield return new WaitForSeconds(idleTime);
+        //Skips idling id shield is active
+        if(!shield.isShieldActive)
+            yield return new WaitForSeconds(idleTime);
 
         //Check shield
         if (shield.isRecharging)
@@ -95,11 +97,12 @@ public class Boss5_Commands : MonoBehaviour
     public IEnumerator JustSpinShoot()
     {
         yield return move.MoveToRandomNode();
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 2; i++)
         {
             yield return action.ShootSpin();
             yield return new WaitForSeconds(actionPause);
         }
+        yield return new WaitForSeconds(actionPause * 3);
     }
 
     //Spin shoots and moves x times
@@ -112,6 +115,7 @@ public class Boss5_Commands : MonoBehaviour
             yield return move.MoveToRandomNode();
             yield return action.ShootSpin();           
         }
+        yield return new WaitForSeconds(actionPause * 3);
     }
 
 
@@ -177,10 +181,8 @@ public class Boss5_Commands : MonoBehaviour
                 break;
 
             case 1:
-                action.doubleProjectiles = true;
-                shield.useShield = true;
-
-                //commandQueue.Enqueue("DesperationAttack");
+                action.doubleProjectiles = false;
+                shield.useShield = true;               
 
                 commandList.Add("JustShoot");
                 commandList.Add("ShootAndMove");
@@ -191,10 +193,38 @@ public class Boss5_Commands : MonoBehaviour
                 action.doubleProjectiles = true;
                 shield.useShield = true;
 
+                commandList.Add("ShootAndMove");
+                commandList.Add("JustSpinShoot");
+
+                break;
+
+            case 3:
+                action.doubleProjectiles = true;
+                shield.useShield = true;
+
+                commandList.Add("ShootAndMove");
+                commandList.Add("SpinShootAndMove");
+
+                break;
+
+            case 4:
+                action.doubleProjectiles = true;
+                shield.useShield = true;
+
                 commandQueue.Enqueue("DesperationAttack");
+
+                commandList.Add("ShootAndMove");
+                commandList.Add("JustSpinShoot");
+
+                break;
+
+            case 5:
+                action.doubleProjectiles = true;
+                shield.useShield = true;
 
                 commandList.Add("JustShoot");
                 commandList.Add("ShootAndMove");
+                commandList.Add("JustSpinShoot");
                 commandList.Add("SpinShootAndMove");
 
                 break;

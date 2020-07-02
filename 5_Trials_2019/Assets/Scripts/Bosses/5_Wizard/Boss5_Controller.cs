@@ -41,15 +41,31 @@ public class Boss5_Controller : _BossBase
 
     protected override void CheckHealth()
     {
-        if (health <= maxHealth * 0.6 & phase < 1)
+        if (health <= maxHealth * 0.9 & phase < 1)
         {
             IncreasePhase();
         }
 
-        if (health <= maxHealth * 0.25 & phase < 2)
+        if (health <= maxHealth * 0.7 & phase < 2)
         {
             IncreasePhase();
         }
+
+        if (health <= maxHealth * 0.5 & phase < 3)
+        {
+            IncreasePhase();
+        }
+
+        if (health <= maxHealth * 0.35 & phase < 4)
+        {
+            IncreasePhase();
+        }
+
+        if (health <= maxHealth * 0.15 & phase < 5)
+        {
+            IncreasePhase();
+        }
+
     }
 
     protected override void IncreasePhase()
