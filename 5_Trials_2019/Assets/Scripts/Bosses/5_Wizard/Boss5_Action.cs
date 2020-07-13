@@ -41,6 +41,11 @@ public class Boss5_Action : _ActionBase
 
     public IEnumerator ShootSine()
     {
+        if (!doubleProjectiles)
+            controller.bossAnimator.SetTrigger("Shoot_Single");
+        else
+            controller.bossAnimator.SetTrigger("Shoot_Double");
+
         projectileSine.doubleProjectiles = doubleProjectiles;
         GameObject projectile;
         Vector3 target = player.transform.position;
@@ -56,6 +61,7 @@ public class Boss5_Action : _ActionBase
 
     public IEnumerator ShootSpin()
     {
+        controller.bossAnimator.SetTrigger("Shoot_Spin");
         Instantiate(projectileSpin, transform.position, transform.rotation);
         yield break;
     }

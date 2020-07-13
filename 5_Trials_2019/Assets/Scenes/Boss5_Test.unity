@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 95486965}
   - component: {fileID: 95486964}
   - component: {fileID: 95486963}
+  - component: {fileID: 95486966}
   m_Layer: 0
   m_Name: Boss_Sprite
   m_TagString: Untagged
@@ -259,7 +260,7 @@ SpriteRenderer:
   m_SortingLayerID: 2133515337
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7552218760340626732, guid: 0aab6efaec386934f8950c575b0cf402,
+  m_Sprite: {fileID: -3231664508340946496, guid: 8a8f8e988396a7a45b92ba5fc2a9d844,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -271,6 +272,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &95486966
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95486961}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7d1569305903d464e816a160ca981064, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &207810766 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9182096197023116857, guid: eb5d813d44eb64f4791a90e539078c1f,
@@ -534,6 +554,7 @@ GameObject:
   - component: {fileID: 724360194}
   - component: {fileID: 724360196}
   - component: {fileID: 724360195}
+  - component: {fileID: 724360197}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -594,7 +615,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4093604850749362916, guid: 92a1452feb3f9184d9fe0ae1d1165e23,
+  m_Sprite: {fileID: 8546612392580412392, guid: 8a8f8e988396a7a45b92ba5fc2a9d844,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -670,6 +691,25 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!95 &724360197
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724360192}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 06a8ea22f7247584ea19dadfafef8333, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &857009890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2209,7 +2249,7 @@ Transform:
   m_GameObject: {fileID: 2890213894033778229}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2.5, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1978234426}
   - {fileID: 95486962}
@@ -2339,6 +2379,7 @@ MonoBehaviour:
   hasAI: 1
   phase: 0
   bossLevel: 1
+  bossAnimator: {fileID: 95486966}
 --- !u!114 &2890213894033778233
 MonoBehaviour:
   m_ObjectHideFlags: 0

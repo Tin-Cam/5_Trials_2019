@@ -16,9 +16,12 @@ public class Boss5_Shield : MonoBehaviour
     public float maxShieldTime;
     private float shieldTimer;
 
+    private Animator shieldAnimator;
+
     public void Init()
     {
         ShieldActive(false);
+        shieldAnimator = shieldRender.gameObject.GetComponent<Animator>();
     }
 
     //Timer for shield when active
@@ -41,7 +44,10 @@ public class Boss5_Shield : MonoBehaviour
         isRecharging = false;
 
         if (isActive)
+        {
+            shieldAnimator.SetTrigger("Activate");
             shieldTimer = maxShieldTime;
+        }
     }
 
     public int DecreaseRecharge()

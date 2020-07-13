@@ -11,9 +11,11 @@ public class Boss5_Move : _MoveBase
     public Transform[] MoveNodes;
     private int currentNode;
 
+    private Boss5_Controller controller;
+
     public void Init()
     {
-
+        controller = GetComponent<Boss5_Controller>();
     }
 
     public IEnumerator MoveToRandomNode()
@@ -27,6 +29,7 @@ public class Boss5_Move : _MoveBase
 
     public IEnumerator MoveToNodeCO(int node)
     {
+        controller.bossAnimator.SetTrigger("Idle");
         isMoving = true;
         Vector3 targetNode = MoveNodes[node].position;
 

@@ -39,8 +39,9 @@ public class Boss5_Commands : MonoBehaviour
 
     public IEnumerator NextCommand()
     {
+        
 
-        if(commandQueue.Count != 0)
+        if (commandQueue.Count != 0)
         {
             //Uses queued command if any
             yield return StartCoroutine(commandQueue.Dequeue());
@@ -51,9 +52,11 @@ public class Boss5_Commands : MonoBehaviour
             nextCommandNumber = NextCommandNumber();
             yield return StartCoroutine(commandList[nextCommandNumber]);
         }
-        
+
+        ResetAnimation();
+
         //Skips idling id shield is active
-        if(!shield.isShieldActive)
+        if (!shield.isShieldActive)
             yield return new WaitForSeconds(idleTime);
 
         //Check shield
@@ -124,6 +127,7 @@ public class Boss5_Commands : MonoBehaviour
     {
         action.ShowDesperationFilter(true);
         yield return move.MoveToNodeCO(0);
+        controller.bossAnimator.SetTrigger("Desperation");
         yield return new WaitForSeconds(desperationPause);
 
         int rng = Random.Range(0, 3);
@@ -166,6 +170,7 @@ public class Boss5_Commands : MonoBehaviour
     //Moves once then shoots at the player x times
     public IEnumerator ActivateShield()
     {
+        controller.bossAnimator.SetTrigger("Get_Shield");
         shield.ShieldActive(true);
         yield return new WaitForSeconds(actionPause); 
     }
@@ -260,5 +265,17 @@ public class Boss5_Commands : MonoBehaviour
             return 0;
 
         return result;
+    }
+
+    private void ResetAnimation()
+    {
+        controller.bossAnimator.ResetTrigger("Idle");
+        controller.bossAnimator.ResetTrigger("Shoot_Single");
+        controller.bossAnimator.ResetTrigger("Shoot_Double");
+        controller.bossAnimator.ResetTrigger("Shoot_Spin");
+        controller.bossAnimator.ResetTrigger("Desperation");
+        controller.bossAnimator.ResetTrigger("Get_Shield");
+
+        controller.bossAnimator.SetTrigger("Idle");
     }
 }

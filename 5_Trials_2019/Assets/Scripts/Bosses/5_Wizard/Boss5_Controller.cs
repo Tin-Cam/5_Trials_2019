@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss5_Controller : _BossBase
 {
     public float bossLevel = 1;
+    public Animator bossAnimator;
 
     private Boss5_Action action;
     private Boss5_Move move;
@@ -16,7 +17,7 @@ public class Boss5_Controller : _BossBase
         action = GetComponent<Boss5_Action>();
         move = GetComponent<Boss5_Move>();
         command = GetComponent<Boss5_Commands>();
-        shield = GetComponent<Boss5_Shield>();
+        shield = GetComponent<Boss5_Shield>();        
 
         actionBase = action;
         moveBase = move;
@@ -91,4 +92,5 @@ public class Boss5_Controller : _BossBase
     {
         throw new System.NotImplementedException();
     }
+   
 }
