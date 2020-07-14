@@ -6,6 +6,7 @@ public class Boss5_Action : _ActionBase
 {
     public Projectile_Sine projectileSine;
     public bool doubleProjectiles;
+    public float attackDelay;
     public float firerate;
     public int burstAmount;
 
@@ -50,7 +51,9 @@ public class Boss5_Action : _ActionBase
         GameObject projectile;
         Vector3 target = player.transform.position;
 
-        for(int i = 0; i < burstAmount; i++)
+        yield return new WaitForSeconds(GetAttackDelay());
+
+        for (int i = 0; i < burstAmount; i++)
         {
             projectile = Shoot(projectileSine.gameObject, target);
             //Rotates the projectile to face the player
@@ -62,6 +65,7 @@ public class Boss5_Action : _ActionBase
     public IEnumerator ShootSpin()
     {
         controller.bossAnimator.SetTrigger("Shoot_Spin");
+        yield return new WaitForSeconds(GetAttackDelay());
         Instantiate(projectileSpin, transform.position, transform.rotation);
         yield break;
     }
@@ -125,9 +129,9 @@ public class Boss5_Action : _ActionBase
         return rng;
     }
 
-    public float GetLevel()
+    public float GetAttackDelay()
     {
-        return controller.bossLevel;
+        return attackDelay / controller.bossLevel;
     }
 
     public override void DefaultState()

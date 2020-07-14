@@ -8,7 +8,7 @@ public class Boss5_Shield : MonoBehaviour
     public bool isShieldActive;
     public bool isRecharging;
 
-    public SpriteRenderer shieldRender;
+    public GameObject shield;
 
     public int maxRechargeCount;
     private int rechargeCounter;
@@ -21,7 +21,7 @@ public class Boss5_Shield : MonoBehaviour
     public void Init()
     {
         ShieldActive(false);
-        shieldAnimator = shieldRender.gameObject.GetComponent<Animator>();
+        shieldAnimator = shield.gameObject.GetComponent<Animator>();
     }
 
     //Timer for shield when active
@@ -39,7 +39,7 @@ public class Boss5_Shield : MonoBehaviour
     public void ShieldActive(bool isActive)
     {
         isShieldActive = isActive;
-        shieldRender.enabled = isActive;
+        shield.SetActive(isActive);
 
         isRecharging = false;
 

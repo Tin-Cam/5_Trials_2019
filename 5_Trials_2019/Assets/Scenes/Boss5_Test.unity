@@ -634,7 +634,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724360192}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1a35f2a7d3c1994ba10484b3643dcc0, type: 3}
   m_Name: 
@@ -648,7 +648,7 @@ SpriteMask:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724360192}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2343,6 +2343,7 @@ MonoBehaviour:
   projectileSine: {fileID: 3451055857902913627, guid: 5b4796b62efc4344a8bc3de970eac820,
     type: 3}
   doubleProjectiles: 0
+  attackDelay: 0.8
   firerate: 0.1
   burstAmount: 10
   projectileSpin: {fileID: 7666754408231385872, guid: e536cec2d3fcc7747afeea8902a8d460,
@@ -2412,7 +2413,7 @@ MonoBehaviour:
   useShield: 0
   isShieldActive: 0
   isRecharging: 0
-  shieldRender: {fileID: 724360194}
+  shield: {fileID: 724360192}
   maxRechargeCount: 3
   maxShieldTime: 10
 --- !u!156049354 &2901094200162091791

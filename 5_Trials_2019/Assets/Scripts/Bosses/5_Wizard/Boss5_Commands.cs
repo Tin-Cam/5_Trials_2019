@@ -39,7 +39,7 @@ public class Boss5_Commands : MonoBehaviour
 
     public IEnumerator NextCommand()
     {
-        
+        ResetAnimation();
 
         if (commandQueue.Count != 0)
         {
@@ -55,15 +55,17 @@ public class Boss5_Commands : MonoBehaviour
 
         ResetAnimation();
 
-        //Skips idling id shield is active
+        //Halves idling time if shield is active
         if (!shield.isShieldActive)
             yield return new WaitForSeconds(idleTime);
+        else
+            yield return new WaitForSeconds(idleTime / 2);
 
         //Check shield
         if (shield.isRecharging)
         {
             int recharge = shield.DecreaseRecharge();
-            if(recharge <= 0)
+            if (recharge <= 0)          
                 yield return ActivateShield();
         }
 
@@ -80,7 +82,6 @@ public class Boss5_Commands : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             yield return action.ShootSine();
-            yield return new WaitForSeconds(actionPause);
         }
     }
 
@@ -91,7 +92,6 @@ public class Boss5_Commands : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {           
             yield return move.MoveToRandomNode();
-            yield return new WaitForSeconds(actionPause);
             yield return action.ShootSine();
         }
     }
@@ -127,6 +127,7 @@ public class Boss5_Commands : MonoBehaviour
     {
         action.ShowDesperationFilter(true);
         yield return move.MoveToNodeCO(0);
+        yield return ActivateShield();
         controller.bossAnimator.SetTrigger("Desperation");
         yield return new WaitForSeconds(desperationPause);
 
@@ -172,7 +173,8 @@ public class Boss5_Commands : MonoBehaviour
     {
         controller.bossAnimator.SetTrigger("Get_Shield");
         shield.ShieldActive(true);
-        yield return new WaitForSeconds(actionPause); 
+        yield return new WaitForSeconds(actionPause * 2);
+        ResetAnimation();
     }
 
     public void ChangeCommandList(int phase)

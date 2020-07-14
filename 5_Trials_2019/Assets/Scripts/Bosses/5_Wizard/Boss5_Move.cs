@@ -35,7 +35,7 @@ public class Boss5_Move : _MoveBase
 
         while (isMoving)
         {
-            transform.position = Vector3.Lerp(transform.position, targetNode, Time.deltaTime * moveSpeed);
+            transform.position = Vector3.Lerp(transform.position, targetNode, Time.deltaTime * CalculateMoveSpeed());
 
             //Set position to node when boss is "close enough". (Speeds up move time)
             if (Vector3.Distance(transform.position, targetNode) < 0.05)
@@ -48,6 +48,12 @@ public class Boss5_Move : _MoveBase
         }
         currentNode = node;
     }
+
+    private float CalculateMoveSpeed()
+    {
+        return moveSpeed * controller.bossLevel;
+    }
+
 
     public override void DefaultState()
     {
