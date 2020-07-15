@@ -9,6 +9,9 @@ public class Boss5_Commands : MonoBehaviour
     public float actionPause;
     public float desperationPause;
 
+    public int justSpinShootAmount;
+    public int spinShootAndMoveAmount;
+
     private Boss5_Action action;
     private Boss5_Move move;
     private Boss5_Controller controller;
@@ -57,9 +60,9 @@ public class Boss5_Commands : MonoBehaviour
 
         //Halves idling time if shield is active
         if (!shield.isShieldActive)
-            yield return new WaitForSeconds(idleTime);
+            yield return new WaitForSeconds(GetIdle());
         else
-            yield return new WaitForSeconds(idleTime / 2);
+            yield return new WaitForSeconds(GetIdle() / 2);
 
         //Check shield
         if (shield.isRecharging)
@@ -100,25 +103,32 @@ public class Boss5_Commands : MonoBehaviour
     public IEnumerator JustSpinShoot()
     {
         yield return move.MoveToRandomNode();
-        for (int i = 0; i < 2; i++)
-        {
-            yield return action.ShootSpin();
-            yield return new WaitForSeconds(actionPause);
-        }
+        yield return SpinShoot(justSpinShootAmount);
         yield return new WaitForSeconds(actionPause * 3);
     }
 
     //Spin shoots and moves x times
     public IEnumerator SpinShootAndMove()
     {
-        yield return action.ShootSpin();
+        yield return SpinShoot(spinShootAndMoveAmount);
         for (int i = 0; i < 2; i++)
         {
             yield return new WaitForSeconds(actionPause * 3);
             yield return move.MoveToRandomNode();
-            yield return action.ShootSpin();           
+
+            yield return SpinShoot(spinShootAndMoveAmount);
         }
         yield return new WaitForSeconds(actionPause * 3);
+    }
+
+    //Does a spin shoot x times
+    private IEnumerator SpinShoot(int times)
+    {
+        for (int i = 0; i < times; i++)
+        {
+            yield return action.ShootSpin();
+            yield return new WaitForSeconds(actionPause);
+        }
     }
 
 
@@ -172,7 +182,10 @@ public class Boss5_Commands : MonoBehaviour
     public IEnumerator ActivateShield()
     {
         controller.bossAnimator.SetTrigger("Get_Shield");
-        shield.ShieldActive(true);
+
+        if(!shield.isShieldActive)
+            shield.ShieldActive(true);
+
         yield return new WaitForSeconds(actionPause * 2);
         ResetAnimation();
     }
@@ -191,7 +204,7 @@ public class Boss5_Commands : MonoBehaviour
                 action.doubleProjectiles = false;
                 shield.useShield = true;               
 
-                commandList.Add("JustShoot");
+                //commandList.Add("JustShoot");
                 commandList.Add("ShootAndMove");
 
                 break;
@@ -200,7 +213,7 @@ public class Boss5_Commands : MonoBehaviour
                 action.doubleProjectiles = true;
                 shield.useShield = true;
 
-                commandList.Add("ShootAndMove");
+                commandList.Add("JustShoot");
                 commandList.Add("JustSpinShoot");
 
                 break;
@@ -211,6 +224,9 @@ public class Boss5_Commands : MonoBehaviour
 
                 commandList.Add("ShootAndMove");
                 commandList.Add("SpinShootAndMove");
+
+                justSpinShootAmount += 2;
+                actionPause -= 0.1f;
 
                 break;
 
@@ -230,9 +246,28 @@ public class Boss5_Commands : MonoBehaviour
                 shield.useShield = true;
 
                 commandList.Add("JustShoot");
+                //commandList.Add("ShootAndMove");
+                commandList.Add("JustSpinShoot");
+                commandList.Add("SpinShootAndMove");
+
+                actionPause -= 0.1f;
+                justSpinShootAmount += 2;
+                spinShootAndMoveAmount++;
+                action.despShotAmount++;
+
+                break;
+
+            case 6:
+                action.doubleProjectiles = true;
+                shield.useShield = true;
+
                 commandList.Add("ShootAndMove");
                 commandList.Add("JustSpinShoot");
                 commandList.Add("SpinShootAndMove");
+
+                commandQueue.Enqueue("DesperationAttack");
+
+                action.despShotAmount++;
 
                 break;
 
@@ -267,6 +302,11 @@ public class Boss5_Commands : MonoBehaviour
             return 0;
 
         return result;
+    }
+
+    private float GetIdle()
+    {
+        return idleTime / controller.bossLevel;
     }
 
     private void ResetAnimation()

@@ -49,5 +49,5 @@ MonoBehaviour:
   projectileRef: {fileID: 2588856365832719134, guid: 765c22b64aa8529418f5072f0e3b954a,
     type: 3}
   doubleProjectiles: 0
-  waveSpeed: 7
+  waveSpeed: 6
   waveAmplitude: 6.5

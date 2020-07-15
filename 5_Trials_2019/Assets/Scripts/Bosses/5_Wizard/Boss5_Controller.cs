@@ -47,12 +47,12 @@ public class Boss5_Controller : _BossBase
             IncreasePhase();
         }
 
-        if (health <= maxHealth * 0.7 & phase < 2)
+        if (health <= maxHealth * 0.75 & phase < 2)
         {
             IncreasePhase();
         }
 
-        if (health <= maxHealth * 0.5 & phase < 3)
+        if (health <= maxHealth * 0.55 & phase < 3)
         {
             IncreasePhase();
         }
@@ -62,7 +62,12 @@ public class Boss5_Controller : _BossBase
             IncreasePhase();
         }
 
-        if (health <= maxHealth * 0.15 & phase < 5)
+        if (health <= maxHealth * 0.20 & phase < 5)
+        {
+            IncreasePhase();
+        }
+
+        if (health <= maxHealth * 0.10 & phase < 6)
         {
             IncreasePhase();
         }

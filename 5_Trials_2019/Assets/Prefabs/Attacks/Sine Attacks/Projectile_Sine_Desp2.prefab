@@ -45,9 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objProjectile: {fileID: 11400000, guid: 274527c4ad11e3a4abeee02e50f540dd, type: 2}
   direction: {x: 0, y: -1, z: 0}
-  moveSpeed: 4
+  moveSpeed: 3
   projectileRef: {fileID: 7240270747868857101, guid: 45b8d632e282e874a8005cf7bcf4e9a6,
     type: 3}
   doubleProjectiles: 0
-  waveSpeed: -5
-  waveAmplitude: 6
+  waveSpeed: -4
+  waveAmplitude: 6.5

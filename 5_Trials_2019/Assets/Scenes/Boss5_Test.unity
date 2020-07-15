@@ -931,7 +931,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
 --- !u!1001 &934452881
 PrefabInstance:
@@ -2396,6 +2396,8 @@ MonoBehaviour:
   idleTime: 3
   actionPause: 0.5
   desperationPause: 2
+  justSpinShootAmount: 2
+  spinShootAndMoveAmount: 1
   randomCommands: 0
   maxDespCount: 10
 --- !u!114 &2890213894033778234
