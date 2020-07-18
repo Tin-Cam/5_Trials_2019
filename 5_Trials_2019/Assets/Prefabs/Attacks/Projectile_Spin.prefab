@@ -47,8 +47,8 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   projectile: {fileID: 5231764203800931490, guid: 9ae66f6eb853b754eb00018809859d12,
     type: 3}
-  projectileAmount: 10
+  projectileAmount: 8
   startingSpeed: 0
-  speedCap: 100
+  speedCap: 90
   rotationAcceleration: 1
   antiClockwise: 0

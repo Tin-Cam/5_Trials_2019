@@ -250,7 +250,7 @@ public class Boss5_Commands : MonoBehaviour
                 commandList.Add("JustSpinShoot");
                 commandList.Add("SpinShootAndMove");
 
-                actionPause -= 0.1f;
+                //actionPause -= 0.1f;
                 justSpinShootAmount += 2;
                 spinShootAndMoveAmount++;
                 action.despShotAmount++;
