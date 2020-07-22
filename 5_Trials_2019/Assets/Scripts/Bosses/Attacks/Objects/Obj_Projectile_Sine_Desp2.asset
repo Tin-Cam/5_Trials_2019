@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21efe8942042bf148a8d20805385e6a9, type: 3}
-  m_Name: Obj_Projectile_Simple
+  m_Name: Obj_Projectile_Sine_Desp2
   m_EditorClassIdentifier: 
-  damage: 1
-  moveSpeed: 8
-  lifeTime: 5
+  moveSpeed: 4
   killDistance: {x: 10, y: 8}
