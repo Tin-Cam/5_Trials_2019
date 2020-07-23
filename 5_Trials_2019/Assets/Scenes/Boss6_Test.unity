@@ -184,6 +184,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5312493438156586967, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5312493438252995560, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -856,8 +861,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7552218760340626732, guid: 0aab6efaec386934f8950c575b0cf402,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd48d9e06d5182a4388a6edae032e93c, type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
@@ -1640,7 +1644,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 3, y: 3}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1712,8 +1716,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7552218760340626732, guid: 0aab6efaec386934f8950c575b0cf402,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd48d9e06d5182a4388a6edae032e93c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
