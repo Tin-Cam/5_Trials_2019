@@ -32,7 +32,7 @@ public class Boss6_Controller : _BossBase
 
     public override void DefaultState()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     protected override void Act()
