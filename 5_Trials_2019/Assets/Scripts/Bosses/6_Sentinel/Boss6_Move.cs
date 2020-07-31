@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Boss6_Move : _MoveBase
 {
+    public Animator animator;
+
     public float moveSpeed;
+    public float teleportTime;
+    [HideInInspector]
+    public bool isCircling = false;
 
     public Transform[] InnerNodes;
     public Transform[] OuterNodes;
@@ -14,43 +19,43 @@ public class Boss6_Move : _MoveBase
     public void Init()
     {
         controller = GetComponent<Boss6_Controller>();
-        StartCoroutine(TestingLoop());
     }
-
-    public IEnumerator TestingLoop()
-    {
-        //yield return EnterToInner();
-        //yield return Exit();
-
-        yield return CircleCentre();
-
-        StartCoroutine(TestingLoop());
-    }    
 
     //TELEPORTING --------------------------
 
-    public void Teleport()
+    public IEnumerator Teleport(Vector3 position)
     {
         //Play animation
-        int rng = Random.Range(0, 4);
-        GoToInnerPosition(rng);
+        yield return PlayAnimation("Boss_6_Teleport", 2);
+        yield return new WaitForSeconds(teleportTime);
+
+
+        ChangePosition(position);
+        yield return PlayAnimation("Boss_6_Teleport_Appear", 2);
+    }
+
+    public IEnumerator RandomTeleport()
+    {
+        int rng = Random.Range(1, 5);
+        Transform transform = InnerNodes[rng];
+        yield return Teleport(transform.position);
     }
 
     public void GoToInnerPosition(int node)
     {
         Transform transform = InnerNodes[node];
-        ChangePosition(transform);
+        ChangePosition(transform.position);
     }
 
     public void GoToOuterPosition(int node)
     {
         Transform transform = OuterNodes[node];
-        ChangePosition(transform);
+        ChangePosition(transform.position);
     }
 
-    private void ChangePosition(Transform node)
+    private void ChangePosition(Vector3 position)
     {
-        transform.position = node.position;
+        transform.position = position;
     }
 
     //MOVE TO POSITION --------------------------
@@ -116,19 +121,20 @@ public class Boss6_Move : _MoveBase
         float t = 0;
         float speed = moveSpeed * controller.bossLevel * 0.1f;
 
-        yield return MoveToPosition(MoveInCircle(Vector2.zero, 5f, t));
+        //yield return MoveToPosition(MoveInCircle(Vector2.zero, 5f, t));
 
-        while (t < 4){
-            transform.position = MoveInCircle(Vector2.zero, 5f, t);
+        isCircling = true;
+        while (isCircling && t < (5 * 2)){
+            transform.position = CirclePos(Vector2.zero, 5f, t);
             t += speed * Time.deltaTime;
             yield return new WaitForFixedUpdate();
         }
-
-        yield return Exit();
+        isCircling = false;
+        //yield return Exit();
     }
     
-
-    private Vector2 MoveInCircle(Vector2 origin, float radius, float t)
+    //Calculates the point of a circle
+    public Vector2 CirclePos(Vector2 origin, float radius, float t)
     {
         float x = Mathf.Sin(Mathf.PI * t) * radius + origin.x;
         float y = Mathf.Cos(Mathf.PI * t) * radius + origin.y;
@@ -141,5 +147,18 @@ public class Boss6_Move : _MoveBase
     public override void DefaultState()
     {
         throw new System.NotImplementedException();
+    }
+
+    //Finishes when an animation stops playing
+    public IEnumerator PlayAnimation(string animation, int layer)
+    {
+        animator.Play(animation, layer);
+        yield return new WaitForEndOfFrame();
+        Debug.Log("Waiting for " + animation);
+        while (animator.GetCurrentAnimatorStateInfo(layer).normalizedTime < 1f)
+        {
+            Debug.Log(animator.GetCurrentAnimatorStateInfo(layer).normalizedTime);
+            yield return new WaitForFixedUpdate();
+        }
     }
 }
