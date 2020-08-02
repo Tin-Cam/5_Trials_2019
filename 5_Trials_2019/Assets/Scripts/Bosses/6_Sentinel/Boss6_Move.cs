@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Boss6_Move : _MoveBase
 {
-    public Animator animator;
-
     public float moveSpeed;
     public float teleportTime;
     [HideInInspector]
@@ -15,10 +13,12 @@ public class Boss6_Move : _MoveBase
     public Transform[] OuterNodes;
 
     private Boss6_Controller controller;
+    private AnimatorScripts animatorScripts;
 
     public void Init()
     {
         controller = GetComponent<Boss6_Controller>();
+        animatorScripts = GetComponent<AnimatorScripts>();
     }
 
     //TELEPORTING --------------------------
@@ -26,12 +26,12 @@ public class Boss6_Move : _MoveBase
     public IEnumerator Teleport(Vector3 position)
     {
         //Play animation
-        yield return PlayAnimation("Boss_6_Teleport", 2);
+        yield return animatorScripts.PlayWholeAnimation("Boss_6_Teleport", 2);
+
         yield return new WaitForSeconds(teleportTime);
-
-
         ChangePosition(position);
-        yield return PlayAnimation("Boss_6_Teleport_Appear", 2);
+
+        yield return animatorScripts.PlayWholeAnimation("Boss_6_Teleport_Appear", 2);
     }
 
     public IEnumerator RandomTeleport()
@@ -68,7 +68,7 @@ public class Boss6_Move : _MoveBase
 
         //Move to an inner node
         rng = Random.Range(1, 5);
-        yield return MoveToPosition(InnerNodes[rng].position);
+        yield return ZipToPosition(InnerNodes[rng].position);
         yield return new WaitForSeconds(1);
     }
 
@@ -76,27 +76,46 @@ public class Boss6_Move : _MoveBase
     {
         //Move to an outer node
         int rng = Random.Range(0, 4);
-        yield return MoveToPosition(OuterNodes[rng].position);
+        yield return ZipToPosition(OuterNodes[rng].position);
         yield return new WaitForSeconds(1);
     }
 
-    public IEnumerator MoveToPosition(Vector3 target)
+    //Moves to a position with a rubberband effect applied to speed
+    public IEnumerator ZipToPosition(Vector3 target)
     {
         bool isMoving = true;
 
         while (isMoving)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * RubberBandSpeed(target));
-
-            //Set position to node when boss is "close enough"
-            if (Vector3.Distance(transform.position, target) < 0.01)
-            {
-                transform.position = target;
-                isMoving = false;
-            }
-
+            isMoving = !CheckIfClose(target);
             yield return new WaitForFixedUpdate();
         }
+    }
+
+    //Smoothly moves to a position (No rubberband effect)
+    public IEnumerator GlideToPosition(Vector3 target)
+    {
+        bool isMoving = true;
+        float speed = moveSpeed * controller.bossLevel;
+
+        while (isMoving)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
+            isMoving = !CheckIfClose(target);
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    //Set position to node when boss is "close enough"
+    private bool CheckIfClose(Vector3 target)
+    {
+        if (Vector3.Distance(transform.position, target) < 0.01)
+        {
+            transform.position = target;
+            return true;
+        }
+        return false;
     }
 
     //Speeds up or slows down boss depending on how far away it's from it's destination
@@ -144,21 +163,31 @@ public class Boss6_Move : _MoveBase
         return result;
     }
 
+    //MISC --------------------------
+
+    public IEnumerator MoveToDesperation()
+    {
+        Vector2 targetPos = InnerNodes[0].position;
+
+        float t = -15;
+        float amplitude = 4;
+        float speed = moveSpeed * controller.bossLevel * 5f;
+
+        while (t <= 0)
+        {
+            float x = Mathf.Sin(Mathf.PI * t * 0.4f) * amplitude + targetPos.x;
+            float y = t + targetPos.y;
+
+            transform.position = new Vector2(x, y);
+
+            t += speed * Time.deltaTime * 0.2f;
+            yield return new WaitForFixedUpdate();
+        }
+        transform.position = targetPos;       
+    }
+
     public override void DefaultState()
     {
         throw new System.NotImplementedException();
-    }
-
-    //Finishes when an animation stops playing
-    public IEnumerator PlayAnimation(string animation, int layer)
-    {
-        animator.Play(animation, layer);
-        yield return new WaitForEndOfFrame();
-        Debug.Log("Waiting for " + animation);
-        while (animator.GetCurrentAnimatorStateInfo(layer).normalizedTime < 1f)
-        {
-            Debug.Log(animator.GetCurrentAnimatorStateInfo(layer).normalizedTime);
-            yield return new WaitForFixedUpdate();
-        }
     }
 }

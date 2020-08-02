@@ -1233,7 +1233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a194629ad8ab64f884f206045186f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 2890213894033778230}
   moveSpeed: 5
   teleportTime: 0.2
   isCircling: 0
@@ -1278,25 +1277,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletRef: {fileID: 3439882506171294173, guid: 9ea9e1d5c9004004f898f4c37fb8dcb8,
     type: 3}
---- !u!95 &1867698755
-Animator:
-  serializedVersion: 3
+--- !u!114 &1867698755
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867698748}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 97ac6d8a7b0f1c94ea5a65b2a1e2b045, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54391235aefba384aae53c107d366748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2890213894033778230}
 --- !u!1 &1923348739
 GameObject:
   m_ObjectHideFlags: 0

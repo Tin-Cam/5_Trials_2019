@@ -48,14 +48,14 @@ public class Boss6_Commands : MonoBehaviour
     //Used for testing
     public IEnumerator MrTest()
     {
-        yield return move.RandomTeleport();
-        //yield return new WaitForSeconds(1);
+        yield return move.MoveToDesperation();
+        yield return new WaitForSeconds(1);
     }
 
     public IEnumerator CircleAndShoot()
     {
         //Starts the movement
-        yield return move.MoveToPosition(move.CirclePos(Vector2.zero, 5f, 0));
+        yield return move.ZipToPosition(move.CirclePos(Vector2.zero, 5f, 0));
         StartCoroutine(move.CircleCentre());
 
         //Starts shooting
@@ -70,6 +70,25 @@ public class Boss6_Commands : MonoBehaviour
         move.isCircling = false;
         yield return move.Exit();
         yield break;
+    }
+
+
+    public IEnumerator Teleport()
+    {
+        yield return move.RandomTeleport();
+    }
+
+    public IEnumerator GlideOver()
+    {
+        //Set start position
+        float rng = Random.Range(-3, 3);
+        Vector2 point = new Vector2(-12, rng);
+        transform.position = point;
+
+        //Set and move to end position
+        rng = Random.Range(-3, 3);
+        point = new Vector2(12, rng);
+        yield return move.GlideToPosition(point);
     }
 
     public void ChangeCommandList(int phase)
