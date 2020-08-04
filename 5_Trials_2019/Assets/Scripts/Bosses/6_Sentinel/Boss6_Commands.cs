@@ -21,7 +21,7 @@ public class Boss6_Commands : MonoBehaviour
 
         ChangeCommandList(0);
 
-        StartCoroutine(NextCommand());
+        //StartCoroutine(NextCommand());
     }
 
     public IEnumerator NextCommand()
@@ -50,6 +50,7 @@ public class Boss6_Commands : MonoBehaviour
     {
         yield return move.MoveToDesperation();
         yield return new WaitForSeconds(1);
+        yield return move.Exit();
     }
 
     public IEnumerator CircleAndShoot()
