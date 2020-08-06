@@ -1265,6 +1265,7 @@ MonoBehaviour:
   isActing: 0
   desperationSprite: {fileID: 0}
   sweepIndicator: {fileID: 519737127407357453}
+  sweepIndicatorSpeed: 5
 --- !u!114 &1867698754
 MonoBehaviour:
   m_ObjectHideFlags: 0

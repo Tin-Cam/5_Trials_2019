@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss6_Action : _ActionBase
 {
     public GameObject sweepIndicator;
+    public float sweepIndicatorSpeed;
 
     private Boss6_Controller controller;
     private ShootScripts shooter;
@@ -30,27 +31,44 @@ public class Boss6_Action : _ActionBase
     public IEnumerator SweepShoot()
     {
         float angle = 0;
-
-        sweepIndicator.transform.position = transform.position;
-        sweepIndicator.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        yield return new WaitForSeconds(1);
+        float speed = sweepIndicatorSpeed * controller.bossLevel;
 
         Quaternion start = Quaternion.AngleAxis(angle, Vector3.forward);
         Quaternion end = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
-        float t = 0;
+        float t = -0.1f;
 
-        while (sweepIndicator.transform.rotation != end)
+        sweepIndicator.transform.position = transform.position;
+        sweepIndicator.transform.rotation = Quaternion.SlerpUnclamped(start, end, t);
+
+        yield return new WaitForSeconds(0.2f);
+        while (t <= 1.1f)
         {
-            sweepIndicator.transform.rotation = Quaternion.Slerp(start, end, t);
 
-            t += Time.deltaTime * 5;
+            sweepIndicator.transform.rotation = Quaternion.SlerpUnclamped(start, end, t);
+
+            t += Time.deltaTime * speed;
             yield return new WaitForEndOfFrame();
         }
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.1f);
+        sweepIndicator.transform.position = new Vector3(0, 50, 0);
+
+        yield return new WaitForSeconds(0.5f);
+        t = 0;
+        int shots = 5;
+
+        while (t < 1)
+        {
+            Quaternion direction = Quaternion.Lerp(start, end, t);
+            shooter.Shoot(direction);
+
+            t += (1f / shots);
+            yield return new WaitForSeconds(0.1f);
+        }
         DefaultState();
     }
+
 
     public override void DefaultState()
     {
