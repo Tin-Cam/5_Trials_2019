@@ -21,7 +21,7 @@ public class Boss6_Commands : MonoBehaviour
 
         ChangeCommandList(0);
 
-        //StartCoroutine(NextCommand());
+        StartCoroutine(NextCommand());
     }
 
     public IEnumerator NextCommand()
@@ -48,9 +48,20 @@ public class Boss6_Commands : MonoBehaviour
     //Used for testing
     public IEnumerator MrTest()
     {
-        yield return move.MoveToDesperation();
-        yield return new WaitForSeconds(1);
-        yield return move.Exit();
+        int times = 20;
+        int lastNode = 0;
+
+        for(int i = 0; i < times; i++)
+        {
+            int rng = Random.Range(1, 5);
+            while(rng == lastNode)
+                rng = Random.Range(1, 5);
+            lastNode = rng;
+
+            Vector3 node = move.InnerNodes[rng].position;
+            yield return move.Teleport(node);
+            yield return action.SweepShoot((-90) * (rng - 1));           
+        }
     }
 
     public IEnumerator CircleAndShoot()
