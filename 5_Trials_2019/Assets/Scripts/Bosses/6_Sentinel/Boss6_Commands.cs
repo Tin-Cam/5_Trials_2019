@@ -8,6 +8,10 @@ public class Boss6_Commands : MonoBehaviour
     private Boss6_Move move;
     private Boss6_Controller controller;
 
+
+    public int circleSpread;
+    public float circleOffset;
+
     public bool randomCommands;
     private List<string> commandList = new List<string>();
     private Queue<string> commandQueue = new Queue<string>();
@@ -48,19 +52,31 @@ public class Boss6_Commands : MonoBehaviour
     //Used for testing
     public IEnumerator MrTest()
     {
+        yield return CircleAndShoot();
+              
+    }
+
+    public IEnumerator SpinShoot()
+    {
+        yield return move.Teleport(Vector3.zero);
+        yield return action.SpinShoot();
+    }
+
+    public IEnumerator SweepShoot()
+    {
         int times = 20;
         int lastNode = 0;
 
-        for(int i = 0; i < times; i++)
+        for (int i = 0; i < times; i++)
         {
             int rng = Random.Range(1, 5);
-            while(rng == lastNode)
+            while (rng == lastNode)
                 rng = Random.Range(1, 5);
             lastNode = rng;
 
             Vector3 node = move.InnerNodes[rng].position;
             yield return move.Teleport(node);
-            yield return action.SweepShoot((-90) * (rng - 1));           
+            yield return action.SweepShoot((-90) * (rng - 1));
         }
     }
 
@@ -73,7 +89,7 @@ public class Boss6_Commands : MonoBehaviour
         //Starts shooting
         for (int i = 0; i < 20; i++)
         {
-            yield return action.ShootAtPlayer();
+            action.ShootAtPlayer(circleSpread, circleOffset);
             yield return new WaitForSeconds(0.2f);
         }
         yield return new WaitForSeconds(1);
@@ -81,7 +97,6 @@ public class Boss6_Commands : MonoBehaviour
         //Exits the action
         move.isCircling = false;
         yield return move.Exit();
-        yield break;
     }
 
 

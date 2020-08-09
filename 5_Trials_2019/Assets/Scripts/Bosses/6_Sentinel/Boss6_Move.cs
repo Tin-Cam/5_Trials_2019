@@ -25,12 +25,10 @@ public class Boss6_Move : _MoveBase
 
     public IEnumerator Teleport(Vector3 position)
     {
-        float delay = 1 / controller.bossLevel;
-
         //Play animation
         yield return animatorScripts.PlayWholeAnimation("Boss_6_Teleport", 2);
 
-        yield return new WaitForSeconds(teleportTime * delay);
+        yield return new WaitForSeconds(teleportTime * GetDelay());
         ChangePosition(position);
 
         yield return animatorScripts.PlayWholeAnimation("Boss_6_Teleport_Appear", 2);
@@ -64,8 +62,6 @@ public class Boss6_Move : _MoveBase
 
     public IEnumerator EnterToInner()
     {
-        float delay = 1 / controller.bossLevel;
-
         //Appear outside arena
         int rng = Random.Range(0, 4);
         GoToOuterPosition(rng);
@@ -73,17 +69,15 @@ public class Boss6_Move : _MoveBase
         //Move to an inner node
         rng = Random.Range(1, 5);
         yield return ZipToPosition(InnerNodes[rng].position);
-        yield return new WaitForSeconds(1 * delay);
+        yield return new WaitForSeconds(1 * GetDelay());
     }
 
     public IEnumerator Exit()
     {
-        float delay = 1 / controller.bossLevel;
-
         //Move to an outer node
         int rng = Random.Range(0, 4);
         yield return ZipToPosition(OuterNodes[rng].position);
-        yield return new WaitForSeconds(1 * delay);
+        yield return new WaitForSeconds(1 * GetDelay());
     }
 
     //Moves to a position with a rubberband effect applied to speed
@@ -190,6 +184,11 @@ public class Boss6_Move : _MoveBase
             yield return new WaitForFixedUpdate();
         }
         transform.position = targetPos;       
+    }
+
+    private float GetDelay()
+    {
+        return 1 / controller.bossLevel;
     }
 
     public override void DefaultState()

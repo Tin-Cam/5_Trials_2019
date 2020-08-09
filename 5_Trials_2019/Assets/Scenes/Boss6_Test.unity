@@ -902,6 +902,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3722099411239320907, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: godMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4638226818678677906, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
       propertyPath: reference
@@ -1221,6 +1226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d65544026c1c84fb9fe4cb853bf7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circleSpread: 3
+  circleOffset: 30
   randomCommands: 0
 --- !u!114 &1867698752
 MonoBehaviour:
@@ -1266,6 +1273,11 @@ MonoBehaviour:
   desperationSprite: {fileID: 0}
   sweepIndicator: {fileID: 519737127407357453}
   sweepIndicatorSpeed: 5
+  sweepSpreadCount: 1
+  spinSpeed: 5
+  spinShootRate: 0.1
+  spinShots: 20
+  spinArms: 5
 --- !u!114 &1867698754
 MonoBehaviour:
   m_ObjectHideFlags: 0
