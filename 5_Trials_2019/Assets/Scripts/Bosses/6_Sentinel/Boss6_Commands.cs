@@ -25,7 +25,7 @@ public class Boss6_Commands : MonoBehaviour
 
         ChangeCommandList(0);
 
-        StartCoroutine(NextCommand());
+        //StartCoroutine(NextCommand());
     }
 
     public IEnumerator NextCommand()
@@ -52,8 +52,7 @@ public class Boss6_Commands : MonoBehaviour
     //Used for testing
     public IEnumerator MrTest()
     {
-        yield return CircleAndShoot();
-              
+        yield return SpinShoot();
     }
 
     public IEnumerator SpinShoot()

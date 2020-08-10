@@ -29,14 +29,16 @@ public class Boss6_Action : _ActionBase
         actionList.Add("SweepShoot");
     }
 
+    //Shoots at player
     public void ShootAtPlayer()
     {
         shooter.Shoot(player.transform.position);
     }
 
+    //Shoots at player with a spread shot
     public void ShootAtPlayer(int projectileAmount, float offsetAngle)
     {
-        if(projectileAmount < 2)
+        if (projectileAmount < 2)
         {
             shooter.Shoot(player.transform.position);
             return;
@@ -46,14 +48,25 @@ public class Boss6_Action : _ActionBase
         float y = player.transform.position.y - transform.position.y;
 
         float angleToPlayer = (Mathf.Atan2(y, x)) * Mathf.Rad2Deg;
-        float angle;
 
-        angle = angleToPlayer - ((offsetAngle * (projectileAmount - 1)) / 2);   
+        ShootSpread(Quaternion.AngleAxis(angleToPlayer, Vector3.forward), projectileAmount, offsetAngle);
 
-        Quaternion direction = Quaternion.AngleAxis(angle, Vector3.forward);
+        return;
+    }
+
+    public void ShootSpread(Quaternion direction, int projectileAmount, float offsetAngle)
+    {
+        if(projectileAmount < 2)
+        {
+            shooter.Shoot(direction);
+            return;
+        }
+
+        float angle = -((offsetAngle * (projectileAmount - 1)) / 2);   
+
         for (int i = 0; i < projectileAmount; i++)
         {
-            shooter.Shoot(Quaternion.AngleAxis(angle, Vector3.forward));
+            shooter.Shoot(direction * Quaternion.AngleAxis(angle, Vector3.forward));
             angle += offsetAngle;
         }
     }
@@ -101,14 +114,7 @@ public class Boss6_Action : _ActionBase
             Quaternion direction = Quaternion.Lerp(start, end, t);
 
             //Shoots
-            shooter.Shoot(direction);
-
-            //Adds extra bullets per shot
-            for (int i = 0; i < sweepSpreadCount; i++)
-            {
-                shooter.Shoot(direction * Quaternion.AngleAxis(offsetAngle * (i + 1), Vector3.forward));
-                shooter.Shoot(direction * Quaternion.AngleAxis(offsetAngle * (i + 1), Vector3.back));
-            }
+            ShootSpread(direction, sweepSpreadCount, offsetAngle);
 
             t += (1f / shots);
             yield return new WaitForSeconds(0.1f);
@@ -126,13 +132,9 @@ public class Boss6_Action : _ActionBase
         {
             Quaternion direction = Quaternion.AngleAxis(degrees, Vector3.forward);
 
-            shooter.Shoot(direction);
-
             float offsetAngle = 360 / spinArms;
-            for (int j = 1; j < spinArms; j++)
-            {
-                shooter.Shoot(direction * Quaternion.AngleAxis(offsetAngle * j, Vector3.forward));
-            }
+
+            ShootSpread(direction, spinArms, offsetAngle);
 
             degrees += speed;
             yield return new WaitForSeconds(spinShootRate * GetDelay());
