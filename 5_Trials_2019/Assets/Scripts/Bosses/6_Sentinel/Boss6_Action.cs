@@ -14,6 +14,18 @@ public class Boss6_Action : _ActionBase
     public int spinShots;
     public int spinArms;
 
+    [Space(10)]
+    public GameObject targetIndicator;
+    public GameObject targetPrefab;
+    public float indicateTime;
+    public int targetShootTimes;
+    public float targetShootRate;
+    [HideInInspector()]
+    public bool holdTargeting;
+
+    [Space(10)]
+    public Bounds targetStageBounds;
+
     private Boss6_Controller controller;
     private ShootScripts shooter;
     private GameObject player;
@@ -142,6 +154,56 @@ public class Boss6_Action : _ActionBase
         yield break;
     }
 
+    public IEnumerator AimAtPlayer()
+    {
+        float time = indicateTime * GetDelay();
+        while (time > 0)
+        {
+            targetIndicator.transform.position = player.transform.position;
+            time -= Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        DefaultState();
+    }
+
+    public IEnumerator TargetPlayer()
+    {
+        int times = (int)(targetShootTimes * controller.bossLevel);
+
+        while (times > 0)
+        {
+            Instantiate(targetPrefab, player.transform.position, new Quaternion());
+            times--;
+            yield return new WaitForSeconds(targetShootRate);
+        }
+    }
+
+    public IEnumerator TargetPlayerHold()
+    {
+        holdTargeting = true;
+        while (holdTargeting)
+        {
+            Instantiate(targetPrefab, player.transform.position, new Quaternion());
+            yield return new WaitForSeconds(targetShootRate);
+        }
+    }
+
+    public IEnumerator TargetStage()
+    {
+        int times = (int)(50 * controller.bossLevel);
+
+        while (times > 0)
+        {
+            float x = Random.Range(targetStageBounds.min.x, targetStageBounds.max.x);
+            float y = Random.Range(targetStageBounds.min.y, targetStageBounds.max.y);
+
+            Vector2 pos = new Vector2(x, y);
+            Instantiate(targetPrefab, pos, new Quaternion());
+            times--;
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
     private float GetDelay()
     {
         return 1 / controller.bossLevel;
@@ -149,6 +211,9 @@ public class Boss6_Action : _ActionBase
 
     public override void DefaultState()
     {
-        sweepIndicator.transform.position = new Vector3(0, 50, 0);
+        Vector3 defaultPos = new Vector3(0, 50, 0);
+
+        sweepIndicator.transform.position = defaultPos;
+        targetIndicator.transform.position = defaultPos;
     }
 }

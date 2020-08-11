@@ -25,11 +25,12 @@ public class Boss6_Commands : MonoBehaviour
 
         ChangeCommandList(0);
 
-        //StartCoroutine(NextCommand());
+        StartCoroutine(NextCommand());
     }
 
     public IEnumerator NextCommand()
     {
+        DefaultState();
         //ResetAnimation();
 
         if (commandQueue.Count != 0)
@@ -52,7 +53,15 @@ public class Boss6_Commands : MonoBehaviour
     //Used for testing
     public IEnumerator MrTest()
     {
-        yield return SpinShoot();
+        yield return new WaitForSeconds(3);
+        yield return action.TargetStage();
+    }
+
+    public IEnumerator TargetPlayer()
+    {
+        yield return new WaitForSeconds(1);
+        yield return action.AimAtPlayer();
+        yield return action.TargetPlayer();
     }
 
     public IEnumerator SpinShoot()
@@ -161,5 +170,10 @@ public class Boss6_Commands : MonoBehaviour
             return 0;
 
         return result;
+    }
+
+    public void DefaultState()
+    {
+        action.DefaultState();
     }
 }
