@@ -54,6 +54,7 @@ public class Boss6_Commands : MonoBehaviour
     public IEnumerator MrTest()
     {
         yield return new WaitForSeconds(3);
+        //yield return action.AimAtStage();
         yield return action.TargetStage();
     }
 

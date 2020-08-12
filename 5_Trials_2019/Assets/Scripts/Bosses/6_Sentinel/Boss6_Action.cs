@@ -27,12 +27,16 @@ public class Boss6_Action : _ActionBase
     public Bounds targetStageBounds;
 
     private Boss6_Controller controller;
+    private Boss6_Move move;
+    private AudioManager audioManager;
     private ShootScripts shooter;
     private GameObject player;
 
     public void Init()
     {
         controller = GetComponent<Boss6_Controller>();
+        move = GetComponent<Boss6_Move>();
+        audioManager = AudioManager.instance;
         shooter = GetComponent<ShootScripts>();
 
         player = controller.player;
@@ -166,6 +170,32 @@ public class Boss6_Action : _ActionBase
         DefaultState();
     }
 
+    //Maybe find a way to calculate a safe zone near the player
+    public IEnumerator AimAtStage()
+    {
+        float speed = 40;
+        float aimHoldTime = 0.5f * GetDelay();
+        int[] nodes = { 1, 2, 4, 3 };
+
+        targetIndicator.transform.localScale = new Vector3(2, 2, 1);
+        targetIndicator.transform.position = move.InnerNodes[nodes[0]].position;
+
+        audioManager.Play("Button_Press", 0.75f, 1.5f);
+        yield return new WaitForSeconds(aimHoldTime);
+        for (int i = 0; i < 3; i++)
+        {
+            Vector3 nextPos = move.InnerNodes[nodes[i + 1]].position;
+            while(targetIndicator.transform.position != nextPos)
+            {
+                targetIndicator.transform.position = Vector3.MoveTowards(targetIndicator.transform.position, nextPos, speed * Time.deltaTime);
+                yield return new WaitForFixedUpdate();
+            }
+            audioManager.Play("Button_Press", 0.75f, 1.5f);
+            yield return new WaitForSeconds(aimHoldTime);
+        }
+        DefaultState();
+    }
+
     public IEnumerator TargetPlayer()
     {
         int times = (int)(targetShootTimes * controller.bossLevel);
@@ -190,18 +220,60 @@ public class Boss6_Action : _ActionBase
 
     public IEnumerator TargetStage()
     {
-        int times = (int)(50 * controller.bossLevel);
+        int times = (int)(100 * controller.bossLevel);
+
+        Bounds safeZone = CalculateSafeZone();
 
         while (times > 0)
         {
-            float x = Random.Range(targetStageBounds.min.x, targetStageBounds.max.x);
-            float y = Random.Range(targetStageBounds.min.y, targetStageBounds.max.y);
+            Vector2 pos = safeZone.center;
 
-            Vector2 pos = new Vector2(x, y);
+            while (safeZone.Contains(pos))
+            {
+                float x = Random.Range(targetStageBounds.min.x, targetStageBounds.max.x);
+                float y = Random.Range(targetStageBounds.min.y, targetStageBounds.max.y);
+                pos = new Vector2(x, y);
+            }
+            
             Instantiate(targetPrefab, pos, new Quaternion());
             times--;
             yield return new WaitForSeconds(0.01f);
         }
+    }
+
+    private Bounds CalculateSafeZone()
+    {
+        float safeZoneMaxDistance = 5;
+        float safeZoneradius = 3;
+
+        Vector3 playerPos = player.transform.position;
+
+        float maxX = playerPos.x + safeZoneMaxDistance;
+        float maxY = playerPos.y + safeZoneMaxDistance;
+        float minX = playerPos.x - safeZoneMaxDistance;
+        float minY = playerPos.y - safeZoneMaxDistance;
+
+        //Ensures the max and mins are within the stage bounds
+        //Maxs
+        if (maxX > targetStageBounds.max.x)
+            maxX = targetStageBounds.max.x;
+
+        if (maxY > targetStageBounds.max.y)
+            maxY = targetStageBounds.max.y;
+
+        //Mins
+        if (minX < targetStageBounds.min.x)
+            minX = targetStageBounds.min.x;
+
+        if (minY < targetStageBounds.min.y)
+            minY = targetStageBounds.min.y;
+
+        float x = Random.Range(minX, maxX);
+        float y = Random.Range(minY, maxY);
+
+        Bounds result = new Bounds(new Vector3(x, y, 0), new Vector3(safeZoneradius, safeZoneradius, 0));
+
+        return result;
     }
 
     private float GetDelay()
@@ -215,5 +287,6 @@ public class Boss6_Action : _ActionBase
 
         sweepIndicator.transform.position = defaultPos;
         targetIndicator.transform.position = defaultPos;
+        targetIndicator.transform.localScale = new Vector3(1, 1, 1);
     }
 }
