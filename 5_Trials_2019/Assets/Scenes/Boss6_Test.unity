@@ -1288,6 +1288,9 @@ MonoBehaviour:
   targetStageBounds:
     m_Center: {x: 0, y: -0.5, z: 0}
     m_Extent: {x: 7, y: 4.5, z: 0}
+  screenBoundsRadius: 10
+  gridAttackProjectile: {fileID: 2861616934095689774, guid: 111275b69175e2140ad892305654c5f6,
+    type: 3}
 --- !u!114 &1867698754
 MonoBehaviour:
   m_ObjectHideFlags: 0

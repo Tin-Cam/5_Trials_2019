@@ -25,6 +25,8 @@ public class Boss6_Action : _ActionBase
 
     [Space(10)]
     public Bounds targetStageBounds;
+    public float screenBoundsRadius;
+    public GameObject gridAttackProjectile;
 
     private Boss6_Controller controller;
     private Boss6_Move move;
@@ -43,6 +45,8 @@ public class Boss6_Action : _ActionBase
 
         actionList.Add("ShootAtPlayer");
         actionList.Add("SweepShoot");
+
+        StartCoroutine(GridAttack());
     }
 
     //Shoots at player
@@ -274,6 +278,52 @@ public class Boss6_Action : _ActionBase
         Bounds result = new Bounds(new Vector3(x, y, 0), new Vector3(safeZoneradius, safeZoneradius, 0));
 
         return result;
+    }
+
+    public IEnumerator GridAttack()
+    {
+        List<GameObject> grid = new List<GameObject>();
+
+        float gap = 2;
+        int multiplier = 1;
+
+        for (int i = 0; i < screenBoundsRadius * multiplier; i++)
+        {
+            for (int j = 0; j < screenBoundsRadius * multiplier; j++)
+            {
+                Vector3 point = new Vector3(i * gap, j * gap, 0);
+                point = LoopScreenBounds(point);
+                GameObject projectile = Instantiate(gridAttackProjectile, point, new Quaternion());
+                grid.Add(projectile);
+            }
+        }
+
+        while (true)
+        {
+            for(int i = 0; i < grid.Count; i++)
+            {
+                grid[i].transform.position = Vector3.MoveTowards(grid[i].transform.position, new Vector3(screenBoundsRadius + 1, grid[i].transform.position.y, 0), 5 * Time.deltaTime);
+                grid[i].transform.position = LoopScreenBounds(grid[i].transform.position);
+            }
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    private Vector3 LoopScreenBounds(Vector3 thing)
+    {
+        //Check x position
+        if (thing.x > screenBoundsRadius)
+            thing.x -= screenBoundsRadius * 2;
+        else if (thing.x < -screenBoundsRadius)
+            thing.x += screenBoundsRadius * 2;
+
+        //Check y position
+        if (thing.y > screenBoundsRadius)
+            thing.y -= screenBoundsRadius * 2;
+        else if (thing.y < -screenBoundsRadius)
+            thing.y += screenBoundsRadius * 2;
+
+        return thing;
     }
 
     private float GetDelay()
