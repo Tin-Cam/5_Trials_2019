@@ -27,6 +27,16 @@ public class Boss6_Action : _ActionBase
     public Bounds targetStageBounds;
     public float screenBoundsRadius;
     public GameObject gridAttackProjectile;
+    public GameObject sineSegment;
+    [HideInInspector()]
+    public bool holdGrid;
+    [HideInInspector()]
+    public bool holdSine;
+
+    private List<GameObject> grid = new List<GameObject>();
+    public List<GameObject> sineUpper = new List<GameObject>();
+    public List<GameObject> sineLower = new List<GameObject>();
+    
 
     private Boss6_Controller controller;
     private Boss6_Move move;
@@ -45,8 +55,6 @@ public class Boss6_Action : _ActionBase
 
         actionList.Add("ShootAtPlayer");
         actionList.Add("SweepShoot");
-
-        StartCoroutine(GridAttack());
     }
 
     //Shoots at player
@@ -282,14 +290,14 @@ public class Boss6_Action : _ActionBase
 
     public IEnumerator GridAttack()
     {
-        List<GameObject> grid = new List<GameObject>();
+        grid = new List<GameObject>();
 
-        float gap = 2;
-        int multiplier = 1;
-
-        for (int i = 0; i < screenBoundsRadius * multiplier; i++)
+        //Generate Grid
+        float gap = 3;
+        float perRow = ((screenBoundsRadius * 2) / gap);
+        for (int i = 0; i < perRow; i++)
         {
-            for (int j = 0; j < screenBoundsRadius * multiplier; j++)
+            for (int j = 0; j < perRow; j++)
             {
                 Vector3 point = new Vector3(i * gap, j * gap, 0);
                 point = LoopScreenBounds(point);
@@ -297,16 +305,80 @@ public class Boss6_Action : _ActionBase
                 grid.Add(projectile);
             }
         }
+        //Animation
+        yield return new WaitForSeconds(1);
+        for (int i = 0; i < grid.Count; i++)
+        {
+            Animator tempAnimator = grid[i].GetComponent<Animator>();
+            tempAnimator.Play("GridAttack_Idle");
+        }
 
-        while (true)
+        //Move grid
+        float maxSpeed = 3 * controller.bossLevel;
+        float speed = 0;
+        float acceleration = 1;
+
+        float angle = 30 * Random.Range(1, 11);
+        Quaternion directionQat = Quaternion.AngleAxis(angle, Vector3.forward);
+        Vector3 direction = directionQat * Vector3.right;
+
+        holdGrid = true;
+        while (holdGrid)
         {
             for(int i = 0; i < grid.Count; i++)
             {
-                grid[i].transform.position = Vector3.MoveTowards(grid[i].transform.position, new Vector3(screenBoundsRadius + 1, grid[i].transform.position.y, 0), 5 * Time.deltaTime);
-                grid[i].transform.position = LoopScreenBounds(grid[i].transform.position);
+                Vector3 pos = grid[i].transform.position;
+                pos = pos + direction * speed * Time.deltaTime;
+                grid[i].transform.position = LoopScreenBounds(pos);
             }
+            
+            if (speed >= maxSpeed)
+                speed = maxSpeed;
+            else
+                speed += acceleration * Time.deltaTime;
             yield return new WaitForFixedUpdate();
         }
+        DefaultState();
+    }
+
+    //MODE 0 - Waves go in opposite directions
+    //MODE 1 - Waves go in same direction
+    public IEnumerator SineAttack()
+    {
+        float speed = 3 * controller.bossLevel;
+        DefaultSine();
+        holdSine = false;
+        while(holdSine){
+
+            foreach(GameObject sine in sineUpper){
+                Vector3 pos = sine.transform.position;
+                pos.x = pos.x + speed * Time.deltaTime;
+                sine.transform.position = LoopScreenBounds(pos);
+            }
+
+            foreach(GameObject sine in sineLower){
+                Vector3 pos = sine.transform.position;
+                pos.x = pos.x - speed * Time.deltaTime;
+                sine.transform.position = LoopScreenBounds(pos);
+            }
+
+
+
+            yield return new WaitForFixedUpdate();
+        }        
+    }
+
+    private void DefaultSine(){
+        float spacing = 6;
+
+        for(int i = 0; i < sineUpper.Count; i++){
+            Vector3 pos = new Vector3( i * spacing, sineUpper[i].transform.position.y, 0);
+            sineUpper[i].transform.position = LoopScreenBounds(pos);
+        }
+        for(int i = 0; i < sineLower.Count; i++){
+            Vector3 pos = new Vector3( i * spacing + (spacing/2), sineLower[i].transform.position.y, 0);
+            sineLower[i].transform.position = LoopScreenBounds(pos);
+        } 
     }
 
     private Vector3 LoopScreenBounds(Vector3 thing)
@@ -331,6 +403,17 @@ public class Boss6_Action : _ActionBase
         return 1 / controller.bossLevel;
     }
 
+    private void ClearGrid()
+    {
+        if (grid.Count < 1)
+            return;
+
+        foreach(GameObject projectile in grid)
+        {
+            Destroy(projectile);
+        }
+    }
+
     public override void DefaultState()
     {
         Vector3 defaultPos = new Vector3(0, 50, 0);
@@ -338,5 +421,8 @@ public class Boss6_Action : _ActionBase
         sweepIndicator.transform.position = defaultPos;
         targetIndicator.transform.position = defaultPos;
         targetIndicator.transform.localScale = new Vector3(1, 1, 1);
+
+        holdGrid = false;
+        ClearGrid();
     }
 }
