@@ -27,15 +27,15 @@ public class Boss6_Action : _ActionBase
     public Bounds targetStageBounds;
     public float screenBoundsRadius;
     public GameObject gridAttackProjectile;
-    public GameObject sineSegment;
     [HideInInspector()]
     public bool holdGrid;
-    [HideInInspector()]
-    public bool holdSine;
-
-    private List<GameObject> grid = new List<GameObject>();
+    private List<GameObject> grid = new List<GameObject>();       
+    
     public List<GameObject> sineUpper = new List<GameObject>();
     public List<GameObject> sineLower = new List<GameObject>();
+    public AnimatorScripts sineWaveAnimatorScripts;
+    [HideInInspector()]
+    public bool holdSine;
     
 
     private Boss6_Controller controller;
@@ -341,13 +341,28 @@ public class Boss6_Action : _ActionBase
         DefaultState();
     }
 
-    //MODE 0 - Waves go in opposite directions
-    //MODE 1 - Waves go in same direction
+    
     public IEnumerator SineAttack()
     {
-        float speed = 3 * controller.bossLevel;
-        DefaultSine();
+        DefaultSine();       
+        StartCoroutine(MoveSineWave());
+
+        float speedMultiplier = 0.5f;
+        sineWaveAnimatorScripts.animator.SetFloat("Speed", speedMultiplier);
+
+        yield return sineWaveAnimatorScripts.PlayWholeAnimation("SineWave_Entry", 0);
+        yield return new WaitForSeconds(2);
+        yield return sineWaveAnimatorScripts.PlayWholeAnimation("SineWave_Exit", 0);
         holdSine = false;
+    }
+
+    //MODE 0 - Waves go in opposite directions
+    //MODE 1 - Waves go in same direction
+    private IEnumerator MoveSineWave()
+    {
+        int mode = 1;
+        float speed = 3 * controller.bossLevel;
+        holdSine = true;
         while(holdSine){
 
             foreach(GameObject sine in sineUpper){
@@ -358,14 +373,11 @@ public class Boss6_Action : _ActionBase
 
             foreach(GameObject sine in sineLower){
                 Vector3 pos = sine.transform.position;
-                pos.x = pos.x - speed * Time.deltaTime;
+                pos.x = pos.x + speed * Time.deltaTime * (float)(-1 + (2 * mode));
                 sine.transform.position = LoopScreenBounds(pos);
             }
-
-
-
             yield return new WaitForFixedUpdate();
-        }        
+        }      
     }
 
     private void DefaultSine(){
@@ -424,5 +436,8 @@ public class Boss6_Action : _ActionBase
 
         holdGrid = false;
         ClearGrid();
+
+        sineWaveAnimatorScripts.PlayAnimation("SineWave_Inactive", 0);
+        holdSine = false;
     }
 }

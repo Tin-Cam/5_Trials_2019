@@ -26,6 +26,7 @@ public class Boss6_Commands : MonoBehaviour
         ChangeCommandList(0);
 
         StartCoroutine(NextCommand());
+        //StartCoroutine(action.SineAttack());
     }
 
     public IEnumerator NextCommand()
@@ -53,8 +54,8 @@ public class Boss6_Commands : MonoBehaviour
     //Used for testing
     public IEnumerator MrTest()
     {
-        yield return action.SineAttack();
-        
+        yield return new WaitForSeconds(1);
+        yield return action.SineAttack();        
     }
 
     public IEnumerator TargetPlayer()
