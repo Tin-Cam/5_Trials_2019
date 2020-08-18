@@ -8,11 +8,15 @@ public class Boss6_Commands : MonoBehaviour
     private Boss6_Move move;
     private Boss6_Controller controller;
 
+    public bool randomCommands;
+    public int idleTime;
+
+    public int sweepShootTimes;
 
     public int circleSpread;
     public float circleOffset;
 
-    public bool randomCommands;
+
     private List<string> commandList = new List<string>();
     private Queue<string> commandQueue = new Queue<string>();
     private int nextCommandNumber;
@@ -51,11 +55,48 @@ public class Boss6_Commands : MonoBehaviour
         StartCoroutine(NextCommand());
     }
 
+    public IEnumerator Idle()
+    {
+        float time = idleTime * GetDelay();
+        yield return new WaitForSeconds(time);
+    }
+
     //Used for testing
     public IEnumerator MrTest()
     {
-        yield return new WaitForSeconds(1);
-        yield return action.SineAttack();        
+        yield return SweepShoot();
+    }
+
+    public IEnumerator SweepShoot()
+    {
+        int times = (int)(sweepShootTimes * controller.bossLevel);       
+
+        int rng = Random.Range(1, 5);
+        int lastNode = rng;
+        yield return move.EnterToInner(rng);
+        yield return action.SweepShoot((-90) * (rng - 1));
+
+        for (int i = 0; i < (times - 1); i++)
+        {           
+            while (rng == lastNode)
+                rng = Random.Range(1, 5);
+            lastNode = rng;
+
+            Vector3 node = move.InnerNodes[rng].position;
+            yield return move.Teleport(node);
+            yield return action.SweepShoot((-90) * (rng - 1));
+        }
+        yield return Idle();
+        yield return move.Exit();
+    }
+
+    public IEnumerator DesperationAttack()
+    {
+        yield return move.MoveToDesperation();
+        yield return new WaitForSeconds(1 * GetDelay());
+        yield return action.SineAttack();
+        yield return Idle();
+        yield return move.Exit();    
     }
 
     public IEnumerator TargetPlayer()
@@ -71,23 +112,7 @@ public class Boss6_Commands : MonoBehaviour
         yield return action.SpinShoot();
     }
 
-    public IEnumerator SweepShoot()
-    {
-        int times = 20;
-        int lastNode = 0;
-
-        for (int i = 0; i < times; i++)
-        {
-            int rng = Random.Range(1, 5);
-            while (rng == lastNode)
-                rng = Random.Range(1, 5);
-            lastNode = rng;
-
-            Vector3 node = move.InnerNodes[rng].position;
-            yield return move.Teleport(node);
-            yield return action.SweepShoot((-90) * (rng - 1));
-        }
-    }
+    
 
     public IEnumerator CircleAndShoot()
     {
@@ -171,6 +196,11 @@ public class Boss6_Commands : MonoBehaviour
             return 0;
 
         return result;
+    }
+
+    private float GetDelay()
+    {
+        return 1 / controller.bossLevel;
     }
 
     public void DefaultState()

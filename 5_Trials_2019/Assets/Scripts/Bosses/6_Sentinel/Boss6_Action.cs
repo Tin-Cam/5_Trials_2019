@@ -360,7 +360,7 @@ public class Boss6_Action : _ActionBase
     //MODE 1 - Waves go in same direction
     private IEnumerator MoveSineWave()
     {
-        int mode = 1;
+        int mode = Random.Range(0, 2);
         float speed = 3 * controller.bossLevel;
         holdSine = true;
         while(holdSine){

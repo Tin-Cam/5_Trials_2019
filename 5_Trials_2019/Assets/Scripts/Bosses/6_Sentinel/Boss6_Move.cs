@@ -62,13 +62,18 @@ public class Boss6_Move : _MoveBase
 
     public IEnumerator EnterToInner()
     {
+        //Pick an inner node
+        int rng = Random.Range(1, 5);
+        yield return EnterToInner(rng);
+    }
+
+    public IEnumerator EnterToInner(int node)
+    {
         //Appear outside arena
         int rng = Random.Range(0, 4);
         GoToOuterPosition(rng);
-
-        //Move to an inner node
-        rng = Random.Range(1, 5);
-        yield return ZipToPosition(InnerNodes[rng].position);
+        //Move to node
+        yield return ZipToPosition(InnerNodes[node].position);
         yield return new WaitForSeconds(1 * GetDelay());
     }
 
