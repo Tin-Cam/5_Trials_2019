@@ -1949,6 +1949,7 @@ MonoBehaviour:
   sweepShootTimes: 4
   circleSpread: 1
   circleOffset: 30
+  gridGlides: 2
 --- !u!114 &1867698752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1996,13 +1997,13 @@ MonoBehaviour:
   sweepSpreadCount: 1
   spinSpeed: 5
   spinShootRate: 0.1
-  spinShots: 20
-  spinArms: 5
+  spinShots: 40
+  spinArms: 3
   targetIndicator: {fileID: 2043342654}
   targetPrefab: {fileID: 3658731544874141042, guid: 372e702d396e66e48ac06b554b3d63c0,
     type: 3}
   indicateTime: 2
-  targetShootTimes: 5
+  targetShootTimes: 10
   targetShootRate: 0.5
   holdTargeting: 0
   targetStageBounds:

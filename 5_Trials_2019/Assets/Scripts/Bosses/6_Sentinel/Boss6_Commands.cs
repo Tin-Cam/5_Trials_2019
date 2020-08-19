@@ -16,6 +16,8 @@ public class Boss6_Commands : MonoBehaviour
     public int circleSpread;
     public float circleOffset;
 
+    public int gridGlides;
+
 
     private List<string> commandList = new List<string>();
     private Queue<string> commandQueue = new Queue<string>();
@@ -64,7 +66,7 @@ public class Boss6_Commands : MonoBehaviour
     //Used for testing
     public IEnumerator MrTest()
     {
-        yield return SweepShoot();
+        yield return DesperationAttack();
     }
 
     public IEnumerator SweepShoot()
@@ -90,30 +92,6 @@ public class Boss6_Commands : MonoBehaviour
         yield return move.Exit();
     }
 
-    public IEnumerator DesperationAttack()
-    {
-        yield return move.MoveToDesperation();
-        yield return new WaitForSeconds(1 * GetDelay());
-        yield return action.SineAttack();
-        yield return Idle();
-        yield return move.Exit();    
-    }
-
-    public IEnumerator TargetPlayer()
-    {
-        yield return new WaitForSeconds(1);
-        yield return action.AimAtPlayer();
-        yield return action.TargetPlayer();
-    }
-
-    public IEnumerator SpinShoot()
-    {
-        yield return move.Teleport(Vector3.zero);
-        yield return action.SpinShoot();
-    }
-
-    
-
     public IEnumerator CircleAndShoot()
     {
         //Starts the movement
@@ -133,10 +111,77 @@ public class Boss6_Commands : MonoBehaviour
         yield return move.Exit();
     }
 
-
-    public IEnumerator Teleport()
+    public IEnumerator SpinShoot()
     {
-        yield return move.RandomTeleport();
+        yield return move.Teleport(Vector3.zero);
+        yield return action.SpinShoot();
+        yield return Idle();
+        yield return move.Teleport(new Vector3(0, 20, 0));
+    }
+
+    public IEnumerator TargetPlayer()
+    {
+        yield return move.EnterToInner(0);
+        yield return new WaitForSeconds(0.2f);
+        yield return action.AimAtPlayer();
+        yield return action.TargetPlayer();
+        yield return move.Exit();
+    }
+
+    public IEnumerator TargetPlayerAndAttack()
+    {
+        yield return move.EnterToInner(0);
+        yield return new WaitForSeconds(0.2f);
+        yield return action.AimAtPlayer();
+        StartCoroutine(action.TargetPlayerHold());
+        yield return move.Exit();
+
+        int rng = Random.Range(0, 3);
+        switch(rng){
+            case 0:
+                yield return SweepShoot();
+                break;
+            case 1:
+                yield return CircleAndShoot();
+                break;
+            case 2:
+                yield return SpinShoot();
+                break;
+            default:
+                yield return SweepShoot();
+                break;
+        }
+        action.holdTargeting = false; 
+        yield return Idle();
+    }
+
+    public IEnumerator TargetPlayerInfinite()
+    {
+        yield return move.EnterToInner(0);
+        yield return new WaitForSeconds(0.2f);
+        yield return action.AimAtPlayer();
+        StartCoroutine(action.TargetPlayerHold());
+        yield return move.Exit();
+        yield return Idle();
+    }
+
+    public IEnumerator GridAttack()
+    {
+        //Play animation when gliding
+
+        //Start Attack
+        yield return GlideOver();
+        StartCoroutine(action.GridAttack());
+        while(!action.holdGrid)
+            yield return new WaitForFixedUpdate();
+        
+        //Glide over stage X times
+        int times = (int)(gridGlides * controller.bossLevel);
+        for(int i = 0; i < times; i++)
+            yield return GlideOver();
+
+        action.holdGrid = false;
+        yield return Idle();
     }
 
     public IEnumerator GlideOver()
@@ -150,6 +195,15 @@ public class Boss6_Commands : MonoBehaviour
         rng = Random.Range(-3, 3);
         point = new Vector2(12, rng);
         yield return move.GlideToPosition(point);
+    }
+
+    public IEnumerator DesperationAttack()
+    {
+        yield return move.MoveToDesperation();
+        yield return new WaitForSeconds(1 * GetDelay());
+        yield return action.SineAttack();
+        yield return Idle();
+        yield return move.Exit();
     }
 
     public void ChangeCommandList(int phase)

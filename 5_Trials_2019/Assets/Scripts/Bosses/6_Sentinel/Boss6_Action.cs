@@ -153,8 +153,8 @@ public class Boss6_Action : _ActionBase
     public IEnumerator SpinShoot()
     {
         float speed = spinSpeed * controller.bossLevel;
-        int shots = (int)(20 * controller.bossLevel);
-        float degrees = 0;
+        int shots = (int)(spinShots * controller.bossLevel);
+        float degrees = Random.Range(0, 90);
 
         for(int i = 0; i < shots; i++)
         {
