@@ -31,6 +31,9 @@ public class Boss6_Action : _ActionBase
     public bool holdGrid;
     private List<GameObject> grid = new List<GameObject>();       
     
+    [Space(10)]
+    public float sineWaveSpeed;
+    public float sineTime;
     public List<GameObject> sineUpper = new List<GameObject>();
     public List<GameObject> sineLower = new List<GameObject>();
     public AnimatorScripts sineWaveAnimatorScripts;
@@ -114,7 +117,7 @@ public class Boss6_Action : _ActionBase
         float t = -0.1f;
         sweepIndicator.transform.position = transform.position;
         sweepIndicator.transform.rotation = Quaternion.SlerpUnclamped(start, end, t);
-        yield return new WaitForSeconds(0.2f * GetDelay());
+        yield return new WaitForSeconds(0.2f * GetLevelFraction());
 
         //Indicator sweeps (pivots) over room
         while (t <= 1.1f)
@@ -152,7 +155,8 @@ public class Boss6_Action : _ActionBase
 
     public IEnumerator SpinShoot()
     {
-        float speed = spinSpeed * controller.bossLevel;
+        float speed = spinSpeed;
+
         int shots = (int)(spinShots * controller.bossLevel);
         float degrees = Random.Range(0, 90);
 
@@ -165,14 +169,14 @@ public class Boss6_Action : _ActionBase
             ShootSpread(direction, spinArms, offsetAngle);
 
             degrees += speed;
-            yield return new WaitForSeconds(spinShootRate * GetDelay());
+            yield return new WaitForSeconds(spinShootRate * GetLevelFraction());
         }
         yield break;
     }
 
     public IEnumerator AimAtPlayer()
     {
-        float time = indicateTime * GetDelay();
+        float time = indicateTime * GetLevelFraction();
         while (time > 0)
         {
             targetIndicator.transform.position = player.transform.position;
@@ -182,11 +186,10 @@ public class Boss6_Action : _ActionBase
         DefaultState();
     }
 
-    //Maybe find a way to calculate a safe zone near the player
     public IEnumerator AimAtStage()
     {
         float speed = 40;
-        float aimHoldTime = 0.5f * GetDelay();
+        float aimHoldTime = 0.5f * GetLevelFraction();
         int[] nodes = { 1, 2, 4, 3 };
 
         targetIndicator.transform.localScale = new Vector3(2, 2, 1);
@@ -319,6 +322,10 @@ public class Boss6_Action : _ActionBase
         float acceleration = 1;
 
         float angle = 30 * Random.Range(1, 11);
+        //Ensures the grid doesn't move parallel to the axis
+        if(angle % 90 == 0)
+            angle += 30;
+
         Quaternion directionQat = Quaternion.AngleAxis(angle, Vector3.forward);
         Vector3 direction = directionQat * Vector3.right;
 
@@ -351,7 +358,7 @@ public class Boss6_Action : _ActionBase
         sineWaveAnimatorScripts.animator.SetFloat("Speed", speedMultiplier);
 
         yield return sineWaveAnimatorScripts.PlayWholeAnimation("SineWave_Entry", 0);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(sineTime * GetLevelFraction());
         yield return sineWaveAnimatorScripts.PlayWholeAnimation("SineWave_Exit", 0);
         holdSine = false;
     }
@@ -361,7 +368,8 @@ public class Boss6_Action : _ActionBase
     private IEnumerator MoveSineWave()
     {
         int mode = Random.Range(0, 2);
-        float speed = 3 * controller.bossLevel;
+        //int mode = 1;
+        float speed = sineWaveSpeed * controller.bossLevel;
         holdSine = true;
         while(holdSine){
 
@@ -410,7 +418,7 @@ public class Boss6_Action : _ActionBase
         return thing;
     }
 
-    private float GetDelay()
+    private float GetLevelFraction()
     {
         return 1 / controller.bossLevel;
     }

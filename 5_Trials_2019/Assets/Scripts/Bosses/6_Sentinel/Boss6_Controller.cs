@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss6_Controller : _BossBase
 {
     public float bossLevel = 1;
+    public float bosslevelIncrements = 0.2f;
     public Animator bossAnimator;
 
     private Boss6_Action action;
@@ -28,6 +29,8 @@ public class Boss6_Controller : _BossBase
     public override void BossHurt()
     {
         TakeDamage(1);
+        command.IncrementDespCount();
+        CheckHealth();
     }
 
     public override void DefaultState()
@@ -42,12 +45,42 @@ public class Boss6_Controller : _BossBase
 
     protected override void CheckHealth()
     {
+        if (health <= maxHealth * 0.9 & phase < 1)
+        {
+            IncreasePhase();
+        }
 
+        if (health <= maxHealth * 0.8 & phase < 2)
+        {
+            IncreasePhase();
+        }
+
+        if (health <= maxHealth * 0.6 & phase < 3)
+        {
+            IncreasePhase();
+        }
+
+        if (health <= maxHealth * 0.4 & phase < 4)
+        {
+            IncreasePhase();
+        }
+
+        if (health <= maxHealth * 0.2 & phase < 5)
+        {
+            IncreasePhase();
+        }
+
+        if (health <= maxHealth * 0.1 & phase < 6)
+        {
+            IncreasePhase();
+        }
     }
 
     protected override void IncreasePhase()
     {
-        
+        phase++;
+        bossLevel += bosslevelIncrements;
+        command.ChangeCommandList(phase);
     }
 
     protected override void StartDeath()

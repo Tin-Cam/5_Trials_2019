@@ -1915,6 +1915,7 @@ MonoBehaviour:
   hasAI: 1
   phase: 0
   bossLevel: 1
+  bosslevelIncrements: 0.2
   bossAnimator: {fileID: 0}
 --- !u!4 &1867698750
 Transform:
@@ -1945,11 +1946,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomCommands: 0
-  idleTime: 1
-  sweepShootTimes: 4
+  idleTime: 3
+  sweepShootTimes: 2
   circleSpread: 1
   circleOffset: 30
+  targetStageTimes: 2
   gridGlides: 2
+  maxDespCount: 15
 --- !u!114 &1867698752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1995,7 +1998,7 @@ MonoBehaviour:
   sweepIndicator: {fileID: 519737127407357453}
   sweepIndicatorSpeed: 5
   sweepSpreadCount: 1
-  spinSpeed: 5
+  spinSpeed: 3
   spinShootRate: 0.1
   spinShots: 40
   spinArms: 3
@@ -2013,6 +2016,8 @@ MonoBehaviour:
   gridAttackProjectile: {fileID: 2861616934095689774, guid: 111275b69175e2140ad892305654c5f6,
     type: 3}
   holdGrid: 0
+  sineWaveSpeed: 1.5
+  sineTime: 1.5
   sineUpper:
   - {fileID: 549016281}
   - {fileID: 348552601}
@@ -2159,7 +2164,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2133515337
   m_SortingLayer: -1
-  m_SortingOrder: 1
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: ea88760433ab0514b954f6a41d98cc8f, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0

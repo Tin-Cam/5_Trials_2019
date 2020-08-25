@@ -28,7 +28,7 @@ public class Boss6_Move : _MoveBase
         //Play animation
         yield return animatorScripts.PlayWholeAnimation("Boss_6_Teleport", 2);
 
-        yield return new WaitForSeconds(teleportTime * GetDelay());
+        yield return new WaitForSeconds(teleportTime * GetLevelFraction());
         ChangePosition(position);
 
         yield return animatorScripts.PlayWholeAnimation("Boss_6_Teleport_Appear", 2);
@@ -74,7 +74,7 @@ public class Boss6_Move : _MoveBase
         GoToOuterPosition(rng);
         //Move to node
         yield return ZipToPosition(InnerNodes[node].position);
-        yield return new WaitForSeconds(1 * GetDelay());
+        yield return new WaitForSeconds(1 * GetLevelFraction());
     }
 
     public IEnumerator Exit()
@@ -82,7 +82,7 @@ public class Boss6_Move : _MoveBase
         //Move to an outer node
         int rng = Random.Range(0, 4);
         yield return ZipToPosition(OuterNodes[rng].position);
-        yield return new WaitForSeconds(1 * GetDelay());
+        yield return new WaitForSeconds(1 * GetLevelFraction());
     }
 
     //Moves to a position with a rubberband effect applied to speed
@@ -191,7 +191,7 @@ public class Boss6_Move : _MoveBase
         transform.position = targetPos;       
     }
 
-    private float GetDelay()
+    private float GetLevelFraction()
     {
         return 1 / controller.bossLevel;
     }

@@ -16,7 +16,13 @@ public class Boss6_Commands : MonoBehaviour
     public int circleSpread;
     public float circleOffset;
 
+    public int targetStageTimes;
+
     public int gridGlides;
+
+    public int maxDespCount;
+    private int despCounter;
+    private bool despCounterActive;
 
 
     private List<string> commandList = new List<string>();
@@ -32,7 +38,6 @@ public class Boss6_Commands : MonoBehaviour
         ChangeCommandList(0);
 
         StartCoroutine(NextCommand());
-        //StartCoroutine(action.SineAttack());
     }
 
     public IEnumerator NextCommand()
@@ -53,20 +58,15 @@ public class Boss6_Commands : MonoBehaviour
         }
 
         //ResetAnimation();
+        IncrementDespCount();
 
         StartCoroutine(NextCommand());
     }
 
     public IEnumerator Idle()
     {
-        float time = idleTime * GetDelay();
+        float time = idleTime * GetLevelFraction();
         yield return new WaitForSeconds(time);
-    }
-
-    //Used for testing
-    public IEnumerator MrTest()
-    {
-        yield return DesperationAttack();
     }
 
     public IEnumerator SweepShoot()
@@ -114,6 +114,7 @@ public class Boss6_Commands : MonoBehaviour
     public IEnumerator SpinShoot()
     {
         yield return move.Teleport(Vector3.zero);
+        yield return Idle();
         yield return action.SpinShoot();
         yield return Idle();
         yield return move.Teleport(new Vector3(0, 20, 0));
@@ -125,6 +126,21 @@ public class Boss6_Commands : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         yield return action.AimAtPlayer();
         yield return action.TargetPlayer();
+        yield return move.Exit();
+    }
+
+    public IEnumerator TargetStage()
+    {
+        yield return move.EnterToInner(0);
+        yield return new WaitForSeconds(0.2f);
+        yield return action.AimAtStage();
+
+        int times = (int) (targetStageTimes * controller.bossLevel);
+        for(int i = 0; i < times; i++){
+            yield return action.TargetStage();
+            yield return new WaitForSeconds(1);
+        }
+
         yield return move.Exit();
     }
 
@@ -200,28 +216,81 @@ public class Boss6_Commands : MonoBehaviour
     public IEnumerator DesperationAttack()
     {
         yield return move.MoveToDesperation();
-        yield return new WaitForSeconds(1 * GetDelay());
+        yield return new WaitForSeconds(1 * GetLevelFraction());
         yield return action.SineAttack();
-        yield return Idle();
+        //yield return Idle();
         yield return move.Exit();
+        ResetDespCount();
     }
 
     public void ChangeCommandList(int phase)
     {
+        //Always has random commands unless indicated otherwise
+        randomCommands = true;
         commandList.Clear();
+
         switch (phase)
         {
             case 0:
-                commandList.Add("MrTest");
+                randomCommands = false;
+                commandList.Add("CircleAndShoot");
+                commandList.Add("SweepShoot");               
                 break;
 
             case 1:
+                commandQueue.Enqueue("TargetPlayer");
+                commandList.Add("SweepShoot");
+                commandList.Add("CircleAndShoot");
+                commandList.Add("TargetPlayer");
+                commandList.Add("SpinShoot");
 
+                action.sweepSpreadCount = 2;
+                break;
+            case 2:
+                commandList.Add("SweepShoot");
+                commandList.Add("TargetPlayer");
+                commandList.Add("TargetStage");
+                commandList.Add("SpinShoot");
+
+                action.sweepSpreadCount = 3;
+                break;
+            case 3:
+                commandQueue.Enqueue("GridAttack");
+
+                commandList.Add("SweepShoot");
+                commandList.Add("GridAttack");
+                commandList.Add("TargetStage");
+                commandList.Add("SpinShoot");
+
+                action.spinArms += 2;
+                break;
+            case 4:
+                commandQueue.Enqueue("DesperationAttack");
+
+                commandList.Add("CircleAndShoot");
+                commandList.Add("GridAttack");
+                commandList.Add("TargetStage");
+                commandList.Add("SpinShoot");
+                break;
+            case 5:
+                commandQueue.Enqueue("TargetPlayerAndAttack");
+
+                commandList.Add("TargetPlayerAndAttack");
+                commandList.Add("TargetStage");
+                commandList.Add("GridAttack");
+                break;
+            case 6:        
+                commandQueue.Enqueue("TargetPlayerInfinite");
+
+                commandList.Add("SweepShoot");
+                commandList.Add("CircleAndShoot");
+                commandList.Add("SpinShoot");
+                commandList.Add("GridAttack");
                 break;
 
             default:
                 Debug.LogError("Error when setting command list. No commands set for phase " + phase);
-                commandList.Add("MrTest");
+                commandList.Add("SweepShoot");
                 break;
         }
     }
@@ -252,7 +321,28 @@ public class Boss6_Commands : MonoBehaviour
         return result;
     }
 
-    private float GetDelay()
+    public void IncrementDespCount()
+    {
+        if (!despCounterActive)
+            return;
+
+        despCounter++;
+
+        if (despCounter >= maxDespCount)
+        {
+            commandQueue.Enqueue("DesperationAttack");
+            
+            despCounterActive = false;
+        }
+    }
+
+    public void ResetDespCount()
+    {
+        despCounter = 0;
+        despCounterActive = true;
+    }
+
+    private float GetLevelFraction()
     {
         return 1 / controller.bossLevel;
     }
