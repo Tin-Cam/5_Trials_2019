@@ -26,6 +26,7 @@ public class Boss6_Move : _MoveBase
     public IEnumerator Teleport(Vector3 position)
     {
         //Play animation
+        animatorScripts.PlayAnimation("Boss_6_Idle", 0);
         yield return animatorScripts.PlayWholeAnimation("Boss_6_Teleport", 2);
 
         yield return new WaitForSeconds(teleportTime * GetLevelFraction());
@@ -80,6 +81,7 @@ public class Boss6_Move : _MoveBase
     public IEnumerator Exit()
     {
         //Move to an outer node
+        animatorScripts.PlayAnimation("Boss_6_Idle", 0);
         int rng = Random.Range(0, 4);
         yield return ZipToPosition(OuterNodes[rng].position);
         yield return new WaitForSeconds(1 * GetLevelFraction());
@@ -143,7 +145,7 @@ public class Boss6_Move : _MoveBase
     public IEnumerator CircleCentre()
     {
         float t = 0;
-        float speed = moveSpeed * controller.bossLevel * 0.1f;
+        float speed = moveSpeed * 0.1f;
 
         //yield return MoveToPosition(MoveInCircle(Vector2.zero, 5f, t));
 

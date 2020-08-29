@@ -43,6 +43,7 @@ public class Boss6_Action : _ActionBase
 
     private Boss6_Controller controller;
     private Boss6_Move move;
+    private AnimatorScripts animatorScripts;
     private AudioManager audioManager;
     private ShootScripts shooter;
     private GameObject player;
@@ -51,6 +52,7 @@ public class Boss6_Action : _ActionBase
     {
         controller = GetComponent<Boss6_Controller>();
         move = GetComponent<Boss6_Move>();
+        animatorScripts = GetComponent<AnimatorScripts>();
         audioManager = AudioManager.instance;
         shooter = GetComponent<ShootScripts>();
 
@@ -104,6 +106,8 @@ public class Boss6_Action : _ActionBase
 
     public IEnumerator SweepShoot(float angle)
     {
+        animatorScripts.PlayAnimation("Boss_6_Focus", 0);
+
         //Calculates speed
         float speed = sweepIndicatorSpeed * controller.bossLevel;
 
@@ -135,7 +139,9 @@ public class Boss6_Action : _ActionBase
 
 
         //Shoots ----------------------------------------------------------------
+        animatorScripts.PlayAnimation("Boss_6_Shoot", 0);
         int shots = 7;
+        int spreadCount = sweepSpreadCount;
         float offsetAngle = 30;
         t = 0;
         
@@ -145,7 +151,7 @@ public class Boss6_Action : _ActionBase
             Quaternion direction = Quaternion.Lerp(start, end, t);
 
             //Shoots
-            ShootSpread(direction, sweepSpreadCount, offsetAngle);
+            ShootSpread(direction, spreadCount, offsetAngle);
 
             t += (1f / shots);
             yield return new WaitForSeconds(0.1f);
@@ -156,17 +162,18 @@ public class Boss6_Action : _ActionBase
     public IEnumerator SpinShoot()
     {
         float speed = spinSpeed;
+        int arms = spinArms;
 
         int shots = (int)(spinShots * controller.bossLevel);
         float degrees = Random.Range(0, 90);
-
+        animatorScripts.PlayAnimation("Boss_6_Shoot", 0);
         for(int i = 0; i < shots; i++)
         {
             Quaternion direction = Quaternion.AngleAxis(degrees, Vector3.forward);
 
-            float offsetAngle = 360 / spinArms;
+            float offsetAngle = 360 / arms;
 
-            ShootSpread(direction, spinArms, offsetAngle);
+            ShootSpread(direction, arms, offsetAngle);
 
             degrees += speed;
             yield return new WaitForSeconds(spinShootRate * GetLevelFraction());
@@ -176,6 +183,7 @@ public class Boss6_Action : _ActionBase
 
     public IEnumerator AimAtPlayer()
     {
+        animatorScripts.PlayAnimation("Boss_6_Focus", 0);
         float time = indicateTime * GetLevelFraction();
         while (time > 0)
         {
@@ -188,6 +196,7 @@ public class Boss6_Action : _ActionBase
 
     public IEnumerator AimAtStage()
     {
+        animatorScripts.PlayAnimation("Boss_6_Focus", 0);
         float speed = 40;
         float aimHoldTime = 0.5f * GetLevelFraction();
         int[] nodes = { 1, 2, 4, 3 };
@@ -345,6 +354,20 @@ public class Boss6_Action : _ActionBase
                 speed += acceleration * Time.deltaTime;
             yield return new WaitForFixedUpdate();
         }
+        for (int i = 0; i < grid.Count; i++)
+        {
+            Animator tempAnimator = grid[i].GetComponent<Animator>();  
+            tempAnimator.Play("GridAttack_Exit");
+
+            //Wait for the last grid projectile to finish its animation
+            if(i == grid.Count - 1){
+                yield return new WaitForEndOfFrame();
+                while (tempAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+                {
+                    yield return new WaitForFixedUpdate();
+                }
+            }                
+        }
         DefaultState();
     }
 
@@ -367,8 +390,8 @@ public class Boss6_Action : _ActionBase
     //MODE 1 - Waves go in same direction
     private IEnumerator MoveSineWave()
     {
-        int mode = Random.Range(0, 2);
-        //int mode = 1;
+        //int mode = Random.Range(0, 2);
+        int mode = 1;
         float speed = sineWaveSpeed * controller.bossLevel;
         holdSine = true;
         while(holdSine){

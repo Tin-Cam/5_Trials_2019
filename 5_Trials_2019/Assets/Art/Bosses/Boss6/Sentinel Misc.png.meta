@@ -1,43 +1,79 @@
 fileFormatVersion: 2
-guid: 40607f3dcb45a0d49b0cfed29965b720
+guid: 9907e8a334dc14a4495f4bb18f5929c2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3592288180158252163
-    second: Sentinel_0
+      213: -3353349841085212143
+    second: Sentinel Misc_0
   - first:
-      213: 1392347708739974528
-    second: Sentinel_1
+      213: -3770973026224731513
+    second: Sentinel Misc_1
   - first:
-      213: -7963396500550397060
-    second: Sentinel_2
+      213: -7105820280734301471
+    second: Sentinel Misc_2
   - first:
-      213: -7339176310676107818
-    second: Sentinel_3
+      213: 1144488344611452920
+    second: Sentinel Misc_3
   - first:
-      213: -3013841595655346009
-    second: Sentinel_0
+      213: 2877323213820530485
+    second: Sentinel Misc_4
   - first:
-      213: -5788688658322323924
-    second: Sentinel_1
+      213: 5811280554117307279
+    second: Sentinel Misc_5
   - first:
-      213: -4994611718720233880
-    second: Sentinel_2
+      213: -8945716904658955853
+    second: Sentinel Misc_6
   - first:
-      213: 5135315578899787673
-    second: Sentinel_4
+      213: -8459457936002691230
+    second: Sentinel Misc_7
   - first:
-      213: 4052382107809993588
-    second: Sentinel_5
+      213: 3471172878723916012
+    second: Sentinel Misc_8
   - first:
-      213: 1797275919845819312
-    second: Sentinel_6
+      213: -6793445812378394202
+    second: Sentinel Misc_9
   - first:
-      213: -8147775736592840557
-    second: Sentinel_7
+      213: -7329700107419428371
+    second: Sentinel Misc_10
   - first:
-      213: -6820414603801578320
-    second: Sentinel_8
+      213: -6443157722473218019
+    second: Sentinel Misc_11
+  - first:
+      213: 1253888321942968279
+    second: Sentinel Misc_12
+  - first:
+      213: 9274253455832471
+    second: Sentinel Misc_13
+  - first:
+      213: 5853730392250920556
+    second: Sentinel Misc_14
+  - first:
+      213: 5614521191215737784
+    second: Sentinel Misc_15
+  - first:
+      213: -6092131198960302526
+    second: Sentinel Misc_16
+  - first:
+      213: 447658334996437212
+    second: Sentinel Misc_17
+  - first:
+      213: 894187946482122569
+    second: Sentinel Misc_18
+  - first:
+      213: -8678530869143727125
+    second: Sentinel Misc_19
+  - first:
+      213: -1711822641776539025
+    second: Sentinel Misc_20
+  - first:
+      213: -6390519372055171259
+    second: Sentinel Misc_21
+  - first:
+      213: 6554662741886871204
+    second: Sentinel Misc_22
+  - first:
+      213: 5021906047327093366
+    second: Sentinel Misc_23
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -135,13 +171,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sentinel_3
+      name: Sentinel Misc_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
-        width: 96
-        height: 96
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6dd4032b702062a90800000000000000
-      internalID: -7339176310676107818
+      spriteID: 11ad08a16128671d0800000000000000
+      internalID: -3353349841085212143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sentinel_0
+      name: Sentinel Misc_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 192
-        width: 96
-        height: 96
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,20 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a8aaa9690fac26d0800000000000000
-      internalID: -3013841595655346009
+      spriteID: 78a8b4a1300daabc0800000000000000
+      internalID: -3770973026224731513
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sentinel_1
+      name: Sentinel Misc_2
       rect:
         serializedVersion: 2
-        x: 96
-        y: 192
-        width: 96
-        height: 96
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,41 +227,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c268d55c5527aafa0800000000000000
-      internalID: -5788688658322323924
+      spriteID: 1e2c0195a1e036d90800000000000000
+      internalID: -7105820280734301471
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sentinel_2
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 192
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 86e5daaba139faab0800000000000000
-      internalID: -4994611718720233880
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sentinel_4
+      name: Sentinel Misc_3
       rect:
         serializedVersion: 2
         x: 96
-        y: 96
-        width: 96
-        height: 96
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,20 +248,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99fe9d99f4e444740800000000000000
-      internalID: 5135315578899787673
+      spriteID: 8f7f32ee51a02ef00800000000000000
+      internalID: 1144488344611452920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sentinel_5
+      name: Sentinel Misc_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53f02cfd73e4ee720800000000000000
+      internalID: 2877323213820530485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sentinel Misc_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8b1c4edfd0d5a050800000000000000
+      internalID: 5811280554117307279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sentinel Misc_6
       rect:
         serializedVersion: 2
         x: 192
-        y: 96
-        width: 96
-        height: 96
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -254,20 +311,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 473d92e7e04fc3830800000000000000
-      internalID: 4052382107809993588
+      spriteID: 3b198942fdd6ad380800000000000000
+      internalID: -8945716904658955853
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sentinel_6
+      name: Sentinel Misc_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26f433cc3d7f99a80800000000000000
+      internalID: -8459457936002691230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sentinel Misc_8
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 96
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -275,20 +353,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b306cd3de431f810800000000000000
-      internalID: 1797275919845819312
+      spriteID: ce02f4697551c2030800000000000000
+      internalID: 3471172878723916012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sentinel_7
+      name: Sentinel Misc_10
       rect:
         serializedVersion: 2
-        x: 96
+        x: 64
         y: 0
-        width: 96
-        height: 96
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,20 +374,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39846d6e2294dee80800000000000000
-      internalID: -8147775736592840557
+      spriteID: de95f13369ca74a90800000000000000
+      internalID: -7329700107419428371
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sentinel_8
+      name: Sentinel Misc_12
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d7db6119c4b66110800000000000000
+      internalID: 1253888321942968279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sentinel Misc_14
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 96
-        height: 96
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -317,8 +416,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b4358fcd050951a0800000000000000
-      internalID: -6820414603801578320
+      spriteID: c6e260107c0ac3150800000000000000
+      internalID: 5853730392250920556
       vertices: []
       indices: 
       edges: []

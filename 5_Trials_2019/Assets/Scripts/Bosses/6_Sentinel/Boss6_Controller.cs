@@ -45,6 +45,10 @@ public class Boss6_Controller : _BossBase
 
     protected override void CheckHealth()
     {
+        int phaseAmount = 7;
+        float phaseDivision = 1 / phaseAmount;
+
+
         if (health <= maxHealth * 0.9 & phase < 1)
         {
             IncreasePhase();

@@ -7,6 +7,7 @@ public class Boss6_Commands : MonoBehaviour
     private Boss6_Action action;
     private Boss6_Move move;
     private Boss6_Controller controller;
+    private AnimatorScripts animatorScripts;
 
     public bool randomCommands;
     public int idleTime;
@@ -15,6 +16,8 @@ public class Boss6_Commands : MonoBehaviour
 
     public int circleSpread;
     public float circleOffset;
+    public int circleShootTimes;
+    public float circleShootDelay;
 
     public int targetStageTimes;
 
@@ -34,6 +37,7 @@ public class Boss6_Commands : MonoBehaviour
         action = GetComponent<Boss6_Action>();
         move = GetComponent<Boss6_Move>();
         controller = GetComponent<Boss6_Controller>();
+        animatorScripts = GetComponent<AnimatorScripts>();
 
         ChangeCommandList(0);
 
@@ -44,7 +48,7 @@ public class Boss6_Commands : MonoBehaviour
     {
         DefaultState();
         //ResetAnimation();
-
+        
         if (commandQueue.Count != 0)
         {
             //Uses queued command if any
@@ -88,6 +92,7 @@ public class Boss6_Commands : MonoBehaviour
             yield return move.Teleport(node);
             yield return action.SweepShoot((-90) * (rng - 1));
         }
+        animatorScripts.PlayAnimation("Boss_6_Idle", 0);
         yield return Idle();
         yield return move.Exit();
     }
@@ -98,13 +103,20 @@ public class Boss6_Commands : MonoBehaviour
         yield return move.ZipToPosition(move.CirclePos(Vector2.zero, 5f, 0));
         StartCoroutine(move.CircleCentre());
 
+
+        float delay = circleShootDelay * GetLevelFraction();
+        int times = (int)(circleShootTimes * controller.bossLevel);
+        animatorScripts.PlayAnimation("Boss_6_Focus", 0);
+        yield return new WaitForSeconds(delay);
         //Starts shooting
-        for (int i = 0; i < 20; i++)
+        animatorScripts.PlayAnimation("Boss_6_Shoot", 0);
+        for (int i = 0; i < times; i++)
         {
             action.ShootAtPlayer(circleSpread, circleOffset);
             yield return new WaitForSeconds(0.2f);
         }
-        yield return new WaitForSeconds(1);
+        animatorScripts.PlayAnimation("Boss_6_Idle", 0);
+        yield return new WaitForSeconds(delay);
 
         //Exits the action
         move.isCircling = false;
@@ -114,8 +126,10 @@ public class Boss6_Commands : MonoBehaviour
     public IEnumerator SpinShoot()
     {
         yield return move.Teleport(Vector3.zero);
+        animatorScripts.PlayAnimation("Boss_6_Focus", 0);
         yield return Idle();
         yield return action.SpinShoot();
+        animatorScripts.PlayAnimation("Boss_6_Idle", 0);
         yield return Idle();
         yield return move.Teleport(new Vector3(0, 20, 0));
     }
@@ -125,8 +139,8 @@ public class Boss6_Commands : MonoBehaviour
         yield return move.EnterToInner(0);
         yield return new WaitForSeconds(0.2f);
         yield return action.AimAtPlayer();
+        StartCoroutine(move.Exit());
         yield return action.TargetPlayer();
-        yield return move.Exit();
     }
 
     public IEnumerator TargetStage()
@@ -134,14 +148,13 @@ public class Boss6_Commands : MonoBehaviour
         yield return move.EnterToInner(0);
         yield return new WaitForSeconds(0.2f);
         yield return action.AimAtStage();
+        StartCoroutine(move.Exit());
 
         int times = (int) (targetStageTimes * controller.bossLevel);
         for(int i = 0; i < times; i++){
             yield return action.TargetStage();
             yield return new WaitForSeconds(1);
         }
-
-        yield return move.Exit();
     }
 
     public IEnumerator TargetPlayerAndAttack()
@@ -187,6 +200,7 @@ public class Boss6_Commands : MonoBehaviour
 
         //Start Attack
         yield return GlideOver();
+        animatorScripts.PlayAnimation("Boss_6_Act", 0);
         StartCoroutine(action.GridAttack());
         while(!action.holdGrid)
             yield return new WaitForFixedUpdate();
@@ -216,7 +230,8 @@ public class Boss6_Commands : MonoBehaviour
     public IEnumerator DesperationAttack()
     {
         yield return move.MoveToDesperation();
-        yield return new WaitForSeconds(1 * GetLevelFraction());
+        yield return new WaitForSeconds(1 * controller.bossLevel);
+        animatorScripts.PlayAnimation("Boss_6_Act", 0);
         yield return action.SineAttack();
         //yield return Idle();
         yield return move.Exit();
@@ -350,5 +365,6 @@ public class Boss6_Commands : MonoBehaviour
     public void DefaultState()
     {
         action.DefaultState();
+        animatorScripts.PlayAnimation("Boss_6_Idle", 0);
     }
 }

@@ -1,43 +1,34 @@
 fileFormatVersion: 2
-guid: 40607f3dcb45a0d49b0cfed29965b720
+guid: 542a3059920d90b458d470f964e1edc8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3592288180158252163
-    second: Sentinel_0
+      213: -7777279560094227125
+    second: Sine Wave_0
   - first:
-      213: 1392347708739974528
-    second: Sentinel_1
+      213: 172737184781517014
+    second: Sine Wave_1
   - first:
-      213: -7963396500550397060
-    second: Sentinel_2
+      213: -8367998001118755831
+    second: Sine Wave_2
   - first:
-      213: -7339176310676107818
-    second: Sentinel_3
+      213: -5543645015325244048
+    second: Sine Wave_3
   - first:
-      213: -3013841595655346009
-    second: Sentinel_0
+      213: -1861420980228432452
+    second: Sine Wave_4
   - first:
-      213: -5788688658322323924
-    second: Sentinel_1
+      213: -5602110868958995153
+    second: Sine Wave_5
   - first:
-      213: -4994611718720233880
-    second: Sentinel_2
+      213: -1493033604569715335
+    second: Sine Wave_6
   - first:
-      213: 5135315578899787673
-    second: Sentinel_4
+      213: -6850142652113246411
+    second: Sine Wave_7
   - first:
-      213: 4052382107809993588
-    second: Sentinel_5
-  - first:
-      213: 1797275919845819312
-    second: Sentinel_6
-  - first:
-      213: -8147775736592840557
-    second: Sentinel_7
-  - first:
-      213: -6820414603801578320
-    second: Sentinel_8
+      213: -371047926001197293
+    second: Sine Wave_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -135,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sentinel_3
+      name: Sine Wave_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
-        width: 96
-        height: 96
+        y: 320
+        width: 192
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +140,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6dd4032b702062a90800000000000000
-      internalID: -7339176310676107818
+      spriteID: b456da5227d811490800000000000000
+      internalID: -7777279560094227125
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sentinel_0
+      name: Sine Wave_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 320
+        width: 192
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d0476aed8fa56200800000000000000
+      internalID: 172737184781517014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sine Wave_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 320
+        width: 192
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 904432e4726eedb80800000000000000
+      internalID: -8367998001118755831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sine Wave_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
-        width: 96
-        height: 96
+        y: 160
+        width: 192
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,41 +203,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a8aaa9690fac26d0800000000000000
-      internalID: -3013841595655346009
+      spriteID: 0758ca4ea340113b0800000000000000
+      internalID: -5543645015325244048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sentinel_1
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 192
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c268d55c5527aafa0800000000000000
-      internalID: -5788688658322323924
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sentinel_2
+      name: Sine Wave_4
       rect:
         serializedVersion: 2
         x: 192
-        y: 192
-        width: 96
-        height: 96
+        y: 160
+        width: 192
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,20 +224,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86e5daaba139faab0800000000000000
-      internalID: -4994611718720233880
+      spriteID: cbd56001b77ea26e0800000000000000
+      internalID: -1861420980228432452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sentinel_4
+      name: Sine Wave_5
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
-        width: 96
-        height: 96
+        x: 384
+        y: 160
+        width: 192
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,41 +245,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99fe9d99f4e444740800000000000000
-      internalID: 5135315578899787673
+      spriteID: f2d185f88dd4142b0800000000000000
+      internalID: -5602110868958995153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sentinel_5
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 96
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 473d92e7e04fc3830800000000000000
-      internalID: 4052382107809993588
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sentinel_6
+      name: Sine Wave_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 96
+        width: 192
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -275,41 +266,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b306cd3de431f810800000000000000
-      internalID: 1797275919845819312
+      spriteID: 97da6e9d8dda74be0800000000000000
+      internalID: -1493033604569715335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sentinel_7
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 39846d6e2294dee80800000000000000
-      internalID: -8147775736592840557
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sentinel_8
+      name: Sine Wave_7
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 96
-        height: 96
+        width: 192
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -317,8 +287,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b4358fcd050951a0800000000000000
-      internalID: -6820414603801578320
+      spriteID: 537a9003d876fe0a0800000000000000
+      internalID: -6850142652113246411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sine Wave_8
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 192
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31f9d0090e5c9daf0800000000000000
+      internalID: -371047926001197293
       vertices: []
       indices: 
       edges: []
