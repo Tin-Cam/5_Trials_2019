@@ -6,7 +6,6 @@ public class Boss6_Action : _ActionBase
 {
     public GameObject sweepIndicator;
     public float sweepIndicatorSpeed;
-    public int sweepSpreadCount;
 
     [Space(10)]
     public float spinSpeed;
@@ -29,7 +28,9 @@ public class Boss6_Action : _ActionBase
     public GameObject gridAttackProjectile;
     [HideInInspector()]
     public bool holdGrid;
-    private List<GameObject> grid = new List<GameObject>();       
+    private List<GameObject> grid = new List<GameObject>();
+    public float maxGridSpeed;
+    public float maxGridSpeedCap;  
     
     [Space(10)]
     public float sineWaveSpeed;
@@ -104,7 +105,7 @@ public class Boss6_Action : _ActionBase
         }
     }
 
-    public IEnumerator SweepShoot(float angle)
+    public IEnumerator SweepShoot(float angle, int spreadCount)
     {
         animatorScripts.PlayAnimation("Boss_6_Focus", 0);
 
@@ -141,7 +142,6 @@ public class Boss6_Action : _ActionBase
         //Shoots ----------------------------------------------------------------
         animatorScripts.PlayAnimation("Boss_6_Shoot", 0);
         int shots = 7;
-        int spreadCount = sweepSpreadCount;
         float offsetAngle = 30;
         t = 0;
         
@@ -176,7 +176,7 @@ public class Boss6_Action : _ActionBase
             ShootSpread(direction, arms, offsetAngle);
 
             degrees += speed;
-            yield return new WaitForSeconds(spinShootRate * GetLevelFraction());
+            yield return new WaitForSeconds(spinShootRate);
         }
         yield break;
     }
@@ -185,10 +185,19 @@ public class Boss6_Action : _ActionBase
     {
         animatorScripts.PlayAnimation("Boss_6_Focus", 0);
         float time = indicateTime * GetLevelFraction();
+        float timeDivision = time / 3;
+        int soundCount = 3;
+
         while (time > 0)
         {
+            if(time < timeDivision * soundCount){
+                audioManager.Play("Button_Press", 0.75f, 1.5f);
+                soundCount--;
+            }
+
             targetIndicator.transform.position = player.transform.position;
-            time -= Time.deltaTime;
+            time -= Time.deltaTime;            
+
             yield return new WaitForFixedUpdate();
         }
         DefaultState();
@@ -326,7 +335,10 @@ public class Boss6_Action : _ActionBase
         }
 
         //Move grid
-        float maxSpeed = 3 * controller.bossLevel;
+        float maxSpeed = maxGridSpeed * controller.bossLevel;
+        if(maxSpeed > maxGridSpeedCap)
+            maxSpeed = maxGridSpeedCap;
+
         float speed = 0;
         float acceleration = 1;
 
@@ -354,6 +366,7 @@ public class Boss6_Action : _ActionBase
                 speed += acceleration * Time.deltaTime;
             yield return new WaitForFixedUpdate();
         }
+        //Exit Animation
         for (int i = 0; i < grid.Count; i++)
         {
             Animator tempAnimator = grid[i].GetComponent<Animator>();  
@@ -470,5 +483,6 @@ public class Boss6_Action : _ActionBase
 
         sineWaveAnimatorScripts.PlayAnimation("SineWave_Inactive", 0);
         holdSine = false;
+        ShowDesperationFilter(false);
     }
 }

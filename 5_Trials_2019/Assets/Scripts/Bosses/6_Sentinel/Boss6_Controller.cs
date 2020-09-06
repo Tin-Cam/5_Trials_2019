@@ -69,15 +69,15 @@ public class Boss6_Controller : _BossBase
             IncreasePhase();
         }
 
-        if (health <= maxHealth * 0.2 & phase < 5)
+        if (health <= maxHealth * 0.10 & phase < 5)
         {
             IncreasePhase();
         }
 
-        if (health <= maxHealth * 0.1 & phase < 6)
-        {
-            IncreasePhase();
-        }
+        // if (health <= maxHealth * 0.1 & phase < 6)
+        // {
+        //     IncreasePhase();
+        // }
     }
 
     protected override void IncreasePhase()

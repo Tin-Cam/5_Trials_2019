@@ -24,7 +24,10 @@ public class Target_Explode : MonoBehaviour
 
     private IEnumerator Target()
     {
+        AudioManager.instance.Play("Button_Press", 0.75f, 0.5f);
         yield return new WaitForSeconds(aimTime);
+
+        AudioManager.instance.Play("Thump", 0.75f, 1.0f);
         StartCoroutine(DamageArea());
         yield return animator.PlayWholeAnimation("Target_Explode", 0);
 

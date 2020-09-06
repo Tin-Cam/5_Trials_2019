@@ -14,11 +14,13 @@ public class Boss6_Move : _MoveBase
 
     private Boss6_Controller controller;
     private AnimatorScripts animatorScripts;
+    private AudioManager audioManager;
 
     public void Init()
     {
         controller = GetComponent<Boss6_Controller>();
         animatorScripts = GetComponent<AnimatorScripts>();
+        audioManager = AudioManager.instance;
     }
 
     //TELEPORTING --------------------------
@@ -27,12 +29,26 @@ public class Boss6_Move : _MoveBase
     {
         //Play animation
         animatorScripts.PlayAnimation("Boss_6_Idle", 0);
-        yield return animatorScripts.PlayWholeAnimation("Boss_6_Teleport", 2);
+        yield return EnterTeleport(new Vector3(0, 20, 0));
 
         yield return new WaitForSeconds(teleportTime * GetLevelFraction());
-        ChangePosition(position);
 
+        yield return ExitTeleport(position);
+    }
+
+    public IEnumerator EnterTeleport(Vector3 position)
+    {
+        audioManager.Play("Teleport", 0.75f, 1);
+        yield return animatorScripts.PlayWholeAnimation("Boss_6_Teleport", 2);
+        ChangePosition(position);
+    }
+
+    public IEnumerator ExitTeleport(Vector3 position)
+    {
+        ChangePosition(position);
+        audioManager.Play("Teleport", 0.75f, 0.75f);
         yield return animatorScripts.PlayWholeAnimation("Boss_6_Teleport_Appear", 2);
+        animatorScripts.PlayAnimation("Boss_6_Teleport_Normal", 2);
     }
 
     public IEnumerator RandomTeleport()
@@ -74,6 +90,7 @@ public class Boss6_Move : _MoveBase
         int rng = Random.Range(0, 4);
         GoToOuterPosition(rng);
         //Move to node
+        audioManager.Play("Whoosh", 0.75f, 1);        
         yield return ZipToPosition(InnerNodes[node].position);
         yield return new WaitForSeconds(1 * GetLevelFraction());
     }
@@ -83,6 +100,7 @@ public class Boss6_Move : _MoveBase
         //Move to an outer node
         animatorScripts.PlayAnimation("Boss_6_Idle", 0);
         int rng = Random.Range(0, 4);
+        audioManager.Play("Whoosh", 0.75f, 0.75f);
         yield return ZipToPosition(OuterNodes[rng].position);
         yield return new WaitForSeconds(1 * GetLevelFraction());
     }
@@ -91,7 +109,7 @@ public class Boss6_Move : _MoveBase
     public IEnumerator ZipToPosition(Vector3 target)
     {
         bool isMoving = true;
-
+        
         while (isMoving)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * RubberBandSpeed(target));
@@ -106,6 +124,7 @@ public class Boss6_Move : _MoveBase
         bool isMoving = true;
         float speed = moveSpeed * controller.bossLevel;
 
+        audioManager.Play("Whoosh", 0.75f, 0.25f);
         while (isMoving)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
@@ -142,6 +161,12 @@ public class Boss6_Move : _MoveBase
     }
 
     //CIRCLING --------------------------
+    public IEnumerator EnterToCircle()
+    {
+        audioManager.Play("Whoosh", 0.75f, 1);
+        yield return ZipToPosition(CirclePos(Vector2.zero, 5f, 0));
+    }
+
     public IEnumerator CircleCentre()
     {
         float t = 0;

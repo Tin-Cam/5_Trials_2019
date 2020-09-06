@@ -13,6 +13,7 @@ public class Boss6_Commands : MonoBehaviour
     public int idleTime;
 
     public int sweepShootTimes;
+    public int sweepSpreadCount;
 
     public int circleSpread;
     public float circleOffset;
@@ -41,6 +42,13 @@ public class Boss6_Commands : MonoBehaviour
 
         ChangeCommandList(0);
 
+        StartCoroutine(Intro());
+    }
+
+    public IEnumerator Intro()
+    {
+        yield return new WaitForSeconds(1);
+        yield return move.Exit();
         StartCoroutine(NextCommand());
     }
 
@@ -67,10 +75,15 @@ public class Boss6_Commands : MonoBehaviour
         StartCoroutine(NextCommand());
     }
 
+    public IEnumerator Idle(float multiplier)
+    {
+        float time = idleTime * multiplier * GetLevelFraction();
+        yield return new WaitForSeconds(time);
+    }
+
     public IEnumerator Idle()
     {
-        float time = idleTime * GetLevelFraction();
-        yield return new WaitForSeconds(time);
+        yield return Idle(1);
     }
 
     public IEnumerator SweepShoot()
@@ -79,8 +92,9 @@ public class Boss6_Commands : MonoBehaviour
 
         int rng = Random.Range(1, 5);
         int lastNode = rng;
+        int spreadCount = sweepSpreadCount;
         yield return move.EnterToInner(rng);
-        yield return action.SweepShoot((-90) * (rng - 1));
+        yield return action.SweepShoot((-90) * (rng - 1), spreadCount);
 
         for (int i = 0; i < (times - 1); i++)
         {           
@@ -90,7 +104,7 @@ public class Boss6_Commands : MonoBehaviour
 
             Vector3 node = move.InnerNodes[rng].position;
             yield return move.Teleport(node);
-            yield return action.SweepShoot((-90) * (rng - 1));
+            yield return action.SweepShoot((-90) * (rng - 1), spreadCount);
         }
         animatorScripts.PlayAnimation("Boss_6_Idle", 0);
         yield return Idle();
@@ -100,7 +114,7 @@ public class Boss6_Commands : MonoBehaviour
     public IEnumerator CircleAndShoot()
     {
         //Starts the movement
-        yield return move.ZipToPosition(move.CirclePos(Vector2.zero, 5f, 0));
+        yield return move.EnterToCircle();
         StartCoroutine(move.CircleCentre());
 
 
@@ -116,7 +130,7 @@ public class Boss6_Commands : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         animatorScripts.PlayAnimation("Boss_6_Idle", 0);
-        yield return new WaitForSeconds(delay);
+        yield return Idle(2);
 
         //Exits the action
         move.isCircling = false;
@@ -124,14 +138,15 @@ public class Boss6_Commands : MonoBehaviour
     }
 
     public IEnumerator SpinShoot()
-    {
-        yield return move.Teleport(Vector3.zero);
+    {       
+        yield return move.ExitTeleport(Vector3.zero);
         animatorScripts.PlayAnimation("Boss_6_Focus", 0);
-        yield return Idle();
+        yield return Idle(0.75f);
         yield return action.SpinShoot();
         animatorScripts.PlayAnimation("Boss_6_Idle", 0);
-        yield return Idle();
-        yield return move.Teleport(new Vector3(0, 20, 0));
+        yield return Idle(0.5f);
+        yield return move.EnterTeleport(new Vector3(0, 20, 0));
+        yield return Idle(0.5f);
     }
 
     public IEnumerator TargetPlayer()
@@ -230,10 +245,11 @@ public class Boss6_Commands : MonoBehaviour
     public IEnumerator DesperationAttack()
     {
         yield return move.MoveToDesperation();
-        yield return new WaitForSeconds(1 * controller.bossLevel);
+        action.ShowDesperationFilter(true);
+        yield return Idle(0.5f);
         animatorScripts.PlayAnimation("Boss_6_Act", 0);
         yield return action.SineAttack();
-        //yield return Idle();
+        action.ShowDesperationFilter(false);
         yield return move.Exit();
         ResetDespCount();
     }
@@ -243,13 +259,19 @@ public class Boss6_Commands : MonoBehaviour
         //Always has random commands unless indicated otherwise
         randomCommands = true;
         commandList.Clear();
+        float animationSpeed = controller.bossLevel;
+        if(animationSpeed < 1)
+            animationSpeed = 1;
+
+        animatorScripts.animator.SetFloat("Speed", animationSpeed);
 
         switch (phase)
         {
             case 0:
                 randomCommands = false;
                 commandList.Add("CircleAndShoot");
-                commandList.Add("SweepShoot");               
+                commandList.Add("SweepShoot");
+
                 break;
 
             case 1:
@@ -259,7 +281,7 @@ public class Boss6_Commands : MonoBehaviour
                 commandList.Add("TargetPlayer");
                 commandList.Add("SpinShoot");
 
-                action.sweepSpreadCount = 2;
+                sweepSpreadCount = 2;
                 break;
             case 2:
                 commandList.Add("SweepShoot");
@@ -267,7 +289,7 @@ public class Boss6_Commands : MonoBehaviour
                 commandList.Add("TargetStage");
                 commandList.Add("SpinShoot");
 
-                action.sweepSpreadCount = 3;
+                sweepSpreadCount = 3;
                 break;
             case 3:
                 commandQueue.Enqueue("GridAttack");
@@ -282,27 +304,21 @@ public class Boss6_Commands : MonoBehaviour
             case 4:
                 commandQueue.Enqueue("DesperationAttack");
 
-                commandList.Add("CircleAndShoot");
-                commandList.Add("GridAttack");
-                commandList.Add("TargetStage");
-                commandList.Add("SpinShoot");
-                break;
-            case 5:
-                commandQueue.Enqueue("TargetPlayerAndAttack");
-
                 commandList.Add("TargetPlayerAndAttack");
                 commandList.Add("TargetStage");
                 commandList.Add("GridAttack");
+
                 break;
-            case 6:        
-                commandQueue.Enqueue("TargetPlayerInfinite");
+            case 5:
+                commandQueue.Enqueue("TargetPlayerInfinite"); 
 
                 commandList.Add("SweepShoot");
                 commandList.Add("CircleAndShoot");
                 commandList.Add("SpinShoot");
                 commandList.Add("GridAttack");
-                break;
 
+                BreakCommand();
+                break;
             default:
                 Debug.LogError("Error when setting command list. No commands set for phase " + phase);
                 commandList.Add("SweepShoot");
@@ -336,6 +352,17 @@ public class Boss6_Commands : MonoBehaviour
         return result;
     }
 
+    private void BreakCommand(){
+        StopAllCoroutines();
+        DefaultState();
+        StartCoroutine(BreakCommandCO());
+    }
+
+    private IEnumerator BreakCommandCO(){
+        yield return move.Exit();
+        StartCoroutine(NextCommand());
+    }
+
     public void IncrementDespCount()
     {
         if (!despCounterActive)
@@ -366,5 +393,6 @@ public class Boss6_Commands : MonoBehaviour
     {
         action.DefaultState();
         animatorScripts.PlayAnimation("Boss_6_Idle", 0);
+        animatorScripts.PlayAnimation("Boss_6_Teleport_Normal", 2);
     }
 }
