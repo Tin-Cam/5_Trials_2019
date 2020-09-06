@@ -2211,6 +2211,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 490557284, guid: 52fee9b99713a1841bb55128229d8880, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 615156840, guid: 52fee9b99713a1841bb55128229d8880, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 762867809, guid: 52fee9b99713a1841bb55128229d8880, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 887915258, guid: 52fee9b99713a1841bb55128229d8880, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1046454330, guid: 52fee9b99713a1841bb55128229d8880, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2242,6 +2258,11 @@ PrefabInstance:
     - target: {fileID: 1272661021, guid: 52fee9b99713a1841bb55128229d8880, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312493438156586964, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5312493438156586967, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
@@ -2362,6 +2383,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312493438641714023, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312493439015129360, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312493439015129361, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529971916433408437, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52fee9b99713a1841bb55128229d8880, type: 3}
@@ -4613,7 +4654,7 @@ MonoBehaviour:
   sweepIndicatorSpeed: 5
   spinSpeed: 3
   spinShootRate: 0.1
-  spinShots: 40
+  spinShots: 30
   spinArms: 3
   targetIndicator: {fileID: 682992671}
   targetPrefab: {fileID: 3658731544874141042, guid: 372e702d396e66e48ac06b554b3d63c0,
@@ -4630,7 +4671,7 @@ MonoBehaviour:
     type: 3}
   holdGrid: 0
   maxGridSpeed: 3
-  maxGridSpeedCap: 6
+  maxGridSpeedCap: 4
   sineWaveSpeed: 1.5
   sineTime: 5
   sineUpper:

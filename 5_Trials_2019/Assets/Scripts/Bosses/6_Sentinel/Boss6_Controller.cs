@@ -82,6 +82,8 @@ public class Boss6_Controller : _BossBase
 
     protected override void IncreasePhase()
     {
+        audioManager.Play("Boss_Hit", 1, 1.5f);
+        healthBar.FlashBar();
         phase++;
         bossLevel += bosslevelIncrements;
         command.ChangeCommandList(phase);

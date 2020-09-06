@@ -56,7 +56,7 @@ public class Boss6_Action : _ActionBase
         animatorScripts = GetComponent<AnimatorScripts>();
         audioManager = AudioManager.instance;
         shooter = GetComponent<ShootScripts>();
-
+        
         player = controller.player;
 
         actionList.Add("ShootAtPlayer");
@@ -120,6 +120,7 @@ public class Boss6_Action : _ActionBase
 
         //Displays and initilises the indicator
         float t = -0.1f;
+        //audioManager.Play("Boss3_Indicate", 0.75f, 1.5f);
         sweepIndicator.transform.position = transform.position;
         sweepIndicator.transform.rotation = Quaternion.SlerpUnclamped(start, end, t);
         yield return new WaitForSeconds(0.2f * GetLevelFraction());
@@ -316,6 +317,7 @@ public class Boss6_Action : _ActionBase
         //Generate Grid
         float gap = 3;
         float perRow = ((screenBoundsRadius * 2) / gap);
+        audioManager.Play("Door_Open", 0.75f, 0.75f);
         for (int i = 0; i < perRow; i++)
         {
             for (int j = 0; j < perRow; j++)
@@ -393,6 +395,7 @@ public class Boss6_Action : _ActionBase
         float speedMultiplier = 0.5f;
         sineWaveAnimatorScripts.animator.SetFloat("Speed", speedMultiplier);
 
+        audioManager.Play("Boss_Charge", 0.75f, 0.5f);
         yield return sineWaveAnimatorScripts.PlayWholeAnimation("SineWave_Entry", 0);
         yield return new WaitForSeconds(sineTime * GetLevelFraction());
         yield return sineWaveAnimatorScripts.PlayWholeAnimation("SineWave_Exit", 0);

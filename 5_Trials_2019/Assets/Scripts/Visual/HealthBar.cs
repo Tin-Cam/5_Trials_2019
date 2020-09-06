@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour {
 
@@ -11,8 +12,11 @@ public class HealthBar : MonoBehaviour {
     private float maxLength;
     private float maxHealth;
 
+    private Image barImage;
+
 	void Awake () {
         maxLength = healthBar.transform.localScale.x;
+        barImage = healthBar.GetComponent<Image>();
     }
 
     public void addOrSubtractHealth(float value)
@@ -34,5 +38,26 @@ public class HealthBar : MonoBehaviour {
         if (length < 0)
             length = 0;
         healthBar.transform.localScale = new Vector3(length, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+    }
+
+    //Making it flash looks awful. Maybe try changing the colour or shaking it instead
+    public void FlashBar(){
+        //StartCoroutine(FlashBarCO());
+    }
+
+    private IEnumerator FlashBarCO(){
+        float time = 0.2f;
+        float flashCount = 4;
+        float timeDivision = time / flashCount;
+
+        while(time > 0){
+            if(time < timeDivision * flashCount){
+                barImage.enabled = !barImage.enabled;
+                flashCount--;
+            }
+            time -= Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        barImage.enabled = true;
     }
 }

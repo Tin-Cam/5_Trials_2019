@@ -130,7 +130,7 @@ public class Boss6_Commands : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         animatorScripts.PlayAnimation("Boss_6_Idle", 0);
-        yield return Idle(2);
+        yield return Idle(1.5f);
 
         //Exits the action
         move.isCircling = false;
@@ -310,6 +310,7 @@ public class Boss6_Commands : MonoBehaviour
 
                 break;
             case 5:
+                commandQueue.Clear();
                 commandQueue.Enqueue("TargetPlayerInfinite"); 
 
                 commandList.Add("SweepShoot");
@@ -353,7 +354,7 @@ public class Boss6_Commands : MonoBehaviour
     }
 
     private void BreakCommand(){
-        StopAllCoroutines();
+        StopAllCoroutines();       
         DefaultState();
         StartCoroutine(BreakCommandCO());
     }
