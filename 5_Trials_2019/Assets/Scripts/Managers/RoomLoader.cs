@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class RoomLoader : MonoBehaviour
 {
     public static RoomLoader instance;
-
+    
     private int currentRoom = 9;
 
     private List<string> scenes = new List<string> {
@@ -36,14 +36,7 @@ public class RoomLoader : MonoBehaviour
 		}
     }
 
-    void Update(){
-        if (Input.GetKeyDown("o"))
-            MoveRooms(-1);
-        if (Input.GetKeyDown("p"))
-            MoveRooms(1);
-    }
-
-    private void MoveRooms(int direction) {
+    public void MoveRooms(int direction) {
         currentRoom += direction;
         if(currentRoom < 0)
             currentRoom += scenes.Count;
@@ -52,8 +45,21 @@ public class RoomLoader : MonoBehaviour
         LoadRoom(currentRoom);
     }
 
+    public int GetRoomCode(){
+        return currentRoom;
+    }
+
+    public void ReloadRoom(){
+        SceneManager.LoadScene(scenes[currentRoom]);
+    }
 
     public void LoadRoom(int roomCode){
+        currentRoom = roomCode;
+        Debug.Log("Loading room " + roomCode + ": " + scenes[roomCode]);
         SceneManager.LoadScene(scenes[roomCode]);
+    }
+
+    public void LoadInbetweenCutscene(int cutsceneCode){
+
     }
 }

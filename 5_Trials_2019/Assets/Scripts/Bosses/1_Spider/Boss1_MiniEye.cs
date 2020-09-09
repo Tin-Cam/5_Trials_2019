@@ -13,7 +13,7 @@ public class Boss1_MiniEye : MonoBehaviour
     public GameObject projectile;
     public GameObject player;
 
-    void Awake()
+    void Start()
     {
         animator = GetComponent<Animator>();
         audioManager = AudioManager.instance;

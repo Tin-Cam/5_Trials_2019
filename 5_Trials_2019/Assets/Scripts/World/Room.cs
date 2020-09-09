@@ -17,7 +17,7 @@ public class Room : MonoBehaviour
 
     public void ChangeRoom(int destination)
     {
-        gameManager.LoadNewRoom(destination);
+        //gameManager.LoadNewRoom(destination);
     }
 
     public void SetGameManager(GameManager gameManager)
