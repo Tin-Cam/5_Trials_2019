@@ -39,12 +39,13 @@ public abstract class _BossBase : MonoBehaviour
         animator = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
 
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = AudioManager.instance;
 
         maxHealth = health;
 
         healthBar.initHealth(health);
-        Init();       
+        
+        Init();
     }
 
     protected void AI()
@@ -88,7 +89,6 @@ public abstract class _BossBase : MonoBehaviour
         CheckHealth();
         if (health <= 0)
             StartDeath();
-
     }
 
 
@@ -131,6 +131,6 @@ public abstract class _BossBase : MonoBehaviour
     abstract public void BossHurt();
     abstract protected void IncreasePhase();
     abstract protected void CheckHealth();
-    abstract protected void StartDeath();
+    abstract public void StartDeath();
     abstract public void DefaultState(); 
 }

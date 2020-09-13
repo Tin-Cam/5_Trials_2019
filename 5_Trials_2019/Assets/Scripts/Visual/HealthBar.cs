@@ -27,9 +27,18 @@ public class HealthBar : MonoBehaviour {
 
     public void initHealth(float value)
     {
+        //Handles a bug
+        if(maxLength == 0)
+            maxLength = healthBar.transform.localScale.x;
+
         maxHealth = value;
         length = maxLength;
         unit = maxLength / maxHealth;
+        updateBar();
+    }
+
+    public void SetHealth(float amount){
+        length = amount * unit;
         updateBar();
     }
 

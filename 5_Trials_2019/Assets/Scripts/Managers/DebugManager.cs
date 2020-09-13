@@ -74,6 +74,16 @@ public class DebugManager : MonoBehaviour
         {
             PerformCommand(9);
         }
+        //Kill Boss
+        if (Input.GetKeyDown("9"))
+        {
+            GetBoss().StartDeath();
+        }
+        //Kill Player
+        if (Input.GetKeyDown("8"))
+        {
+            gameManager.PlayerTakeDamage(100);
+        }
 
         //Stops the boss from acting
         if (Input.GetKeyDown(KeyCode.KeypadPeriod))
@@ -98,9 +108,9 @@ public class DebugManager : MonoBehaviour
     private void RoomCommands()
     {
         if (Input.GetKeyDown("o"))
-            RoomLoader.instance.MoveRooms(-1);
+            RoomManager.instance.MoveRooms(-1);
         if (Input.GetKeyDown("p"))
-            RoomLoader.instance.MoveRooms(1);
+            RoomManager.instance.MoveRooms(1);
 
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {

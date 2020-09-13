@@ -14,12 +14,16 @@ public class GUIManager : MonoBehaviour
     public GameObject pauseMenu;
 
     private Animator animator;
+    [HideInInspector]
+    public GameManager gameManager;
 
     void Awake()
     {
         gameOverMenu.SetActive(false);
         pauseMenu.SetActive(false);
         animator = GetComponent<Animator>();
+
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void ShowGUI(bool isVisible)
@@ -69,14 +73,28 @@ public class GUIManager : MonoBehaviour
             throw new System.Exception("Error: " + direction + " is not a defined direction");
     }
 
+    public void Unpause(){
+        gameManager.PauseGame(false);
+    }
 
-    public void LoadScene()
+    public void RetryRoom(){
+        DefaultValues();
+        gameManager.ResetRoom();
+    }
+
+    public void MainMenu()
     {
+        DefaultValues();
         SceneManager.LoadScene("Main_Menu");
     }
 
     public void QuitGame()
     {
+        DefaultValues();
         Application.Quit();       
+    }
+
+    private void DefaultValues(){
+        Time.timeScale = 1;
     }
 }

@@ -4211,12 +4211,12 @@ PrefabInstance:
     - target: {fileID: 9182096197023116855, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9182096197023116855, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.34
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 9182096197023116855, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
@@ -4416,67 +4416,22 @@ PrefabInstance:
     - target: {fileID: 7282111899576251158, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
       propertyPath: m_Name
-      value: Audio
-      objectReference: {fileID: 0}
-    - target: {fileID: 7282111899576251159, guid: 17b98768abaf94f41b16411e504ae230,
-        type: 3}
-      propertyPath: sounds.Array.size
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 7282111899576251159, guid: 17b98768abaf94f41b16411e504ae230,
-        type: 3}
-      propertyPath: sounds.Array.data[17].name
-      value: Teleport
-      objectReference: {fileID: 0}
-    - target: {fileID: 7282111899576251159, guid: 17b98768abaf94f41b16411e504ae230,
-        type: 3}
-      propertyPath: sounds.Array.data[17].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 30695fa4002eca04eaf71a0e09675361, type: 3}
-    - target: {fileID: 7282111899576251159, guid: 17b98768abaf94f41b16411e504ae230,
-        type: 3}
-      propertyPath: sounds.Array.data[17].volume
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 7282111899576251159, guid: 17b98768abaf94f41b16411e504ae230,
-        type: 3}
-      propertyPath: sounds.Array.data[17].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7282111899576251159, guid: 17b98768abaf94f41b16411e504ae230,
-        type: 3}
-      propertyPath: sounds.Array.data[18].name
-      value: Whoosh
-      objectReference: {fileID: 0}
-    - target: {fileID: 7282111899576251159, guid: 17b98768abaf94f41b16411e504ae230,
-        type: 3}
-      propertyPath: sounds.Array.data[18].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 77cc71809cc28c8408cba2d850ddc040, type: 3}
-    - target: {fileID: 7282111899576251159, guid: 17b98768abaf94f41b16411e504ae230,
-        type: 3}
-      propertyPath: sounds.Array.data[18].volume
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 7282111899576251159, guid: 17b98768abaf94f41b16411e504ae230,
-        type: 3}
-      propertyPath: sounds.Array.data[18].pitch
-      value: 1
+      value: Persistant Managers
       objectReference: {fileID: 0}
     - target: {fileID: 7282111899576251240, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 184.17422
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7282111899576251240, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 464.55734
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7282111899576251240, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -50.09164
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7282111899576251240, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
@@ -5860,7 +5815,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7777231986860824505}
   - component: {fileID: 2901094200162091791}
-  - component: {fileID: 5493518802255645317}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -5868,25 +5822,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5493518802255645317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5121097169709592519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2dc7a4edd9e67d409db6f33c1f2c4e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraLockX: 0
-  cameraLockY: 0
-  hasIntro: 0
-  playerSpawn: {x: 0, y: -4}
-  bossID: 0
-  music: {fileID: 0}
-  door: {fileID: 0}
 --- !u!114 &6174863983081266617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5901,9 +5836,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraLockX: 1
   cameraLockY: 1
-  hasIntro: 0
-  playerSpawn: {x: 0, y: -4}
-  bossID: 2
   music: {fileID: 0}
   door: {fileID: 0}
 --- !u!1 &6222798368859688816

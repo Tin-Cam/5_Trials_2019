@@ -22,7 +22,7 @@ public class Boss2_Controller : _BossBase
         actionBase = action;
         moveBase = move;
 
-        if (GameData.difficulty == 0)
+        if (FlagManager.instance.easyMode)
             EasyMode();
 
         move.Init();
@@ -131,7 +131,7 @@ public class Boss2_Controller : _BossBase
     }
 
 
-    protected override void StartDeath()
+    public override void StartDeath()
     {
         Die();
     }

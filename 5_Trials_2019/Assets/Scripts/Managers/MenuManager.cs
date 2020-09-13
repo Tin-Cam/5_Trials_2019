@@ -28,8 +28,13 @@ public class MenuManager : MonoBehaviour
     public void StartGame(int difficulty)
     {
         PlayButtonSound();
-        GameData.difficulty = difficulty;
-        LoadScene("Rooms");
+
+        if(difficulty == 0)
+            FlagManager.instance.easyMode = true;
+        else
+            FlagManager.instance.easyMode = false;
+
+        LoadScene("Starting_Room");
     }
 
     public void QuitGame()

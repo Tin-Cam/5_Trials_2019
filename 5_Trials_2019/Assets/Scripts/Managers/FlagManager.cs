@@ -14,6 +14,8 @@ public class FlagManager : MonoBehaviour
     public bool boss6Cutscene;
     [Space(10)]
     public bool hasBeenHit;
+    public float bossTime;
+    public int bossId;
 
     void Awake()
 	{

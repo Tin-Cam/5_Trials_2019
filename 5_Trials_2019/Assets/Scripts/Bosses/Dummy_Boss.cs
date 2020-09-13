@@ -18,7 +18,7 @@ public class Dummy_Boss : _BossBase
         TakeDamage(1);
     }
 
-    protected override void StartDeath()
+    public override void StartDeath()
     {
         Die();
     }

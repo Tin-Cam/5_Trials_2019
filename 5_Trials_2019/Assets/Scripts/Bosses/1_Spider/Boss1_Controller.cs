@@ -34,7 +34,7 @@ public class Boss1_Controller : _BossBase
         move.Init();
         eyes.Init();
 
-        if (GameData.difficulty == 0)
+        if (FlagManager.instance.easyMode)
             EasyMode();
     }
 
@@ -119,12 +119,12 @@ public class Boss1_Controller : _BossBase
         action.desperationAmount /= 2;
     }
 
-    protected override void StartDeath()
+    public override void StartDeath()
     {
         Destroy(eyes.miniEyeL.gameObject);
         Destroy(eyes.miniEyeR.gameObject);
         eyes.enabled = false;
-        Die();    
+        Die();
     }
 
     public override void BossHurt()

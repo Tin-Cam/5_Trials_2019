@@ -17,5 +17,5 @@ public class BossManager : MonoBehaviour
         gameManager = GetComponent<GameManager>();
         currentBoss = FindObjectOfType<_BossBase>();
     }
-
+    
 }

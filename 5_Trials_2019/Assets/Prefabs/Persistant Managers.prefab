@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7282111899576251240}
   - component: {fileID: 7282111899576251159}
+  - component: {fileID: 762084817190739888}
+  - component: {fileID: 7614915543223763297}
   m_Layer: 0
-  m_Name: Audio
+  m_Name: Persistant Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7282111899576251158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 184.17422, y: 464.55734, z: -50.09164}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -198,3 +200,53 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Teleport
+    clip: {fileID: 8300000, guid: 30695fa4002eca04eaf71a0e09675361, type: 3}
+    volume: 0.75
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Whoosh
+    clip: {fileID: 8300000, guid: 77cc71809cc28c8408cba2d850ddc040, type: 3}
+    volume: 0.75
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+--- !u!114 &762084817190739888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7282111899576251158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4dd0500416aa145aa8f4ce98f82e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  easyMode: 0
+  hardcoreMode: 0
+  storyMode: 0
+  boss5Cutscene: 0
+  boss6Cutscene: 0
+  hasBeenHit: 0
+  bossTime: 0
+  bossId: 0
+--- !u!114 &7614915543223763297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7282111899576251158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f30cc33bad987f42ac7d5405aafc128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
