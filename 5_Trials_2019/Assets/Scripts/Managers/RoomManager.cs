@@ -22,7 +22,7 @@ public class RoomManager : MonoBehaviour
         "Boss5",   //7
         "Boss6",   //8
         "RoomLoader_Test1",   //9
-        "RoomLoader_Test2",   //10
+        "RoomLoader_Test2"   //10
     };
 
     void Awake()
@@ -36,6 +36,10 @@ public class RoomManager : MonoBehaviour
 			instance = this;
 			DontDestroyOnLoad(gameObject);
 		}
+        
+    }
+
+    void Start(){
         OnRoomLoad();
     }
 
@@ -62,7 +66,7 @@ public class RoomManager : MonoBehaviour
     }
 
     public void ReloadRoom(){
-        SceneManager.LoadScene(scenes[GetRoomCode()]);
+        LoadRoom(scenes[GetRoomCode()]);
     }
 
     public void LoadRoom(int roomCode){
@@ -74,13 +78,16 @@ public class RoomManager : MonoBehaviour
     public void LoadRoom(string room){
         int roomCode = scenes.IndexOf(room);
         Debug.Log("Loading room " + roomCode + ": " + scenes[roomCode]);
+        Time.timeScale = 0;
         StartCoroutine(LoadRoomCO(roomCode));
     }
 
     private IEnumerator LoadRoomCO(int roomCode){
         if(fader != null)
             yield return fader.FadeOut();
+        fader.StopAllCoroutines();       
         SceneManager.LoadScene(scenes[roomCode]);
+        yield return new WaitForSeconds(1);
         OnRoomLoad();
     }
 

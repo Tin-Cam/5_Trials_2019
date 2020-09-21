@@ -29,6 +29,15 @@ public class AnimatorScripts : MonoBehaviour
         }
     }
 
+    //Finishes when an animation stops playing
+    public IEnumerator PlayWholeAnimationRealTime(string animation, int layer)
+    {
+        animator.Play(animation, layer);
+        yield return new WaitForEndOfFrame();
+        Debug.Log("Waiting for " + animation);
+        yield return new WaitWhile(() => animator.GetCurrentAnimatorStateInfo(layer).normalizedTime < 1f);
+    }
+
     //NOT USED YET
     private void DefaultState()
     {

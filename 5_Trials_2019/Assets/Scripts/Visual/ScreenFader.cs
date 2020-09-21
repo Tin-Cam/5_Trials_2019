@@ -29,12 +29,12 @@ public class ScreenFader : MonoBehaviour
 
     public IEnumerator FadeIn()
     {
-        yield return animatorScripts.PlayWholeAnimation("Fade_In", 0);
+        yield return animatorScripts.PlayWholeAnimationRealTime("Fade_In", 0);
     }
 
     public IEnumerator FadeOut()
     {
-        yield return animatorScripts.PlayWholeAnimation("Fade_Out", 0);
+        yield return animatorScripts.PlayWholeAnimationRealTime("Fade_Out", 0);
     }
 
     public void FadeMid(bool state)
