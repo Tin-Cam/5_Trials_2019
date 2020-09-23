@@ -9,7 +9,9 @@ public class TextProcessor
 {
     private float textSpeed;
     private float defaultTextSpeed = 1f;
+
     private bool speedUpText;
+    private bool writingText = false;
 
     public TextProcessor(){
         textSpeed = defaultTextSpeed;
@@ -42,19 +44,19 @@ public class TextProcessor
     public IEnumerator WriteText(string textToWrite, TextMeshProUGUI textBox){
         float t = 0;
         speedUpText = false;
+        writingText = true;
         while(t < textToWrite.Length){
-            int tInt = (int) t;
-
-            textBox.text = WriteCharacters(textToWrite, tInt);
-            textSpeed = CheckCharacter(textToWrite[tInt]);
             t += Time.deltaTime * textSpeed;
+            int tInt = Mathf.RoundToInt(t);
+            if(tInt >= textToWrite.Length)
+                tInt = textToWrite.Length - 1;
+           
+            textSpeed = CheckCharacter(textToWrite[tInt]);            
+            textBox.text = textToWrite.Substring(0, tInt);
             yield return new WaitForFixedUpdate();
         }
-    }
-
-    public string WriteCharacters(string text, int characters){
-        string result = text.Substring(0, characters);
-        return result;
+        textBox.text = textToWrite;
+        writingText = false;
     }
 
     public float CheckCharacter(char character){
@@ -72,10 +74,13 @@ public class TextProcessor
         return result;
     }
 
-    public void ProgressText(){
+    public bool IsTextComplete(){
         //Speed up text if not complete
-        speedUpText = true;
-
+        if(writingText){
+            speedUpText = true;
+            return false;;
+        }
+        return true;
     }
 
     private class TextData {

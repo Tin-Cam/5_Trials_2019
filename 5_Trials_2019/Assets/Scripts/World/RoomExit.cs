@@ -8,6 +8,9 @@ public class RoomExit : MonoBehaviour
 {
     public string destination;
 
+    public bool playInterlude;
+    public int interludeID;
+
     private void ChangeRoom()
     {
         AudioManager.instance.Play("Door_Enter");
@@ -16,7 +19,12 @@ public class RoomExit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
-            ChangeRoom();
+        if (other.tag != "Player")
+            return;
+        if(playInterlude){
+            RoomManager.instance.LoadInterludeCutscene(interludeID);
+            return;
+        }
+        ChangeRoom();
     }
 }

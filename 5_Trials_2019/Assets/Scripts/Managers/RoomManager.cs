@@ -21,8 +21,7 @@ public class RoomManager : MonoBehaviour
         "Boss4",   //6
         "Boss5",   //7
         "Boss6",   //8
-        "RoomLoader_Test1",   //9
-        "RoomLoader_Test2"   //10
+        "Cutscene_Interlude" //9
     };
 
     void Awake()
@@ -67,31 +66,36 @@ public class RoomManager : MonoBehaviour
 
     public void ReloadRoom(){
         LoadRoom(scenes[GetRoomCode()]);
-    }
-
-    public void LoadRoom(int roomCode){
-        currentRoom = roomCode;
-        Debug.Log("Loading room " + roomCode + ": " + scenes[roomCode]);
-        SceneManager.LoadScene(scenes[roomCode]);
-    }
+    }   
 
     public void LoadRoom(string room){
         int roomCode = scenes.IndexOf(room);
-        Debug.Log("Loading room " + roomCode + ": " + scenes[roomCode]);
-        Time.timeScale = 0;
+        LoadRoom(roomCode);
+    }
+
+    public void LoadRoom(int roomCode){
         StartCoroutine(LoadRoomCO(roomCode));
     }
 
     private IEnumerator LoadRoomCO(int roomCode){
+        currentRoom = roomCode;
+        Time.timeScale = 0;
+
         if(fader != null)
             yield return fader.FadeOut();
         fader.StopAllCoroutines();       
         SceneManager.LoadScene(scenes[roomCode]);
-        yield return new WaitForSeconds(1);
         OnRoomLoad();
     }
 
-    public void LoadInbetweenCutscene(int cutsceneCode){
+    public void LoadInterludeCutscene(int cutsceneCode){
+        StartCoroutine(LoadInterludeCutsceneCO(cutsceneCode));
+    }
 
+    private IEnumerator LoadInterludeCutsceneCO(int cutsceneCode){
+        yield return LoadRoomCO(scenes.IndexOf("Cutscene_Interlude"));
+        yield return new WaitForSeconds(0.5f);
+        Interlude interlude = FindObjectOfType<Interlude>();
+        interlude.LoadCutscene(cutsceneCode);
     }
 }

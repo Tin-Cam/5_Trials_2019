@@ -474,7 +474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 0}
-  roomLoader: {fileID: 0}
+  roomManager: {fileID: 0}
   gui: {fileID: 977942749}
   isPaused: 0
   noInterupts: 0
@@ -601,6 +601,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 609085940932551157, guid: ea89b891bec98de4ca894a5741c2bd3b,
+        type: 3}
+      propertyPath: playInterlude
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 609085940932551157, guid: ea89b891bec98de4ca894a5741c2bd3b,
+        type: 3}
+      propertyPath: interludeID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1630274263261058923, guid: ea89b891bec98de4ca894a5741c2bd3b,
         type: 3}
       propertyPath: m_Name

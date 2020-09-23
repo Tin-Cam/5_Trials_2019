@@ -423,11 +423,11 @@ MonoBehaviour:
   textSpeed: 30
   cutscenes:
   - {fileID: 4900000, guid: 1da72a0e88b83f74682605fe06125e07, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4900000, guid: b2008daa0853eab44a73a2a9319a2b10, type: 3}
+  - {fileID: 4900000, guid: fe8b7823f57229e4eb6ad0b95799f7a8, type: 3}
+  - {fileID: 4900000, guid: e78b2bbcf94f4df4a803e407c04202ff, type: 3}
+  - {fileID: 4900000, guid: 0bec87d76c3b6a4459dd90238d7a023a, type: 3}
+  - {fileID: 4900000, guid: b4965fdc2cad24643a2b9e2fc4b5ac3b, type: 3}
 --- !u!1 &1602934594
 GameObject:
   m_ObjectHideFlags: 0
