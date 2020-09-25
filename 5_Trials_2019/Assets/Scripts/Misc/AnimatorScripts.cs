@@ -36,6 +36,7 @@ public class AnimatorScripts : MonoBehaviour
         yield return new WaitForEndOfFrame();
         Debug.Log("Waiting for " + animation);
         yield return new WaitWhile(() => animator.GetCurrentAnimatorStateInfo(layer).normalizedTime < 1f);
+        Debug.Log("Animation finished");
     }
 
     //NOT USED YET

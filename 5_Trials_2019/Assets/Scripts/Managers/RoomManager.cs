@@ -39,10 +39,14 @@ public class RoomManager : MonoBehaviour
     }
 
     void Start(){
-        OnRoomLoad();
+        currentRoom = GetRoomCode();
+        StartCoroutine(OnRoomLoad());
     }
 
-    private void OnRoomLoad(){
+    private IEnumerator OnRoomLoad(){
+        while (SceneManager.GetActiveScene().buildIndex != currentRoom)
+            yield return null;
+        
         fader = FindObjectOfType<ScreenFader>();
         if(fader != null)
             StartCoroutine(fader.FadeIn());       
@@ -83,9 +87,8 @@ public class RoomManager : MonoBehaviour
 
         if(fader != null)
             yield return fader.FadeOut();
-        fader.StopAllCoroutines();       
         SceneManager.LoadScene(scenes[roomCode]);
-        OnRoomLoad();
+        yield return OnRoomLoad();
     }
 
     public void LoadInterludeCutscene(int cutsceneCode){
@@ -94,8 +97,9 @@ public class RoomManager : MonoBehaviour
 
     private IEnumerator LoadInterludeCutsceneCO(int cutsceneCode){
         yield return LoadRoomCO(scenes.IndexOf("Cutscene_Interlude"));
-        yield return new WaitForSeconds(0.5f);
+
         Interlude interlude = FindObjectOfType<Interlude>();
         interlude.LoadCutscene(cutsceneCode);
+        Time.timeScale = 1;
     }
 }

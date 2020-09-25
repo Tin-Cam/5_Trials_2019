@@ -48,6 +48,7 @@ public class TextProcessor
         while(t < textToWrite.Length){
             t += Time.deltaTime * textSpeed;
             int tInt = Mathf.RoundToInt(t);
+            //Check to ensure t doesn't exceed string
             if(tInt >= textToWrite.Length)
                 tInt = textToWrite.Length - 1;
            
