@@ -784,6 +784,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room_4
       objectReference: {fileID: 0}
+    - target: {fileID: 7116373230730956360, guid: d721d292a0ade1b459f96f60e8772f2c,
+        type: 3}
+      propertyPath: interludeID
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d721d292a0ade1b459f96f60e8772f2c, type: 3}
 --- !u!1001 &4624279371077538472

@@ -926,5 +926,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room_Boss3
       objectReference: {fileID: 0}
+    - target: {fileID: 3989846393978001451, guid: 3e92479b334faca41a93db78827215b5,
+        type: 3}
+      propertyPath: playInterlude
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989846393978001451, guid: 3e92479b334faca41a93db78827215b5,
+        type: 3}
+      propertyPath: interludeID
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e92479b334faca41a93db78827215b5, type: 3}

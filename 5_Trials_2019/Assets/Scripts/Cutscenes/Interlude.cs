@@ -10,12 +10,13 @@ public class Interlude : MonoBehaviour
     public TextMeshProUGUI textBox;
     public TextAsset text;
     public float textSpeed;
+    public GameObject textIcon;
 
     public List<TextAsset> cutscenes = new List<TextAsset>();
 
     private TextProcessor textProcessor;
 
-    private int currentLine = 0;
+    private int nextLine = 0;
 
     private Cutscene currentCutscene;
     
@@ -26,9 +27,10 @@ public class Interlude : MonoBehaviour
 
     public void LoadCutscene(int cutsceneID)
     {
-        textProcessor = new TextProcessor(textSpeed);
+        textProcessor = new TextProcessor(textBox, textSpeed);
         string jsonFile = cutscenes[cutsceneID].text;
         currentCutscene = JsonUtility.FromJson<Cutscene>(jsonFile);
+        nextLine = 0;
 
         NextLine();
     }
@@ -39,12 +41,31 @@ public class Interlude : MonoBehaviour
     }
 
     private void NextLine(){
+        //Check if the next line can be written
         if(!textProcessor.IsTextComplete())
             return;
-        if(currentLine >= currentCutscene.text.Length)
+        if(nextLine >= currentCutscene.text.Length){
+                RoomManager.instance.LoadRoom(currentCutscene.nextScene);
+                return;
+        }
+        //Write next line
+        StartCoroutine(NextLineCO());
+        nextLine++;
+    }
+
+    private IEnumerator NextLineCO(){
+        SetTextIconActive(false);
+        yield return textProcessor.WriteText(currentCutscene.text[nextLine]);
+        SetTextIconActive(true);
+    }
+
+    private void SetTextIconActive(bool isActive){
+        if(!isActive){
+            textIcon.SetActive(false);
             return;
-        StartCoroutine(textProcessor.WriteText(currentCutscene.text[currentLine], textBox));
-        currentLine++;
+        }
+        //Display different icons depending on what line is displayed
+        textIcon.SetActive(true);
     }
 
     private class Cutscene {

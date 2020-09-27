@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     private int currentRoomCode;
 
+    public bool introOnStart = true;
+
     void Awake()
     {
         audioManager = AudioManager.instance;
@@ -41,7 +43,8 @@ public class GameManager : MonoBehaviour
         playerMaxHealth = playerHealth;
         gui.InitHealth(playerMaxHealth);
 
-        StartCoroutine(RoomIntro());
+        if(introOnStart)
+            RoomIntro();
     }
 
     void Update()
@@ -52,10 +55,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator RoomIntro(){
+    public void RoomIntro(){
+        StartCoroutine(RoomIntroCO());
+    }
+
+    private IEnumerator RoomIntroCO(){
         Time.timeScale = 0;
         noInterupts = true;
-        //yield return gui.FadeTransition("In");
 
         yield return new WaitForSecondsRealtime(1);
 

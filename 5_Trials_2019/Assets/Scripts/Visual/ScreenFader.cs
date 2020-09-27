@@ -40,7 +40,10 @@ public class ScreenFader : MonoBehaviour
     public void FadeMid(bool state)
     {
         StopAllCoroutines();
-        animatorScripts.PlayAnimation("Fade_Mid");
+        if(state)
+            animatorScripts.PlayAnimation("Fade_Mid");
+        else
+            animatorScripts.PlayAnimation("Fade_Nothing");
     }
 
     //Finishes when an animation stops playing

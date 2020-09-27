@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.IO;
 using System.Linq;
 
 public class TextProcessor
@@ -11,15 +10,25 @@ public class TextProcessor
     private float defaultTextSpeed = 1f;
 
     private bool speedUpText;
-    private bool writingText = false;
+    private bool writingText;
 
-    public TextProcessor(){
+    private string[] textLines;
+    private IEnumerator writingCO;
+    private TextMeshProUGUI textBox;
+
+    private int nextLine;
+
+    public TextProcessor(TextMeshProUGUI textBox){
         textSpeed = defaultTextSpeed;
+        this.textBox = textBox;
+        writingText = false;
     }
 
-    public TextProcessor(float speed){
+    public TextProcessor(TextMeshProUGUI textBox, float speed){
         defaultTextSpeed = speed;
         textSpeed = defaultTextSpeed;
+        this.textBox = textBox;
+        writingText = false;
     }
 
     public List<string> TextFileParser(string textFile){
@@ -32,16 +41,8 @@ public class TextProcessor
         return result;
     }
 
-    public IEnumerator WriteSection(string textToWrite, TextMeshProUGUI textBox){
-        int length = textToWrite.Length;
+    public IEnumerator WriteText(string textToWrite){
         
-        for(int i = 0; i < textToWrite.Length; i++){
-            textBox.text = textToWrite.Substring(0, i);
-            yield return CheckCharacter(textToWrite[i]);
-        }
-    }
-
-    public IEnumerator WriteText(string textToWrite, TextMeshProUGUI textBox){
         float t = 0;
         speedUpText = false;
         writingText = true;
@@ -54,7 +55,7 @@ public class TextProcessor
            
             textSpeed = CheckCharacter(textToWrite[tInt]);            
             textBox.text = textToWrite.Substring(0, tInt);
-            yield return new WaitForFixedUpdate();
+            yield return null;
         }
         textBox.text = textToWrite;
         writingText = false;
@@ -82,10 +83,6 @@ public class TextProcessor
             return false;;
         }
         return true;
-    }
-
-    private class TextData {
-        public List<string> lines;
     }
 }
 
