@@ -24,6 +24,7 @@ public class CM_Boss5 : MonoBehaviour, ICutsceneManager
     }
 
     private void Intro(){
+        camera.GetComponent<CameraFollow>().enabled = false;
         introCutscene.Play();
     }
 
