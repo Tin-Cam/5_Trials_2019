@@ -1,0 +1,1427 @@
+fileFormatVersion: 2
+guid: 2c138d964110ec943801e3072b8503dd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6979783107679241817
+    second: Boss 6 Tileset_0
+  - first:
+      213: -665882613173377544
+    second: Boss 6 Tileset_1
+  - first:
+      213: -4271097167527164362
+    second: Boss 6 Tileset_2
+  - first:
+      213: 5984274621716633372
+    second: Boss 6 Tileset_3
+  - first:
+      213: -9190302537531080429
+    second: Boss 6 Tileset_4
+  - first:
+      213: 4440876138311405501
+    second: Boss 6 Tileset_5
+  - first:
+      213: 4357912054040579486
+    second: Boss 6 Tileset_6
+  - first:
+      213: -3493190491740866091
+    second: Boss 6 Tileset_7
+  - first:
+      213: 2117371779459547310
+    second: Boss 6 Tileset_8
+  - first:
+      213: 9031698642346451413
+    second: Boss 6 Tileset_9
+  - first:
+      213: -8692273137126437088
+    second: Boss 6 Tileset_10
+  - first:
+      213: 8961849047366153791
+    second: Boss 6 Tileset_11
+  - first:
+      213: 1904656094633649219
+    second: Boss 6 Tileset_12
+  - first:
+      213: -7952762048202985343
+    second: Boss 6 Tileset_13
+  - first:
+      213: -3800614539727070466
+    second: Boss 6 Tileset_14
+  - first:
+      213: -6825414004622043733
+    second: Boss 6 Tileset_15
+  - first:
+      213: -9020526558649317562
+    second: Boss 6 Tileset_16
+  - first:
+      213: -2907320056704481935
+    second: Boss 6 Tileset_17
+  - first:
+      213: 4918420689071372649
+    second: Boss 6 Tileset_18
+  - first:
+      213: 755164548876700500
+    second: Boss 6 Tileset_19
+  - first:
+      213: -2972401745610994798
+    second: Boss 6 Tileset_20
+  - first:
+      213: -4159076494832957060
+    second: Boss 6 Tileset_21
+  - first:
+      213: 265949973076426255
+    second: Boss 6 Tileset_22
+  - first:
+      213: -863313293664650654
+    second: Boss 6 Tileset_23
+  - first:
+      213: -3793083219695889146
+    second: Boss 6 Tileset_24
+  - first:
+      213: 9191959503458699925
+    second: Boss 6 Tileset_25
+  - first:
+      213: -4944583532824328016
+    second: Boss 6 Tileset_26
+  - first:
+      213: 2254001089374260886
+    second: Boss 6 Tileset_27
+  - first:
+      213: -6267029078427721117
+    second: Boss 6 Tileset_28
+  - first:
+      213: -1503993838422899456
+    second: Boss 6 Tileset_29
+  - first:
+      213: -2758143562456722421
+    second: Boss 6 Tileset_30
+  - first:
+      213: -2254161511835814283
+    second: Boss 6 Tileset_31
+  - first:
+      213: -4182355531429618072
+    second: Boss 6 Tileset_32
+  - first:
+      213: 5551317004575442830
+    second: Boss 6 Tileset_33
+  - first:
+      213: 1316093132767613744
+    second: Boss 6 Tileset_34
+  - first:
+      213: -5315529089744668716
+    second: Boss 6 Tileset_35
+  - first:
+      213: 8914958292792146303
+    second: Boss 6 Tileset_36
+  - first:
+      213: 66434497965280160
+    second: Boss 6 Tileset_0
+  - first:
+      213: 7400875553866219718
+    second: Boss 6 Tileset_1
+  - first:
+      213: 2717747965482215532
+    second: Boss 6 Tileset_2
+  - first:
+      213: 6989388643847267690
+    second: Boss 6 Tileset_3
+  - first:
+      213: -6109249296979200309
+    second: Boss 6 Tileset_4
+  - first:
+      213: 5712380034364861190
+    second: Boss 6 Tileset_5
+  - first:
+      213: 2206450483359002546
+    second: Boss 6 Tileset_6
+  - first:
+      213: -4758183262307994488
+    second: Boss 6 Tileset_7
+  - first:
+      213: -4144336127495805021
+    second: Boss 6 Tileset_8
+  - first:
+      213: 9176810666248487303
+    second: Boss 6 Tileset_9
+  - first:
+      213: 6406978881016945551
+    second: Boss 6 Tileset_10
+  - first:
+      213: -178000347689509160
+    second: Boss 6 Tileset_11
+  - first:
+      213: -1298532880486732918
+    second: Boss 6 Tileset_12
+  - first:
+      213: -8555527157100609977
+    second: Boss 6 Tileset_13
+  - first:
+      213: 1486272740030515126
+    second: Boss 6 Tileset_14
+  - first:
+      213: 4295706837817937881
+    second: Boss 6 Tileset_15
+  - first:
+      213: 3939487666887062055
+    second: Boss 6 Tileset_16
+  - first:
+      213: 7813829113745998192
+    second: Boss 6 Tileset_17
+  - first:
+      213: -5956207433438313867
+    second: Boss 6 Tileset_18
+  - first:
+      213: 5270074530112577166
+    second: Boss 6 Tileset_19
+  - first:
+      213: 4989321717287600765
+    second: Boss 6 Tileset_20
+  - first:
+      213: -5490867514268682244
+    second: Boss 6 Tileset_21
+  - first:
+      213: -3928076050437958615
+    second: Boss 6 Tileset_22
+  - first:
+      213: 4414079032900645432
+    second: Boss 6 Tileset_23
+  - first:
+      213: -1620194251001780079
+    second: Boss 6 Tileset_24
+  - first:
+      213: 1629838305171810834
+    second: Boss 6 Tileset_25
+  - first:
+      213: -5472562304132595233
+    second: Boss 6 Tileset_26
+  - first:
+      213: -7393791307741558190
+    second: Boss 6 Tileset_27
+  - first:
+      213: 6225493496019248503
+    second: Boss 6 Tileset_28
+  - first:
+      213: -1411514198828399942
+    second: Boss 6 Tileset_29
+  - first:
+      213: 3688253360393913482
+    second: Boss 6 Tileset_30
+  - first:
+      213: 1082860928355608086
+    second: Boss 6 Tileset_31
+  - first:
+      213: -3717454453465604947
+    second: Boss 6 Tileset_32
+  - first:
+      213: -983889205457786407
+    second: Boss 6 Tileset_33
+  - first:
+      213: -7761776083968121554
+    second: Boss 6 Tileset_34
+  - first:
+      213: -4296319146369409659
+    second: Boss 6 Tileset_35
+  - first:
+      213: 5335299822081890613
+    second: Boss 6 Tileset_36
+  - first:
+      213: -8075584762621059486
+    second: Boss 6 Tileset_37
+  - first:
+      213: 6620055385540002791
+    second: Boss 6 Tileset_38
+  - first:
+      213: 4054300832996978686
+    second: Boss 6 Tileset_39
+  - first:
+      213: 7706442308683510206
+    second: Boss 6 Tileset_40
+  - first:
+      213: 5010058195416549082
+    second: Boss 6 Tileset_41
+  - first:
+      213: 4976718787162871005
+    second: Boss 6 Tileset_42
+  - first:
+      213: 5536693604467107385
+    second: Boss 6 Tileset_43
+  - first:
+      213: 6010812188319463599
+    second: Boss 6 Tileset_44
+  - first:
+      213: 4119124352810203421
+    second: Boss 6 Tileset_45
+  - first:
+      213: -266670285408855258
+    second: Boss 6 Tileset_46
+  - first:
+      213: 4947595662085289746
+    second: Boss 6 Tileset_47
+  - first:
+      213: 5235226803719720204
+    second: Boss 6 Tileset_48
+  - first:
+      213: -7467699565979212276
+    second: Boss 6 Tileset_49
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Boss 6 Tileset_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ab4d0ce2d50ce000800000000000000
+      internalID: 66434497965280160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c0811fca1135b660800000000000000
+      internalID: 7400875553866219718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c68ab97106167b520800000000000000
+      internalID: 2717747965482215532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a656aa1b0fb4ff060800000000000000
+      internalID: 6989388643847267690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc6ff31f126973ba0800000000000000
+      internalID: -6109249296979200309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60be9523063764f40800000000000000
+      internalID: 5712380034364861190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bf2a1b3603ee9e10800000000000000
+      internalID: 2206450483359002546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_7
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8843ce9688987fdb0800000000000000
+      internalID: -4758183262307994488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a76bcaef3c5c76c0800000000000000
+      internalID: -4144336127495805021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_9
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 781c1cc1ea49a5f70800000000000000
+      internalID: 9176810666248487303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_10
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8bd17eb8592ae850800000000000000
+      internalID: 6406978881016945551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_11
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8de121a70ad978df0800000000000000
+      internalID: -178000347689509160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8b6c61a93faafde0800000000000000
+      internalID: -1298532880486732918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_13
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74e7fc63169a44980800000000000000
+      internalID: -8555527157100609977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b78dd4be2d40a410800000000000000
+      internalID: 1486272740030515126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dfca5ffb9a6d9b30800000000000000
+      internalID: 4295706837817937881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 722f5d5292fdba630800000000000000
+      internalID: 3939487666887062055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_17
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0718f64fd2c407c60800000000000000
+      internalID: 7813829113745998192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5724e5985ec475da0800000000000000
+      internalID: -5956207433438313867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_19
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8e9133fcd0132940800000000000000
+      internalID: 5270074530112577166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_20
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d72c115daa1ad3540800000000000000
+      internalID: 4989321717287600765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_21
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf7784f66158cc3b0800000000000000
+      internalID: -5490867514268682244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_22
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9241dead4abac79c0800000000000000
+      internalID: -3928076050437958615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_23
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 832fa8e5e75f14d30800000000000000
+      internalID: 4414079032900645432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 198a8e1b9e9e389e0800000000000000
+      internalID: -1620194251001780079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_25
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21a2715ad495e9610800000000000000
+      internalID: 1629838305171810834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_26
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd1cbfa449d8d04b0800000000000000
+      internalID: -5472562304132595233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_27
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25a81b6caf9f36990800000000000000
+      internalID: -7393791307741558190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_28
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7756bbdb955656650800000000000000
+      internalID: 6225493496019248503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_29
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab2c96f805b496ce0800000000000000
+      internalID: -1411514198828399942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a848bebd3ee4f2330800000000000000
+      internalID: 3688253360393913482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_31
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61629cfe648170f00800000000000000
+      internalID: 1082860928355608086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_32
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dac1d78ded2f86cc0800000000000000
+      internalID: -3717454453465604947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_33
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d9e8520bf58852f0800000000000000
+      internalID: -983889205457786407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_34
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2525f876c1a84490800000000000000
+      internalID: -7761776083968121554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_35
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58d11fecf786064c0800000000000000
+      internalID: -4296319146369409659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5395569abeaca0a40800000000000000
+      internalID: 5335299822081890613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_37
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26e1a66d172cdef80800000000000000
+      internalID: -8075584762621059486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_38
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e306807c492fdb50800000000000000
+      internalID: 6620055385540002791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_39
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: effea538025c34830800000000000000
+      internalID: 4054300832996978686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_40
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb13f130378c2fa60800000000000000
+      internalID: 7706442308683510206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_41
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad686d1626d478540800000000000000
+      internalID: 5010058195416549082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd41bdf7e5bd01540800000000000000
+      internalID: 4976718787162871005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_43
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9366074af7946dc40800000000000000
+      internalID: 5536693604467107385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_44
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa8be50b6d1ba6350800000000000000
+      internalID: 6010812188319463599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_45
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d19b9ea56c11a2930800000000000000
+      internalID: 4119124352810203421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_46
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62b9d0ec9c89c4cf0800000000000000
+      internalID: -266670285408855258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_47
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2177bda8a0469a440800000000000000
+      internalID: 4947595662085289746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0d41526a0347a840800000000000000
+      internalID: 5235226803719720204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 6 Tileset_49
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0668707fc66d5890800000000000000
+      internalID: -7467699565979212276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
