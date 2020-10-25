@@ -59,6 +59,10 @@ public class GameManager : MonoBehaviour
         StartCoroutine(RoomIntroCO());
     }
 
+    public void QuickRoomIntro(){
+        gui.ShowGUI_Animate(true);
+    }
+
     private IEnumerator RoomIntroCO(){
         Time.timeScale = 0;
         noInterupts = true;

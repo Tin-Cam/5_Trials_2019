@@ -44,10 +44,14 @@ public class RoomManager : MonoBehaviour
     }
 
     private IEnumerator OnRoomLoad(){
+        if(SceneManager.GetActiveScene().buildIndex == currentRoom)
+            yield break;
+
         while (SceneManager.GetActiveScene().buildIndex != currentRoom)
             yield return null;
         
         fader = FindObjectOfType<ScreenFader>();
+        
         if(fader != null)
             StartCoroutine(fader.FadeIn());       
     }
@@ -85,8 +89,11 @@ public class RoomManager : MonoBehaviour
         currentRoom = roomCode;
         Time.timeScale = 0;
 
-        if(fader != null)
+        if(fader != null){
+            Time.timeScale = 0;
             yield return fader.FadeOut();
+            Time.timeScale = 1;
+        }
         SceneManager.LoadScene(scenes[roomCode]);
         yield return OnRoomLoad();
     }

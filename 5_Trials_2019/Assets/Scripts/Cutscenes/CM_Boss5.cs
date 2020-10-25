@@ -11,12 +11,25 @@ public class CM_Boss5 : MonoBehaviour, ICutsceneManager
     public Collider2D roomEntry;
 
     public PlayableDirector introCutscene;
+    public PlayableDirector endingCutscene;
+
+    public bool playCutscene;
+
+    public GameObject boss;
+    public GameObject cutSceneAssets;
+
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        //Check if cutscene has already been played
+        playCutscene = !FlagManager.instance.boss5Cutscene;
+        gameManager = FindObjectOfType<GameManager>();
 
+        //if(playCutscene)
+        //    Intro();
+        //else
+        //    SkipIntro();
     }
 
     public void PlayCutscene(){
