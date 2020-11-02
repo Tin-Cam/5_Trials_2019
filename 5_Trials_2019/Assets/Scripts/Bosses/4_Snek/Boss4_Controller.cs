@@ -31,7 +31,7 @@ public class Boss4_Controller : _BossBase
         move.Init(head);
         action.Init(head);
 
-        if (GameData.difficulty == 0)
+        if (FlagManager.instance.easyMode)
             EasyMode();
 
         StartCoroutine(StartCycle());
@@ -153,7 +153,7 @@ public class Boss4_Controller : _BossBase
         action.SetAttackSpeed(action.attackSpeed);
     }
 
-    protected override void StartDeath()
+    public override void StartDeath()
     {
         //Explosions for bodyparts
         for (int i = 1; i < head.body.Count; i++)

@@ -37,6 +37,12 @@ public class Boss5_Commands : MonoBehaviour
 
         ChangeCommandList(0);
 
+        StartCoroutine(Intro());
+    }
+
+    public IEnumerator Intro()
+    {
+        yield return new WaitForSeconds(1);
         StartCoroutine(NextCommand());
     }
 

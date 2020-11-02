@@ -26,7 +26,7 @@ public class Boss3_Controller : _BossBase
 
         actionBase = action;
 
-        if (GameData.difficulty == 0)
+        if (FlagManager.instance.easyMode)
             EasyMode();
 
         StartCoroutine(NextAction());
@@ -172,7 +172,7 @@ public class Boss3_Controller : _BossBase
         isHitable = true;
     }
 
-    protected override void StartDeath()
+    public override void StartDeath()
     {
         Die();
     }

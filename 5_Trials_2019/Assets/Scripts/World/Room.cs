@@ -9,16 +9,8 @@ public class Room : MonoBehaviour
     public bool cameraLockX;
     public bool cameraLockY;
 
-    public bool hasIntro;
-    public Vector2 playerSpawn;
-    public int bossID; //Set to 0 if there is no boss in the room
-    public AudioClip music = null;
-    public MainDoor door = null;
-
-    public void ChangeRoom(int destination)
-    {
-        gameManager.LoadNewRoom(destination);
-    }
+    public AudioClip music;
+    public MainDoor door;
 
     public void SetGameManager(GameManager gameManager)
     {

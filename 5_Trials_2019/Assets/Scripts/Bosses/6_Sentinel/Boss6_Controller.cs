@@ -21,6 +21,9 @@ public class Boss6_Controller : _BossBase
         actionBase = action;
         moveBase = move;
 
+        if (FlagManager.instance.easyMode)
+            EasyMode();
+
         action.Init();
         move.Init();
         command.Init();
@@ -80,6 +83,10 @@ public class Boss6_Controller : _BossBase
         // }
     }
 
+    private void EasyMode(){
+        bossLevel -= 0.2f;
+    }
+
     protected override void IncreasePhase()
     {
         audioManager.Play("Boss_Hit", 1, 1.5f);
@@ -89,7 +96,7 @@ public class Boss6_Controller : _BossBase
         command.ChangeCommandList(phase);
     }
 
-    protected override void StartDeath()
+    public override void StartDeath()
     {
         Die();
     }

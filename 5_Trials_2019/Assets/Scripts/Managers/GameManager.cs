@@ -7,35 +7,44 @@ public class GameManager : MonoBehaviour
 {
     [HideInInspector]
     public AudioManager audioManager;
+    [HideInInspector]
+    public RoomManager roomManager;
 
-    private RoomManager roomManager;
     public GUIManager gui;
-    //private BossManager bossManager;
+    private BossManager bossManager;
 
     public bool isPaused = false;
     public bool noInterupts = false;
 
-    public int startingRoom;
     public GameObject player;
     
     public float playerHealth;
     private float playerMaxHealth;
 
-    [Space(15)]
-    public _BossBase testBoss;
-    public bool testMode = false;
-    //public HealthBar bossHealthBar;
+    private Room room;
 
     private int currentRoomCode;
 
+    public bool introOnStart = true;
+
     void Awake()
     {
-        roomManager = GetComponent<RoomManager>();
-
         audioManager = AudioManager.instance;
+        roomManager = RoomManager.instance;
+
+        bossManager = GetComponent<BossManager>();
+
+        gui.ShowGUI(false);
+    }
+
+    void Start(){
+        room = FindObjectOfType<Room>();
 
         playerMaxHealth = playerHealth;
-        gui.InitHealth(playerMaxHealth);      
+        gui.InitHealth(playerMaxHealth);
+
+        if(introOnStart)
+            RoomIntro();
     }
 
     void Update()
@@ -46,54 +55,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadNewRoom(int roomCode)
-    {
-        bool transition = true;
-
-        if (roomCode == 0)
-            transition = false;
-        StopAllCoroutines();
-        StartCoroutine(LoadRoomCo(roomCode, transition));
+    public void RoomIntro(){
+        StartCoroutine(RoomIntroCO());
     }
 
-    private IEnumerator LoadRoomCo(int roomCode, bool transition)
-    {
-        
-        currentRoomCode = roomCode;
+    public void QuickRoomIntro(){
+        gui.ShowGUI_Animate(true);
+    }
 
-        //Swap Rooms
-        noInterupts = true;
+    private IEnumerator RoomIntroCO(){
         Time.timeScale = 0;
+        noInterupts = true;
 
-        if (transition)
-            yield return gui.FadeTransition("Out");
+        yield return new WaitForSecondsRealtime(1);
 
-        if(!testMode)
-            DeleteObjectsOfTag("Projectile");
-
-        roomManager.LoadRoom(roomCode);
-
-        //Restores Player health if not on hardcore mode
-        if (GameData.difficulty != 2)
-            ResetHealth();
-
-        bool hasBoss = roomManager.RoomHasBoss();
-        gui.ShowGUI(false);
-        
-        if (hasBoss)
-        {
-            //Plays the boss intro
-            yield return gui.FadeTransition("In");
-
-            yield return new WaitForSecondsRealtime(1);
-
-            gui.ShowGUI_Animate(hasBoss);
-            yield return new WaitForSecondsRealtime(1);
-        }
-        else
-        {
-            yield return gui.FadeTransition("In");                               
-        }
+        gui.ShowGUI_Animate(true);
+        yield return new WaitForSecondsRealtime(1);
         Time.timeScale = 1;
         noInterupts = false;
     }
@@ -107,7 +84,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenRoomDoor()
     {
-        roomManager.OpenRoomDoor();
+        room.OpenDoor();
     }
 
     public void PauseGame(bool state)
@@ -125,15 +102,8 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
     }
 
-    public void ResetRoom()
-    {
-        
-        ResetHealth();
-        player.SetActive(true);
-        player.GetComponent<PlayerAttack>().DefaultState();
-
-        gui.ShowGameOver(false);
-        StartCoroutine(LoadRoomCo(currentRoomCode, false));
+    public void ResetRoom(){
+        roomManager.ReloadRoom();
     }
 
     private void ResetHealth()
@@ -154,7 +124,7 @@ public class GameManager : MonoBehaviour
 
     public _BossBase GetBoss()
     {
-        return roomManager.GetBossBase();
+        return bossManager.currentBoss;
     }
 
     public void PlayerTakeDamage(float damage)

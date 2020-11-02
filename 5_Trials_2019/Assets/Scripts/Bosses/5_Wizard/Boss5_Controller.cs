@@ -22,6 +22,9 @@ public class Boss5_Controller : _BossBase
         actionBase = action;
         moveBase = move;
 
+        if (FlagManager.instance.easyMode)
+            EasyMode();
+
 
         action.Init();
         move.Init();
@@ -74,6 +77,10 @@ public class Boss5_Controller : _BossBase
 
     }
 
+    private void EasyMode(){
+        
+    }
+
     protected override void IncreasePhase()
     {
         phase++;
@@ -82,7 +89,7 @@ public class Boss5_Controller : _BossBase
         bossLevel += 0.2f;
     }
 
-    protected override void StartDeath()
+    public override void StartDeath()
     {
         Die();
     }

@@ -12,58 +12,38 @@ public class ScreenFader : MonoBehaviour
     public float updateInterval;
     public bool fadeOnStart = false;
 
+    private AnimatorScripts animatorScripts;
+
     void Awake()
     {
         image = GetComponent<Image>();
         animator = GetComponent<Animator>();
+        animatorScripts = GetComponent<AnimatorScripts>();
     }
 
     private void Start()
     {
-        if (fadeOnStart)
-            StartCoroutine(FadeIn());
+        //if (fadeOnStart)
+        //    StartCoroutine(FadeIn());
     }
 
     public IEnumerator FadeIn()
     {
-        image.color = new Color(0, 0, 0, 1);
-
-        float alpha = image.color.a;
-
-        while (image.color.a > 0)
-        {
-            alpha -= fadeSpeed;
-            if (alpha < 0)
-                alpha = 0;
-            image.color = new Color(0, 0, 0, alpha);
-            yield return PseudoWaitForSeconds(updateInterval);
-        }
+        yield return animatorScripts.PlayWholeAnimationRealTime("Fade_In", 0);
     }
 
     public IEnumerator FadeOut()
     {
-        image.color = new Color(0, 0, 0, 0);
-
-        float alpha = image.color.a;
-      
-        while (image.color.a < 1)
-        {
-            alpha += fadeSpeed;
-            if (alpha > 1)
-                alpha = 1;
-            image.color = new Color(0, 0, 0, alpha);
-            yield return PseudoWaitForSeconds(updateInterval);
-        }
+        yield return animatorScripts.PlayWholeAnimationRealTime("Fade_Out", 0);
     }
 
     public void FadeMid(bool state)
     {
         StopAllCoroutines();
-        float alpha = 0;
-        if (state)
-            alpha = (float)0.5;
-
-        image.color = new Color(0, 0, 0, alpha);
+        if(state)
+            animatorScripts.PlayAnimation("Fade_Mid");
+        else
+            animatorScripts.PlayAnimation("Fade_Nothing");
     }
 
     //Finishes when an animation stops playing

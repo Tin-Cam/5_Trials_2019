@@ -1,140 +1,112 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoomManager : MonoBehaviour
 {
-    private GameManager gameManager;
-    private BossManager bossManager;
-
-    public CameraFollow cameraFollow;
-
-    public GameObject player;
-    public MainDoor door;
-    public List<Room> roomList = new List<Room>();
-    public int startingRoom;
+    public static RoomManager instance;
     
-    private Room currentRoom = null;
+    private int currentRoom = 9;
+
+    private ScreenFader fader;
+
+    private List<string> scenes = new List<string> {
+        "Main_Menu",    //0
+        "Starting_Room",//1
+        "Demo_End",     //2
+        "Boss1",  //3
+        "Boss2",   //4
+        "Boss3",   //5
+        "Boss4",   //6
+        "Boss5",   //7
+        "Boss6",   //8
+        "Cutscene_Interlude" //9
+    };
 
     void Awake()
-    {
-        gameManager = GetComponent<GameManager>();
-        bossManager = GetComponent<BossManager>();
-    }
-
-    void Start()
-    {
-        gameManager.LoadNewRoom(startingRoom);
-    }
-
-    //Checks if the room list is empty
-    private bool RoomListIsEmpty()
-    {
-        if (roomList.Capacity > 0)
-            return false;
-
-        cameraFollow.lockX = true;
-        cameraFollow.lockY = true;
-        cameraFollow.ResetCamera();
-
-        Debug.Log("No room to load. Room list is empty.");
-        return true;
-    }
-
-    public void LoadRoom(int roomCode)
-    {
-        if (RoomListIsEmpty())
-            return;
-
-        UnloadRoom();
+	{
+		if (instance != null)
+		{
+			Destroy(gameObject);
+		}
+		else
+		{
+			instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
         
-        try
-        {
-            currentRoom = CreateRoom(roomCode);
-            bossManager.LoadBoss(currentRoom.bossID);
-            player.transform.position = currentRoom.playerSpawn;
-            SetCamera();
-        }
-        catch (MissingReferenceException)
-        {           
-            Debug.Log("No room to load. Room " + roomCode + " does not exist.");
-        }
-        catch (System.ArgumentException)
-        {           
-            Debug.Log("No room to load.");
-        }    
     }
 
-    //Create a room from a prefab
-    private Room CreateRoom(int roomCode)
-    {
-        Room room;
+    void Start(){
+        currentRoom = GetRoomCode();
+        StartCoroutine(OnRoomLoad());
+    }
+
+    private IEnumerator OnRoomLoad(){
+        if(SceneManager.GetActiveScene().buildIndex == currentRoom)
+            yield break;
+
+        while (SceneManager.GetActiveScene().buildIndex != currentRoom)
+            yield return null;
         
-        room = Instantiate(roomList[roomCode]);
-        room.SetGameManager(gameManager);
-
-        return room;
+        fader = FindObjectOfType<ScreenFader>();
+        
+        if(fader != null)
+            StartCoroutine(fader.FadeIn());       
     }
 
-    private void SetCamera()
-    {     
-        cameraFollow.lockX = currentRoom.cameraLockX;
-        cameraFollow.lockY = currentRoom.cameraLockY;
+    public void MoveRooms(int direction) {
+        currentRoom += direction;
+        if(currentRoom < 0)
+            currentRoom += scenes.Count;
+        if(currentRoom >= scenes.Count)
+            currentRoom -= scenes.Count;
+        LoadRoom(currentRoom);
+    }
 
-        if (cameraFollow.lockX & cameraFollow.lockY)
-        {
-            cameraFollow.ResetCamera();
-            return;
+    public int GetRoomCode(){
+        string scene = SceneManager.GetActiveScene().name;
+        Debug.Log("Scene: " + scene);
+        int result = scenes.IndexOf(scene);
+        return result;
+    }
+
+    public void ReloadRoom(){
+        LoadRoom(scenes[GetRoomCode()]);
+    }   
+
+    public void LoadRoom(string room){
+        int roomCode = scenes.IndexOf(room);
+        LoadRoom(roomCode);
+    }
+
+    public void LoadRoom(int roomCode){
+        StartCoroutine(LoadRoomCO(roomCode));
+    }
+
+    private IEnumerator LoadRoomCO(int roomCode){
+        currentRoom = roomCode;
+        Time.timeScale = 0;
+
+        if(fader != null){
+            Time.timeScale = 0;
+            yield return fader.FadeOut();
+            Time.timeScale = 1;
         }
-
-        cameraFollow.ResetCamera(player.transform.position);
+        SceneManager.LoadScene(scenes[roomCode]);
+        yield return OnRoomLoad();
     }
 
-    private void UnloadRoom()
-    {
-        //Destroys current room
-        try
-        {
-            Destroy(currentRoom.gameObject);
-            currentRoom = null;
-        }
-        catch(System.NullReferenceException)
-        {
-            Debug.Log("No room to unload");
-        }
-        catch (MissingReferenceException)
-        {
-            Debug.Log("No room to unload");
-        }
-
-        bossManager.UnloadBoss();
+    public void LoadInterludeCutscene(int cutsceneCode){
+        StartCoroutine(LoadInterludeCutsceneCO(cutsceneCode));
     }
 
+    private IEnumerator LoadInterludeCutsceneCO(int cutsceneCode){
+        yield return LoadRoomCO(scenes.IndexOf("Cutscene_Interlude"));
 
-    public void OpenRoomDoor()
-    {
-        if (currentRoom == null)
-            return;
-
-        if (currentRoom.door == null)
-            return;
-
-        currentRoom.OpenDoor();
-    }
-
-    public bool RoomHasBoss()
-    {
-        if(currentRoom == null)
-            return true;
-
-        if (currentRoom.bossID == 0)
-            return false;
-
-        return true;
-    }
-
-    public _BossBase GetBossBase()
-    {
-        return bossManager.GetBossBase();
+        Interlude interlude = FindObjectOfType<Interlude>();
+        interlude.LoadCutscene(cutsceneCode);
+        Time.timeScale = 1;
     }
 }

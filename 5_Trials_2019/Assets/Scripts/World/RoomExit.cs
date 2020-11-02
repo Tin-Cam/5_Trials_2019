@@ -6,21 +6,25 @@ using UnityEditor;
 
 public class RoomExit : MonoBehaviour
 {
-    public Room room;
+    public string destination;
 
-    public int destination;
+    public bool playInterlude;
+    public int interludeID;
 
     private void ChangeRoom()
     {
         AudioManager.instance.Play("Door_Enter");
-        room.ChangeRoom(destination);
+        RoomManager.instance.LoadRoom(destination);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
-            ChangeRoom();
+        if (other.tag != "Player")
+            return;
+        if(playInterlude){
+            RoomManager.instance.LoadInterludeCutscene(interludeID);
+            return;
+        }
+        ChangeRoom();
     }
-
-
 }

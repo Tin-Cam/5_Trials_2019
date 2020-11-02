@@ -1,0 +1,6 @@
+{
+    "name" : "Intro",
+    "text" : ["This is Cam's well written cutscene text!",
+            "Isn't it nice?"],
+    "nextScene" : "Boss2"
+}

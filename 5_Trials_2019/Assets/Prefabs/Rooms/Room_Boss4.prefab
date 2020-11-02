@@ -2473,9 +2473,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraLockX: 1
   cameraLockY: 1
-  hasIntro: 0
-  playerSpawn: {x: 0, y: -4}
-  bossID: 4
   music: {fileID: 0}
   door: {fileID: 7242450878426351607}
 --- !u!1 &7029900745915932794
@@ -3167,7 +3164,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6645813417790978227}
   - component: {fileID: 2276053473047489541}
-  - component: {fileID: 8928400968659314063}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -3204,25 +3200,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &8928400968659314063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8125938352082763981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2dc7a4edd9e67d409db6f33c1f2c4e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraLockX: 0
-  cameraLockY: 0
-  hasIntro: 0
-  playerSpawn: {x: 0, y: -4}
-  bossID: 0
-  music: {fileID: 0}
-  door: {fileID: 0}
 --- !u!1001 &4455027695354176959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3304,7 +3281,7 @@ PrefabInstance:
     - target: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
         type: 3}
       propertyPath: destination
-      value: 5
+      value: Boss5
       objectReference: {fileID: 0}
     - target: {fileID: 6850291323292724215, guid: 73ee77e064dd62d41a082ac7cc657a9a,
         type: 3}
