@@ -2859,7 +2859,7 @@ GameObject:
   - component: {fileID: 5312493437873795989}
   - component: {fileID: 5312493437873795978}
   m_Layer: 5
-  m_Name: '"Enemy"'
+  m_Name: Boss_Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2881,8 +2881,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -324.9, y: -43.448}
-  m_SizeDelta: {x: 174.2, y: 70.8}
+  m_AnchoredPosition: {x: 19.6, y: -44.6}
+  m_SizeDelta: {x: 863.139, y: 73.00459}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5312493437873795989
 CanvasRenderer:
@@ -2917,7 +2917,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 65
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
