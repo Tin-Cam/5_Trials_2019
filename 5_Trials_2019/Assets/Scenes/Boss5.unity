@@ -720,6 +720,10 @@ PlayableDirector:
     value: {fileID: 1365681506}
   - key: {fileID: -4120916231083503434, guid: 533660dfab3b09f4d812bfba3935474b, type: 2}
     value: {fileID: 501425672}
+  - key: {fileID: -7380448333786523985, guid: 533660dfab3b09f4d812bfba3935474b, type: 2}
+    value: {fileID: 2051210992}
+  - key: {fileID: 7801264826705864350, guid: 533660dfab3b09f4d812bfba3935474b, type: 2}
+    value: {fileID: 2051210990}
   m_ExposedReferences:
     m_References:
     - 473fb30de4e327046b3f888d458ffe30: {fileID: 739936936}
@@ -761,7 +765,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The big test of coolness
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -830,10 +836,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 501425672}
-    characterCount: 24
+    characterCount: 1
     spriteCount: 0
-    spaceCount: 4
-    wordCount: 5
+    spaceCount: 1
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -2718,7 +2724,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1182846842}
   - component: {fileID: 1182846844}
-  - component: {fileID: 1182846845}
   m_Layer: 0
   m_Name: Cutscene Manager_Boss5
   m_TagString: Untagged
@@ -2765,25 +2770,6 @@ MonoBehaviour:
   roomFrontDoor: {fileID: 1112603671}
   cutSceneAssets: {fileID: 1652546936}
   light2D: {fileID: 1175443218}
---- !u!95 &1182846845
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182846841}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3b1db5641e932874ab2dd6209049bbbc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1247338430
 GameObject:
   m_ObjectHideFlags: 0

@@ -64,7 +64,7 @@ public class CM_Boss5 : MonoBehaviour, ICutsceneManager
         //Start fight with boss
         boss.SetActive(true);
         Destroy(cutSceneAssets);
-        light2D.Play("Light");
+        light2D.Play("2D_Light");
         FlagManager.instance.boss6Cutscene = true;
         gameManager.RoomIntro();       
     }
