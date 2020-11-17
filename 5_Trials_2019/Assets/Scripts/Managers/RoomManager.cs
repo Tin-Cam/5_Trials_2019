@@ -87,7 +87,6 @@ public class RoomManager : MonoBehaviour
 
     private IEnumerator LoadRoomCO(int roomCode){
         currentRoom = roomCode;
-        Time.timeScale = 0;
 
         if(fader != null){
             Time.timeScale = 0;

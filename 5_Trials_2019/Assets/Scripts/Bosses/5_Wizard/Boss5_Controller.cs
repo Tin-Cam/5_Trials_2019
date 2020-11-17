@@ -12,12 +12,14 @@ public class Boss5_Controller : _BossBase
     private Boss5_Commands command;
     private Boss5_Shield shield;
 
+    public CM_Boss5 cM_Boss5;
+
     protected override void Init()
     {
         action = GetComponent<Boss5_Action>();
         move = GetComponent<Boss5_Move>();
         command = GetComponent<Boss5_Commands>();
-        shield = GetComponent<Boss5_Shield>();        
+        shield = GetComponent<Boss5_Shield>();
 
         actionBase = action;
         moveBase = move;
@@ -91,6 +93,8 @@ public class Boss5_Controller : _BossBase
 
     public override void StartDeath()
     {
+        //Maybe make the death look cooler
+        cM_Boss5.Ending();
         Die();
     }
 

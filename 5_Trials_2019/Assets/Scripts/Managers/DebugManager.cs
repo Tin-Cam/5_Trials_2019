@@ -77,7 +77,7 @@ public class DebugManager : MonoBehaviour
         //Kill Boss
         if (Input.GetKeyDown("9"))
         {
-            GetBoss().StartDeath();
+            gameManager.GetBoss().StartDeath();
         }
         //Kill Player
         if (Input.GetKeyDown("8"))

@@ -78,8 +78,16 @@ public class GameManager : MonoBehaviour
     public void BossDefeated()
     {
         gui.ShowGUI_Animate(false);
-        OpenRoomDoor();
         //Stop Music
+
+        if(bossManager.currentBoss.tag == "Boss_5"){
+            
+        }
+        else if(bossManager.currentBoss.tag == "Boss_6"){
+
+        }
+        else
+            OpenRoomDoor();        
     }   
 
     public void OpenRoomDoor()

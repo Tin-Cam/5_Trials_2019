@@ -12,12 +12,15 @@ public class PlayerCollision : MonoBehaviour
     public float invincibleTime;
 
     public float hitFlashRate;
+    public float damagedSpriteTime;
 
     private GameManager gameManager;
+    private Animator animator;
 
     void Awake()
     {
         gameManager = playerMove.gameManager;
+        animator = GetComponentInParent<Animator>();
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -40,7 +43,15 @@ public class PlayerCollision : MonoBehaviour
         Vector2 direction = playerPosition - other.ClosestPoint(playerPosition);
 
         StartCoroutine(playerMove.knockBack(direction, playerMove.defaultKnockBack));
+        StartCoroutine(DamageAnimation());
         StartCoroutine(Invincible());
+    }
+
+    public IEnumerator DamageAnimation()
+    {
+        animator.SetBool("Damaged", true);
+        yield return new WaitForSeconds(damagedSpriteTime);
+        animator.SetBool("Damaged", false);
     }
 
     //Makes the player invincible; used when they're hit

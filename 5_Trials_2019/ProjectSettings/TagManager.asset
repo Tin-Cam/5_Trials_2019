@@ -9,6 +9,8 @@ TagManager:
   - Projectile
   - Usable
   - In_Use
+  - Boss_5
+  - Boss_6
   layers:
   - Default
   - TransparentFX

@@ -10,10 +10,20 @@ using TMPro;
 public class TextControlBehaviour : PlayableBehaviour
 {
     [SerializeField]
+    [TextArea]
     private string text = "Default Text";
 
     [SerializeField]
+    private int startingCharacter = 0;
+
+    [SerializeField]
     private float textSpeed = 1;
+
+    [SerializeField]
+    private bool noTyping = false;
+
+    [SerializeField]
+    private bool showCursor = false;
 
     private bool firstFrameHappened;
     private string defaultText;
@@ -34,15 +44,25 @@ public class TextControlBehaviour : PlayableBehaviour
             firstFrameHappened = true;
         }
 
-        textBox.text = CalculateText(playable);
+        if(!noTyping)
+            textBox.text = CalculateText(playable);
+        else
+            textBox.text = text;
+
     }
 
     private string CalculateText(Playable playable){
         int characters = 0;
         
-        characters = Mathf.RoundToInt(textSpeed * (float)playable.GetTime());
+        characters = Mathf.RoundToInt(textSpeed * (float)playable.GetTime()) + startingCharacter;
+
+        if(characters > text.Length)
+            characters = text.Length;
 
         string result = text.Substring(0, characters);
+
+        if(showCursor)
+            result += "_";
 
         return result;
     }

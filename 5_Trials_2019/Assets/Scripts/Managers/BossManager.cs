@@ -12,10 +12,10 @@ public class BossManager : MonoBehaviour
     public HealthBar healthBar;
 
 
-    void Awake()
+    void Start()
     {
         gameManager = GetComponent<GameManager>();
-        currentBoss = FindObjectOfType<_BossBase>();
+        //currentBoss = FindObjectOfType<_BossBase>();
     }
     
 }

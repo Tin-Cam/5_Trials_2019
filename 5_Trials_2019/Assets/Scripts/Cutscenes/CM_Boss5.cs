@@ -65,11 +65,23 @@ public class CM_Boss5 : MonoBehaviour, ICutsceneManager
         boss.SetActive(true);
         Destroy(cutSceneAssets);
         light2D.Play("2D_Light");
-        FlagManager.instance.boss6Cutscene = true;
+        FlagManager.instance.boss5Cutscene = true;
         gameManager.RoomIntro();       
     }
 
     public void Ending(){
+        StartCoroutine(EndingCO());
+    }
 
+    public IEnumerator EndingCO(){
+        yield return new WaitForSeconds(2);
+        endingCutscene.stopped += NextRoom;
+        endingCutscene.Play();
+    }
+
+    //Runs after intro cutscene
+    private void NextRoom(PlayableDirector cutscene){
+        cutscene.stopped -= NextRoom;
+        RoomManager.instance.LoadRoom(8);
     }
 }
