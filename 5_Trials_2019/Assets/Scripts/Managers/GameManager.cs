@@ -80,11 +80,14 @@ public class GameManager : MonoBehaviour
         gui.ShowGUI_Animate(false);
         //Stop Music
 
-        if(bossManager.currentBoss.tag == "Boss_5"){
+        //If score mode, go to score screen
+
+        if(GetBoss().tag == "Boss_5"){
             
         }
-        else if(bossManager.currentBoss.tag == "Boss_6"){
-
+        else if(GetBoss().tag == "Boss_6"){
+            CM_Boss6 cm = FindObjectOfType<CM_Boss6>();
+            cm.Ending();
         }
         else
             OpenRoomDoor();        

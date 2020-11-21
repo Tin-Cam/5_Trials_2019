@@ -11,8 +11,11 @@ public class CM_Boss6 : MonoBehaviour, ICutsceneManager
 
     public bool playCutscene;
 
-    public GameObject boss;
-    public GameObject cutSceneAssets;
+    public GameObject bossHolder;
+    public GameObject cutSceneAssets1;
+
+    public Transform bossTransform;
+    public Transform bossActor2;
 
     private GameManager gameManager;
 
@@ -39,8 +42,8 @@ public class CM_Boss6 : MonoBehaviour, ICutsceneManager
 
     private void SkipIntro(){
         //Initialise room, then start fight;
-        cutSceneAssets.SetActive(false);
-        boss.SetActive(true);
+        cutSceneAssets1.SetActive(false);
+        bossHolder.SetActive(true);
         StartFight();
     }
 
@@ -52,8 +55,8 @@ public class CM_Boss6 : MonoBehaviour, ICutsceneManager
 
     private void StartFight(){
         //Start fight with boss
-        boss.SetActive(true);
-        Destroy(cutSceneAssets);
+        bossHolder.SetActive(true);
+        Destroy(cutSceneAssets1);
 
         if(playCutscene){
             gameManager.QuickRoomIntro();
@@ -64,7 +67,8 @@ public class CM_Boss6 : MonoBehaviour, ICutsceneManager
     }
 
     public void Ending(){
-
+        bossActor2.position = bossTransform.position;
+        endingCutscene.Play();
     }
 
     private IEnumerator WaitForCutscene(PlayableDirector cutscene){
