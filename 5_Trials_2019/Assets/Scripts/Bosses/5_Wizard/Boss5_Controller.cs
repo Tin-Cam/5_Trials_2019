@@ -94,7 +94,6 @@ public class Boss5_Controller : _BossBase
     public override void StartDeath()
     {
         //Maybe make the death look cooler
-        cM_Boss5.Ending();
         Die();
     }
 

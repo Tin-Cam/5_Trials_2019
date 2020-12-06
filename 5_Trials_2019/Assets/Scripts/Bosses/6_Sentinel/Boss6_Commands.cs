@@ -353,9 +353,15 @@ public class Boss6_Commands : MonoBehaviour
         return result;
     }
 
-    private void BreakCommand(){
+    //Stops all boss commands
+    public void StopCommand(){
         StopAllCoroutines();       
         DefaultState();
+    }
+
+    //Forces boss to start next command
+    private void BreakCommand(){
+        StopCommand();
         StartCoroutine(BreakCommandCO());
     }
 

@@ -83,15 +83,24 @@ public class GameManager : MonoBehaviour
         //If score mode, go to score screen
 
         if(GetBoss().tag == "Boss_5"){
-            
+            PrepareCutscene();
+            CM_Boss5 cm = FindObjectOfType<CM_Boss5>();
+            cm.Ending();
         }
         else if(GetBoss().tag == "Boss_6"){
+            PrepareCutscene();
             CM_Boss6 cm = FindObjectOfType<CM_Boss6>();
             cm.Ending();
         }
         else
             OpenRoomDoor();        
-    }   
+    } 
+
+    private void PrepareCutscene(){
+        player.GetComponentInChildren<PlayerCollision>().godMode = true;
+        noInterupts = true;
+        DeleteObjectsOfTag("Projectile");
+    }
 
     public void OpenRoomDoor()
     {

@@ -68,11 +68,12 @@ public class CM_Boss6 : MonoBehaviour, ICutsceneManager
 
     public void Ending(){
         bossActor2.position = bossTransform.position;
+        endingCutscene.stopped += NextRoom;
         endingCutscene.Play();
     }
 
-    private IEnumerator WaitForCutscene(PlayableDirector cutscene){
-        while(cutscene.state == PlayState.Playing)
-            yield break;
+    private void NextRoom(PlayableDirector cutscene){
+        cutscene.stopped -= NextRoom;
+        RoomManager.instance.LoadRoom(10);
     }
 }

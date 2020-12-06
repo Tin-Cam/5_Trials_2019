@@ -21,7 +21,8 @@ public class RoomManager : MonoBehaviour
         "Boss4",   //6
         "Boss5",   //7
         "Boss6",   //8
-        "Cutscene_Interlude" //9
+        "Cutscene_Interlude", //9
+        "Ending" //10
     };
 
     void Awake()

@@ -11,12 +11,14 @@ public class Boss6_Controller : _BossBase
     private Boss6_Action action;
     private Boss6_Move move;
     private Boss6_Commands command;
+    private SmokeController smoke;
 
     protected override void Init()
     {
         action = GetComponent<Boss6_Action>();
         move = GetComponent<Boss6_Move>();
         command = GetComponent<Boss6_Commands>();
+        smoke = GetComponent<SmokeController>();
 
         actionBase = action;
         moveBase = move;
@@ -27,6 +29,10 @@ public class Boss6_Controller : _BossBase
         action.Init();
         move.Init();
         command.Init();
+
+        //Hides Sentinel's healthbar if playing story mode
+        if(FlagManager.instance.storyMode)
+            healthBar.SetBarHider(true);
     }
 
     public override void BossHurt()
@@ -51,6 +57,7 @@ public class Boss6_Controller : _BossBase
         int phaseAmount = 7;
         float phaseDivision = 1 / phaseAmount;
 
+        int smokeCount = smoke.smokeCount;
 
         if (health <= maxHealth * 0.9 & phase < 1)
         {
@@ -65,16 +72,19 @@ public class Boss6_Controller : _BossBase
         if (health <= maxHealth * 0.6 & phase < 3)
         {
             IncreasePhase();
+            smoke.SetSmoke(smokeCount + 1);
         }
 
         if (health <= maxHealth * 0.4 & phase < 4)
         {
             IncreasePhase();
+            smoke.SetSmoke(smokeCount + 1);
         }
 
         if (health <= maxHealth * 0.10 & phase < 5)
         {
             IncreasePhase();
+            smoke.SetSmoke(smokeCount + 1);
         }
 
         // if (health <= maxHealth * 0.1 & phase < 6)
@@ -90,7 +100,7 @@ public class Boss6_Controller : _BossBase
     protected override void IncreasePhase()
     {
         audioManager.Play("Boss_Hit", 1, 1.5f);
-        healthBar.FlashBar();
+        healthBar.ShakeBar();
         phase++;
         bossLevel += bosslevelIncrements;
         command.ChangeCommandList(phase);
@@ -98,6 +108,7 @@ public class Boss6_Controller : _BossBase
 
     public override void StartDeath()
     {
+        command.StopCommand();
         Die();
     }
 

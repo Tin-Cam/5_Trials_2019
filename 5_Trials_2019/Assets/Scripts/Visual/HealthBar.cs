@@ -6,17 +6,29 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour {
 
     public GameObject healthBar;
+    public GameObject healthBarHider;
+    public Text healthBarText;
+    public bool hideHealthBar = false;
 
     private float unit; //Determines the scale of a single unit of health on the game screen
     private float length;
     private float maxLength;
     private float maxHealth;
 
+    private Vector3 origin;
+
+    private string healthBarName;
+
     private Image barImage;
 
 	void Awake () {
         maxLength = healthBar.transform.localScale.x;
         barImage = healthBar.GetComponent<Image>();
+
+        healthBarName = healthBarText.text;
+        SetBarHider(hideHealthBar);
+
+        origin = transform.position;
     }
 
     public void addOrSubtractHealth(float value)
@@ -49,24 +61,34 @@ public class HealthBar : MonoBehaviour {
         healthBar.transform.localScale = new Vector3(length, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
     }
 
-    //Making it flash looks awful. Maybe try changing the colour or shaking it instead
-    public void FlashBar(){
-        //StartCoroutine(FlashBarCO());
+    public void ShakeBar(){
+        StartCoroutine(ShakeBarCO());
     }
 
-    private IEnumerator FlashBarCO(){
-        float time = 0.2f;
-        float flashCount = 4;
-        float timeDivision = time / flashCount;
+    public IEnumerator ShakeBarCO(){
+        float t = 3;
+        float speed = 10;
+        float intensity = 5;
 
-        while(time > 0){
-            if(time < timeDivision * flashCount){
-                barImage.enabled = !barImage.enabled;
-                flashCount--;
-            }
-            time -= Time.deltaTime;
+        while(t > 0){
+            t -= Time.deltaTime * speed;
+
+            float x = Mathf.Sin(t * speed) * intensity;
+            x += origin.x;
+
+            Vector3 position = new Vector3(x, origin.y, origin.z);
+            transform.position = position;
             yield return new WaitForFixedUpdate();
         }
-        barImage.enabled = true;
+        transform.position = origin;
+    }
+
+    public void SetBarHider(bool value){
+        hideHealthBar = value;
+        healthBarHider.SetActive(value);
+        if(!value)
+            healthBarText.text = healthBarName;
+        else
+            healthBarText.text = "??????";
     }
 }

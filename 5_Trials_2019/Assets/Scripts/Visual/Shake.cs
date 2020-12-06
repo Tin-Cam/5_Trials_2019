@@ -39,4 +39,8 @@ public class Shake : MonoBehaviour
     public void StopShaking(){
         isShaking = false;
     }
+
+    public void SetShakeSpeed(float newSpeed){
+        speed = newSpeed;
+    }
 }
