@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2483188521820265507}
   - component: {fileID: 2483188521820265516}
   - component: {fileID: 1006137526605757346}
+  - component: {fileID: 7887407695905655869}
   m_Layer: 0
   m_Name: Bush
   m_TagString: Untagged
@@ -109,3 +110,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7887407695905655869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2483188521820265518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc51a89f4da2c44ea49a142203aed4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCut: 0
+  cutBush: {fileID: 6050536092222140184, guid: 2fdf7abaee0d06d41aa2e2b011f382de, type: 3}
