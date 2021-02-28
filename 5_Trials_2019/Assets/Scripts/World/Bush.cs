@@ -6,6 +6,7 @@ public class Bush : MonoBehaviour
 {
     public bool isCut = false;
     public Sprite cutBush;
+    public GameObject leaves;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -21,6 +22,7 @@ public class Bush : MonoBehaviour
 
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
         renderer.sprite = cutBush;
+        Instantiate(leaves, transform);
 
         isCut = true;
     }
