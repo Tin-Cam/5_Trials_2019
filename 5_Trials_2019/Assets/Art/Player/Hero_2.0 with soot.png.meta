@@ -1,7 +1,55 @@
 fileFormatVersion: 2
 guid: 483819bd4892e5149999fb655fb2cefc
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 1735503547819531173
+    second: Hero_2.0 with soot_0
+  - first:
+      213: -2692304725286888554
+    second: Hero_2.0 with soot_1
+  - first:
+      213: -8305892578780518034
+    second: Hero_2.0 with soot_2
+  - first:
+      213: 1022982111774541319
+    second: Hero_2.0 with soot_3
+  - first:
+      213: 88627704727800989
+    second: Hero_2.0 with soot_4
+  - first:
+      213: -6296455129850334112
+    second: Hero_2.0 with soot_5
+  - first:
+      213: -8691323137312341372
+    second: Hero_2.0 with soot_6
+  - first:
+      213: 5456440168238614137
+    second: Hero_2.0 with soot_7
+  - first:
+      213: -5471126748801688209
+    second: Hero_2.0 with soot_8
+  - first:
+      213: -3783244073147164122
+    second: Hero_2.0 with soot_9
+  - first:
+      213: 8580826173121303288
+    second: Hero_2.0 with soot_10
+  - first:
+      213: -2300589226584007998
+    second: Hero_2.0 with soot_11
+  - first:
+      213: 1790407607139462178
+    second: Hero_2.0 with soot_12
+  - first:
+      213: 2144433022314199152
+    second: Hero_2.0 with soot_13
+  - first:
+      213: 1554432376940439349
+    second: Hero_2.0 with soot_14
+  - first:
+      213: -2238688870031010080
+    second: Hero_2.0 with soot_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,7 +145,343 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 103
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ab963a184fb51810800000000000000
+      internalID: 1735503547819531173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_1
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 103
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69b5b26ed1303aad0800000000000000
+      internalID: -2692304725286888554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_2
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 103
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e69eb33c4ba8bbc80800000000000000
+      internalID: -8305892578780518034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_3
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 103
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70686e78fcc523e00800000000000000
+      internalID: 1022982111774541319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_4
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 69
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9c0f898d6eda3100800000000000000
+      internalID: 88627704727800989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_5
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 69
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 064b5116b6f7e98a0800000000000000
+      internalID: -6296455129850334112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_6
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 69
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4824d5cb7a7326780800000000000000
+      internalID: -8691323137312341372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_7
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 69
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 976090e6c6b29bb40800000000000000
+      internalID: 5456440168238614137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 35
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6d99809537a214b0800000000000000
+      internalID: -5471126748801688209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_9
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 35
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62a16795f873f7bc0800000000000000
+      internalID: -3783244073147164122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_10
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 35
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f21548f0f7351770800000000000000
+      internalID: 8580826173121303288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_11
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 35
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ca9e57994aa210e0800000000000000
+      internalID: -2300589226584007998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22c64b29b3ec8d810800000000000000
+      internalID: 1790407607139462178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_13
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 1
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 078b7abd87e82cd10800000000000000
+      internalID: 2144433022314199152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_14
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 1
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 537a6e6d204729510800000000000000
+      internalID: 1554432376940439349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_2.0 with soot_15
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 1
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e65e2375549ee0e0800000000000000
+      internalID: -2238688870031010080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
