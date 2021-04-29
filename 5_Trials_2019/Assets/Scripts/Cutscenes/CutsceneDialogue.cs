@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -24,15 +26,16 @@ public class CutsceneDialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start(){
         LoadDialogue();
-        Debug.Log(currentDialogue.lines[0].text);
-        Debug.Log(currentDialogue.lines[1].text);
-        Debug.Log(currentDialogue.lines[2].text);
+        //Debug.Log(currentDialogue.lines[0].text);
+        //Debug.Log(currentDialogue.lines[1].text);
+        //Debug.Log(currentDialogue.lines[2].text);
+        //Debug.Log(currentDialogue.lines.text);
     }
 
     public void LoadDialogue()
     {
         textProcessor = new TextProcessor(textBox, textSpeed);
-        string jsonFile = JsonUtility.ToJson(textSource.text);
+        string jsonFile = textSource.text;
         Debug.Log(jsonFile);
         currentDialogue = JsonUtility.FromJson<Dialogue>(jsonFile);
         nextLine = 0;
@@ -56,7 +59,7 @@ public class CutsceneDialogue : MonoBehaviour
 
     private IEnumerator NextLineCO(){
         SetTextIconActive(false);
-        //yield return textProcessor.WriteText(currentDialogue.lines[nextLine].text);
+        yield return textProcessor.WriteText(currentDialogue.lines[nextLine].text);
         SetTextIconActive(true);
         yield return null;
     }
@@ -70,15 +73,14 @@ public class CutsceneDialogue : MonoBehaviour
         textIcon.SetActive(true);
     }
 
+    [Serializable]
     private class Dialogue {
-        //public string name;
         public Line[] lines;
     }
 
+    [Serializable]
     private class Line {
-        //public string name;
         public string text;
-        //public string name2;
         public int portrait;
     }
 }
