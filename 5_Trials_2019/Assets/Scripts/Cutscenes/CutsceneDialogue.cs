@@ -4,8 +4,9 @@ using System;
 
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
+//using UnityEngine.UIElements;
 using TMPro;
+using UnityEngine.Events;
 
 public class CutsceneDialogue : MonoBehaviour
 {
@@ -14,22 +15,21 @@ public class CutsceneDialogue : MonoBehaviour
     public float textSpeed;
     public GameObject textIcon;
 
+    public Image portrait;
     public List<Sprite> portaits = new List<Sprite>();
 
     private Dialogue currentDialogue;
 
     private TextProcessor textProcessor;
 
-    private int nextLine = 0;
+    private int currentLine = 0;
+
+    public UnityEvent e_Finished;
 
     
     // Start is called before the first frame update
     void Start(){
-        LoadDialogue();
-        //Debug.Log(currentDialogue.lines[0].text);
-        //Debug.Log(currentDialogue.lines[1].text);
-        //Debug.Log(currentDialogue.lines[2].text);
-        //Debug.Log(currentDialogue.lines.text);
+        //LoadDialogue();
     }
 
     public void LoadDialogue()
@@ -38,30 +38,42 @@ public class CutsceneDialogue : MonoBehaviour
         string jsonFile = textSource.text;
         Debug.Log(jsonFile);
         currentDialogue = JsonUtility.FromJson<Dialogue>(jsonFile);
-        nextLine = 0;
+        currentLine = 0;
 
-        NextLine();
+        WriteLine();
     }
 
     void Update() {
         if (Input.GetButtonDown("Attack"))        
-            NextLine();  
+            WriteLine();  
     }
 
-    private void NextLine(){
+    private void WriteLine(){
         //Check if the next line can be written
         if(!textProcessor.IsTextComplete())
             return;
+        //Check if there are anymore lines to write
+        if(currentLine >= currentDialogue.lines.Length){
+            EndDialogue();
+            return;
+        }
+        //Change portrait image
+        int nextPortrait = currentDialogue.lines[currentLine].portrait;
+        portrait.sprite = portaits[nextPortrait];        
         //Write next line
         StartCoroutine(NextLineCO());
-        nextLine++;
+        currentLine++;
     }
 
-    private IEnumerator NextLineCO(){
+    private IEnumerator NextLineCO(){    
         SetTextIconActive(false);
-        yield return textProcessor.WriteText(currentDialogue.lines[nextLine].text);
+        yield return textProcessor.WriteText(currentDialogue.lines[currentLine].text);
         SetTextIconActive(true);
-        yield return null;
+
+    }
+
+    private void EndDialogue(){
+        e_Finished.Invoke();
     }
 
     private void SetTextIconActive(bool isActive){

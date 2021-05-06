@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ScreenFader : MonoBehaviour
 {
     private Image image;
     private Animator animator;
 
+    public float fadeAnimationSpeed = 1;
     public float fadeSpeed = 1;
     public float updateInterval;
     public bool fadeOnStart = false;
+
+    public UnityEvent e_FadeIn;
+    public UnityEvent e_FadeOut;
 
     private AnimatorScripts animatorScripts;
 
@@ -23,18 +28,22 @@ public class ScreenFader : MonoBehaviour
 
     private void Start()
     {
-        //if (fadeOnStart)
-        //    StartCoroutine(FadeIn());
+        if (fadeOnStart)
+            StartCoroutine(FadeIn());
     }
 
     public IEnumerator FadeIn()
     {
+        animator.speed = fadeAnimationSpeed;
         yield return animatorScripts.PlayWholeAnimationRealTime("Fade_In", 0);
+        e_FadeIn.Invoke();
     }
 
     public IEnumerator FadeOut()
     {
+        animator.speed = fadeAnimationSpeed;
         yield return animatorScripts.PlayWholeAnimationRealTime("Fade_Out", 0);
+        e_FadeOut.Invoke();
     }
 
     public void FadeMid(bool state)

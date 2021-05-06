@@ -2785,7 +2785,7 @@ MonoBehaviour:
   m_Name: TextControlClip
   m_EditorClassIdentifier: 
   template:
-    text: You have proven yourself to be strongest of mankind.
+    text: You have proven yourself to be the strongest of mankind.
     startingCharacter: 0
     textSpeed: 1
     noTyping: 1

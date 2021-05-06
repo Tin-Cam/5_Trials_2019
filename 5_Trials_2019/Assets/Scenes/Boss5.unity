@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2619,6 +2619,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_text
+      value: Golzard
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52fee9b99713a1841bb55128229d8880, type: 3}
 --- !u!1 &860101563
@@ -2947,6 +2957,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 207810766}
+    - target: {fileID: 2556536046020970687, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1062325171}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84ca6cc32681ea748aff43707ab63a54, type: 3}
 --- !u!1 &987527423

@@ -80,6 +80,9 @@ public class Boss1_Controller : _BossBase
 
     override protected void IncreasePhase()
     {
+        audioManager.Play("Boss_Hit", 1, 1.5f);
+        healthBar.ShakeBar();
+
         phase++;
         if (phase == 1)
             SetPhase_1();

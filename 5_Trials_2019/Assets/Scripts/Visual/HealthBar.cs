@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HealthBar : MonoBehaviour {
 
     public GameObject healthBar;
     public GameObject healthBarHider;
-    public Text healthBarText;
+    public TextMeshProUGUI healthBarText;
+    
     public bool hideHealthBar = false;
 
     private float unit; //Determines the scale of a single unit of health on the game screen
@@ -17,7 +19,7 @@ public class HealthBar : MonoBehaviour {
 
     private Vector3 origin;
 
-    private string healthBarName;
+    private string healthBarName = "";
 
     private Image barImage;
 

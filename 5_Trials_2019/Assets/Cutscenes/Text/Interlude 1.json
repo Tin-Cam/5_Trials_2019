@@ -1,6 +1,6 @@
 {
     "name" : "Intro",
-    "text" : ["This is Cam's well written cutscene text!",
-            "Isn't it nice?"],
+    "text" : ["I’ve stepped on to the island for the first time in my life; I’m ecstatic! I still can’t believe the funding for this venture got approved!",
+        "It didn’t take me long to find where the 5 Trials is. There’s a cave that leads deep into the island. I’m surprised it's barely hidden. It’s as if it was designed to lure people inside. Even just looking at it, I get an urge to peek…"],
     "nextScene" : "Boss2"
 }

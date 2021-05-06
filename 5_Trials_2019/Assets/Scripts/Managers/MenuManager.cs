@@ -34,7 +34,8 @@ public class MenuManager : MonoBehaviour
         else
             FlagManager.instance.easyMode = false;
 
-        LoadScene("Starting_Room");
+        //LoadScene("Starting_Room");
+        RoomManager.instance.LoadInterludeCutscene(0);
     }
 
     public void QuitGame()

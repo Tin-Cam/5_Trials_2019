@@ -1,6 +1,6 @@
 {
     "name" : "Intro",
-    "text" : ["Interlude 2",
-            "The island always intrigued me. As a kid I’d sneak off to the beach, just to stare at that mysterious bump on the horizon. It felt as if it was beckoning me… I’ve made it my life’s mission to solve the mystery of the 5 Trials."],
+    "text" : ["So far we’ve discovered that the “Trials” are monsters. The first one is a large eye with legs. As goofy as it sounds, it’s actually quite vicious. It appears to shoot some kind of energy projectile from… Well… Its eye.",
+        "It’s tricky to study each trial as the monsters must be defeated to progress to the next room. But through clever use of cameras and drones, we’re able to study each trial without putting anyone in serious danger."],
     "nextScene" : "Boss3"
 }

@@ -399,6 +399,18 @@ Transform:
   m_Father: {fileID: 1574870482}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &96371522 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
+    type: 3}
+  m_PrefabInstance: {fileID: 857009890}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &109919883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1850,6 +1862,18 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!114 &385032632 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7188631609871164142, guid: 52fee9b99713a1841bb55128229d8880,
+    type: 3}
+  m_PrefabInstance: {fileID: 857009890}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &390687852
 GameObject:
   m_ObjectHideFlags: 0
@@ -3924,7 +3948,7 @@ PrefabInstance:
     - target: {fileID: 5312493438156586967, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5312493438252995560, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
@@ -4041,11 +4065,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5312493438611060888, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: healthBarText
+      value: 
+      objectReference: {fileID: 385032632}
     - target: {fileID: 5312493438641714023, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5312493438664343401, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: healthBarText
+      value: 
+      objectReference: {fileID: 96371522}
     - target: {fileID: 5312493438664343406, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -4065,6 +4099,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_text
+      value: Sentinel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7529971916433408437, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
@@ -5219,7 +5263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1099659283
 Transform:
   m_ObjectHideFlags: 0
@@ -7897,7 +7941,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1574870481
 MonoBehaviour:
   m_ObjectHideFlags: 0

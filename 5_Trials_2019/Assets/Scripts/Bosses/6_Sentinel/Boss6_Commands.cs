@@ -248,9 +248,10 @@ public class Boss6_Commands : MonoBehaviour
         action.ShowDesperationFilter(true);
         yield return Idle(0.5f);
         animatorScripts.PlayAnimation("Boss_6_Act", 0);
-        yield return action.SineAttack();
-        action.ShowDesperationFilter(false);
+        yield return action.StartSineAttack();
         yield return move.Exit();
+        yield return action.DoSineAttack();
+        action.ShowDesperationFilter(false);
         ResetDespCount();
     }
 

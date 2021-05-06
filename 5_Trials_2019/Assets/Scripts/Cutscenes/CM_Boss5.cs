@@ -82,6 +82,6 @@ public class CM_Boss5 : MonoBehaviour, ICutsceneManager
     //Runs after intro cutscene
     private void NextRoom(PlayableDirector cutscene){
         cutscene.stopped -= NextRoom;
-        RoomManager.instance.LoadRoom(8);
+        RoomManager.instance.LoadInterludeCutscene(5);
     }
 }

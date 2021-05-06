@@ -386,8 +386,8 @@ public class Boss6_Action : _ActionBase
         DefaultState();
     }
 
-    
-    public IEnumerator SineAttack()
+    //Sarts the sine attack by bringing the sine object into scene
+    public IEnumerator StartSineAttack()
     {
         DefaultSine();       
         StartCoroutine(MoveSineWave());
@@ -397,6 +397,11 @@ public class Boss6_Action : _ActionBase
 
         audioManager.Play("Boss_Charge", 0.75f, 0.5f);
         yield return sineWaveAnimatorScripts.PlayWholeAnimation("SineWave_Entry", 0);
+    }
+
+    //Holds then finishes Sine Attack
+    public IEnumerator DoSineAttack()
+    {
         yield return new WaitForSeconds(sineTime * GetLevelFraction());
         yield return sineWaveAnimatorScripts.PlayWholeAnimation("SineWave_Exit", 0);
         holdSine = false;

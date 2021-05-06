@@ -1,11 +1,11 @@
 {
     "lines" : [{
-        "text" : "Tim!? How the hell did you get here??", "portrait" : 0},{
-        "text" : "I… Uhh… What even happened!?", "portrait" : 0 },{
-        "text" : "The last thing I remember was I got cornered by that… Machine. I tried fighting back, but I wasn’t strong enough.", "portrait" : 0 },{
+        "text" : "Tim!? How the hell did you get here??", "portrait" : 2},{
+        "text" : "I… Uhh… What even happened!?", "portrait" : 2 },{
+        "text" : "The last thing I remember was I got cornered by that… Machine. I tried fighting back, but I wasn’t strong enough.", "portrait" : 1 },{
         "text" : "Hold on... You did it, didn’t you? You defeated the 5 Trials! Seems like you took care of whatever that “robot” thing was too.", "portrait" : 0 },{
         "text" : "Ha ha ha ha, as much as I hate how I pulled you into my mess, I’m grateful you came after us.", "portrait" : 0 },{
-        "text" : "The others and I woke up from these containers a moment ago. We seem to be fine, though we are a bit… Shaken.", "portrait" : 0 },{
+        "text" : "The others and I woke up from these containers a moment ago. We seem to be fine, though we are a bit… Shaken.", "portrait" : 1 },{
         "text" : "But wow, isn’t this amazing though? Finding that machine and this hidden room is a huge breakthrough! This could be the discovery of the century!", "portrait" : 0 },{
         "text" : "Although… I suppose I’ve caused enough trouble. Now’s not the time for questions.", "portrait" : 0 },{
         "text" : "Come on, let’s get out of here.", "portrait" : 0 }]

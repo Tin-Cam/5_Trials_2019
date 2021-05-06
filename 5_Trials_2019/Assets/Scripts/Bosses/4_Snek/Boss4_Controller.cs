@@ -123,6 +123,9 @@ public class Boss4_Controller : _BossBase
 
     protected override void IncreasePhase()
     {
+        audioManager.Play("Boss_Hit", 1, 1.5f);
+        healthBar.ShakeBar();
+
         phase++;
         move.HardSetSpeed(move.GetDefaultSpeed() + 1);
 

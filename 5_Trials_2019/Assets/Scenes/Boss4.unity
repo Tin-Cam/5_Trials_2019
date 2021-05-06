@@ -346,6 +346,21 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_text
+      value: Snapasphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52fee9b99713a1841bb55128229d8880, type: 3}
 --- !u!1001 &934452881
@@ -454,7 +469,17 @@ PrefabInstance:
         type: 3}
       propertyPath: currentBoss
       value: 
-      objectReference: {fileID: 1083194444}
+      objectReference: {fileID: 727680877}
+    - target: {fileID: 2556536046020970687, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1062325171}
+    - target: {fileID: 2556536046020970687, guid: 84ca6cc32681ea748aff43707ab63a54,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1951528287}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84ca6cc32681ea748aff43707ab63a54, type: 3}
 --- !u!1001 &997082742
@@ -541,18 +566,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29e4b1df0e119e04fbc9cf50006c4bf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1083194444 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4624279370011143908, guid: 2ead3e453f2605945911ceed4ceb748f,
-    type: 3}
-  m_PrefabInstance: {fileID: 4624279371077538472}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 118527ea9f6779644b75969b5296464e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1430741886
@@ -793,6 +806,11 @@ PrefabInstance:
         type: 3}
       propertyPath: interludeID
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116373230730956360, guid: d721d292a0ade1b459f96f60e8772f2c,
+        type: 3}
+      propertyPath: playInterlude
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d721d292a0ade1b459f96f60e8772f2c, type: 3}
