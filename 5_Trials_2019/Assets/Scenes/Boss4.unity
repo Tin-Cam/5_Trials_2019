@@ -349,17 +349,27 @@ PrefabInstance:
     - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
       propertyPath: m_text
-      value: Snapasphere
+      value: 4 - Snapasphere
       objectReference: {fileID: 0}
     - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 11
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
       propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52fee9b99713a1841bb55128229d8880, type: 3}

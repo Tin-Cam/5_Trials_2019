@@ -4080,6 +4080,11 @@ PrefabInstance:
       propertyPath: healthBarText
       value: 
       objectReference: {fileID: 96371522}
+    - target: {fileID: 5312493438664343401, guid: 52fee9b99713a1841bb55128229d8880,
+        type: 3}
+      propertyPath: hideHealthBar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5312493438664343406, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
       propertyPath: m_LocalPosition.z
