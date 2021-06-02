@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -506,6 +506,7 @@ GameObject:
   - component: {fileID: 1227621088}
   - component: {fileID: 1227621090}
   - component: {fileID: 1227621091}
+  - component: {fileID: 1227621092}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -575,6 +576,21 @@ MonoBehaviour:
   currentBoss: {fileID: 1775395409}
   player: {fileID: 1476381286}
   healthBar: {fileID: 1068308743}
+--- !u!114 &1227621092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227621087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332505b4cf698a945851186fb1e6bcbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasIntro: 0
+  musicIntro: {fileID: 8300000, guid: 73d42bcbe9150d84491e2637d561272d, type: 3}
+  musicLoop: {fileID: 8300000, guid: a7381de6ea1725b47a21c2ada7e51085, type: 3}
 --- !u!1 &1476381286 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9182096197023116857, guid: eb5d813d44eb64f4791a90e539078c1f,
