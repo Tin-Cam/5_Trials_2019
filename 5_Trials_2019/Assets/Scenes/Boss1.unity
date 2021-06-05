@@ -590,7 +590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasIntro: 0
   musicIntro: {fileID: 8300000, guid: 73d42bcbe9150d84491e2637d561272d, type: 3}
-  musicLoop: {fileID: 8300000, guid: a7381de6ea1725b47a21c2ada7e51085, type: 3}
+  musicLoop: {fileID: 8300000, guid: 9f6ac2800b61fe843b09074db93f16b6, type: 3}
 --- !u!1 &1476381286 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9182096197023116857, guid: eb5d813d44eb64f4791a90e539078c1f,
