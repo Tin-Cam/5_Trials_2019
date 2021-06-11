@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2000,7 +2000,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 934452881}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1910693179}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa22e8f676b480845b3ac57ec7b77620, type: 3}
@@ -5698,6 +5698,30 @@ Transform:
   m_Father: {fileID: 637832196}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1910693179 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2556536046020970672, guid: 84ca6cc32681ea748aff43707ab63a54,
+    type: 3}
+  m_PrefabInstance: {fileID: 934452881}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1910693180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910693179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332505b4cf698a945851186fb1e6bcbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasIntro: 1
+  musicIntro: {fileID: 8300000, guid: 01bf377a79063494c9fa44173ca17fee, type: 3}
+  musicLoop: {fileID: 8300000, guid: d5c6abe98ef8fe6468f1c9b30f87eb38, type: 3}
+  mixerGroup: {fileID: -5666102906900860990, guid: 909ed832536df19488e87a58c9112bd9,
+    type: 2}
+  playOnStart: 0
 --- !u!1 &1927898153
 GameObject:
   m_ObjectHideFlags: 0

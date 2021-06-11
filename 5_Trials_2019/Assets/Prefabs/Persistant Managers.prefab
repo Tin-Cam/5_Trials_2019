@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f8e4999b3fe52459323c5592a46504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 0}
+  mixerGroup: {fileID: -5078102412522452320, guid: 909ed832536df19488e87a58c9112bd9,
+    type: 2}
   sounds:
   - name: Boss_Death
     clip: {fileID: 8300000, guid: a7381de6ea1725b47a21c2ada7e51085, type: 3}
