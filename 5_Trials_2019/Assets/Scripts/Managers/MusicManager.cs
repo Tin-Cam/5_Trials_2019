@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 using UnityEngine;
 
 public class MusicManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class MusicManager : MonoBehaviour
 
     public AudioClip musicIntro;
     public AudioClip musicLoop;
+    public AudioMixerGroup mixerGroup;
+    public bool playOnStart = false;
 
     private AudioSource source;
 
@@ -15,10 +18,12 @@ public class MusicManager : MonoBehaviour
         source = gameObject.AddComponent<AudioSource>();
         source.loop = true;
         source.clip = musicLoop;
+        source.outputAudioMixerGroup = mixerGroup;
     }
 
     void Start(){
-        PlayMusic();
+        if(playOnStart)
+            PlayMusic();
     }
 
     public void PlayMusic(){
@@ -26,6 +31,10 @@ public class MusicManager : MonoBehaviour
             PlayLoopWithIntro();
         else
             PlayOnlyLoop();
+    }
+
+    public void StopMusic(){
+        source.Stop();
     }
 
     private void PlayLoopWithIntro(){

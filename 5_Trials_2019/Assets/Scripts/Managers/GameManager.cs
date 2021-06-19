@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     public GUIManager gui;
     private BossManager bossManager;
+    private MusicManager musicManager;
 
     public bool isPaused = false;
     public bool noInterupts = false;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
         roomManager = RoomManager.instance;
 
         bossManager = GetComponent<BossManager>();
+        musicManager = GetComponent<MusicManager>();
 
         gui.ShowGUI(false);
     }
@@ -61,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void QuickRoomIntro(){
         gui.ShowGUI_Animate(true);
+        musicManager.PlayMusic();
     }
 
     private IEnumerator RoomIntroCO(){
@@ -73,14 +76,19 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(1);
         Time.timeScale = 1;
         noInterupts = false;
+        musicManager.PlayMusic();
     }
 
     public void BossDefeated()
     {
         gui.ShowGUI_Animate(false);
-        //Stop Music
+        musicManager.StopMusic();
+        //Start ambiance effect
 
         //If score mode, go to score screen
+
+        //Enable god mode on player incase they get hit AFTER the boss dies
+        player.GetComponentInChildren<PlayerCollision>().godMode = true;
 
         if(GetBoss().tag == "Boss_5"){
             PrepareCutscene();
@@ -104,6 +112,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenRoomDoor()
     {
+        //Play victory music
         room.OpenDoor();
     }
 
@@ -158,6 +167,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator PlayerDeath()
     {
+        musicManager.StopMusic();
         audioManager.Play("Player_Death");
         player.SetActive(false);
         yield return new WaitForSeconds(1);
