@@ -27,7 +27,7 @@ public class MusicManager : MonoBehaviour
     }
 
     public void PlayMusic(){
-        if(hasIntro || musicIntro == null)
+        if(hasIntro || musicIntro != null)
             PlayLoopWithIntro();
         else
             PlayOnlyLoop();

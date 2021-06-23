@@ -37,7 +37,7 @@ public class CM_Boss6 : MonoBehaviour, ICutsceneManager
 
     private void Intro(){
         introCutscene.Play();
-        introCutscene.stopped += StartFight;
+        introCutscene.stopped += DestroyCutsceneAssets1;
     }
 
     private void SkipIntro(){
@@ -47,16 +47,11 @@ public class CM_Boss6 : MonoBehaviour, ICutsceneManager
         StartFight();
     }
 
-    //Runs after intro cutscene
-    private void StartFight(PlayableDirector cutscene){
-        cutscene.stopped -= StartFight;
-        StartFight();
-    }
-
-    private void StartFight(){
+    //Is initiated during the cutscene
+    public void StartFight(){
         //Start fight with boss
         bossHolder.SetActive(true);
-        Destroy(cutSceneAssets1);
+        //Destroy(cutSceneAssets1);
 
         if(playCutscene){
             gameManager.QuickRoomIntro();
@@ -64,6 +59,11 @@ public class CM_Boss6 : MonoBehaviour, ICutsceneManager
         }
         else
             gameManager.RoomIntro();       
+    }
+
+    private void DestroyCutsceneAssets1(PlayableDirector director){
+        introCutscene.stopped -= DestroyCutsceneAssets1;
+        Destroy(cutSceneAssets1);
     }
 
     public void Ending(){

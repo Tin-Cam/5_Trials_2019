@@ -147,7 +147,8 @@ AudioSource:
   m_GameObject: {fileID: 2671659}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5666102906900860990, guid: 909ed832536df19488e87a58c9112bd9,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -10107,6 +10108,10 @@ PlayableDirector:
     value: {fileID: 745741563}
   - key: {fileID: -7397295525257225490, guid: b5212a09e00de93418c75147d16c8c2c, type: 2}
     value: {fileID: 1457211013}
+  - key: {fileID: 8080440658993974382, guid: b5212a09e00de93418c75147d16c8c2c, type: 2}
+    value: {fileID: 2671660}
+  - key: {fileID: 6596601719097074487, guid: b5212a09e00de93418c75147d16c8c2c, type: 2}
+    value: {fileID: 1459637972}
   m_ExposedReferences:
     m_References:
     - 473fb30de4e327046b3f888d458ffe30: {fileID: 0}
@@ -12293,6 +12298,7 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: 6a0389a08e2152e48a848c6f3ee1e867, type: 2}
     - {fileID: 11400000, guid: 5bd24d7aa4b64874e87155040e18e95e, type: 2}
+    - {fileID: 11400000, guid: a9ff4cc6ea29fe849b0256b6852e72e3, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -12317,6 +12323,19 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1459637971}
+          m_MethodName: StartFight
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
