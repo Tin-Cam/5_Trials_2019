@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 164159391}
   - component: {fileID: 164159392}
   - component: {fileID: 164159393}
+  - component: {fileID: 164159394}
   m_Layer: 0
   m_Name: Abyss
   m_TagString: Untagged
@@ -684,6 +685,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 14, y: 4}
   m_EdgeRadius: 0
+--- !u!95 &164159394
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164159390}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &199012098
 GameObject:
   m_ObjectHideFlags: 0
@@ -10112,6 +10132,8 @@ PlayableDirector:
     value: {fileID: 2671660}
   - key: {fileID: 6596601719097074487, guid: b5212a09e00de93418c75147d16c8c2c, type: 2}
     value: {fileID: 1459637972}
+  - key: {fileID: 4800471888107380170, guid: b5212a09e00de93418c75147d16c8c2c, type: 2}
+    value: {fileID: 164159394}
   m_ExposedReferences:
     m_References:
     - 473fb30de4e327046b3f888d458ffe30: {fileID: 0}

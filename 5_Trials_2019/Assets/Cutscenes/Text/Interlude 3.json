@@ -1,6 +1,6 @@
 {
     "name" : "Intro",
-    "text" : ["Geoff defeated the 5 Trials today.\n\nWe tried stopping him from going in, though he was too confident that he could beat it.",
+    "text" : ["May 20th\nGeoff defeated the 5 Trials today.",
             "We’ve watched the footage of him beating it over and over again. There was some kind of odd interference that corrupted the video, making it hard to see what’s going on. But from we understand, it seems Geoff just… Disappears at the end. We can’t contact him through the radio either.",
             "I just hope he’s ok…"],
     "nextScene" : "Boss4"

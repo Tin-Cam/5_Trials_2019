@@ -1,7 +1,7 @@
 {
     "name" : "Intro",
-    "text" : ["Lucy has disappeared.",
+    "text" : ["May 21st\nLucy has disappeared.",
             "We’ve searched the whole island but we can’t find her. Our boat’s still here so the only place she’d be is the 5 Trials. But she was always so insistent on keeping her distance from it, preferring to stay at the camp. So we don’t understand why she’d be in there.",
-            "The others are starting to get paranoid. John claimed we’re “being watched”. We got into a fight and afterwards he left the island with the others. I chose to stay behind; I not leaving until I can find Geoff and Lucy. Though I suppose I won’t be here much longer either. There’s not much else I can do… Except…"],
+            "George got paranoid and claimed we’re \"being watched\". We got into a fight and afterwards he left the island to get help. I chose to stay behind. I not leaving until I can find Geoff and Lucy. Though I suppose I won’t be here much longer either. There’s not much else I can do… Except…"],
     "nextScene" : "Boss5"
 }
