@@ -219,6 +219,42 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Pop_Up
+    clip: {fileID: 8300000, guid: df5f7ced52f49974d85ca78f1274e244, type: 3}
+    volume: 0.75
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Discard
+    clip: {fileID: 8300000, guid: 79788728dc90f404291a99afd4d0cf20, type: 3}
+    volume: 0.75
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Fanfare
+    clip: {fileID: 8300000, guid: f247007a91b96f549ac74713b7ed8fe2, type: 3}
+    volume: 0.75
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Fanfare_Short
+    clip: {fileID: 8300000, guid: ab067fde5f5749549b4f1bd12c92935d, type: 3}
+    volume: 0.75
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!114 &762084817190739888
 MonoBehaviour:
   m_ObjectHideFlags: 0

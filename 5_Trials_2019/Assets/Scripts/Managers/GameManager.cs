@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
 
     public bool introOnStart = true;
 
+    public AudioSource fanfare;
+    public GameObject ambiance;    
+
     void Awake()
     {
         audioManager = AudioManager.instance;
@@ -83,7 +86,6 @@ public class GameManager : MonoBehaviour
     {
         gui.ShowGUI_Animate(false);
         musicManager.StopMusic();
-        //Start ambiance effect
 
         //If score mode, go to score screen
 
@@ -101,8 +103,17 @@ public class GameManager : MonoBehaviour
             cm.Ending();
         }
         else
-            OpenRoomDoor();        
+            StartCoroutine(BossDefeatedCO());
     } 
+
+    private IEnumerator BossDefeatedCO(){
+        yield return new WaitForSeconds(2);
+        fanfare.Play();
+        //yield return new WaitWhile (() => audioManager.GetSound("Fanfare_Short").source.isPlaying);
+        yield return new WaitForSeconds(3);
+        OpenRoomDoor();
+        ambiance.SetActive(true);
+    }
 
     private void PrepareCutscene(){
         player.GetComponentInChildren<PlayerCollision>().godMode = true;

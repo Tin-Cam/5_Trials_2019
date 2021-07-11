@@ -14,6 +14,8 @@ public class Interlude : MonoBehaviour
 
     public List<TextAsset> cutscenes = new List<TextAsset>();
 
+    public MusicManager music;
+
     private TextProcessor textProcessor;
 
     private int nextLine = 0;
@@ -32,12 +34,28 @@ public class Interlude : MonoBehaviour
         currentCutscene = JsonUtility.FromJson<Cutscene>(jsonFile);
         nextLine = 0;
 
+        InterludeEffects(cutsceneID);
+
+        music.PlayMusic();
         NextLine();
+    }
+
+    //Changes the background and music pitch depending on which cutscene is playing
+    private void InterludeEffects(int cutsceneID){
+        if(cutsceneID == 3){
+            music.source.pitch = 0.8f;
+        }
+        else if(cutsceneID == 4){
+            music.source.pitch = 0.6f;
+        }
+        else if(cutsceneID == 5){
+            music.source.pitch = 0.2f;
+        }
     }
 
     void Update() {
         if (Input.GetButtonDown("Attack"))        
-            NextLine();  
+            NextLine();
     }
 
     private void NextLine(){
@@ -51,6 +69,11 @@ public class Interlude : MonoBehaviour
         //Write next line
         StartCoroutine(NextLineCO());
         nextLine++;
+    }
+
+    //Cuts the music when the last line of the last interlude is shown (for drama)
+    private void LastInterludeLastLineCheck(){
+
     }
 
     private IEnumerator NextLineCO(){

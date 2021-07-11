@@ -13,6 +13,8 @@ public class CM_Last : MonoBehaviour
 
     public GameObject theEndText;
 
+    public AudioSource music;
+
     private GameManager gameManager;
 
     void Awake(){
@@ -34,6 +36,7 @@ public class CM_Last : MonoBehaviour
 
     private void ShowDialogue(PlayableDirector cutscene){
         endingCutscene.stopped -= ShowDialogue;
+        music.Play();
         dialogue.gameObject.SetActive(true);
         dialogue.e_Finished.AddListener(Finish);
         dialogue.LoadDialogue();

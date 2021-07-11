@@ -8,10 +8,15 @@ public class TutorialTrigger : MonoBehaviour
     public GameObject targetControls;
 
     private AnimatorScripts animatorScripts;
+    private AudioManager audioManager;
     private bool triggered = false;
 
     void Awake() {
        animatorScripts = GetComponent<AnimatorScripts>(); 
+    }
+
+    void Start() {
+        audioManager = AudioManager.instance;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -31,8 +36,9 @@ public class TutorialTrigger : MonoBehaviour
 
     //Displays the target control object
     private void ShowEntry(){
+        audioManager.Play("Pop_Up");
         targetControls.SetActive(true);
-        animatorScripts.PlayAnimation("Enter", 0);
+        animatorScripts.PlayAnimation("Enter", 0);       
         Destroy(this);
     }
 
@@ -42,8 +48,9 @@ public class TutorialTrigger : MonoBehaviour
     }
 
     private IEnumerator ShowExitCO(){
+        audioManager.Play("Discard");
         yield return animatorScripts.PlayWholeAnimation("Exit", 0);
-        targetControls.SetActive(false);
+        targetControls.SetActive(false);       
         Destroy(this);
     }
 }

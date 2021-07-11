@@ -41,7 +41,14 @@ public class RoomManager : MonoBehaviour
 
     void Start(){
         currentRoom = GetRoomCode();
-        StartCoroutine(OnRoomLoad());
+        StartCoroutine(FindScreenFaderCO());
+    }
+
+    private IEnumerator FindScreenFaderCO(){
+        while(fader == null){
+            fader = FindObjectOfType<ScreenFader>();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
     }
 
     private IEnumerator OnRoomLoad(){
@@ -49,7 +56,7 @@ public class RoomManager : MonoBehaviour
             yield break;
 
         while (SceneManager.GetActiveScene().buildIndex != currentRoom)
-            yield return null;
+            yield return new WaitForSecondsRealtime(0.1f);
         
         fader = FindObjectOfType<ScreenFader>();
         

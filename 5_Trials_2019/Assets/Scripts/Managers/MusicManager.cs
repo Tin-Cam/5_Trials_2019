@@ -12,7 +12,8 @@ public class MusicManager : MonoBehaviour
     public AudioMixerGroup mixerGroup;
     public bool playOnStart = false;
 
-    private AudioSource source;
+    [HideInInspector]
+    public AudioSource source;
 
     void Awake(){
         source = gameObject.AddComponent<AudioSource>();

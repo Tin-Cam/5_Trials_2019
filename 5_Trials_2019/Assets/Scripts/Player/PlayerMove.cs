@@ -33,6 +33,8 @@ public class PlayerMove : MonoBehaviour
     void Start() {
         rig = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        SetDirection(direction);
     }
 
     void FixedUpdate() {
@@ -165,6 +167,8 @@ public class PlayerMove : MonoBehaviour
         transform.position = position;
     }
 
-    
+    public void SetCanMove(bool value){
+        canMove = value;
+    }
     
 }
