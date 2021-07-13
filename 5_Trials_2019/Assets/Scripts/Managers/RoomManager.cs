@@ -113,6 +113,7 @@ public class RoomManager : MonoBehaviour
         yield return LoadRoomCO(scenes.IndexOf("Cutscene_Interlude"));
 
         Interlude interlude = FindObjectOfType<Interlude>();
+        interlude.InterludeEffects(cutsceneCode);
         yield return new WaitForSeconds(1);
         interlude.LoadCutscene(cutsceneCode);
         Time.timeScale = 1;

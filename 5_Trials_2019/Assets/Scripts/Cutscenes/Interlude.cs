@@ -1,8 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 using TMPro;
 
 public class Interlude : MonoBehaviour
@@ -15,6 +14,7 @@ public class Interlude : MonoBehaviour
     public List<TextAsset> cutscenes = new List<TextAsset>();
 
     public MusicManager music;
+    public Image backgroundFade;
 
     private TextProcessor textProcessor;
 
@@ -41,15 +41,19 @@ public class Interlude : MonoBehaviour
     }
 
     //Changes the background and music pitch depending on which cutscene is playing
-    private void InterludeEffects(int cutsceneID){
+    public void InterludeEffects(int cutsceneID){
+        backgroundFade.color = new Color(0, 0, 0, 0);
         if(cutsceneID == 3){
             music.source.pitch = 0.8f;
+            backgroundFade.color = new Color(0, 0, 0, 0.2f);
         }
         else if(cutsceneID == 4){
             music.source.pitch = 0.6f;
+            backgroundFade.color = new Color(0, 0, 0, 0.5f);
         }
         else if(cutsceneID == 5){
             music.source.pitch = 0.2f;
+            backgroundFade.color = new Color(0, 0, 0, 1);
         }
     }
 
@@ -62,6 +66,7 @@ public class Interlude : MonoBehaviour
         //Check if the next line can be written
         if(!textProcessor.IsTextComplete())
             return;
+        //Check if there is no more lines to write
         if(nextLine >= currentCutscene.text.Length){
                 RoomManager.instance.LoadRoom(currentCutscene.nextScene);
                 return;
@@ -73,7 +78,8 @@ public class Interlude : MonoBehaviour
 
     //Cuts the music when the last line of the last interlude is shown (for drama)
     private void LastInterludeLastLineCheck(){
-
+        if((currentCutscene.name == "Interlude 5") && nextLine == (currentCutscene.text.Length - 1))
+            music.source.Stop();
     }
 
     private IEnumerator NextLineCO(){
