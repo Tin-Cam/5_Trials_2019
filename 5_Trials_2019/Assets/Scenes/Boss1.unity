@@ -426,10 +426,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 743120887, guid: 17b98768abaf94f41b16411e504ae230, type: 3}
+      propertyPath: isActivated
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 762084817190739888, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
       propertyPath: easyMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7282111899576251158, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
@@ -500,21 +504,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5312493437873795978, guid: 52fee9b99713a1841bb55128229d8880,
-        type: 3}
-      propertyPath: m_Text
-      value: Specket
-      objectReference: {fileID: 0}
-    - target: {fileID: 5312493438156586960, guid: 52fee9b99713a1841bb55128229d8880,
-        type: 3}
-      propertyPath: fadeOnStart
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5312493438156586967, guid: 52fee9b99713a1841bb55128229d8880,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5312493438252995560, guid: 52fee9b99713a1841bb55128229d8880,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -625,31 +614,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GUI
       objectReference: {fileID: 0}
-    - target: {fileID: 5312493438664343401, guid: 52fee9b99713a1841bb55128229d8880,
-        type: 3}
-      propertyPath: healthBarText
-      value: 
-      objectReference: {fileID: 1092015604}
-    - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
-        type: 3}
-      propertyPath: m_text
-      value: 1 - Specket
-      objectReference: {fileID: 0}
-    - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52fee9b99713a1841bb55128229d8880, type: 3}
 --- !u!114 &977942749 stripped
@@ -676,18 +640,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29e4b1df0e119e04fbc9cf50006c4bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1092015604 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6203272382744292715, guid: 52fee9b99713a1841bb55128229d8880,
-    type: 3}
-  m_PrefabInstance: {fileID: 928631959}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1227621087
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,7 +650,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1227621089}
   - component: {fileID: 1227621088}
-  - component: {fileID: 1227621090}
   - component: {fileID: 1227621091}
   - component: {fileID: 1227621092}
   - component: {fileID: 1227621093}
@@ -728,6 +679,7 @@ MonoBehaviour:
   noInterupts: 0
   player: {fileID: 1476381286}
   playerHealth: 5
+  godMode: 0
   introOnStart: 1
   fanfare: {fileID: 1227621093}
   ambiance: {fileID: 360085719}
@@ -746,19 +698,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1227621090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227621087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d8c42637e654804aa5574f390097ce4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugMode: 1
 --- !u!114 &1227621091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,6 +731,7 @@ MonoBehaviour:
   mixerGroup: {fileID: -5666102906900860990, guid: 909ed832536df19488e87a58c9112bd9,
     type: 2}
   playOnStart: 0
+  source: {fileID: 0}
 --- !u!82 &1227621093
 AudioSource:
   m_ObjectHideFlags: 0

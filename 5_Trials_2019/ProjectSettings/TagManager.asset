@@ -12,6 +12,7 @@ TagManager:
   - Boss_5
   - Boss_6
   - Regular_Boss
+  - EasyMode_Button
   layers:
   - Default
   - TransparentFX

@@ -56,6 +56,7 @@ public class Boss5_Action : _ActionBase
         for (int i = 0; i < burstAmount; i++)
         {
             projectile = Shoot(projectileSine.gameObject, target);
+            audioManager.Play("Boss_Shoot");
             //Rotates the projectile to face the player
             projectile.transform.rotation = Quaternion.AngleAxis(Vector2.SignedAngle(Vector2.up, target - projectile.transform.position), Vector3.forward);
             yield return new WaitForSeconds(firerate);
@@ -67,9 +68,11 @@ public class Boss5_Action : _ActionBase
         controller.bossAnimator.SetTrigger("Shoot_Spin");
         yield return new WaitForSeconds(GetAttackDelay());
         Instantiate(projectileSpin, transform.position, transform.rotation);
+        audioManager.Play("Boss5_Spin", 0.7f, 1f);
         yield break;
     }
 
+    //Shoots Desp1 (Fast red projectile)
     public IEnumerator ShootDesp1()
     {
         GameObject projectile;
@@ -78,16 +81,22 @@ public class Boss5_Action : _ActionBase
 
         for (int i = 0; i < despShotAmount; i++) {
             projectile = Shoot(projectileDesp1.gameObject, Vector3.zero);
+            audioManager.Play("Boss5_Desp1", 0.8f, 1f);
+            audioManager.Play("Boss3_Laser", 0.7f, 1.5f);
+
             //Ramdomly decides to reverse the swing pattern of the projectile
             projectile.GetComponent<Projectile_Sine>().waveSpeed *= randomSign;
             yield return new WaitForSeconds(despFireRate);
         }
     }
 
+    //Shoots Desp2 (Slow green projectile)
     public IEnumerator ShootDesp2()
     {
         GameObject projectile;
         projectile = Shoot(projectileDesp2.gameObject, Vector3.zero);
+        audioManager.Play("Boss_Shoot", 0.9f, 0.5f);
+        audioManager.Play("Boss3_Laser", 0.7f, 0.5f);
 
         float rng = Random.Range(-despVariablity, despVariablity);
         projectile.GetComponent<Projectile_Sine>().moveSpeed += rng;
@@ -107,7 +116,6 @@ public class Boss5_Action : _ActionBase
 
     private GameObject Shoot(GameObject bullet, Vector3 target)
     {
-        audioManager.Play("Boss_Shoot");
         //Creates the projectile
         GameObject tempProjectile;
         tempProjectile = Instantiate(bullet, transform.position, transform.rotation);

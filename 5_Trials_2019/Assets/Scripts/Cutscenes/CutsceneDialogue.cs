@@ -35,6 +35,8 @@ public class CutsceneDialogue : MonoBehaviour
     public void LoadDialogue()
     {
         textProcessor = new TextProcessor(textBox, textSpeed);
+        textProcessor.textSound = GetComponent<AudioSource>();
+        
         string jsonFile = textSource.text;
         Debug.Log(jsonFile);
         currentDialogue = JsonUtility.FromJson<Dialogue>(jsonFile);

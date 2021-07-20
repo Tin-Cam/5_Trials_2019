@@ -40,6 +40,8 @@ public class Boss6_Action : _ActionBase
     public AnimatorScripts sineWaveAnimatorScripts;
     [HideInInspector()]
     public bool holdSine;
+
+    public AudioSource waveSound;
     
 
     private Boss6_Controller controller;
@@ -336,6 +338,10 @@ public class Boss6_Action : _ActionBase
             tempAnimator.Play("GridAttack_Idle");
         }
 
+        //SFX
+        waveSound.pitch = 2f;
+        waveSound.Play();
+
         //Move grid
         float maxSpeed = maxGridSpeed * controller.bossLevel;
         if(maxSpeed > maxGridSpeedCap)
@@ -397,6 +403,9 @@ public class Boss6_Action : _ActionBase
 
         audioManager.Play("Boss_Charge", 0.75f, 0.5f);
         yield return sineWaveAnimatorScripts.PlayWholeAnimation("SineWave_Entry", 0);
+        //SFX
+        waveSound.pitch = 1f;
+        waveSound.Play();
     }
 
     //Holds then finishes Sine Attack
@@ -491,6 +500,8 @@ public class Boss6_Action : _ActionBase
 
         sineWaveAnimatorScripts.PlayAnimation("SineWave_Inactive", 0);
         holdSine = false;
+        waveSound.Stop();
+
         ShowDesperationFilter(false);
     }
 }

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2556536046020970673}
   - component: {fileID: 2556536046020970684}
   - component: {fileID: 2556536046020970687}
-  - component: {fileID: 2556536046020970686}
   - component: {fileID: 5621470136077754390}
   m_Layer: 0
   m_Name: Managers
@@ -54,6 +53,7 @@ MonoBehaviour:
   noInterupts: 0
   player: {fileID: 0}
   playerHealth: 1
+  godMode: 0
   introOnStart: 1
   fanfare: {fileID: 5621470136077754390}
   ambiance: {fileID: 8334272207680525063}
@@ -72,19 +72,6 @@ MonoBehaviour:
   currentBoss: {fileID: 0}
   player: {fileID: 0}
   healthBar: {fileID: 0}
---- !u!114 &2556536046020970686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2556536046020970672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d8c42637e654804aa5574f390097ce4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugMode: 1
 --- !u!82 &5621470136077754390
 AudioSource:
   m_ObjectHideFlags: 0

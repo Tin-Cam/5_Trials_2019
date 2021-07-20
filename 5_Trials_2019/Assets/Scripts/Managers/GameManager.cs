@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GUIManager gui;
     private BossManager bossManager;
     private MusicManager musicManager;
+    private FlagManager flagManager;
 
     public bool isPaused = false;
     public bool noInterupts = false;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     
     public float playerHealth;
     private float playerMaxHealth;
+    public bool godMode = false;
 
     private Room room;
 
@@ -29,12 +31,13 @@ public class GameManager : MonoBehaviour
     public bool introOnStart = true;
 
     public AudioSource fanfare;
-    public GameObject ambiance;    
+    public GameObject ambiance;
 
     void Awake()
     {
         audioManager = AudioManager.instance;
         roomManager = RoomManager.instance;
+        flagManager = FlagManager.instance;
 
         bossManager = GetComponent<BossManager>();
         musicManager = GetComponent<MusicManager>();
@@ -86,11 +89,12 @@ public class GameManager : MonoBehaviour
     {
         gui.ShowGUI_Animate(false);
         musicManager.StopMusic();
+        flagManager.bossDeaths = 0;
 
         //If score mode, go to score screen
 
         //Enable god mode on player incase they get hit AFTER the boss dies
-        player.GetComponentInChildren<PlayerCollision>().godMode = true;
+        godMode = true;
 
         if(GetBoss().tag == "Boss_5"){
             PrepareCutscene();
@@ -116,7 +120,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void PrepareCutscene(){
-        player.GetComponentInChildren<PlayerCollision>().godMode = true;
+        godMode = true;
         noInterupts = true;
         DeleteObjectsOfTag("Projectile");
     }
@@ -133,13 +137,13 @@ public class GameManager : MonoBehaviour
             return;
 
         isPaused = state;
-        gui.ShowPause(isPaused);
-        audioManager.Play("Button_Press");
+        gui.ShowPause(isPaused);       
 
         if (!isPaused)
             Time.timeScale = 1;
         else
             Time.timeScale = 0;
+        audioManager.Play("Button_Press");
     }
 
     public void ResetRoom(){
@@ -169,6 +173,10 @@ public class GameManager : MonoBehaviour
 
     public void PlayerTakeDamage(float damage)
     {
+        flagManager.hasBeenHit = true;
+        if(godMode)
+            return;
+
         audioManager.Play("Player_Hit");
         playerHealth -= damage;
         gui.AddHealth(-damage);
@@ -185,7 +193,10 @@ public class GameManager : MonoBehaviour
         yield return gui.FadeTransition("Out");
         DeleteObjectsOfTag("Projectile");
         Time.timeScale = 0;
+        
+        flagManager.bossDeaths +=1;
         gui.ShowGameOver(true);
+        CheckEasyModeConditions();
     }
 
     public void LoadMainMenu()
@@ -196,5 +207,21 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void EasyMode(){
+        flagManager.easyMode = true;
+    }
+
+    //Give player choice of switching to easy mode if they die enough times
+    public void CheckEasyModeConditions(){
+        if(flagManager.bossDeaths >= 3 && !flagManager.easyMode){
+            try{ 
+                gui.easyModeButton.SetActive(true);
+            }
+            catch(System.NullReferenceException){
+                Debug.Log("Can't find easy mode button");
+            }
+        }
     }
 }

@@ -6,8 +6,11 @@ using System.Linq;
 
 public class TextProcessor
 {
+    public AudioSource textSound;
+
     private float textSpeed;
     private float defaultTextSpeed = 1f;
+    private int textSoundOccurance = 75;
 
     private bool speedUpText;
     private bool writingText;
@@ -42,10 +45,11 @@ public class TextProcessor
     }
 
     public IEnumerator WriteText(string textToWrite){
-        
         float t = 0;
+        int textSoundCounter = 0;
         speedUpText = false;
         writingText = true;
+        //Write the characters
         while(t < textToWrite.Length){
             t += Time.deltaTime * textSpeed;
             int tInt = Mathf.RoundToInt(t);
@@ -55,6 +59,21 @@ public class TextProcessor
            
             textSpeed = CheckCharacter(textToWrite[tInt]);            
             textBox.text = textToWrite.Substring(0, tInt);
+
+            if(textSoundCounter < textSoundOccurance){
+                textSoundCounter++;
+            }
+            else{
+                textSoundCounter = 0;
+                //Play text sound
+                try{
+                    textSound.PlayOneShot(textSound.clip, 0.7f);
+                }
+                catch(System.NullReferenceException){
+                    Debug.LogWarning("No audio source has been set for text");
+                }
+            }
+
             yield return null;
         }
         textBox.text = textToWrite;

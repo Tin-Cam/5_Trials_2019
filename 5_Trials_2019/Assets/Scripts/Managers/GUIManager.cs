@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GUIManager : MonoBehaviour
 {
@@ -12,10 +13,13 @@ public class GUIManager : MonoBehaviour
 
     public GameObject gameOverMenu;
     public GameObject pauseMenu;
+    public GameObject easyModeButton;
 
     private Animator animator;
     [HideInInspector]
     public GameManager gameManager;
+
+    
 
     void Awake()
     {
@@ -80,6 +84,11 @@ public class GUIManager : MonoBehaviour
     public void RetryRoom(){
         DefaultValues();
         gameManager.ResetRoom();
+    }
+
+    public void EasyMode(){
+        gameManager.EasyMode();
+        RetryRoom();
     }
 
     public void MainMenu()

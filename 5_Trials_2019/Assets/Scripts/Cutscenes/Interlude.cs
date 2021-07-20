@@ -24,17 +24,19 @@ public class Interlude : MonoBehaviour
     
     // Start is called before the first frame update
     void Start(){
-        //LoadCutscene(3);
+        LoadCutscene(0);
     }
 
     public void LoadCutscene(int cutsceneID)
     {
         textProcessor = new TextProcessor(textBox, textSpeed);
+        textProcessor.textSound = GetComponent<AudioSource>();
+
         string jsonFile = cutscenes[cutsceneID].text;
         currentCutscene = JsonUtility.FromJson<Cutscene>(jsonFile);
         nextLine = 0;
 
-        InterludeEffects(cutsceneID);
+        //InterludeEffects(cutsceneID);
 
         music.PlayMusic();
         NextLine();

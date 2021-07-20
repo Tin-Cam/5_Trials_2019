@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7282111899576251159}
   - component: {fileID: 762084817190739888}
   - component: {fileID: 7614915543223763297}
+  - component: {fileID: 743120887}
   m_Layer: 0
   m_Name: Persistant Managers
   m_TagString: Untagged
@@ -55,7 +56,8 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -5078102412522452320, guid: 909ed832536df19488e87a58c9112bd9,
+      type: 2}
     source: {fileID: 0}
   - name: Boss_Hit
     clip: {fileID: 8300000, guid: 21070fb3ecc9bd940a5c645e88de1fbe, type: 3}
@@ -79,7 +81,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 30518760babdbf54191b596abc7d30a0, type: 3}
     volume: 0.75
     volumeVariance: 0
-    pitch: 1
+    pitch: 3
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
@@ -237,20 +239,29 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: Fanfare
-    clip: {fileID: 8300000, guid: f247007a91b96f549ac74713b7ed8fe2, type: 3}
+  - name: Button_Select
+    clip: {fileID: 8300000, guid: 30518760babdbf54191b596abc7d30a0, type: 3}
     volume: 0.75
     volumeVariance: 0
-    pitch: 1
+    pitch: 2
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: Fanfare_Short
-    clip: {fileID: 8300000, guid: ab067fde5f5749549b4f1bd12c92935d, type: 3}
+  - name: Boss5_Spin
+    clip: {fileID: 8300000, guid: 3aaa4c7dc7535334ea5f48fef93619f7, type: 3}
     volume: 0.75
     volumeVariance: 0
-    pitch: 1
+    pitch: 2
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Boss5_Desp1
+    clip: {fileID: 8300000, guid: f3fafe0c338d9154c94f1a1e485bb09d, type: 3}
+    volume: 0.75
+    volumeVariance: 0
+    pitch: 2
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
@@ -275,6 +286,7 @@ MonoBehaviour:
   hasBeenHit: 0
   bossTime: 0
   bossId: 0
+  bossDeaths: 0
 --- !u!114 &7614915543223763297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,3 +299,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f30cc33bad987f42ac7d5405aafc128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &743120887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7282111899576251158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec18a5c32a70a1849b76ef19af532020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActivated: 0

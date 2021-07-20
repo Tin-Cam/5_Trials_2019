@@ -3,17 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+
 public class Options : MonoBehaviour
 {
 
     public AudioMixer audioMixer;
 
+
     public void SetMusicVolume(float value){
-        audioMixer.SetFloat("volumeMusic", value);
+        PlayerPrefs.SetFloat("MusicVolume", value);
+        
+        float volume = Mathf.Log10(value) * 20;
+        audioMixer.SetFloat("volumeMusic", volume);
     }
 
     public void SetSFXVolume(float value){
-        audioMixer.SetFloat("volumeSFX", value);
+        PlayerPrefs.SetFloat("SFXVolume", value);
+
+        float volume = Mathf.Log10(value) * 20;     
+        audioMixer.SetFloat("volumeSFX", volume);
+        
     }
 
     public void SetFullscreen(bool isFullscreen){

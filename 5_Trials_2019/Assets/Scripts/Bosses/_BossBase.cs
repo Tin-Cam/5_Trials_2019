@@ -79,7 +79,7 @@ public abstract class _BossBase : MonoBehaviour
     }
  
 
-    protected void TakeDamage(float value)
+    public void TakeDamage(float value)
     {
 
         StartCoroutine(FlashRed());

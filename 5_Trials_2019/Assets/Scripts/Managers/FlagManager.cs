@@ -17,6 +17,9 @@ public class FlagManager : MonoBehaviour
     public float bossTime;
     public int bossId;
 
+    [HideInInspector]
+    public int bossDeaths;
+
     void Awake()
 	{
 		if (instance != null)

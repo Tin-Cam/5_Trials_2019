@@ -7,7 +7,6 @@ public class PlayerCollision : MonoBehaviour
     public SpriteRenderer render;
     public PlayerMove playerMove;
 
-    public bool godMode;
     public bool isInvincible;
     public float invincibleTime;
 
@@ -31,7 +30,7 @@ public class PlayerCollision : MonoBehaviour
 
     public void TakeDamge(Collider2D other)
     {
-        if (godMode || isInvincible)
+        if (isInvincible)
             return;
 
         gameManager.PlayerTakeDamage(1);
