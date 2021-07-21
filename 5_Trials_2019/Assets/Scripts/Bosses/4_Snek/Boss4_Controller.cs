@@ -66,8 +66,11 @@ public class Boss4_Controller : _BossBase
 
         //Decide how to move
         rng = Random.Range(0, 2);
-        if (action.desperation)
+        if (action.desperation){
             rng += 1;
+            //audioManager.Play("Boss5_Desp1", 0.75f, 1.5f);
+        }
+
 
         switch(rng){
             case 0:
@@ -143,7 +146,6 @@ public class Boss4_Controller : _BossBase
 
     private void EasyMode()
     {
-        //return;
         health -= 4;
         maxHealth -= 4;
         healthBar.initHealth(health);

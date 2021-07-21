@@ -51,6 +51,11 @@ public class Boss4_Action : _ActionBase
     {
         int rng;
 
+        //Make Desperation SFX if currently desperarte
+        if(desperation){
+            //yield return WaitForMoveCount(3);
+        }
+
         //Decide if desperate
         if (!desperation)
         {
@@ -94,9 +99,8 @@ public class Boss4_Action : _ActionBase
                 Debug.LogError("Unexpected attack RNG value: " + rng);
                 break;
 
-        }
+        }        
 
-        
     }
 
     public IEnumerator PrepareShoot()
@@ -142,6 +146,7 @@ public class Boss4_Action : _ActionBase
 
         desperation = true;
         move.SetSpeed(move.GetDefaultSpeed() * 3);
+        AudioManager.instance.Play("Boss5_Desp1", 0.75f, 1.5f);
 
         foreach(Transform bodyPart in head.body)
         {

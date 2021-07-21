@@ -401,11 +401,12 @@ public class Boss6_Action : _ActionBase
         float speedMultiplier = 0.5f;
         sineWaveAnimatorScripts.animator.SetFloat("Speed", speedMultiplier);
 
-        audioManager.Play("Boss_Charge", 0.75f, 0.5f);
-        yield return sineWaveAnimatorScripts.PlayWholeAnimation("SineWave_Entry", 0);
         //SFX
         waveSound.pitch = 1f;
         waveSound.Play();
+        audioManager.Play("Boss_Charge", 0.75f, 0.5f);
+        yield return sineWaveAnimatorScripts.PlayWholeAnimation("SineWave_Entry", 0);
+        
     }
 
     //Holds then finishes Sine Attack

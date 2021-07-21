@@ -31,8 +31,8 @@ public class Boss6_Controller : _BossBase
         command.Init();
 
         //Hides Sentinel's healthbar if playing story mode
-        if(FlagManager.instance.storyMode)
-            healthBar.SetBarHider(true);
+        //if(FlagManager.instance.storyMode)
+        //    healthBar.SetBarHider(true);
     }
 
     public override void BossHurt()

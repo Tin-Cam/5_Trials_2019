@@ -13,11 +13,13 @@ public class MenuManager : MonoBehaviour
     public List<GameObject> menus = new List<GameObject>();
 
     private GameObject currentMenu;
+    private FlagManager flagManager;
 
     
     void Start()
     {
-        eventSystem = EventSystem.current;
+        eventSystem = EventSystem.current;    
+        flagManager = GetComponent<FlagManager>();
 
         //The first menu in the list is loaded first
         currentMenu = menus[0];
@@ -80,9 +82,30 @@ public class MenuManager : MonoBehaviour
         else
             FlagManager.instance.easyMode = false;
 
-        FlagManager.instance.bossDeaths = 0;
-        
-        //LoadScene("Starting_Room");
+        switch(difficulty){
+            //Easy
+            case 0:
+                FlagManager.instance.easyMode = true;
+                FlagManager.instance.flawlessMode = false;
+                break;
+            //Normal
+            case 1:
+                FlagManager.instance.easyMode = false;
+                FlagManager.instance.flawlessMode = false;
+                break;
+            //Flawless
+            case 2:
+                FlagManager.instance.easyMode = false;
+                FlagManager.instance.flawlessMode = true;
+                break;
+
+            default:
+                FlagManager.instance.easyMode = false;
+                FlagManager.instance.flawlessMode = false;
+                break;
+        }
+
+        FlagManager.instance.SetToDefault();
         RoomManager.instance.LoadInterludeCutscene(0);
     }
 

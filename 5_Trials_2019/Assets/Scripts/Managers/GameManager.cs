@@ -186,6 +186,10 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator PlayerDeath()
     {
+        flagManager.bossDeaths +=1;
+        flagManager.hasDied = true;
+        noInterupts = true;        
+
         musicManager.StopMusic();
         audioManager.Play("Player_Death");
         player.SetActive(false);
@@ -194,7 +198,6 @@ public class GameManager : MonoBehaviour
         DeleteObjectsOfTag("Projectile");
         Time.timeScale = 0;
         
-        flagManager.bossDeaths +=1;
         gui.ShowGameOver(true);
         CheckEasyModeConditions();
     }

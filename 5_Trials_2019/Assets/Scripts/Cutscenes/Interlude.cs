@@ -24,7 +24,7 @@ public class Interlude : MonoBehaviour
     
     // Start is called before the first frame update
     void Start(){
-        LoadCutscene(0);
+        //LoadCutscene(0);
     }
 
     public void LoadCutscene(int cutsceneID)

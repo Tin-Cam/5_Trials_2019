@@ -31,8 +31,10 @@ public class Boss5_Shield : MonoBehaviour
         {
             shieldTimer -= Time.deltaTime;
 
-            if (shieldTimer <= 0)
+            if (shieldTimer <= 0){
+                AudioManager.instance.Play("Shield_Down");
                 ShieldActive(false);
+            }
         }
     }
 
@@ -45,6 +47,7 @@ public class Boss5_Shield : MonoBehaviour
 
         if (isActive)
         {
+            AudioManager.instance.Play("Shield_Up");
             shieldAnimator.SetTrigger("Activate");
             shieldTimer = maxShieldTime;
         }

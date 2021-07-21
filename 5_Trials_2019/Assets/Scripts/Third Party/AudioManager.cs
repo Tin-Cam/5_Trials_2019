@@ -36,16 +36,24 @@ public class AudioManager : MonoBehaviour
     //Added by Cam
     public void Play(string sound)
 	{
-        Sound s = GetSound(sound);
-
-        Play(s);
+        try{
+            Sound s = GetSound(sound);
+            Play(s);
+        }
+        catch(System.NullReferenceException){
+            Debug.LogError("Unable to find sound " + sound);
+        }
 	}
 
     public void Play(string sound, float volume, float pitch)
     {
-        Sound s = GetSound(sound);
-
-        Play(s, volume, pitch);
+        try{
+            Sound s = GetSound(sound);
+            Play(s, volume, pitch);
+        }
+        catch(System.NullReferenceException){
+            Debug.LogError("Unable to find sound " + sound);
+        }
     }
 
     public void Play(Sound s)
