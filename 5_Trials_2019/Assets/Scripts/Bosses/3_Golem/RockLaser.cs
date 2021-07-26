@@ -27,6 +27,7 @@ public class RockLaser : MonoBehaviour
         {
             startPosition = new Vector3(-startPosition.x, startPosition.y, startPosition.z);
             targetPosition = new Vector3(-targetPosition.x, targetPosition.y, targetPosition.z);
+            transform.rotation = transform.rotation * Quaternion.Euler(0, 180, 0);
         }
 
         StartCoroutine(FireSequence());
@@ -48,16 +49,30 @@ public class RockLaser : MonoBehaviour
 
     private IEnumerator FireSequence()
     {
-        yield return MoveToPosition(startPosition, startSpeed);//Gets into position
-        yield return new WaitForSeconds(1);
+        float idleTime = 0.5f;
+        if(FlagManager.instance.easyMode)
+            idleTime *= 2;
 
+        //Gets into position
+        yield return MoveToPosition(startPosition, startSpeed);
+        yield return new WaitForSeconds(idleTime);
+
+        //Indicates Attack
+        float y = 0;
+        if(isMirror)
+            y = 180;
         audioManager.Play("Boss3_Indicate", 0.75f, 1.5f);
-        yield return laserManager.IndicateLaser(1, Quaternion.Euler(0, 0, -90));//Indicates Attack
+        yield return laserManager.IndicateLaser(1, Quaternion.Euler(0, y, -90));
 
+        //Shoots and starts to move
         audioManager.Play("Boss3_Laser", 0.75f, 1.5f);
-        StartCoroutine(laserManager.ShootLaser(Quaternion.Euler(0, 0, -90)));//Shoots and starts to move
-        yield return MoveToPosition(targetPosition, speedDivision);
+        StartCoroutine(laserManager.ShootLaser(Quaternion.Euler(0, 0, -90)));
+        yield return MoveToPosition(targetPosition, speedDivision);       
+    }
 
-        Destroy(this.gameObject);
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.tag == "On_Screen")
+            Destroy(this.gameObject);
     }
 }

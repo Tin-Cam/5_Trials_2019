@@ -538,6 +538,7 @@ MonoBehaviour:
   mixerGroup: {fileID: -5666102906900860990, guid: 909ed832536df19488e87a58c9112bd9,
     type: 2}
   playOnStart: 0
+  source: {fileID: 0}
 --- !u!82 &934452884
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1332,6 +1333,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5392826075785668197, guid: fcfc440f237623341b0f2959c0ebb1b5,
+        type: 3}
+      propertyPath: digSoundPitch
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5392826075785668198, guid: fcfc440f237623341b0f2959c0ebb1b5,
         type: 3}
       propertyPath: gameManager
@@ -1347,6 +1353,11 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1062325171}
+    - target: {fileID: 5392826075785668198, guid: fcfc440f237623341b0f2959c0ebb1b5,
+        type: 3}
+      propertyPath: health
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5392826075789216547, guid: fcfc440f237623341b0f2959c0ebb1b5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1406,6 +1417,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Boss_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392826076192878693, guid: fcfc440f237623341b0f2959c0ebb1b5,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcfc440f237623341b0f2959c0ebb1b5, type: 3}

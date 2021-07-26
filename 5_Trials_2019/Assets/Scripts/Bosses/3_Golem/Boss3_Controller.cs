@@ -15,6 +15,7 @@ public class Boss3_Controller : _BossBase
     private int retaliateCounter;
 
     public bool isHitable = true;
+    public bool forceDesperation;
 
     private Boss3_Actions action;
 
@@ -34,10 +35,17 @@ public class Boss3_Controller : _BossBase
 
     public IEnumerator NextAction()
     {
+        
         if (!hasAI)
             yield break;
 
-        yield return Idle();
+        Debug.Log("Starting next action");
+
+        if(forceDesperation){
+            forceDesperation = false;
+            PickAction(2);          
+            yield break;
+        }
 
         //Retaliate if possible
         if(retaliateCounter >= retaliateHitCount)
@@ -46,6 +54,8 @@ public class Boss3_Controller : _BossBase
             StartCoroutine(action.SpreadShot());
             yield break;
         }
+
+        yield return Idle();
 
         //Pick an Attack
         int rngAction = Random.Range(0, maxAction);
@@ -136,19 +146,18 @@ public class Boss3_Controller : _BossBase
         if (phase != 2)
             return;
 
-        action.DefaultState();
+        //action.DefaultState();
 
-        StopCoroutine(NextAction());
-        StopCoroutine(Idle());
-        action.StopActing();
-        PickAction(2);
+        //StopCoroutine(NextAction());
+        //StopCoroutine(Idle());
+        //action.StopActing();
+        //PickAction(2);
+        forceDesperation = true;
         maxAction = 3;
     }
 
     private void EasyMode()
     {
-        health -= 5;
-        maxHealth -= 5;
         healthBar.initHealth(health);
 
         minIdle++;
@@ -162,7 +171,6 @@ public class Boss3_Controller : _BossBase
 
         gain *= 0.8f;
         diminish *= 0.8f;
-        hold *= 0.2f;
         width *= 0.9f;
 
         action.indicateTime *= 1.2f;

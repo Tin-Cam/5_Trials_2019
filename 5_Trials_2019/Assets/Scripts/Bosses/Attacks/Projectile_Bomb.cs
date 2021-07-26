@@ -9,10 +9,13 @@ public class Projectile_Bomb : Projectile
 
     public float fuse;
 
+    private bool hasBeenHit = false;
+
     // Update is called once per frame
     void Update()
     {
-        fuse = fuse - Time.deltaTime;
+        if(!hasBeenHit)
+            fuse = fuse - Time.deltaTime;
 
         if (fuse <= 0)
             Explode();
@@ -37,4 +40,13 @@ public class Projectile_Bomb : Projectile
         AudioManager.instance.Play("Crash");
         Destroy(gameObject);
     }
+
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.tag == "Sword"){
+    //         hasBeenHit = true;
+    //         AudioManager.instance.Play("Discard", 0.75f, 0.75f);
+    //         Destroy(gameObject);
+    //     }
+    // }
 }

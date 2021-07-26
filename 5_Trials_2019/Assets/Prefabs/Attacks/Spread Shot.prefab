@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objProjectile: {fileID: 11400000, guid: dcb188d8855a0e94ca874fbed1318395, type: 2}
-  direction: {x: 0, y: -1, z: 0}
+  direction: {x: 0, y: -0.8, z: 0}
 --- !u!114 &1943275877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1865952339040183261, guid: 6614590100bd14141908677658a86b58,
+  m_Sprite: {fileID: 2013881728091588454, guid: c3545b7bd2d22904a8f4164022f5c2d4,
     type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
@@ -414,7 +414,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1865952339040183261, guid: 6614590100bd14141908677658a86b58,
+  m_Sprite: {fileID: 2013881728091588454, guid: c3545b7bd2d22904a8f4164022f5c2d4,
     type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
@@ -599,7 +599,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1865952339040183261, guid: 6614590100bd14141908677658a86b58,
+  m_Sprite: {fileID: 2013881728091588454, guid: c3545b7bd2d22904a8f4164022f5c2d4,
     type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
@@ -784,7 +784,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1865952339040183261, guid: 6614590100bd14141908677658a86b58,
+  m_Sprite: {fileID: 2013881728091588454, guid: c3545b7bd2d22904a8f4164022f5c2d4,
     type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
@@ -969,7 +969,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1865952339040183261, guid: 6614590100bd14141908677658a86b58,
+  m_Sprite: {fileID: 2013881728091588454, guid: c3545b7bd2d22904a8f4164022f5c2d4,
     type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
@@ -1154,7 +1154,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1865952339040183261, guid: 6614590100bd14141908677658a86b58,
+  m_Sprite: {fileID: 2013881728091588454, guid: c3545b7bd2d22904a8f4164022f5c2d4,
     type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
@@ -1339,7 +1339,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1865952339040183261, guid: 6614590100bd14141908677658a86b58,
+  m_Sprite: {fileID: 2013881728091588454, guid: c3545b7bd2d22904a8f4164022f5c2d4,
     type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0

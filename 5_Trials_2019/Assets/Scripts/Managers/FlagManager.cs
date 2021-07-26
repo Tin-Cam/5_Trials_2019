@@ -8,7 +8,8 @@ public class FlagManager : MonoBehaviour
 
     public bool easyMode;
     public bool flawlessMode;
-    public int flawlessHealth;
+    public float flawlessHealth;
+    private float maxFlawlessHealth = 5;
     [Space(10)]
     public bool boss5Cutscene;
     public bool boss6Cutscene;
@@ -31,15 +32,49 @@ public class FlagManager : MonoBehaviour
 		{
 			instance = this;
 			DontDestroyOnLoad(gameObject);
+            flawlessHealth = 5;
 		}
+    }
+
+    public void ResetFlawlessMode(){
+        flawlessHealth = maxFlawlessHealth;
+        bossDeaths = 0;
+        hasDied = false;
+        hasBeenHit = false;
     }
 
     public void SetToDefault(){
         boss5Cutscene = false;
         boss6Cutscene = false;
 
+        flawlessHealth = maxFlawlessHealth;
         bossDeaths = 0;
         hasDied = false;
         hasBeenHit = false;
+    }
+
+    public void SetStars(){
+        int starsEarned = CalculateStars();
+        int currentStars = PlayerPrefs.GetInt("stars", 0);
+
+        if(starsEarned > currentStars)
+            PlayerPrefs.SetInt("stars", starsEarned);
+    }
+
+    private int CalculateStars()
+    {
+        CheatMode cheatMode = GetComponent<CheatMode>();
+
+        //Easy/Cheat ending
+        if(easyMode || cheatMode.isActivated)
+            return 0;
+        //No Hit ending
+        if(!hasBeenHit)
+            return 3;
+        //Flawless ending
+        if(flawlessMode)
+            return 2;
+        //Normal ending
+        return 1;
     }
 }

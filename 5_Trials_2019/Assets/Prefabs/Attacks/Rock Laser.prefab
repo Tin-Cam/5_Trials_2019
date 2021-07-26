@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4095378150264730385}
   - component: {fileID: 4095378150264730604}
   - component: {fileID: 4095378150264730605}
+  - component: {fileID: 3719113880083748773}
   m_Layer: 0
   m_Name: Rock Laser
   m_TagString: Untagged
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd83c40dc8b3eb4780fb99fbf6184ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indicatorPrefab: {fileID: 3133737513016257079, guid: d856fe9945fa3e94fb4f166338fdb4c8,
+  indicatorPrefab: {fileID: 665116530282159974, guid: 14b485d3ee056de46946188a1ac280d3,
     type: 3}
   laserPrefab: {fileID: 7828657115819629287, guid: c883c613d6102744795584bd2d443313,
     type: 3}
@@ -62,8 +63,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f43101d6ccdd04483f46c91fcf1a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {x: -3, y: 5, z: 0}
-  targetPosition: {x: 20, y: 5, z: 0}
+  startPosition: {x: -3, y: 4, z: 0}
+  targetPosition: {x: 20, y: 4, z: 0}
   speedDivision: 20
   isMirror: 1
 --- !u!50 &4095378150264730605
@@ -87,6 +88,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &3719113880083748773
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4095378150264730384}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &6567282103903440385
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +160,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -144,6 +172,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

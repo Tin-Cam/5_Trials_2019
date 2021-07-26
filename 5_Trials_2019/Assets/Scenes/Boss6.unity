@@ -13371,16 +13371,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3722099411239320907, guid: eb5d813d44eb64f4791a90e539078c1f,
-        type: 3}
-      propertyPath: godMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3722099411239320907, guid: eb5d813d44eb64f4791a90e539078c1f,
-        type: 3}
-      propertyPath: damagedSpriteTime
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 4638226818678677906, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
       propertyPath: reference
@@ -14588,6 +14578,11 @@ PrefabInstance:
     - target: {fileID: 762084817190739888, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
       propertyPath: storyMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 762084817190739888, guid: 17b98768abaf94f41b16411e504ae230,
+        type: 3}
+      propertyPath: flawlessMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7282111899576251158, guid: 17b98768abaf94f41b16411e504ae230,

@@ -2045,6 +2045,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endingCutscene: {fileID: 914865244}
   dialogue: {fileID: 1751986130}
+  endingStandard: {fileID: 4900000, guid: 6162a823881fd6d4ebc197f87a4b21fd, type: 3}
+  endingFlawless: {fileID: 4900000, guid: b5e9dcb9c2dd76745b6ff7707eae2d17, type: 3}
+  endingNoHit: {fileID: 4900000, guid: 123af77af2c57e84e9c6455120b56c53, type: 3}
+  endingCheat: {fileID: 4900000, guid: b476951125527ce48b5f48cacf31277b, type: 3}
   fader: {fileID: 5312493438788889982}
   theEndText: {fileID: 32038717}
   music: {fileID: 914865247}
@@ -5046,6 +5050,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 743120887, guid: 17b98768abaf94f41b16411e504ae230, type: 3}
+      propertyPath: isActivated
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 762084817190739888, guid: 17b98768abaf94f41b16411e504ae230,
+        type: 3}
+      propertyPath: hasBeenHit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 762084817190739888, guid: 17b98768abaf94f41b16411e504ae230,
+        type: 3}
+      propertyPath: flawlessMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7282111899576251158, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
       propertyPath: m_Name

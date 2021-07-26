@@ -31,8 +31,11 @@ public class SpinningLaser : MonoBehaviour
     //Starts spinning the laser
     public IEnumerator Spin(float time)
     {
+        BoxCollider2D collider = GetComponent<BoxCollider2D>();
+        collider.enabled = false;
+
         ResetSpin();
-        SetRotation();
+        SetRotation();      
         
         int rng = Random.Range(0, 2);
         if (rng == 1)
@@ -40,9 +43,9 @@ public class SpinningLaser : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
-        animator.Play("Start");
+        animator.Play("Start");       
         yield return WaitForAnimation();
-
+        collider.enabled = true;
         isSpinning = true;
 
         yield return new WaitForSeconds(time);

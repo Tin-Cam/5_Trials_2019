@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -61,6 +61,11 @@ public class GUIManager : MonoBehaviour
         playerHealthBar.initHealth(health);
     }
 
+    public void FlawlessInitHealth(float currentHealth, float maxHealth)
+    {
+        playerHealthBar.FlawlessInitHealth(currentHealth, maxHealth);
+    }
+
     public void AddHealth(float value)
     {
         playerHealthBar.addOrSubtractHealth(value);
@@ -77,12 +82,16 @@ public class GUIManager : MonoBehaviour
             throw new System.Exception("Error: " + direction + " is not a defined direction");
     }
 
+    // public void ShowLowHealthIndicator(){
+    //     playerHealthBar.ShowLowHealthIndicator();
+    // }
+
     public void Unpause(){
         gameManager.PauseGame(false);
     }
 
     public void RetryRoom(){
-        DefaultValues();
+        DefaultValues();       
         gameManager.ResetRoom();
     }
 

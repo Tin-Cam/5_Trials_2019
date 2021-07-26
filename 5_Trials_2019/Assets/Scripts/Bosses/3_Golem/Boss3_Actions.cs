@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -20,7 +20,7 @@ public class StandardLaser
 
     public float gainSpeed = 0.2f;
     public float diminishSpeed = 0.2f;
-    public float holdTime = 1;
+    public float holdTime = 2;
     public float maxWidth = 1;
 
     public StandardLaser(Laser reference)
@@ -61,6 +61,7 @@ public class Boss3_Actions : _ActionBase
     private LaserManager laserManager;
     private LookAtTarget lookAtTarget;
     private AudioManager audioManager;
+    private CameraShake cameraShake;
 
     private Animator animator;
     private GameObject player;
@@ -89,6 +90,7 @@ public class Boss3_Actions : _ActionBase
         lookAtTarget = GetComponentInChildren<LookAtTarget>();
         animator = GetComponent<Animator>();
         audioManager = controller.audioManager;
+        cameraShake = FindObjectOfType<CameraShake>();
         player = controller.player;
 
         lookAtTarget.target = player.transform;
@@ -141,7 +143,7 @@ public class Boss3_Actions : _ActionBase
         
         yield return new WaitForEndOfFrame();
         yield return WaitForAnimation("Boss3_Retaliate");
-        
+         
     }
 
     //Action 2.1 - Pushback player
@@ -150,6 +152,7 @@ public class Boss3_Actions : _ActionBase
         RemoveExcess();
         audioManager.Play("Thump");
         Instantiate(dustCloud, transform);
+        StartCoroutine(cameraShake.ShakeCO(0.2f, 0.1f));
         PlayerMove playerMove = player.GetComponent<PlayerMove>();
         StartCoroutine(playerMove.knockBack(Vector2.down, pushbackIntensity));
     }
@@ -181,8 +184,10 @@ public class Boss3_Actions : _ActionBase
         //Randomise direction to move Rock Laser
         currentRockLaser.isMirror = (Random.value > 0.5f);
 
+        while(currentRockLaser != null)
+            yield return null;
+        Debug.Log("Rock laser dfone");
         DefaultState();
-        yield return new WaitForSeconds(2);
     }
 
     //Action 4 - Desperation Attack
@@ -199,7 +204,7 @@ public class Boss3_Actions : _ActionBase
         lookAtTarget.ChangeTarget(target);
         animator.SetTrigger(BossAnimation.AttackDesperation);
         controller.isHitable = false;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
 
         //Shoot
         audioManager.Play("Boss3_Laser", 0.75f, 0.5f);
@@ -281,7 +286,7 @@ public class Boss3_Actions : _ActionBase
 
         laser.gainSpeed = (float)0.1;
         laser.diminishSpeed = (float)0.3;
-        laser.holdTime = 3;
+        laser.holdTime = 1;
         laser.maxWidth = 15;
 
         return laserRef;

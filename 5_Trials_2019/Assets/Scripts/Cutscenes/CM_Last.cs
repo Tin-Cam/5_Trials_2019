@@ -9,6 +9,11 @@ public class CM_Last : MonoBehaviour
 
     public CutsceneDialogue dialogue;
 
+    public TextAsset endingStandard;
+    public TextAsset endingFlawless;
+    public TextAsset endingNoHit;
+    public TextAsset endingCheat;
+
     public ScreenFader fader;
 
     public GameObject theEndText;
@@ -37,9 +42,28 @@ public class CM_Last : MonoBehaviour
     private void ShowDialogue(PlayableDirector cutscene){
         endingCutscene.stopped -= ShowDialogue;
         music.Play();
+
+        dialogue.textSource = GetEndingDialogueText();
         dialogue.gameObject.SetActive(true);
         dialogue.e_Finished.AddListener(Finish);
         dialogue.LoadDialogue();
+    }
+
+    //Changes the ending dailogue depending 
+    private TextAsset GetEndingDialogueText(){
+        FlagManager flagManager = FlagManager.instance;
+        CheatMode cheatMode = FindObjectOfType<CheatMode>();
+
+        if(cheatMode.isActivated)
+            return endingCheat;
+
+        if(!flagManager.hasBeenHit)
+            return endingNoHit;
+
+        if(flagManager.flawlessMode)
+            return endingFlawless;
+
+        return endingStandard;
     }
 
     private void Finish(){

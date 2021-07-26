@@ -48,8 +48,23 @@ public class GameManager : MonoBehaviour
     void Start(){
         room = FindObjectOfType<Room>();
 
+        //Gives player more health on easy mode
+        if(flagManager.easyMode)
+            playerHealth +=2;
+
         playerMaxHealth = playerHealth;
-        gui.InitHealth(playerMaxHealth);
+
+        if(!flagManager.flawlessMode){
+            gui.InitHealth(playerMaxHealth);
+        }
+        else{
+            playerHealth = flagManager.flawlessHealth;
+            gui.FlawlessInitHealth(playerHealth, playerMaxHealth);
+        }
+
+        // if(playerHealth == 1){
+        //     gui.ShowLowHealthIndicator();
+        // }
 
         if(introOnStart)
             RoomIntro();
@@ -88,8 +103,10 @@ public class GameManager : MonoBehaviour
     public void BossDefeated()
     {
         gui.ShowGUI_Animate(false);
+        
         musicManager.StopMusic();
         flagManager.bossDeaths = 0;
+        flagManager.flawlessHealth = playerHealth;
 
         //If score mode, go to score screen
 
@@ -102,6 +119,7 @@ public class GameManager : MonoBehaviour
             cm.Ending();
         }
         else if(GetBoss().tag == "Boss_6"){
+            flagManager.SetStars();
             PrepareCutscene();
             CM_Boss6 cm = FindObjectOfType<CM_Boss6>();
             cm.Ending();
@@ -147,7 +165,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void ResetRoom(){
-        roomManager.ReloadRoom();
+        if(!flagManager.flawlessMode)
+            roomManager.ReloadRoom();
+        else{
+            flagManager.ResetFlawlessMode();
+            roomManager.ResetToFirstBoss();
+        }
     }
 
     private void ResetHealth()
@@ -180,6 +203,16 @@ public class GameManager : MonoBehaviour
         audioManager.Play("Player_Hit");
         playerHealth -= damage;
         gui.AddHealth(-damage);
+
+        //Low Health indicators
+        if(playerHealth == 2){
+            //audioManager.Play("Low_Health", 0.75f, 1);
+        }
+        if(playerHealth == 1){
+            audioManager.Play("Low_Health", 0.75f, 2);
+            // gui.ShowLowHealthIndicator();
+        }
+
         if (playerHealth <= 0)
             StartCoroutine(PlayerDeath());
     }

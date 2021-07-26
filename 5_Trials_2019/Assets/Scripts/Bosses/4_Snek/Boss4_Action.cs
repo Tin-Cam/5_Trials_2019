@@ -1,4 +1,4 @@
-﻿  using System.Collections;
+  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -50,11 +50,6 @@ public class Boss4_Action : _ActionBase
     public void DecideActions()
     {
         int rng;
-
-        //Make Desperation SFX if currently desperarte
-        if(desperation){
-            //yield return WaitForMoveCount(3);
-        }
 
         //Decide if desperate
         if (!desperation)
@@ -143,8 +138,9 @@ public class Boss4_Action : _ActionBase
 
         move.SetSpeed(2);
         yield return new WaitForSeconds(1);
-
+        
         desperation = true;
+        maxAttackRNG -= 1;
         move.SetSpeed(move.GetDefaultSpeed() * 3);
         AudioManager.instance.Play("Boss5_Desp1", 0.75f, 1.5f);
 
@@ -167,6 +163,7 @@ public class Boss4_Action : _ActionBase
         ShowDesperationFilter(false);
         move.ResetSpeed();
         desperation = false;
+        maxAttackRNG += 1;
         desperationChance = 0;
         foreach (Transform bodyPart in head.body)
         {

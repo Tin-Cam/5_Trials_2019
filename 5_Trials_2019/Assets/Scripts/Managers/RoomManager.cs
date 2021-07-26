@@ -81,8 +81,18 @@ public class RoomManager : MonoBehaviour
     }
 
     public void ReloadRoom(){
-        LoadRoom(scenes[GetRoomCode()]);
-    }   
+        //LoadRoom(scenes[GetRoomCode()]);
+
+        SceneManager.LoadScene(scenes[GetRoomCode()]);
+        StartCoroutine(OnRoomLoad());
+    }
+
+    public void ResetToFirstBoss(){
+        //LoadRoom("Boss1");
+
+        SceneManager.LoadScene("Boss1");
+        StartCoroutine(OnRoomLoad());
+    }
 
     public void LoadRoom(string room){
         int roomCode = scenes.IndexOf(room);

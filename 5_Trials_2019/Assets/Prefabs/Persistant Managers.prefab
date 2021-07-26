@@ -275,6 +275,15 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Low_Health
+    clip: {fileID: 8300000, guid: a52e1e1a04f698d479874f7773fb43e5, type: 3}
+    volume: 0.75
+    volumeVariance: 0
+    pitch: 2
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
   - name: Shield_Down
     clip: {fileID: 8300000, guid: 3dd1e6b4fdbf6e442a5954730ab58e74, type: 3}
     volume: 0.75
@@ -297,10 +306,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   easyMode: 0
-  hardcoreMode: 0
-  storyMode: 0
+  flawlessMode: 0
+  flawlessHealth: 0
   boss5Cutscene: 0
   boss6Cutscene: 0
+  hasDied: 0
   hasBeenHit: 0
   bossTime: 0
   bossId: 0

@@ -56,8 +56,9 @@ public class TextControlBehaviour : PlayableBehaviour
         
         characters = Mathf.RoundToInt(textSpeed * (float)playable.GetTime()) + startingCharacter;
 
-        if(characters > text.Length)
+        if(characters > text.Length){
             characters = text.Length;
+        }
 
         string result = text.Substring(0, characters);
 

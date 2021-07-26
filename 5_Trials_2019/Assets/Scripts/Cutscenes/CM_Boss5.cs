@@ -20,6 +20,7 @@ public class CM_Boss5 : MonoBehaviour, ICutsceneManager
     public GameObject roomFrontDoor;
     public GameObject cutSceneAssets;
     public Animator light2D;
+    public AudioSource fanfare;
 
     private GameManager gameManager;
 
@@ -75,6 +76,9 @@ public class CM_Boss5 : MonoBehaviour, ICutsceneManager
 
     public IEnumerator EndingCO(){
         yield return new WaitForSeconds(2);
+        fanfare.Play();
+        yield return new WaitWhile (() => fanfare.isPlaying);
+        //yield return new WaitForSeconds(2);
         endingCutscene.stopped += NextRoom;
         endingCutscene.Play();
     }

@@ -6,19 +6,22 @@ public class Boss2_Move : _MoveBase
 {
     
     public float digSpeed;
-    public List<Transform> holes = new List<Transform>();
+    public float digSoundPitch;
+    public List<Transform> holes = new List<Transform>();   
     private int lastHole = 5;
 
     private Rigidbody2D rig;
     private Animator animator;
     private Boss2_Actions action;
     private Boss2_Controller controller;
+    private AudioManager audioManager;
 
     public void Init()
     {        
         animator = GetComponent<Animator>();
         action = GetComponent<Boss2_Actions>();
         controller = GetComponent<Boss2_Controller>();
+        audioManager = AudioManager.instance;
 
         ChangeSpeed(digSpeed);
     }
@@ -42,14 +45,15 @@ public class Boss2_Move : _MoveBase
         lastHole = position;
 
         //Waits for the boss to dig and move
-        animator.SetTrigger("Dig");       
+        animator.SetTrigger("Dig");   
+        audioManager.Play("Door_Enter", 0.6f, digSoundPitch);    
         yield return WaitForAnimation("Boss2_Digging");
         controller.isHitable = false;
 
         transform.position = holes[position].position; //Changes the boss' position
         yield return WaitForAnimation("Boss2_Underground");
         controller.isHitable = true;
-
+        audioManager.Play("Door_Enter", 0.75f, digSoundPitch);
         yield return WaitForAnimation("Boss2_Rising");
     }
 

@@ -200,11 +200,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   render: {fileID: 9182096197023116856}
   playerMove: {fileID: 9182096197023116854}
-  godMode: 0
   isInvincible: 0
   invincibleTime: 1
   hitFlashRate: 0.1
-  damagedSpriteTime: 0
+  damagedSpriteTime: 0.2
 --- !u!1 &9182096197023116857
 GameObject:
   m_ObjectHideFlags: 0

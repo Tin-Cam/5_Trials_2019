@@ -11,6 +11,7 @@ public class HealthBar : MonoBehaviour {
     public TextMeshProUGUI healthBarText;
     
     public bool hideHealthBar = false;
+    //public GameObject lowHealthIndicator;
 
     private float unit; //Determines the scale of a single unit of health on the game screen
     private float length;
@@ -29,6 +30,7 @@ public class HealthBar : MonoBehaviour {
 
         healthBarName = healthBarText.text;
         SetBarHider(hideHealthBar);
+        //lowHealthIndicator.SetActive(false);
 
         origin = transform.position;
     }
@@ -51,6 +53,18 @@ public class HealthBar : MonoBehaviour {
         updateBar();
     }
 
+    public void FlawlessInitHealth(float currentHealth, float maxHealth)
+    {
+        //Handles a bug
+        if(maxLength == 0)
+            maxLength = healthBar.transform.localScale.x;
+
+        this.maxHealth = maxHealth;
+        length = maxLength;
+        unit = maxLength / maxHealth;
+        SetHealth(currentHealth);
+    }
+
     public void SetHealth(float amount){
         length = amount * unit;
         updateBar();
@@ -62,6 +76,16 @@ public class HealthBar : MonoBehaviour {
             length = 0;
         healthBar.transform.localScale = new Vector3(length, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
     }
+
+    // public void ShowLowHealthIndicator(){
+    //     try{
+    //         lowHealthIndicator.SetActive(true);
+    //     }
+    //     catch(System.NullReferenceException)
+    //     {
+
+    //     }
+    // }
 
     public void ShakeBar(){
         StartCoroutine(ShakeBarCO());
@@ -88,9 +112,12 @@ public class HealthBar : MonoBehaviour {
     public void SetBarHider(bool value){
         hideHealthBar = value;
         healthBarHider.SetActive(value);
-        if(!value)
-            healthBarText.text = healthBarName;
-        else
-            healthBarText.text = "??????";
+        //Shows boss name on flawless mode
+        if(!FlagManager.instance.flawlessMode){
+            if(!value)
+                healthBarText.text = healthBarName;
+            else
+                healthBarText.text = "??????";
+        }
     }
 }

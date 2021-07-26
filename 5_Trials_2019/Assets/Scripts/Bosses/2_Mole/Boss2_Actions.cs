@@ -19,6 +19,7 @@ public class Boss2_Actions : _ActionBase
     public int shotAmount;
     public float doubleOffset;
     public float tripleOffset;
+    public float attackDelayTime;
     public float attackHoldTime;
     public float desperationTime;
     [Space(15)]
@@ -74,7 +75,7 @@ public class Boss2_Actions : _ActionBase
     private IEnumerator Attack()
     {       
         animator.SetTrigger("Attack");
-        yield return new WaitForSeconds((float) 0.5);
+        yield return new WaitForSeconds(attackDelayTime);
 
         Vector3 target = player.transform.position; //Position the boss aims at
 
@@ -84,10 +85,10 @@ public class Boss2_Actions : _ActionBase
         for (int i = 0; i < shotAmount; i++)
         {
             if (rng == 0)
-                TripleShot(player.transform.position);
+                TripleShot(target);
             else
-                DoubleShot(player.transform.position);
-            yield return new WaitForSeconds((float)0.2);
+                DoubleShot(target);
+            yield return new WaitForSeconds((float)0.3);
         }
 
         yield return new WaitForSeconds(attackHoldTime);
@@ -162,9 +163,9 @@ public class Boss2_Actions : _ActionBase
         for (int i = 0; i < amount; i++)
         {
             if (rng == 0)
-                Shoot(0, player.transform.position);
+                Shoot(0, target);
             else
-                DoubleShot(player.transform.position);
+                DoubleShot(target);
             yield return new WaitForSeconds((float)0.1);
         }
     }
