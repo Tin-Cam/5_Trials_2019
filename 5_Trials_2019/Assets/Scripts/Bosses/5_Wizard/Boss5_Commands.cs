@@ -148,8 +148,11 @@ public class Boss5_Commands : MonoBehaviour
         yield return new WaitForSeconds(desperationPause);
 
         int rng = Random.Range(0, 3);
+        int times = 5;
+        if(FlagManager.instance.easyMode)
+            times -=2;
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < times; i++)
         {
             if (rng < 2)
                 yield return action.ShootDesp1();

@@ -172,7 +172,8 @@ public class Boss6_Move : _MoveBase
         float t = 0;
         float speed = moveSpeed * 0.1f;
 
-        //yield return MoveToPosition(MoveInCircle(Vector2.zero, 5f, t));
+        //Chooses which direction to circle in
+        speed *= RandomSign();
 
         isCircling = true;
         while (isCircling && t < (5 * 2)){
@@ -181,7 +182,6 @@ public class Boss6_Move : _MoveBase
             yield return new WaitForFixedUpdate();
         }
         isCircling = false;
-        //yield return Exit();
     }
     
     //Calculates the point of a circle
@@ -216,6 +216,13 @@ public class Boss6_Move : _MoveBase
             yield return new WaitForFixedUpdate();
         }
         transform.position = targetPos;       
+    }
+
+    //Returns either a 1 or a -1
+    public int RandomSign()
+    {
+        int rng = Random.Range(0, 2) * 2 - 1;
+        return rng;
     }
 
     private float GetLevelFraction()

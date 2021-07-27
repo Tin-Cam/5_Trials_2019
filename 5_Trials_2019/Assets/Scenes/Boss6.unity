@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -13280,7 +13280,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: d713bb92d13571d4292bc68798b46ac9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -14583,6 +14583,11 @@ PrefabInstance:
     - target: {fileID: 762084817190739888, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
       propertyPath: flawlessMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 762084817190739888, guid: 17b98768abaf94f41b16411e504ae230,
+        type: 3}
+      propertyPath: easyMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7282111899576251158, guid: 17b98768abaf94f41b16411e504ae230,
@@ -14720,7 +14725,7 @@ MonoBehaviour:
     type: 3}
   hitSprite: {fileID: 1978234421}
   player: {fileID: 1951528287}
-  health: 80
+  health: 90
   healthBar: {fileID: 1062325171}
   aiTimer: 0
   maxAiTimerRngValue: 0

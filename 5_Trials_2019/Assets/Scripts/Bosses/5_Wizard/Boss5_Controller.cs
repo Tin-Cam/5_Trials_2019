@@ -80,7 +80,10 @@ public class Boss5_Controller : _BossBase
     }
 
     private void EasyMode(){
-        
+        command.actionPause *= 1.5f;
+        command.justSpinShootAmount -= 1;
+        command.spinShootAndMoveAmount -= 1;
+        move.moveSpeed += 2;
     }
 
     protected override void IncreasePhase()

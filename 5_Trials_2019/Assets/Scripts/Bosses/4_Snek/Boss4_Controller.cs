@@ -150,12 +150,17 @@ public class Boss4_Controller : _BossBase
         maxHealth -= 4;
         healthBar.initHealth(health);
 
+        move.HardSetSpeed(move.GetDefaultSpeed() - 1);
         action.bombCycleCount--;
         action.shootCycleCount -= 3;
         idleProbability += 2;
 
-        action.attackSpeed -= 0.5f;
+        action.attackSpeed -= 1f;
         action.SetAttackSpeed(action.attackSpeed);
+
+        action.desperationSpeedMultiplier -=1;
+        action.desperationCount -=1;
+        action.desperationChance += 10;
     }
 
     public override void StartDeath()

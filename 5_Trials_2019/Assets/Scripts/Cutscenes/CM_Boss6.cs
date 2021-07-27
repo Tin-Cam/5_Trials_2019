@@ -58,7 +58,7 @@ public class CM_Boss6 : MonoBehaviour, ICutsceneManager
             FlagManager.instance.boss6Cutscene = true;
         }
         else
-            gameManager.RoomIntro();       
+            gameManager.RoomIntro();
     }
 
     private void DestroyCutsceneAssets1(PlayableDirector director){
@@ -74,6 +74,6 @@ public class CM_Boss6 : MonoBehaviour, ICutsceneManager
 
     private void NextRoom(PlayableDirector cutscene){
         cutscene.stopped -= NextRoom;
-        RoomManager.instance.LoadRoom(10);
+        RoomManager.instance.LoadRoom("Ending");
     }
 }

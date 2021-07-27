@@ -1729,5 +1729,20 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1062325171}
+    - target: {fileID: 4624279370626880967, guid: 2ead3e453f2605945911ceed4ceb748f,
+        type: 3}
+      propertyPath: desperationSpeedMultiplier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624279370626880967, guid: 2ead3e453f2605945911ceed4ceb748f,
+        type: 3}
+      propertyPath: desperationCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624279370626880967, guid: 2ead3e453f2605945911ceed4ceb748f,
+        type: 3}
+      propertyPath: maxDespChanceCounter
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ead3e453f2605945911ceed4ceb748f, type: 3}

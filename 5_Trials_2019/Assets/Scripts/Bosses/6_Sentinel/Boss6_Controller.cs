@@ -94,7 +94,9 @@ public class Boss6_Controller : _BossBase
     }
 
     private void EasyMode(){
-        bossLevel -= 0.2f;
+        health -= 20;
+        maxHealth -= 20;
+        bossLevel -= 0.3f;
     }
 
     protected override void IncreasePhase()

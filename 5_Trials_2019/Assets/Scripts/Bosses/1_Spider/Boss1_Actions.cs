@@ -87,6 +87,7 @@ public class Boss1_Actions : _ActionBase
             yield return new WaitForSeconds(shortAttackFrequency);
             Shoot();
         }
+        yield return new WaitForSeconds(chargeTime);
         controller.DefaultState();
     }
 
@@ -104,6 +105,7 @@ public class Boss1_Actions : _ActionBase
             Shoot();
             yield return new WaitForSeconds(longAttackFrequency);
         }
+        yield return new WaitForSeconds(chargeTime);
         controller.DefaultState();
     }
 

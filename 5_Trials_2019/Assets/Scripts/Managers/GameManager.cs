@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
         //If score mode, go to score screen
 
         //Enable god mode on player incase they get hit AFTER the boss dies
+        player.GetComponentInChildren<PlayerCollision>().isInvincible = true;
         godMode = true;
 
         if(GetBoss().tag == "Boss_5"){

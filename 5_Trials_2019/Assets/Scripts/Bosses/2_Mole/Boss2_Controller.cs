@@ -131,6 +131,7 @@ public class Boss2_Controller : _BossBase
         action.moveAmount += 1;
         action.moveHoldTime += 1;
         action.shotAmount -= 3;
+        action.rapidMoveAmount -=1;
     }
 
 

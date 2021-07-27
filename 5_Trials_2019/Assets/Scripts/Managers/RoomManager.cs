@@ -14,15 +14,14 @@ public class RoomManager : MonoBehaviour
     private List<string> scenes = new List<string> {
         "Main_Menu",    //0
         "Starting_Room",//1
-        "Demo_End",     //2
-        "Boss1",  //3
-        "Boss2",   //4
-        "Boss3",   //5
-        "Boss4",   //6
-        "Boss5",   //7
-        "Boss6",   //8
-        "Cutscene_Interlude", //9
-        "Ending" //10
+        "Boss1",  //2
+        "Boss2",   //3
+        "Boss3",   //4
+        "Boss4",   //5
+        "Boss5",   //6
+        "Boss6",   //7
+        "Cutscene_Interlude", //8
+        "Ending" //9
     };
 
     void Awake()

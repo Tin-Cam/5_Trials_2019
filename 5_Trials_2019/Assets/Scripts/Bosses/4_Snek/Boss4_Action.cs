@@ -24,6 +24,7 @@ public class Boss4_Action : _ActionBase
     [HideInInspector]
     public int desperationChance;
     public int maxDespChanceCounter;
+    public float desperationSpeedMultiplier;
 
 
     private SnakeMovement head;
@@ -141,7 +142,7 @@ public class Boss4_Action : _ActionBase
         
         desperation = true;
         maxAttackRNG -= 1;
-        move.SetSpeed(move.GetDefaultSpeed() * 3);
+        move.SetSpeed(move.GetDefaultSpeed() * desperationSpeedMultiplier);
         AudioManager.instance.Play("Boss5_Desp1", 0.75f, 1.5f);
 
         foreach(Transform bodyPart in head.body)

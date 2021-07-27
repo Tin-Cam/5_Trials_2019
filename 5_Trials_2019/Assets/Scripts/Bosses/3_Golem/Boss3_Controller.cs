@@ -173,7 +173,7 @@ public class Boss3_Controller : _BossBase
         diminish *= 0.8f;
         width *= 0.9f;
 
-        action.indicateTime *= 1.2f;
+        action.indicateTime *= 1.3f;
 
         action.SetStandardLaser(gain, diminish, hold, width);
     }

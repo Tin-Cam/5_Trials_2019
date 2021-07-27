@@ -109,7 +109,7 @@ public abstract class _BossBase : MonoBehaviour
 
         Instantiate(deathExplosion, transform.position, transform.rotation);
         audioManager.Play("Boss_Death");
-        actionBase.ShowDesperationFilter(false);
+        Destroy(actionBase.desperationSprite);
         Destroy(this.gameObject);
     }
 

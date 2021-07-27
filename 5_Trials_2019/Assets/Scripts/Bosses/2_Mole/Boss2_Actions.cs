@@ -107,8 +107,9 @@ public class Boss2_Actions : _ActionBase
         {
             yield return move.MovePosition();
             animator.SetTrigger("Attack");
+            yield return new WaitForSeconds(attackDelayTime/5);
             yield return RapidShot(shotAmount);
-            yield return new WaitForSeconds((float)0.2);
+            yield return new WaitForSeconds(attackDelayTime/5);
         }
 
         move.ChangeSpeed(speed);

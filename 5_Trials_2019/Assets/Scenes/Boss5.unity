@@ -6605,6 +6605,11 @@ PrefabInstance:
       propertyPath: boss5Cutscene
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 762084817190739888, guid: 17b98768abaf94f41b16411e504ae230,
+        type: 3}
+      propertyPath: easyMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7282111899576251158, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
       propertyPath: m_Name
@@ -8532,8 +8537,8 @@ MonoBehaviour:
   idleTime: 3
   actionPause: 0.5
   desperationPause: 2
-  justSpinShootAmount: 2
-  spinShootAndMoveAmount: 1
+  justSpinShootAmount: 3
+  spinShootAndMoveAmount: 2
   randomCommands: 0
   maxDespCount: 10
 --- !u!114 &2890213894033778234
