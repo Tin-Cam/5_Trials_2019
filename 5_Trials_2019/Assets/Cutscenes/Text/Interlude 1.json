@@ -1,6 +1,7 @@
 {
     "name" : "Interlude 1",
     "text" : ["May 18th\nWe’ve arrived on the island. I can barely hide my excitement! Lucy and George set up our base of operations while Charlie and I searched for the 5 Trials.",
-            "It didn’t take us long to find where it was. There’s a suspicious cave that leads deep into the island. I’m surprised it's barely hidden. It’s as if it was designed to lure people inside."],
+        "It didn’t take us long to find where it was. There’s a suspicious cave that leads deep into the island. I’m surprised it's barely hidden. It’s as if it was designed to lure people inside.",
+        "I’ve been sending a few pictures back to Tim. The sneaky kid almost stowed away on our ship, but luckily we found him before we departed. I hope he’s not too disappointed. He keeps calling me to ask if I’ve found anything cool."],
     "nextScene" : "Boss2"
 }

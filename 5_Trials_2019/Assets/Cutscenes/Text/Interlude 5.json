@@ -1,8 +1,8 @@
 {
     "name" : "Interlude 5",
-    "text" : ["May 22nd\nTim, I’m going into the 5 Trials. It’s my fault my friends got lost in there. I should be fine, I’ve done enough research to know how to beat each creature. Though I’ve got no idea what the hell is waiting for me at the end. I hope I can handle it.\nI’ve attached all my research notes to this email. If I don’t make it back, make sure George gets it published.",
+    "text" : ["May 22nd\nTim, I’m going into the 5 Trials. It’s my fault my friends got lost in there. I should be fine, I’ve done enough research to know how to beat each creature. Though I’ve got no idea what the hell is waiting for me at the end. I hope I can handle it.\nI’ve attached all my research notes to this email. If I don’t make it back, make sure George gets it published.", 
         "I know you think you’re pretty slick with that sword of yours but please don’t come after me. I don’t want to lose my brother to this place too.",
-        "Bah, who am I kidding? One thing I know about you: you’re bloody stubborn. So if you’ve got the guts to follow me, just know this:",
+        "Bah, who am I kidding? One thing I know about you: you’re bloody stubborn. So if you’ve got the guts to follow me, just know this.",
         "If you beat the 5 Trials, do NOT let it grant your wish…"],
     "nextScene" : "Boss6"
 }
