@@ -20,6 +20,7 @@ public class MusicManager : MonoBehaviour
         source.loop = true;
         source.clip = musicLoop;
         source.outputAudioMixerGroup = mixerGroup;
+        source.volume = 0.75f;
     }
 
     void Start(){
@@ -40,7 +41,7 @@ public class MusicManager : MonoBehaviour
 
     private void PlayLoopWithIntro(){
         source.PlayOneShot(musicIntro);
-        source.PlayScheduled(AudioSettings.dspTime + musicIntro.length);
+        source.PlayScheduled(AudioSettings.dspTime + (musicIntro.length / Mathf.Abs(source.pitch)));
     }
 
     private void PlayOnlyLoop(){

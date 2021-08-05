@@ -1,7 +1,7 @@
 {
-    "name" : "Intro",
-    "text" : ["May 20th\nGeoff defeated the 5 Trials today.",
-            "We’ve watched the footage of him beating it over and over again. There was some kind of odd interference that corrupted the video, making it hard to see what’s going on. But from we understand, it seems Geoff just… Disappears at the end. We can’t contact him through the radio either.",
-            "I just hope he’s ok…"],
+    "name" : "Interlude 3",
+    "text" : ["May 20th\nCharlie defeated the 5 Trials today.",
+        "We’ve watched the footage of him beating the final trial over and over again. There was some kind of odd interference that corrupted the video, making it hard to see what’s going on. But from what we understand, it seems Charlie just… Walks into a beam of light and disappears at the end. We can’t contact him through the radio either. I just hope he’s ok…",
+        "The creature of the 5th trial gave Charlie a hard time. He barely won at the end. The creature appeared to be more human than the rest of the trials. It was a heck of a lot smarter too. We named it Golzard"],
     "nextScene" : "Boss4"
 }

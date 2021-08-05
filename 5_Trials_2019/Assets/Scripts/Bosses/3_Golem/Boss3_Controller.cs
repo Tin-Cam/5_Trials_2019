@@ -38,14 +38,7 @@ public class Boss3_Controller : _BossBase
         
         if (!hasAI)
             yield break;
-
         Debug.Log("Starting next action");
-
-        if(forceDesperation){
-            forceDesperation = false;
-            PickAction(2);          
-            yield break;
-        }
 
         //Retaliate if possible
         if(retaliateCounter >= retaliateHitCount)
@@ -148,11 +141,11 @@ public class Boss3_Controller : _BossBase
 
         //action.DefaultState();
 
-        //StopCoroutine(NextAction());
-        //StopCoroutine(Idle());
-        //action.StopActing();
-        //PickAction(2);
-        forceDesperation = true;
+        StopCoroutine(NextAction());
+        StopCoroutine(Idle());
+        action.StopActing();
+        PickAction(2);
+        //forceDesperation = true;
         maxAction = 3;
     }
 

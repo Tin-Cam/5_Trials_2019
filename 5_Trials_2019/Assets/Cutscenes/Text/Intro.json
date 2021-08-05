@@ -1,11 +1,10 @@
 {
     "name" : "Intro",
-    "text" : ["In our town, there’s a legend that’s been passed down through generations. It speaks of an island far off the coast, barely hidden on the edge of the horizon.",
-            "In it lies the 5 Trials. The legend tells that whoever enters the trials will face against ferocious, terrifying beasts. Whoever conquers these beasts will have the glory of being the crowned the champion of warriors, and will be granted a wish.",
-            "It’s very common for many so called \"warriors\" to visit and head for the 5 Trials. But of course, no one has ever returned.",
-            "Many local kids love to dream about someday facing the 5 Trials. Some even go as far as training to fight. However, sailing to the island was banned years ago because too many tourists came to try and face the 5 Trials.",
-        "My little brother Tim, and I were no exception to loving the stories of the 5 Trials. Sometimes I’d sneak off to the beach, just to stare at that mysterious bump on the horizon.",
-    "I’ve always been more of an academic than a fighter, but still want to go to the 5 Trials to study it.",
-"And now, I’ve finally got the opportunity of a lifetime to visit the island on an expedition…"],
+    "text" : ["In our town, there’s a famous legend that’s been passed down through generations. It speaks of an island far off the coast, barely hidden on the edge of the horizon.",
+            "In it lies the 5 Trials. The legend tells that whoever enters the trials will face against ferocious, terrifying beasts. Whoever conquers these beasts will have the glory of being the crowned the champion of warriors, and will be granted a wish.\nTo this day, no one has visited the island and returned alive.",
+            "The townsfolk consider the 5 Trials to be more of a bad omen. Sailing near the island was considered to be bad luck, and visiting it was banned years ago because too many tourists came to try and face the 5 Trials. Yet, despite being warned of the danger, many local kids love to dream about someday facing the 5 Trials. Some even go as far as training to fight.",
+            "My little brother Tim, and I were no exception to loving the stories of the 5 Trials. Sometimes I’d head to the beach, just to stare at that mysterious bump on the horizon.",
+            "I’ve always been more of an academic than a fighter, but still want to go to the 5 Trials to study it.",
+            "And now, I’ve finally got the opportunity of a lifetime to visit the island on an expedition…"],
     "nextScene" : "Starting_Room"
 }

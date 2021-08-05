@@ -35175,8 +35175,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 909ed832536df19488e87a58c9112bd9, type: 2}
-  sliderMusic: {fileID: 8775495022315962715}
-  sliderSFX: {fileID: 5447618468892646338}
 --- !u!114 &1974393892026627353
 MonoBehaviour:
   m_ObjectHideFlags: 0

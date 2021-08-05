@@ -428,7 +428,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 743120887, guid: 17b98768abaf94f41b16411e504ae230, type: 3}
       propertyPath: isActivated
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 762084817190739888, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
@@ -443,7 +443,7 @@ PrefabInstance:
     - target: {fileID: 762084817190739888, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
       propertyPath: flawlessMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7282111899576251158, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
@@ -2662,7 +2662,7 @@ PrefabInstance:
     - target: {fileID: 1630274263261058923, guid: ea89b891bec98de4ca894a5741c2bd3b,
         type: 3}
       propertyPath: m_Name
-      value: Room_Boss1
+      value: Room_Specket
       objectReference: {fileID: 0}
     - target: {fileID: 1630274263261058925, guid: ea89b891bec98de4ca894a5741c2bd3b,
         type: 3}
@@ -2990,7 +2990,7 @@ PrefabInstance:
     - target: {fileID: 4688997082714058124, guid: 080179585f2ff024491c5ee7138566bd,
         type: 3}
       propertyPath: m_Name
-      value: Boss_1
+      value: Specket
       objectReference: {fileID: 0}
     - target: {fileID: 4688997082714058124, guid: 080179585f2ff024491c5ee7138566bd,
         type: 3}

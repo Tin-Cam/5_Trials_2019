@@ -124,6 +124,11 @@ public class MenuManager : MonoBehaviour
         SelectTopItem();
     }
 
+    public void DeleteData(){
+        PlayerPrefs.DeleteAll();
+        RoomManager.instance.LoadRoom("Main_Menu");
+    }
+
     public void PlayButtonSound()
     {
         AudioManager.instance.Play("Button_Press");

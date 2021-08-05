@@ -13,7 +13,8 @@ public class TextProcessor
     private int textSoundOccurance = 75;
 
     private bool speedUpText;
-    private bool writingText;
+    [HideInInspector]
+    public bool writingText;
 
     private string[] textLines;
     private IEnumerator writingCO;

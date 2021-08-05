@@ -116,6 +116,10 @@ public class CheatMode : MonoBehaviour
         {
             roomManager.LoadInterludeCutscene(6);
         }
+        if (Input.GetKeyDown("7"))
+        {
+            roomManager.LoadRoom("Ending");
+        }
         if (Input.GetKeyDown("0"))
         {
             roomManager.LoadInterludeCutscene(0);

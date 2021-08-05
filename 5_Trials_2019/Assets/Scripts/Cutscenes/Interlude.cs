@@ -27,6 +27,17 @@ public class Interlude : MonoBehaviour
         //LoadCutscene(0);
     }
 
+    void Update() {
+        if (Input.GetButtonDown("Attack"))        
+            NextLine();
+
+        //Check if Text Icon can be displayed
+        if(textProcessor.writingText)
+            SetTextIconActive(false);
+        else
+            SetTextIconActive(true);
+    }
+
     public void LoadCutscene(int cutsceneID)
     {
         textProcessor = new TextProcessor(textBox, textSpeed);
@@ -59,11 +70,6 @@ public class Interlude : MonoBehaviour
         }
     }
 
-    void Update() {
-        if (Input.GetButtonDown("Attack"))        
-            NextLine();
-    }
-
     private void NextLine(){
         //Check if the next line can be written
         if(!textProcessor.IsTextComplete())
@@ -74,13 +80,15 @@ public class Interlude : MonoBehaviour
                 return;
         }
         //Write next line
-        StartCoroutine(NextLineCO());
+        StartCoroutine(textProcessor.WriteText(currentCutscene.text[nextLine]));
         nextLine++;
+
+        LastInterludeLastLineCheck();
     }
 
     //Cuts the music when the last line of the last interlude is shown (for drama)
     private void LastInterludeLastLineCheck(){
-        if((currentCutscene.name == "Interlude 5") && nextLine == (currentCutscene.text.Length - 1))
+        if((currentCutscene.name == "Interlude 5") && nextLine == currentCutscene.text.Length)
             music.source.Stop();
     }
 

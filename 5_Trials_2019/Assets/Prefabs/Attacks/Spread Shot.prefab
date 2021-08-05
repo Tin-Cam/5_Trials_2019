@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objProjectile: {fileID: 11400000, guid: dcb188d8855a0e94ca874fbed1318395, type: 2}
-  direction: {x: 0, y: -0.8, z: 0}
+  direction: {x: 0, y: -0.7, z: 0}
 --- !u!114 &1943275877
 MonoBehaviour:
   m_ObjectHideFlags: 0

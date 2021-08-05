@@ -1368,7 +1368,7 @@ PrefabInstance:
     - target: {fileID: 2925008516355142063, guid: 9aba142991c3a524fbd5b3c552808988,
         type: 3}
       propertyPath: m_Name
-      value: Boss_3
+      value: Gocket
       objectReference: {fileID: 0}
     - target: {fileID: 2925008516355142096, guid: 9aba142991c3a524fbd5b3c552808988,
         type: 3}
@@ -1527,7 +1527,7 @@ PrefabInstance:
     - target: {fileID: 1427080845826144190, guid: 3e92479b334faca41a93db78827215b5,
         type: 3}
       propertyPath: m_Name
-      value: Room_Boss3
+      value: Room_Gocket
       objectReference: {fileID: 0}
     - target: {fileID: 3989846393978001451, guid: 3e92479b334faca41a93db78827215b5,
         type: 3}

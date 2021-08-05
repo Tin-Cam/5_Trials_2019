@@ -230,8 +230,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         yield return gui.FadeTransition("Out");
         DeleteObjectsOfTag("Projectile");
-        Time.timeScale = 0;
         
+        StopBossSFX();
+        Time.timeScale = 0;
         gui.ShowGameOver(true);
         CheckEasyModeConditions();
     }
@@ -258,6 +259,15 @@ public class GameManager : MonoBehaviour
             }
             catch(System.NullReferenceException){
                 Debug.Log("Can't find easy mode button");
+            }
+        }
+    }
+
+    public void StopBossSFX(){
+        AudioSource[] allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach(AudioSource source in allAudioSources){
+            if(source.tag != "Persistant_Manager"){
+                source.Stop();
             }
         }
     }

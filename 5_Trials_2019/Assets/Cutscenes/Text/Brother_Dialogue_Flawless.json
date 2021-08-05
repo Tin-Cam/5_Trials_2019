@@ -1,12 +1,19 @@
 {
     "lines" : [{
-        "text" : "Flawless Dialogue", "portrait" : 0},{
-        "text" : "What the hell is going on!?", "portrait" : 2 },{
-        "text" : "The last thing I remember was I got cornered by that… Machine. I tried fighting back, but… Well you know me, I’ve never liked fighting.", "portrait" : 1 },{
-        "text" : "Hold on... You did it, didn’t you? You defeated the 5 Trials! Seems like you took care of whatever that \"thing\" was too.", "portrait" : 0 },{
-        "text" : "Ha! As much as I hate how I pulled you into this, thanks for coming after us.", "portrait" : 0 },{
-        "text" : "The others and I woke up from these containers a moment ago. We seem to be fine, though we are a bit… Shaken.", "portrait" : 1 },{
-        "text" : "But wow, isn’t this amazing though? Finding that machine and this hidden room is a huge breakthrough! This could be the discovery of the century!", "portrait" : 0 },{
-        "text" : "Although… I suppose I’ve caused enough trouble. Now’s not the time for questions.", "portrait" : 0 },{
-        "text" : "Come on, let’s get out of here.", "portrait" : 0 }]
+        "text" : "The heck?! Tim, how’d you get here?!", "portrait" : 2},{
+        "text" : "Where the hell are we!?", "portrait" : 2 },{
+        "text" : "Charlie, Lucy, and I woke up in this room just then.", "portrait" : 1 },{
+        "text" : "Thankfully we seem to be fine, though we are a bit shocked by the whole situation.", "portrait" : 1 },{
+        "text" : "I can remember getting attacked by some flying robot, but it all fades to black after that. Next thing I know I’m waking up from that creepy container.", "portrait" : 2 },{
+        "text" : "Hey Hold on... You did it, didn’t you? You defeated the 5 Trials! Seems like you took care of whatever that \"thing\" was too.", "portrait" : 0 },{
+        "text" : "Good see you’re all in one piece!", "portrait" : 0 },{
+        "text" : "You look a bit hurt though. Are you alright?", "portrait" : 1 },{
+        "text" : "I guess that’s not surprising, seeing what you went through.", "portrait" : 1 },{
+        "text" : "Do you reckon it’s even possible to beat the 5 Trials without getting hit?", "portrait" : 2 },{
+        "text" : "Though maybe that’s not the right question to be asking.", "portrait" : 0 },{
+        "text" : "Anyway I’m still trying to piece together what happened.", "portrait" : 0},{
+        "text" : "What do you think the purpose of that robot was?", "portrait" : 0 },{
+        "text" : "Perhaps it was really the 5 Trials studying us?", "portrait" : 2 },{
+        "text" : "Ha ha ok now I’m rambling on. We better head back home.", "portrait" : 0 },{
+        "text" : "We all need some rest.", "portrait" : 0 }]
 }

@@ -22,6 +22,12 @@ public class CM_Last : MonoBehaviour
 
     private GameManager gameManager;
 
+    public GameObject skipCutscenePrompt;
+
+    private int cutsceneSkipCounter = 3;
+    private float skipTimer = 0;
+    private bool playing;
+
     void Awake(){
         fader.e_FadeIn.AddListener(PlayCutscene);
         endingCutscene.stopped += ShowDialogue;
@@ -31,6 +37,34 @@ public class CM_Last : MonoBehaviour
     void Start()
     {
         endingCutscene.playableGraph.GetRootPlayable(0).SetSpeed(0);
+        playing = true;
+    }
+
+    void Update(){
+        if (playing && Input.GetButtonDown("Attack"))
+        {
+            skipTimer = 3;
+            Debug.Log("Skip int: " + cutsceneSkipCounter);
+            CutsceneSkipper();
+        }
+        if(skipTimer > 0){
+            skipTimer -= Time.deltaTime;
+        }
+        else{
+            skipCutscenePrompt.SetActive(false);
+            cutsceneSkipCounter = 3;
+        }
+    }
+    private void CutsceneSkipper(){
+        if(cutsceneSkipCounter <= 0){
+            playing = false;
+            endingCutscene.playableGraph.GetRootPlayable(0).SetSpeed(0);
+            endingCutscene.stopped -= ShowDialogue;
+            Finish();
+            return;
+        }
+        cutsceneSkipCounter--;
+        skipCutscenePrompt.SetActive(true);
     }
 
     private void PlayCutscene(){
@@ -41,6 +75,8 @@ public class CM_Last : MonoBehaviour
 
     private void ShowDialogue(PlayableDirector cutscene){
         endingCutscene.stopped -= ShowDialogue;
+        playing = false;
+        skipTimer = 0;
         music.Play();
 
         dialogue.textSource = GetEndingDialogueText();
@@ -49,7 +85,7 @@ public class CM_Last : MonoBehaviour
         dialogue.LoadDialogue();
     }
 
-    //Changes the ending dailogue depending 
+    //Changes the ending dailogue depending on how the game was played
     private TextAsset GetEndingDialogueText(){
         FlagManager flagManager = FlagManager.instance;
         CheatMode cheatMode = FindObjectOfType<CheatMode>();
@@ -57,7 +93,7 @@ public class CM_Last : MonoBehaviour
         if(cheatMode.isActivated)
             return endingCheat;
 
-        if(!flagManager.hasBeenHit)
+        if(!flagManager.hasBeenHit && !flagManager.easyMode)
             return endingNoHit;
 
         if(flagManager.flawlessMode)
@@ -77,7 +113,7 @@ public class CM_Last : MonoBehaviour
         fader.fadeAnimationSpeed += 0.2f;
         yield return fader.FadeOut();
         theEndText.SetActive(true);
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(12);
         RoomManager.instance.LoadRoom(0);
     }
 }

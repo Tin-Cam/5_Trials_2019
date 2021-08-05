@@ -44,7 +44,7 @@ public class Boss2_Actions : _ActionBase
         actionList.Add("RapidAttack");
         actionList.Add("Desperation");
 
-        StartCoroutine(MoveRandom());
+        StartCoroutine(Idle());
     }
 
     //ACTIONS ---------------------------------

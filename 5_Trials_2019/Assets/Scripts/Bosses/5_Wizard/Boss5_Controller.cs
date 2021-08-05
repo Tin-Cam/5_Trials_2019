@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -81,7 +81,7 @@ public class Boss5_Controller : _BossBase
 
     private void EasyMode(){
         command.actionPause *= 1.5f;
-        command.justSpinShootAmount -= 1;
+        command.justSpinShootAmount -= 1; 
         command.spinShootAndMoveAmount -= 1;
         move.moveSpeed += 2;
     }

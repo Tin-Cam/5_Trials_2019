@@ -11,6 +11,8 @@ public class RoomManager : MonoBehaviour
 
     private ScreenFader fader;
 
+    private bool isLoading = false;
+
     private List<string> scenes = new List<string> {
         "Main_Menu",    //0
         "Starting_Room",//1
@@ -60,7 +62,7 @@ public class RoomManager : MonoBehaviour
         fader = FindObjectOfType<ScreenFader>();
         
         if(fader != null)
-            StartCoroutine(fader.FadeIn());       
+            StartCoroutine(fader.FadeIn());
     }
 
     public void MoveRooms(int direction) {
@@ -99,7 +101,10 @@ public class RoomManager : MonoBehaviour
     }
 
     public void LoadRoom(int roomCode){
-        StartCoroutine(LoadRoomCO(roomCode));
+        if(!isLoading){
+            isLoading = true;
+            StartCoroutine(LoadRoomCO(roomCode));
+        }
     }
 
     private IEnumerator LoadRoomCO(int roomCode){
@@ -112,10 +117,14 @@ public class RoomManager : MonoBehaviour
         }
         SceneManager.LoadScene(scenes[roomCode]);
         yield return OnRoomLoad();
+        isLoading = false;
     }
 
     public void LoadInterludeCutscene(int cutsceneCode){
-        StartCoroutine(LoadInterludeCutsceneCO(cutsceneCode));
+        if(!isLoading){
+            isLoading = true;
+            StartCoroutine(LoadInterludeCutsceneCO(cutsceneCode));
+        }
     }
 
     private IEnumerator LoadInterludeCutsceneCO(int cutsceneCode){
@@ -127,6 +136,4 @@ public class RoomManager : MonoBehaviour
         interlude.LoadCutscene(cutsceneCode);
         Time.timeScale = 1;
     }
-
-    
 }

@@ -1,7 +1,7 @@
 {
-    "name" : "Intro",
+    "name" : "Interlude 2",
     "text" : ["May 19th\nSo far we’ve discovered a few of the \"beasts\" of the 5 Trials. One of them is a large eye with legs. As goofy as it sounds, it’s actually quite vicious. It appears to shoot some kind of energy projectile from… Well… Its eye.",
-        "George named the thing \"Specket\", because it thought it looked like a giant cricket combined with an eyeball. He thinks it sounds a lot smarter than it actually is.",
-    "It’s tricky to study each trial as the monsters must be defeated to progress to the next room. Thankfully, Geoff is expedition’s strong man and used to be one of those kids who dreamed of facing the 5 Trials.", "While wearing a wireless camera, he can fight and beat each beast while George holds the doors behind him open, and Lucy and I watch the action on my laptop safely back at the camp."],
+        "George named the thing \"Specket\", because he thought it looked like a giant cricket combined with an eyeball. He thinks it sounds a lot smarter than it actually is.",
+    "It’s tricky to study each trial as the monsters must be defeated to progress to the next room. Thankfully, Charlie is expedition’s strong man; he used to be one of those kids who dreamed of facing the 5 Trials.", "While wearing a wireless camera, he can beat each beast while George holds the doors behind him open and Lucy and I watch the action on my laptop safely back at the camp."],
     "nextScene" : "Boss3"
 }

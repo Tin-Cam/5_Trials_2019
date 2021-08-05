@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using TMPro;
 
 public class CM_Boss5 : MonoBehaviour, ICutsceneManager
 {
@@ -14,6 +15,7 @@ public class CM_Boss5 : MonoBehaviour, ICutsceneManager
     public PlayableDirector endingCutscene;
 
     public bool playCutscene;
+    private bool playingEnding;
 
     public GameObject boss;
     public GameObject player;
@@ -21,6 +23,10 @@ public class CM_Boss5 : MonoBehaviour, ICutsceneManager
     public GameObject cutSceneAssets;
     public Animator light2D;
     public AudioSource fanfare;
+    public GameObject skipCutscenePrompt;
+
+    private int cutsceneSkipCounter = 3;
+    private float skipTimer = 0;
 
     private GameManager gameManager;
 
@@ -33,6 +39,32 @@ public class CM_Boss5 : MonoBehaviour, ICutsceneManager
 
         if(!playCutscene)
             SkipIntro();
+    }
+
+    void Update(){
+        if (playingEnding && Input.GetButtonDown("Attack"))
+        {
+            skipTimer = 3;
+            Debug.Log("Skip int: " + cutsceneSkipCounter);
+            CutsceneSkipper();
+        }
+        if(skipTimer > 0){
+            skipTimer -= Time.deltaTime;
+        }
+        else{
+            skipCutscenePrompt.SetActive(false);
+            cutsceneSkipCounter = 3;
+        }
+    }
+    private void CutsceneSkipper(){
+        if(cutsceneSkipCounter <= 0){
+            playingEnding = false;
+            endingCutscene.playableGraph.GetRootPlayable(0).SetSpeed(0);
+            NextRoom(endingCutscene);
+            return;
+        }
+        cutsceneSkipCounter--;
+        skipCutscenePrompt.SetActive(true);
     }
 
     public void PlayCutscene(){
@@ -79,6 +111,7 @@ public class CM_Boss5 : MonoBehaviour, ICutsceneManager
         fanfare.Play();
         yield return new WaitWhile (() => fanfare.isPlaying);
         //yield return new WaitForSeconds(2);
+        playingEnding = true;
         endingCutscene.stopped += NextRoom;
         endingCutscene.Play();
     }

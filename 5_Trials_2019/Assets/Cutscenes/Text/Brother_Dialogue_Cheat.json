@@ -1,12 +1,12 @@
 {
     "lines" : [{
-        "text" : "Cheater!", "portrait" : 2},{
-        "text" : "What the hell is going on!?", "portrait" : 2 },{
-        "text" : "The last thing I remember was I got cornered by that… Machine. I tried fighting back, but… Well you know me, I’ve never liked fighting.", "portrait" : 1 },{
-        "text" : "Hold on... You did it, didn’t you? You defeated the 5 Trials! Seems like you took care of whatever that \"thing\" was too.", "portrait" : 0 },{
-        "text" : "Ha! As much as I hate how I pulled you into this, thanks for coming after us.", "portrait" : 0 },{
-        "text" : "The others and I woke up from these containers a moment ago. We seem to be fine, though we are a bit… Shaken.", "portrait" : 1 },{
-        "text" : "But wow, isn’t this amazing though? Finding that machine and this hidden room is a huge breakthrough! This could be the discovery of the century!", "portrait" : 0 },{
-        "text" : "Although… I suppose I’ve caused enough trouble. Now’s not the time for questions.", "portrait" : 0 },{
-        "text" : "Come on, let’s get out of here.", "portrait" : 0 }]
+        "text" : "Tim, you made it!", "portrait" : 0},{
+        "text" : "Huh, you seemed to get through the 5 Trials pretty well.", "portrait" : 0 },{
+        "text" : "You didn’t cheat did you?", "portrait" : 1 },{
+        "text" : "Ha ha I’m only kidding of course... Maybe.", "portrait" : 0 },{
+        "text" : "Ok, maybe I’m making too light of the situation.", "portrait" : 0 },{
+        "text" : "We’re fine, really! Just a bit shocked.", "portrait" : 2 },{
+        "text" : "I managed to beat the 5 Trials myself too. But I got taken out by that bucket of bolts when I refused to step into that beam of light.", "portrait" : 1 },{
+        "text" : "Seems like you made short work of it though. I’m impressed!", "portrait" : 0 },{
+        "text" : "Anyway, let’s get out of here. You don’t know how much I need a drink right now.", "portrait" : 0 }]
 }

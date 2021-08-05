@@ -1,0 +1,19 @@
+{
+    "lines" : [{
+        "text" : "Tim! You’re here too?", "portrait" : 2},{
+        "text" : "We all woke up from these creepy containers just a moment ago.", "portrait" : 1 },{
+        "text" : "We’re feeling tired, but we appear to be fine otherwise.", "portrait" : 1 },{
+        "text" : "Any idea what just happened?", "portrait" : 2 },{
+        "text" : "...", "portrait" : 1 },{
+        "text" : "Wait a minute, you beat the 5 Trials didn’t you?", "portrait" : 2 },{
+        "text" : "And you took out that weird machine thing too? Nice!", "portrait" : 0 },{
+        "text" : "Huh you know, besides all the soot you look pretty fine.", "portrait" : 0 },{
+        "text" : "Did you actually beat the 5 Trials without getting hit? That’s awesome!", "portrait" : 2 },{
+        "text" : "And on your first try too!", "portrait" : 0 },{
+        "text" : "...That was your first try right?", "portrait" : 1 },{
+        "text" : "Ha! I’m only kidding… I think.", "portrait" : 0 },{
+        "text" : "Anyway, we better head back.", "portrait" : 0 },{
+        "text" : "Everyone’s probably worried sick over us.", "portrait" : 2 },{
+        "text" : "Especially George.", "portrait" : 1 },{
+        "text" : "I reckon I owe him a few beers.", "portrait" : 0 }]
+}
