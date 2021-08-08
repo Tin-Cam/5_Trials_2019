@@ -6,6 +6,7 @@ public class Segment : MonoBehaviour
 {
     public Obj_Segment segmentRef;
 
+    public bool isHead;
     public bool isEnd;
 
     public bool canShoot;
@@ -72,6 +73,10 @@ public class Segment : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //Does desperation sound
+        if(action.desperation && isHead && other.tag == "On_Screen")
+            audioManager.Play("Boss5_Desp1", 0.75f, 1.5f);
+
         if(action.desperation && other.tag == "Player")
         {
             controller.player.GetComponentInChildren<PlayerCollision>().TakeDamge(GetComponent<Collider2D>());

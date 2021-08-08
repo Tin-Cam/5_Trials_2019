@@ -6,6 +6,7 @@ public class TutorialTrigger : MonoBehaviour
 {
     public bool showEntry;
     public GameObject targetControls;
+    public GameObject[] triggersToActivate;
 
     private AnimatorScripts animatorScripts;
     private AudioManager audioManager;
@@ -28,10 +29,18 @@ public class TutorialTrigger : MonoBehaviour
 
         triggered = true;
 
+        //Show or hide message
         if(showEntry)
             ShowEntry();
         else
             ShowExit();
+
+        //Activate other triggers if any
+        if(triggersToActivate.Length > 0){
+            foreach(GameObject trigger in triggersToActivate){
+                trigger.SetActive(true);
+            }
+        }
     }
 
     //Displays the target control object

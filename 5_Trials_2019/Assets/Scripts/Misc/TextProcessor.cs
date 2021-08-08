@@ -50,6 +50,7 @@ public class TextProcessor
         int textSoundCounter = 0;
         speedUpText = false;
         writingText = true;
+        textBox.text = textToWrite;
         //Write the characters
         while(t < textToWrite.Length){
             t += Time.deltaTime * textSpeed;
@@ -58,8 +59,10 @@ public class TextProcessor
             if(tInt >= textToWrite.Length)
                 tInt = textToWrite.Length - 1;
            
-            textSpeed = CheckCharacter(textToWrite[tInt]);            
-            textBox.text = textToWrite.Substring(0, tInt);
+            textSpeed = CheckCharacter(textToWrite[tInt]);
+            
+            textBox.maxVisibleCharacters = tInt + 1;
+            //textBox.text = textToWrite.Substring(0, tInt);
 
             if(textSoundCounter < textSoundOccurance){
                 textSoundCounter++;

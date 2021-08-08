@@ -74,9 +74,6 @@ public class SnakeMovement : MonoBehaviour
         velocity.Normalize();
         velocity = Vector2Int.RoundToInt(velocity);
 
-        if (velocity.x + velocity.y == 0)
-            Debug.Log(current.gameObject.name + " Has velocity of " + velocity);
-
         animator.SetFloat("Velocity X", velocity.x);
         animator.SetFloat("Velocity Y", velocity.y);
 
@@ -94,4 +91,5 @@ public class SnakeMovement : MonoBehaviour
         foreach (Transform segment in body)
             segment.position = location;
     }
+
 }

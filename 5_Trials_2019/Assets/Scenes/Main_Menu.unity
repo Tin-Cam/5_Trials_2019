@@ -7372,7 +7372,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'v1.0.0
+  m_text: 'v1.0.1
 
     Created by Tin-Cam'
   m_isRightToLeft: 0
