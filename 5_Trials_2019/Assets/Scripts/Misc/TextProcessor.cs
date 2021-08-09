@@ -10,7 +10,7 @@ public class TextProcessor
 
     private float textSpeed;
     private float defaultTextSpeed = 1f;
-    private int textSoundOccurance = 75;
+    private int textSoundOccurance = 4;
 
     private bool speedUpText;
     [HideInInspector]
@@ -21,6 +21,8 @@ public class TextProcessor
     private TextMeshProUGUI textBox;
 
     private int nextLine;
+
+    private int lastTInt;
 
     public TextProcessor(TextMeshProUGUI textBox){
         textSpeed = defaultTextSpeed;
@@ -47,7 +49,6 @@ public class TextProcessor
 
     public IEnumerator WriteText(string textToWrite){
         float t = 0;
-        int textSoundCounter = 0;
         speedUpText = false;
         writingText = true;
         textBox.text = textToWrite;
@@ -62,26 +63,28 @@ public class TextProcessor
             textSpeed = CheckCharacter(textToWrite[tInt]);
             
             textBox.maxVisibleCharacters = tInt + 1;
-            //textBox.text = textToWrite.Substring(0, tInt);
-
-            if(textSoundCounter < textSoundOccurance){
-                textSoundCounter++;
-            }
-            else{
-                textSoundCounter = 0;
-                //Play text sound
-                try{
-                    textSound.PlayOneShot(textSound.clip, 0.7f);
-                }
-                catch(System.NullReferenceException){
-                    Debug.LogWarning("No audio source has been set for text");
-                }
-            }
+            TextSound(tInt);
 
             yield return null;
         }
         textBox.text = textToWrite;
         writingText = false;
+    }
+
+    //Plays sound when the amount of characters on screen is divisible by a set value
+    public void TextSound(int amount){
+        if(amount == lastTInt || speedUpText)
+            return;
+
+        if(amount % textSoundOccurance == 0){
+            try{
+                    textSound.PlayOneShot(textSound.clip, 0.7f);
+                }
+            catch(System.NullReferenceException){
+                    Debug.LogWarning("No audio source has been set for text");
+            }
+        }
+        lastTInt = amount;
     }
 
     public float CheckCharacter(char character){
