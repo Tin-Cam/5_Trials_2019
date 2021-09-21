@@ -14,12 +14,14 @@ public class MenuManager : MonoBehaviour
 
     private GameObject currentMenu;
     private FlagManager flagManager;
+    private CanvasGroup canvasGroup;
 
     
     void Start()
     {
         eventSystem = EventSystem.current;    
         flagManager = GetComponent<FlagManager>();
+        canvasGroup = FindObjectOfType<CanvasGroup>();
 
         //The first menu in the list is loaded first
         currentMenu = menus[0];
@@ -73,9 +75,14 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    public void StartGame(int difficulty)
+    public void StartGame(int difficulty){
+        StartGame(difficulty, 0);
+    }
+
+    public void StartGame(int difficulty, int level)
     {
         PlayButtonSound();
+        SetMenuInteraction(false);
 
         if(difficulty == 0)
             FlagManager.instance.easyMode = true;
@@ -104,9 +111,21 @@ public class MenuManager : MonoBehaviour
                 FlagManager.instance.flawlessMode = false;
                 break;
         }
-
         FlagManager.instance.SetToDefault();
-        RoomManager.instance.LoadInterludeCutscene(0);
+
+        //Start from beginning
+        if(level == 0){
+            RoomManager.instance.LoadInterludeCutscene(0);
+        }
+        //Start from Trial 1
+        else if(level == 1){
+            RoomManager.instance.LoadRoom(2);
+        }
+        //Start from levels beyond Trial 1
+        else {
+            int cutscene = level - 1;
+            RoomManager.instance.LoadInterludeCutscene(cutscene);
+        }
     }
 
     public void QuitGame()
@@ -125,6 +144,7 @@ public class MenuManager : MonoBehaviour
     }
 
     public void DeleteData(){
+        SetMenuInteraction(false);
         PlayerPrefs.DeleteAll();
         RoomManager.instance.LoadRoom("Main_Menu");
     }
@@ -143,5 +163,10 @@ public class MenuManager : MonoBehaviour
         eventSystem.SetSelectedGameObject(item);
         UpdateCursor();
         PlaySelectSound();
+    }
+
+    public void SetMenuInteraction(bool isEnabled){
+        canvasGroup.interactable = isEnabled;
+        canvasGroup.blocksRaycasts = isEnabled;
     }
 }

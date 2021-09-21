@@ -114,6 +114,8 @@ public class GameManager : MonoBehaviour
         player.GetComponentInChildren<PlayerCollision>().isInvincible = true;
         godMode = true;
 
+        //Save progress
+        flagManager.SetGameProgress(GetBoss().GetBossID() + 1);
         if(GetBoss().tag == "Boss_5"){
             PrepareCutscene();
             CM_Boss5 cm = FindObjectOfType<CM_Boss5>();

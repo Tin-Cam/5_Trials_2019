@@ -3566,6 +3566,7 @@ GameObject:
   - component: {fileID: 227000625}
   - component: {fileID: 227000627}
   - component: {fileID: 227000626}
+  - component: {fileID: 227000628}
   m_Layer: 5
   m_Name: Ctrl
   m_TagString: Untagged
@@ -3628,6 +3629,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227000624}
   m_CullTransparentMesh: 0
+--- !u!114 &227000628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227000624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d33cbe2de9b574eb7cb8520662bc01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  macSprite: {fileID: 21300000, guid: 2f883ddc1b180434185f1f4742467041, type: 3}
 --- !u!1 &244284164
 GameObject:
   m_ObjectHideFlags: 0
@@ -3689,6 +3703,8 @@ MonoBehaviour:
   showEntry: 0
   targetControls: {fileID: 1338651435}
   triggersToActivate: []
+  triggersToDisable:
+  - {fileID: 411817044}
 --- !u!61 &244284168
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4279,6 +4295,8 @@ MonoBehaviour:
   showEntry: 0
   targetControls: {fileID: 1338651435}
   triggersToActivate: []
+  triggersToDisable:
+  - {fileID: 244284164}
 --- !u!61 &411817047
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4944,6 +4962,7 @@ MonoBehaviour:
   targetControls: {fileID: 1338651435}
   triggersToActivate:
   - {fileID: 411817044}
+  triggersToDisable: []
 --- !u!61 &582175173
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6101,6 +6120,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 762084817190739888, guid: 17b98768abaf94f41b16411e504ae230,
+        type: 3}
+      propertyPath: macBuild
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7282111899576251158, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
       propertyPath: m_Name
@@ -7260,6 +7284,7 @@ MonoBehaviour:
   showEntry: 1
   targetControls: {fileID: 1663911174}
   triggersToActivate: []
+  triggersToDisable: []
 --- !u!61 &1017328727
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7969,6 +7994,7 @@ MonoBehaviour:
   showEntry: 0
   targetControls: {fileID: 1663911174}
   triggersToActivate: []
+  triggersToDisable: []
 --- !u!61 &1229632484
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11498,6 +11524,7 @@ MonoBehaviour:
   targetControls: {fileID: 1184413826}
   triggersToActivate:
   - {fileID: 2083090204}
+  triggersToDisable: []
 --- !u!61 &1805510075
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11824,6 +11851,8 @@ MonoBehaviour:
   showEntry: 0
   targetControls: {fileID: 1184413826}
   triggersToActivate: []
+  triggersToDisable:
+  - {fileID: 2083090204}
 --- !u!61 &1905408607
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12282,6 +12311,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6434284118721882536, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1643342539
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434284118721882536, guid: eb5d813d44eb64f4791a90e539078c1f,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9182096197023116854, guid: eb5d813d44eb64f4791a90e539078c1f,
         type: 3}
       propertyPath: direction
@@ -12803,6 +12842,8 @@ MonoBehaviour:
   showEntry: 0
   targetControls: {fileID: 1184413826}
   triggersToActivate: []
+  triggersToDisable:
+  - {fileID: 1905408603}
 --- !u!61 &2083090208
 BoxCollider2D:
   m_ObjectHideFlags: 0

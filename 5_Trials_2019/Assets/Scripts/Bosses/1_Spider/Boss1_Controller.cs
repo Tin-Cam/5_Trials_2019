@@ -23,6 +23,8 @@ public class Boss1_Controller : _BossBase
     // Start is called before the first frame update
     protected override void Init()
     {
+        SetBossID(3);
+
         action = GetComponent<Boss1_Actions>();
         move = GetComponent<Boss1_Move>();
         eyes = GetComponent<Boss1_Eyes>();

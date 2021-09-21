@@ -90,15 +90,20 @@ public class CM_Last : MonoBehaviour
         FlagManager flagManager = FlagManager.instance;
         CheatMode cheatMode = FindObjectOfType<CheatMode>();
 
+        //Show cheat ending if cheat mode is active
         if(cheatMode.isActivated)
             return endingCheat;
 
-        if(!flagManager.hasBeenHit && !flagManager.easyMode)
+        //Show no hit ending if flawless mode is active and player wasn't hit
+        if(!flagManager.hasBeenHit && flagManager.flawlessMode)
             return endingNoHit;
 
+        //Show flawless ending if flawless mode is active but player was hit at least once
         if(flagManager.flawlessMode)
             return endingFlawless;
 
+        //Show standard ending if no condiotions are met
+        //(i.e. Show if game is beat on easy or normal without cheating)
         return endingStandard;
     }
 

@@ -15,6 +15,8 @@ public class Boss6_Controller : _BossBase
 
     protected override void Init()
     {
+        SetBossID(6);
+
         action = GetComponent<Boss6_Action>();
         move = GetComponent<Boss6_Move>();
         command = GetComponent<Boss6_Commands>();
@@ -96,7 +98,8 @@ public class Boss6_Controller : _BossBase
     private void EasyMode(){
         health -= 20;
         maxHealth -= 20;
-        bossLevel -= 0.3f;
+        bossLevel -= 0.2f;
+        bosslevelIncrements -= 0.1f;
     }
 
     protected override void IncreasePhase()

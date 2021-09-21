@@ -21,6 +21,8 @@ public class Boss3_Controller : _BossBase
 
     protected override void Init()
     {
+        SetBossID(2);
+
         action = GetComponent<Boss3_Actions>();
         
         action.Init();

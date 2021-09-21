@@ -22,6 +22,7 @@ public class RoomExit : MonoBehaviour
         if (other.tag != "Player")
             return;
         if(playInterlude){
+            AudioManager.instance.Play("Door_Enter");
             RoomManager.instance.LoadInterludeCutscene(interludeID);
             return;
         }

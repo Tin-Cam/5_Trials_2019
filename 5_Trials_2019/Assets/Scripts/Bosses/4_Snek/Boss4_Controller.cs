@@ -15,6 +15,8 @@ public class Boss4_Controller : _BossBase
 
     protected override void Init()
     {
+        SetBossID(4);
+
         move = GetComponent<Boss4_Move>();
         action = GetComponent<Boss4_Action>();
 

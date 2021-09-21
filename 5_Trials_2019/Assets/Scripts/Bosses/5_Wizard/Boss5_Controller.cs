@@ -16,6 +16,8 @@ public class Boss5_Controller : _BossBase
 
     protected override void Init()
     {
+        SetBossID(5);
+
         action = GetComponent<Boss5_Action>();
         move = GetComponent<Boss5_Move>();
         command = GetComponent<Boss5_Commands>();
@@ -80,10 +82,11 @@ public class Boss5_Controller : _BossBase
     }
 
     private void EasyMode(){
-        command.actionPause *= 1.5f;
+        command.actionPause *= 1.75f;
         command.justSpinShootAmount -= 1; 
         command.spinShootAndMoveAmount -= 1;
-        move.moveSpeed += 2;
+        command.desperationPause += 1;
+        //move.moveSpeed += 2;
     }
 
     protected override void IncreasePhase()

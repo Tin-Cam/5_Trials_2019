@@ -7,6 +7,7 @@ public class TutorialTrigger : MonoBehaviour
     public bool showEntry;
     public GameObject targetControls;
     public GameObject[] triggersToActivate;
+    public GameObject[] triggersToDisable;
 
     private AnimatorScripts animatorScripts;
     private AudioManager audioManager;
@@ -59,7 +60,13 @@ public class TutorialTrigger : MonoBehaviour
     private IEnumerator ShowExitCO(){
         audioManager.Play("Discard");
         yield return animatorScripts.PlayWholeAnimation("Exit", 0);
-        targetControls.SetActive(false);       
+        targetControls.SetActive(false);
+        //Delete self and related triggers
+        if(triggersToDisable.Length > 0){
+            foreach(GameObject trigger in triggersToDisable){
+                Destroy(trigger);
+            }
+        }    
         Destroy(this);
     }
 }

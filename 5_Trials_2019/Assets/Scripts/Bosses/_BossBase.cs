@@ -31,6 +31,8 @@ public abstract class _BossBase : MonoBehaviour
 
     public int phase; //Value determines how the boss behaves
 
+    private int bossID = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -124,6 +126,14 @@ public abstract class _BossBase : MonoBehaviour
         hitSprite.enabled = true;
         yield return new WaitForSeconds((float)0.1);
         hitSprite.enabled = false;
+    }
+
+    public void SetBossID(int value){
+        bossID = value;
+    }
+
+    public int GetBossID(){
+        return bossID;
     }
 
     abstract protected void Init();

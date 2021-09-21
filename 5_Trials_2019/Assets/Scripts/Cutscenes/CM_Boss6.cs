@@ -31,11 +31,12 @@ public class CM_Boss6 : MonoBehaviour, ICutsceneManager
             SkipIntro();
     }
 
-    public void PlayCutscene(){
+    public void PlayCutscene(){        
         Intro();
     }
 
     private void Intro(){
+        gameManager.noInterupts = true;
         introCutscene.Play();
         introCutscene.stopped += DestroyCutsceneAssets1;
     }
@@ -49,6 +50,7 @@ public class CM_Boss6 : MonoBehaviour, ICutsceneManager
 
     //Is initiated during the cutscene
     public void StartFight(){
+        gameManager.noInterupts = false;
         //Start fight with boss
         bossHolder.SetActive(true);
         //Destroy(cutSceneAssets1);
