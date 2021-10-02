@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +15,8 @@ public class MenuManager : MonoBehaviour
     private GameObject currentMenu;
     private FlagManager flagManager;
     private CanvasGroup canvasGroup;
+    
+    [SerializeField] private Animator canvasAnimator;
 
     
     void Start()
@@ -22,6 +24,8 @@ public class MenuManager : MonoBehaviour
         eventSystem = EventSystem.current;    
         flagManager = GetComponent<FlagManager>();
         canvasGroup = FindObjectOfType<CanvasGroup>();
+
+        //canvasAnimator.
 
         //The first menu in the list is loaded first
         currentMenu = menus[0];

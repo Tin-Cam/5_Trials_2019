@@ -13,6 +13,8 @@ public class Boss4_Controller : _BossBase
 
     public SnakeMovement head;
 
+    bool isDying = false;
+
     protected override void Init()
     {
         SetBossID(4);
@@ -167,6 +169,11 @@ public class Boss4_Controller : _BossBase
 
     public override void StartDeath()
     {
+        //Stops function being called more than once if boss is hit in more than one place
+        if(isDying)
+            return;
+        isDying = true;
+
         //Explosions for bodyparts
         for (int i = 1; i < head.body.Count; i++)
             Instantiate(deathExplosion, head.body[i].position, transform.rotation);

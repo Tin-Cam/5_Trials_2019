@@ -7575,6 +7575,11 @@ PrefabInstance:
       propertyPath: isActivated
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 762084817190739888, guid: 17b98768abaf94f41b16411e504ae230,
+        type: 3}
+      propertyPath: macBuild
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7282111899576251158, guid: 17b98768abaf94f41b16411e504ae230,
         type: 3}
       propertyPath: m_Name
@@ -9841,6 +9846,7 @@ MonoBehaviour:
   - {fileID: 1726797401}
   - {fileID: 931413595}
   - {fileID: 1993945779}
+  canvasAnimator: {fileID: 0}
 --- !u!114 &1193801912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13043,7 +13049,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'v1.0.2
+  m_text: 'v1.1.0
 
     Created by Tin-Cam'
   m_isRightToLeft: 0

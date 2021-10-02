@@ -35,6 +35,11 @@ public class FlagManager : MonoBehaviour
 			instance = this;
 			DontDestroyOnLoad(gameObject);
             flawlessHealth = 5;
+
+            //Unlock all levels if a players loads a save from a previous version of 5 Trials and had earned a star (i.e beaten the game on normal or harder)
+            if(PlayerPrefs.GetInt("stars", 0) > 0){
+                SetGameProgress(7);
+            }
 		}
     }
 

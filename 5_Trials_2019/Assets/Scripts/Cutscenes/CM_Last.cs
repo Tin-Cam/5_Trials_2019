@@ -60,7 +60,7 @@ public class CM_Last : MonoBehaviour
             playing = false;
             endingCutscene.playableGraph.GetRootPlayable(0).SetSpeed(0);
             endingCutscene.stopped -= ShowDialogue;
-            Finish();
+            QuickFinish();
             return;
         }
         cutsceneSkipCounter--;
@@ -119,6 +119,11 @@ public class CM_Last : MonoBehaviour
         yield return fader.FadeOut();
         theEndText.SetActive(true);
         yield return new WaitForSeconds(12);
+        RoomManager.instance.LoadRoom(0);
+    }
+
+    private void QuickFinish(){
+        fader.fadeAnimationSpeed = 1;
         RoomManager.instance.LoadRoom(0);
     }
 }
